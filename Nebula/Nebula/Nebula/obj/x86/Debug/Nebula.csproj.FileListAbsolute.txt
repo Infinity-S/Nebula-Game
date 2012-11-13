@@ -1,0 +1,87 @@
+C:\Users\Zaz v2\Documents\Visual Studio 2010\Projects\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Asis.xnb
+C:\Users\Zaz v2\Documents\Visual Studio 2010\Projects\Nebula\Nebula\Nebula\bin\x86\Debug\Nebula.exe
+C:\Users\Zaz v2\Documents\Visual Studio 2010\Projects\Nebula\Nebula\Nebula\bin\x86\Debug\Nebula.pdb
+C:\Users\Zaz v2\Documents\Visual Studio 2010\Projects\Nebula\Nebula\Nebula\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Zaz v2\Documents\Visual Studio 2010\Projects\Nebula\Nebula\Nebula\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Zaz v2\Documents\Visual Studio 2010\Projects\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.exe
+C:\Users\Zaz v2\Documents\Visual Studio 2010\Projects\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.pdb
+C:\Users\Zaz v2\Documents\Visual Studio 2010\Projects\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Laser.xnb
+C:\Users\Zaz v2\Documents\Visual Studio 2010\Projects\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LaserSoundEffect.xnb
+I:\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Asis.xnb
+I:\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Laser.xnb
+I:\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LaserSoundEffect.xnb
+I:\Nebula\Nebula\Nebula\bin\x86\Debug\Nebula.exe
+I:\Nebula\Nebula\Nebula\bin\x86\Debug\Nebula.pdb
+I:\Nebula\Nebula\Nebula\obj\x86\Debug\ResolveAssemblyReference.cache
+I:\Nebula\Nebula\Nebula\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+I:\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.exe
+I:\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.pdb
+G:\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Asis.xnb
+G:\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Laser.xnb
+G:\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LaserSoundEffect.xnb
+G:\Nebula\Nebula\Nebula\bin\x86\Debug\Nebula.exe
+G:\Nebula\Nebula\Nebula\bin\x86\Debug\Nebula.pdb
+G:\Nebula\Nebula\Nebula\obj\x86\Debug\ResolveAssemblyReference.cache
+G:\Nebula\Nebula\Nebula\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+G:\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.exe
+G:\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.pdb
+U:\CSC 420\FINAL PROJECT\NebulaV2\Nebula\Nebula\bin\x86\Debug\Content\Asis.xnb
+U:\CSC 420\FINAL PROJECT\NebulaV2\Nebula\Nebula\bin\x86\Debug\Content\Laser.xnb
+U:\CSC 420\FINAL PROJECT\NebulaV2\Nebula\Nebula\bin\x86\Debug\Content\LaserSoundEffect.xnb
+U:\CSC 420\FINAL PROJECT\NebulaV2\Nebula\Nebula\bin\x86\Debug\Nebula.exe
+U:\CSC 420\FINAL PROJECT\NebulaV2\Nebula\Nebula\bin\x86\Debug\Nebula.pdb
+U:\CSC 420\FINAL PROJECT\NebulaV2\Nebula\Nebula\obj\x86\Debug\ResolveAssemblyReference.cache
+U:\CSC 420\FINAL PROJECT\NebulaV2\Nebula\Nebula\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+U:\CSC 420\FINAL PROJECT\NebulaV2\Nebula\Nebula\obj\x86\Debug\Nebula.exe
+U:\CSC 420\FINAL PROJECT\NebulaV2\Nebula\Nebula\obj\x86\Debug\Nebula.pdb
+U:\CSC 420\FINAL PROJECT\NebulaV2\Nebula\Nebula\bin\x86\Debug\Content\enemy-blue.xnb
+U:\CSC 420\FINAL PROJECT\NebulaV2\Nebula\Nebula\bin\x86\Debug\Content\enemy-red.xnb
+G:\NebulaV2\Nebula\Nebula\bin\x86\Debug\Content\Asis.xnb
+G:\NebulaV2\Nebula\Nebula\bin\x86\Debug\Content\Laser.xnb
+G:\NebulaV2\Nebula\Nebula\bin\x86\Debug\Content\enemy-blue.xnb
+G:\NebulaV2\Nebula\Nebula\bin\x86\Debug\Content\enemy-red.xnb
+G:\NebulaV2\Nebula\Nebula\bin\x86\Debug\Content\LaserSoundEffect.xnb
+G:\NebulaV2\Nebula\Nebula\bin\x86\Debug\Nebula.exe
+G:\NebulaV2\Nebula\Nebula\bin\x86\Debug\Nebula.pdb
+G:\NebulaV2\Nebula\Nebula\obj\x86\Debug\ResolveAssemblyReference.cache
+G:\NebulaV2\Nebula\Nebula\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+G:\NebulaV2\Nebula\Nebula\obj\x86\Debug\Nebula.exe
+G:\NebulaV2\Nebula\Nebula\obj\x86\Debug\Nebula.pdb
+I:\NebulaV2\Nebula\Nebula\bin\x86\Debug\Content\Asis.xnb
+I:\NebulaV2\Nebula\Nebula\bin\x86\Debug\Content\Laser.xnb
+I:\NebulaV2\Nebula\Nebula\bin\x86\Debug\Content\enemy-blue.xnb
+I:\NebulaV2\Nebula\Nebula\bin\x86\Debug\Content\enemy-red.xnb
+I:\NebulaV2\Nebula\Nebula\bin\x86\Debug\Content\LaserSoundEffect.xnb
+I:\NebulaV2\Nebula\Nebula\bin\x86\Debug\Nebula.exe
+I:\NebulaV2\Nebula\Nebula\bin\x86\Debug\Nebula.pdb
+I:\NebulaV2\Nebula\Nebula\obj\x86\Debug\ResolveAssemblyReference.cache
+I:\NebulaV2\Nebula\Nebula\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+I:\NebulaV2\Nebula\Nebula\obj\x86\Debug\Nebula.exe
+I:\NebulaV2\Nebula\Nebula\obj\x86\Debug\Nebula.pdb
+I:\Nebula\Nebula\Nebula\bin\x86\Debug\Content\enemy-blue.xnb
+I:\Nebula\Nebula\Nebula\bin\x86\Debug\Content\enemy-red.xnb
+I:\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LaserSoundEffectBackwards.xnb
+E:\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Asis.xnb
+E:\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Laser.xnb
+E:\Nebula\Nebula\Nebula\bin\x86\Debug\Content\enemy-blue.xnb
+E:\Nebula\Nebula\Nebula\bin\x86\Debug\Content\enemy-red.xnb
+E:\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LaserSoundEffect.xnb
+E:\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LaserSoundEffectBackwards.xnb
+E:\Nebula\Nebula\Nebula\bin\x86\Debug\Nebula.exe
+E:\Nebula\Nebula\Nebula\bin\x86\Debug\Nebula.pdb
+E:\Nebula\Nebula\Nebula\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Nebula\Nebula\Nebula\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+E:\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.exe
+E:\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.pdb
+U:\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Asis.xnb
+U:\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Laser.xnb
+U:\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\enemy-blue.xnb
+U:\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\enemy-red.xnb
+U:\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LaserSoundEffect.xnb
+U:\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LaserSoundEffectBackwards.xnb
+U:\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Nebula.exe
+U:\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Nebula.pdb
+U:\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\ResolveAssemblyReference.cache
+U:\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+U:\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.exe
+U:\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.pdb

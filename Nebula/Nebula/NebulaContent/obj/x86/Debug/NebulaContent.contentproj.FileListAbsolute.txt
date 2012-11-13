@@ -1,0 +1,8 @@
+C:\Users\Zaz v2\Documents\Visual Studio 2010\Projects\Nebula\Nebula\NebulaContent\obj\x86\Debug\ResolveAssemblyReference.cache
+I:\Nebula\Nebula\NebulaContent\obj\x86\Debug\ResolveAssemblyReference.cache
+G:\Nebula\Nebula\NebulaContent\obj\x86\Debug\ResolveAssemblyReference.cache
+U:\CSC 420\FINAL PROJECT\NebulaV2\Nebula\NebulaContent\obj\x86\Debug\ResolveAssemblyReference.cache
+G:\NebulaV2\Nebula\NebulaContent\obj\x86\Debug\ResolveAssemblyReference.cache
+I:\NebulaV2\Nebula\NebulaContent\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Nebula\Nebula\NebulaContent\obj\x86\Debug\ResolveAssemblyReference.cache
+U:\Nebula-Game\Nebula\Nebula\NebulaContent\obj\x86\Debug\ResolveAssemblyReference.cache

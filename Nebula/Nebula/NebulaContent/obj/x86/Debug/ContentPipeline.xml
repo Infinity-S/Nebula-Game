@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>Asis.JPG</Source>
+      <Name>Asis</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>U:\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Asis.xnb</Output>
+      <Time>2012-11-11T09:15:12-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Laser.png</Source>
+      <Name>Laser</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>U:\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Laser.xnb</Output>
+      <Time>2012-11-11T12:04:04-05:00</Time>
+    </Item>
+    <Item>
+      <Source>enemy-blue.png</Source>
+      <Name>enemy-blue</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>U:\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\enemy-blue.xnb</Output>
+      <Time>2012-11-12T13:40:10-05:00</Time>
+    </Item>
+    <Item>
+      <Source>enemy-red.png</Source>
+      <Name>enemy-red</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>U:\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\enemy-red.xnb</Output>
+      <Time>2012-11-12T13:40:10-05:00</Time>
+    </Item>
+    <Item>
+      <Source>LaserSoundEffect.mp3</Source>
+      <Name>LaserSoundEffect</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>U:\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LaserSoundEffect.xnb</Output>
+      <Time>2012-11-11T14:38:04-05:00</Time>
+    </Item>
+    <Item>
+      <Source>LaserSoundEffectBackwards.wav</Source>
+      <Name>LaserSoundEffectBackwards</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>U:\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LaserSoundEffectBackwards.xnb</Output>
+      <Time>2012-11-12T21:58:52-05:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Windows</TargetPlatform>
+      <TargetProfile>Reach</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>U:\Nebula-Game\Nebula\Nebula\NebulaContent\</RootDirectory>
+      <LoggerRootDirectory>U:\Nebula-Game\Nebula\Nebula\Nebula\</LoggerRootDirectory>
+      <IntermediateDirectory>U:\Nebula-Game\Nebula\Nebula\NebulaContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>U:\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2010-08-23T12:41:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2010-08-23T12:41:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2010-08-23T12:41:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2010-08-23T12:41:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2010-08-23T12:41:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2010-08-23T12:41:18-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2012-06-24T13:38:39.1453402-04:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>
