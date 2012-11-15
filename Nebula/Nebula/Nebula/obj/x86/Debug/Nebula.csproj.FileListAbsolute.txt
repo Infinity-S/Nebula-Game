@@ -85,3 +85,15 @@ U:\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\ResolveAssemblyReference.cache
 U:\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 U:\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.exe
 U:\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.pdb
+C:\Users\gpisarkiewicz\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Asis.xnb
+C:\Users\gpisarkiewicz\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Laser.xnb
+C:\Users\gpisarkiewicz\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\enemy-blue.xnb
+C:\Users\gpisarkiewicz\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\enemy-red.xnb
+C:\Users\gpisarkiewicz\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LaserSoundEffect.xnb
+C:\Users\gpisarkiewicz\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LaserSoundEffectBackwards.xnb
+C:\Users\gpisarkiewicz\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Nebula.exe
+C:\Users\gpisarkiewicz\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Nebula.pdb
+C:\Users\gpisarkiewicz\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\gpisarkiewicz\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\gpisarkiewicz\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.exe
+C:\Users\gpisarkiewicz\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.pdb

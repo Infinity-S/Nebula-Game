@@ -60,7 +60,8 @@ namespace Nebula
                 new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight));
 
             SpriteManager SpriteManager = new SpriteManager(Content.Load<Texture2D>("Laser"), new Vector2(-1000, -1000),
-                new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), this, Asis, Laser, redEnemy, Content.Load<SoundEffect>("LaserSoundEffect"), Content.Load<SoundEffect>("LaserSoundEffectBackwards"));
+                new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), this, Asis, Laser, 
+                redEnemy, Content.Load<SoundEffect>("LaserSoundEffect"), Content.Load<SoundEffect>("LaserSoundEffectBackwards"));
 
             mySprites.Add(Asis);
             mySprites.Add(Laser);
