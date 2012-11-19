@@ -28,7 +28,7 @@ namespace Nebula
         private double RIGHT_INTERVAL;
         private float MAX_CAMERA_POS; 
         private Vector2 scrollingDirection = new Vector2(-1, 0);
-        private Vector2 aSpeed = new Vector2(160, 0); 
+        private Vector2 aSpeed = new Vector2(5, 0); 
 
 
         public ScrollingManager(Asis MainChar, List<BackgroundSprite> backgroundsList, float ScreenWidth)
@@ -40,8 +40,8 @@ namespace Nebula
             {
                 backgroundLength += bs.size.Width;
             }
-            myAsis.myPosition.X = 200f; 
-            charPos = myAsis.myPosition.X;
+           // myAsis.myPosition.X = 200f; 
+            //charPos = myAsis.myPosition.X;
             CameraSize = ScreenWidth;
             //left interval is 10% of screen
             LEFT_INTERVAL = CameraSize * .10;
@@ -51,15 +51,17 @@ namespace Nebula
 
         }
 
-        private void changeDirection()
+        public void SwitchDirection()
         {
-            scrollingDirection = new Vector2(1, 0);
+            scrollingDirection = -scrollingDirection;
         }
 
         public void Update(double totalSecs)
         {
             //Setting up so if the image that goes off the screen (player has 'passed' it)
             //it will be added back on to the end of the images. 
+
+            charPos = myAsis.myPosition.X; 
 
             BackgroundSprite[] backgroundSprites = myBackgrounds.ToArray();
             for (int i = 0; i < backgroundSprites.Length; i++)
@@ -90,13 +92,20 @@ namespace Nebula
                 //cameraPos = charPos - (float)LEFT_INTERVAL;
                 foreach (BackgroundSprite bs in myBackgrounds)
                 {
-                    bs.myPosition += scrollingDirection * aSpeed * (float)totalSecs;
+                    //bs.myPosition += -scrollingDirection * aSpeed * (float)totalSecs;
+                    //bs.myPosition += -scrollingDirection * aSpeed;
                 }
             }
-            //foreach (BackgroundSprite bs in myBackgrounds)
-            //{
-            //    bs.myPosition += scrollingDirection * aSpeed * (float)totalSecs;
-            //}
+            else if (charPos > RIGHT_INTERVAL)
+            {
+                float cameraMovement = charPos + (float) RIGHT_INTERVAL;
+                foreach (BackgroundSprite bs in myBackgrounds)
+                {
+                    //bs.myPosition += scrollingDirection * aSpeed * (float)totalSecs; 
+                    //bs.myPosition += new Vector2(cameraMovement, 0)*scrollingDirection*aSpeed; 
+                    //bs.myPosition += scrollingDirection * aSpeed;
+                }
+            }
 
             //updates all the background sprites 
             foreach (Sprite b in myBackgrounds)

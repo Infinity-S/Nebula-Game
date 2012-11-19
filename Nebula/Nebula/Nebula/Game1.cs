@@ -21,7 +21,7 @@ namespace Nebula
         List<Sprite> mySprites = new List<Sprite>();
         //adding a sprite list for the scrolling background images 
         List<BackgroundSprite> myBackgroundSprites = new List<BackgroundSprite>();
-        ScrollingManager manager; 
+       // ScrollingManager manager; 
 
         public Game1()
         {   
@@ -62,14 +62,9 @@ namespace Nebula
             Enemy redEnemy = new Enemy(Content.Load<Texture2D>("enemy-red"), new Vector2(0, 0),
                 new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight));
 
-            SpriteManager SpriteManager = new SpriteManager(Content.Load<Texture2D>("Laser"), new Vector2(-1000, -1000),
-                new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), this, Asis, Laser, 
-                redEnemy, Content.Load<SoundEffect>("LaserSoundEffect"), Content.Load<SoundEffect>("LaserSoundEffectBackwards"));
-
             mySprites.Add(Asis);
             mySprites.Add(Laser);
             mySprites.Add(redEnemy); 
-            mySprites.Add(SpriteManager);
 
             //adding the test background images/Sprites
             //their positions are tacked on to each other, so they form one long background image 
@@ -90,7 +85,12 @@ namespace Nebula
             myBackgroundSprites.Add(b4);
             myBackgroundSprites.Add(b5);
 
-            manager = new ScrollingManager(Asis, myBackgroundSprites, graphics.PreferredBackBufferWidth); 
+            ScrollingManager manager = new ScrollingManager(Asis, myBackgroundSprites, graphics.PreferredBackBufferWidth);
+
+            SpriteManager SpriteManager = new SpriteManager(Content.Load<Texture2D>("Laser"), new Vector2(-1000, -1000),
+                new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), this, Asis, Laser,
+                redEnemy, Content.Load<SoundEffect>("LaserSoundEffect"), Content.Load<SoundEffect>("LaserSoundEffectBackwards"), manager);
+            mySprites.Add(SpriteManager);
 
         }
 
@@ -123,7 +123,7 @@ namespace Nebula
                 s.Update(gameTime.ElapsedGameTime.TotalSeconds);
             }
             //updating the background for scrolling 
-            manager.Update(gameTime.ElapsedGameTime.TotalSeconds); 
+            //manager.Update(gameTime.ElapsedGameTime.TotalSeconds); 
 
             base.Update(gameTime);
         }
@@ -137,13 +137,11 @@ namespace Nebula
             GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
-            spriteBatch.Begin();
-            manager.Draw(spriteBatch); 
+            spriteBatch.Begin(); 
             foreach (Sprite s in mySprites)
             {
                 s.Draw(spriteBatch);
             }
-            manager.Draw(spriteBatch); 
             spriteBatch.End();
      
 

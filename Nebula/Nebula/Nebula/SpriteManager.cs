@@ -24,9 +24,10 @@ namespace Nebula
         protected internal Stack TimeStack; 
         protected internal Sprite[] PositionsArray;
         public Game1 myGame;
+        private ScrollingManager myScrollingManager; 
 
         public SpriteManager(Texture2D texture, Vector2 position, Vector2 screen, Game1 aGame, Asis anAsis, 
-            Laser aLaser, Enemy aEnemy, SoundEffect aLaserSoundEffect, SoundEffect aBackwardsLaserSoundEffect)
+            Laser aLaser, Enemy aEnemy, SoundEffect aLaserSoundEffect, SoundEffect aBackwardsLaserSoundEffect, ScrollingManager manager)
             : base(texture, position)
         {
             myPosition = position;
@@ -41,6 +42,7 @@ namespace Nebula
             TimeStack = new Stack();
             PositionsArray = new Sprite[3];
             SetUpInput();
+            myScrollingManager = manager; 
         }
 
         public void SetUpInput()
@@ -171,6 +173,9 @@ namespace Nebula
             {
                 SpriteManager sm = (SpriteManager)(sprite);
                 // If X key is not being pressed, add positions of sprites to Stack
+
+                sm.myScrollingManager.Update(elapsedTime);
+
                 if (!Keyboard.GetState().IsKeyDown(Keys.X))
                 {  
                     sm.TimeStack.Push(sm.Asis.myPosition);
@@ -190,16 +195,20 @@ namespace Nebula
                 {
                     sm.redEnemy.Die(); 
                 }
+ 
+
             }
             public void Draw(Sprite sprite, SpriteBatch batch)
             {
+               SpriteManager sm = (SpriteManager)(sprite);
+                sm.myGame.GraphicsDevice.Clear(Color.AliceBlue);
+
+                sm.myScrollingManager.Draw(batch);
+
                 batch.Draw(sprite.myTexture, sprite.myPosition,
                 null, Color.White,
                 sprite.myAngle, sprite.myOrigin,
-                sprite.myScale, SpriteEffects.None, 0f);
-
-                SpriteManager sm = (SpriteManager)(sprite);
-                sm.myGame.GraphicsDevice.Clear(Color.AliceBlue);
+                sprite.myScale, SpriteEffects.None, 0f); 
             }
         }
         }
