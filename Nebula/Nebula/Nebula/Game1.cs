@@ -20,7 +20,7 @@ namespace Nebula
         SpriteBatch spriteBatch;
         List<Sprite> mySprites = new List<Sprite>();
         //adding a sprite list for the scrolling background images 
-        List<Sprite> myBackgroundSprites = new List<Sprite>(); 
+        List<BackgroundSprite> myBackgroundSprites = new List<BackgroundSprite>();
 
         public Game1()
         {   
@@ -83,6 +83,11 @@ namespace Nebula
             BackgroundSprite b5 = new BackgroundSprite(Content.Load<Texture2D>("Background05"),
                 new Vector2(b4.myPosition.X + b4.size.Width, 0), 2.0f);
 
+            myBackgroundSprites.Add(b1);
+            myBackgroundSprites.Add(b2);
+            myBackgroundSprites.Add(b3);
+            myBackgroundSprites.Add(b4);
+            myBackgroundSprites.Add(b5);
  
 
         }
@@ -110,11 +115,44 @@ namespace Nebula
             InputManager.ActKeyboard(Keyboard.GetState());
             InputManager.ActMouse(Mouse.GetState());
 
+            //boundries for scrolling 
+            //foreach (BackgroundSprite b in myBackgroundSprites)
+            BackgroundSprite[] backgroundSprites = myBackgroundSprites.ToArray(); 
+            for (int i = 0; i<backgroundSprites.Length; i++)
+            {
+                BackgroundSprite b = backgroundSprites[i]; 
+                if (b.myPosition.X < -b.size.Width)
+                {
+                    if (i == 0)
+                    {
+                        b.myPosition.X = backgroundSprites[backgroundSprites.Length - 1].myPosition.X
+                            + backgroundSprites[backgroundSprites.Length - 1].size.Width;
+                    }
+                    else
+                    {
+                        b.myPosition.X = backgroundSprites[i - 1].myPosition.X + backgroundSprites[i - 1].size.Width; 
+                    }
+                }
+            }
+
+            myBackgroundSprites = backgroundSprites.ToList(); 
+
+            Vector2 aDirection = new Vector2(-1, 0);
+            Vector2 aSpeed = new Vector2(160, 0); 
+
+            foreach(BackgroundSprite bs in myBackgroundSprites)
+            {
+                bs.myPosition += aDirection*aSpeed*(float)gameTime.ElapsedGameTime.TotalSeconds; 
+            }
 
             // TODO: Add your update logic here
             foreach (Sprite s in mySprites)
             {
                 s.Update(gameTime.ElapsedGameTime.TotalSeconds);
+            }
+            foreach (Sprite b in myBackgroundSprites)
+            {
+                b.Update(gameTime.ElapsedGameTime.TotalSeconds);
             }
 
             base.Update(gameTime);
@@ -134,7 +172,13 @@ namespace Nebula
             {
                 s.Draw(spriteBatch);
             }
+            foreach (Sprite b in myBackgroundSprites)
+            {
+                b.Draw(spriteBatch);
+            }
+
             spriteBatch.End();
+     
 
             base.Draw(gameTime);
         }

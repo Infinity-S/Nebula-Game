@@ -28,7 +28,7 @@ namespace Nebula
             backgroundScale = scale; 
         }
 
-        public void Draw(SpriteBatch batch)
+        public override void Draw(SpriteBatch batch)
         {
             batch.Draw(myTexture, myPosition, new Rectangle(0, 0, myTexture.Width, myTexture.Height),
                 Color.White, myAngle, myOrigin, backgroundScale, SpriteEffects.None, 0);
