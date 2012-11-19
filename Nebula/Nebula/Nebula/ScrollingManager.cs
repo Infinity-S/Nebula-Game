@@ -26,6 +26,7 @@ namespace Nebula
         private float cameraPos = 0f;
         private double LEFT_INTERVAL;
         private double RIGHT_INTERVAL;
+        private float MAX_CAMERA_POS; 
         private Vector2 scrollingDirection = new Vector2(-1, 0);
         private Vector2 aSpeed = new Vector2(160, 0); 
 
@@ -39,13 +40,14 @@ namespace Nebula
             {
                 backgroundLength += bs.size.Width;
             }
+            myAsis.myPosition.X = 200f; 
             charPos = myAsis.myPosition.X;
             CameraSize = ScreenWidth;
             //left interval is 10% of screen
             LEFT_INTERVAL = CameraSize * .10;
             //right interval is 40% of screen, so the player can see what is coming next
-            RIGHT_INTERVAL = CameraSize * .40; 
-
+            RIGHT_INTERVAL = CameraSize * .40;
+            MAX_CAMERA_POS = backgroundLength; 
 
         }
 
@@ -83,10 +85,18 @@ namespace Nebula
             myBackgrounds = backgroundSprites.ToList();
 
             //
-            foreach (BackgroundSprite bs in myBackgrounds)
+            if (charPos < LEFT_INTERVAL)
             {
-                bs.myPosition += scrollingDirection * aSpeed * (float)totalSecs;
+                //cameraPos = charPos - (float)LEFT_INTERVAL;
+                foreach (BackgroundSprite bs in myBackgrounds)
+                {
+                    bs.myPosition += scrollingDirection * aSpeed * (float)totalSecs;
+                }
             }
+            //foreach (BackgroundSprite bs in myBackgrounds)
+            //{
+            //    bs.myPosition += scrollingDirection * aSpeed * (float)totalSecs;
+            //}
 
             //updates all the background sprites 
             foreach (Sprite b in myBackgrounds)
