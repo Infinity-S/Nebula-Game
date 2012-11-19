@@ -19,6 +19,8 @@ namespace Nebula
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         List<Sprite> mySprites = new List<Sprite>();
+        //adding a sprite list for the scrolling background images 
+        List<Sprite> myBackgroundSprites = new List<Sprite>(); 
 
         public Game1()
         {   
@@ -67,6 +69,22 @@ namespace Nebula
             mySprites.Add(Laser);
             mySprites.Add(redEnemy); 
             mySprites.Add(SpriteManager);
+
+            //adding the test background images/Sprites
+            //their positions are tacked on to each other, so they form one long background image 
+            BackgroundSprite b1 = new BackgroundSprite(Content.Load<Texture2D>("Background01"), 
+                new Vector2(0,0), 2.0f);
+            BackgroundSprite b2 = new BackgroundSprite(Content.Load<Texture2D>("Background02"), 
+                new Vector2(b1.myPosition.X + b1.size.Width, 0), 2.0f); 
+            BackgroundSprite b3 = new BackgroundSprite(Content.Load<Texture2D>("Background03"),
+                new Vector2(b2.myPosition.X + b2.size.Width, 0), 2.0f); 
+            BackgroundSprite b4 = new BackgroundSprite(Content.Load<Texture2D>("Background04"),
+                new Vector2(b3.myPosition.X + b3.size.Width, 0), 2.0f); 
+            BackgroundSprite b5 = new BackgroundSprite(Content.Load<Texture2D>("Background05"),
+                new Vector2(b4.myPosition.X + b4.size.Width, 0), 2.0f);
+
+ 
+
         }
 
         /// <summary>

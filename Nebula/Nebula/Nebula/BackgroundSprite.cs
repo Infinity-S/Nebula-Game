@@ -21,10 +21,11 @@ namespace Nebula
         //Scale object will be used to increase or decrease the size of the sprite from the original image.
         protected internal float backgroundScale = 1.0f;
 
-        public BackgroundSprite (Texture2D myImage, Vector2 position)
+        public BackgroundSprite (Texture2D myImage, Vector2 position, float scale)
             : base(myImage, position)
         {
-            size = new Rectangle(0, 0, (int)(myTexture.Width * backgroundScale), (int)(myTexture.Height * backgroundScale)); 
+            size = new Rectangle(0, 0, (int)(myTexture.Width * backgroundScale), (int)(myTexture.Height * backgroundScale));
+            backgroundScale = scale; 
         }
 
         public void Draw(SpriteBatch batch)
