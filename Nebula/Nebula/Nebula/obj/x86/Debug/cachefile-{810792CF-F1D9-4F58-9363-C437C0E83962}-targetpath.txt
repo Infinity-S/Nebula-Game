@@ -1,7 +1,5 @@
 Content\Asis.xnb
-Content\Laser.xnb
 Content\enemy-blue.xnb
-Content\enemy-red.xnb
 Content\Background01.xnb
 Content\Background02.xnb
 Content\Background03.xnb
@@ -9,3 +7,5 @@ Content\Background04.xnb
 Content\Background05.xnb
 Content\LaserSoundEffect.xnb
 Content\LaserSoundEffectBackwards.xnb
+Content\enemy-red.xnb
+Content\Laser.xnb

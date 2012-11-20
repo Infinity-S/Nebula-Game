@@ -64,21 +64,21 @@ namespace Nebula
 
         public void Fire() {
             // Only one laser beam from Asis is allowed on the screen at a time - this makes it so the player cannot just spam the fire button
-            if (Laser.myPosition.X + Laser.myTexture.Width < 0 || Laser.myPosition.X > myScreenSize.X || Laser.myPosition.Y < 0 || Laser.myPosition.Y > myScreenSize.Y)
+            if (Laser.myPosition.X + Laser.myTexture.Width < Asis.myPosition.X - myScreenSize.X/6 || Laser.myPosition.X > Asis.myPosition.X + myScreenSize.X || Laser.myPosition.Y < 0 || Laser.myPosition.Y > myScreenSize.Y)
             {
                 // If the direction they were last moving was to the left, then fire to the left
                 if (Asis.getDirection().Equals("left"))
                 {
                     Laser.myPosition = new Vector2(Asis.myPosition.X - Laser.myTexture.Width, Asis.myPosition.Y + Asis.myTexture.Height / 4);
                     LaserSoundEffect.Play();
-                    Laser.myVelocity.X = -20;
+                    Laser.myVelocity.X = -24;
                 }
                 // Otherwise fire to the right
                 else
                 {
                     Laser.myPosition = new Vector2(Asis.myPosition.X + Asis.myTexture.Width, Asis.myPosition.Y + Asis.myTexture.Height / 4);
                     LaserSoundEffect.Play();
-                    Laser.myVelocity.X = 20;
+                    Laser.myVelocity.X = 24;
                 }
             }        
         }
@@ -97,19 +97,6 @@ namespace Nebula
                 }
                 // Changes background color
                 myState = new TimeTravelState(this);
-
-                /*
-                // Remove and set the positions that the Sprites were previously in
-                Laser.myPosition = (Vector2)TimeStack.Pop();
-                Asis.setDirection((String)TimeStack.Pop());   
-                Asis.myPosition = (Vector2)TimeStack.Pop();
-                redEnemy.myPosition = (Vector2)TimeStack.Pop();
-                if (redEnemy.getAlive() == false)
-                {
-                    redEnemy.Resurrect();
-                }
-                myState = new TimeTravelState(this);
-                */
             }
         }
 
@@ -122,7 +109,7 @@ namespace Nebula
             {
                 SpriteManager sm = (SpriteManager)(sprite);
 
-                //sm.myScrollingManager.Update(elapsedTime); 
+                // sm.myScrollingManager.Update(elapsedTime); 
 
                 // Plays the laser sound effect in reverse when it falls into a certain range of x pixels 
                 // depending on which direction they were facing when they fired it
@@ -137,7 +124,6 @@ namespace Nebula
                             sm.BackwardsLaserSoundEffect.Play();
                             sprite.time = 0;
                         }
-
                         float xFireFromRight = sm.Asis.myPosition.X + (sm.Asis.myTexture.Width * 2) + sm.myScreenSize.X / 2;
                         // sm.myScreenSize.X/8 = size of x range
                         float xFireFromRightPlus = xFireFromRight + sm.myScreenSize.X/8;
@@ -152,7 +138,6 @@ namespace Nebula
                 {
                     sprite.myState = new IdleState(sprite);
                 }
-
             }
             public void Draw(Sprite sprite, SpriteBatch batch)
             {
@@ -175,17 +160,15 @@ namespace Nebula
             public void Update(double elapsedTime, Sprite sprite)
             {
                 SpriteManager sm = (SpriteManager)(sprite);
-                // If X key is not being pressed, add positions of sprites to Stack
 
                 sm.myScrollingManager.Update(elapsedTime);
 
+                // If X key is not being pressed, add positions of sprites to Stack
                 if (!Keyboard.GetState().IsKeyDown(Keys.X))
                 {  
                     sm.TimeStack.Push(sm.Asis.myPosition);
                     sm.TimeStack.Push(sm.Laser.myPosition);
                     sm.TimeStack.Push(sm.redEnemy.myPosition); 
-                    // sm.TimeStack.Push(sm.Asis.getDirection());
-                    
                 }
                 // If center of laser sprite is at anytime between the two vertical and two horizontal edges, kill the sprite
                 float xCenterOfLaserSprite = sm.Laser.myPosition.X + sm.Laser.myTexture.Width / 2;
@@ -198,8 +181,6 @@ namespace Nebula
                 {
                     sm.redEnemy.Die(); 
                 }
- 
-
             }
             public void Draw(Sprite sprite, SpriteBatch batch)
             {

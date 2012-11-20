@@ -14,7 +14,7 @@ using System.Threading;
 namespace Nebula
 {
     class Asis : Sprite
-    {
+    {   
 
         private String direction;
 
@@ -33,7 +33,7 @@ namespace Nebula
             myScreenSize = screen;
             myState = new ExistState(this);
             hasJumped = true;
-            myPosition.X = 0;
+            myPosition.X = myTexture.Width;
             myPosition.Y = myScreenSize.Y - myTexture.Height;
             direction = "right";
             SetUpInput();
@@ -54,13 +54,20 @@ namespace Nebula
         }
         public void GoLeft()
         {
-            myPosition.X -= 8;
-            direction = "left";
+            // if (myPosition.X > myScreenSize.X * .10)
+            // {
+                myPosition.X -= 7;
+                direction = "left";
+            // }
         }
         public void GoRight()
         {
-            myPosition.X += 8;
-            direction = "right";
+            // if (myPosition.X < myScreenSize.X * .60)
+            // {
+                myPosition.X += 7;
+                direction = "right";
+
+            // }
         }
 
         // State that Asis begins in - ability to jump and gravity are built into this state

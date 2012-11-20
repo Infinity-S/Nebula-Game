@@ -30,8 +30,7 @@ namespace Nebula
        // private float rightMargin; 
         private float MAX_CAMERA_POS; 
         private Vector2 scrollingDirection = new Vector2(-1, 0);
-        private Vector2 aSpeed = new Vector2(5, 0); 
-
+        private Vector2 aSpeed = new Vector2(8, 0);
 
         public ScrollingManager(Asis MainChar, List<BackgroundSprite> backgroundsList, float ScreenWidth)
         {
@@ -48,7 +47,7 @@ namespace Nebula
             //left interval is 10% of screen
             LEFT_INTERVAL = CameraSize * .10;
             //right interval is 40% of screen, so the player can see what is coming next
-            RIGHT_INTERVAL = CameraSize * .40;
+            RIGHT_INTERVAL = CameraSize * .60;
             MAX_CAMERA_POS = backgroundLength; 
 
         }
@@ -114,13 +113,12 @@ namespace Nebula
         //} 
 
         public void Update(double totalSecs)
-        { 
+        {
 
-            charPos = myAsis.myPosition.X;
-
-            if (charPos < LEFT_INTERVAL)
+            // scrolling when Asis is moving left
+            if (Keyboard.GetState().IsKeyDown(Keys.Left) && charPos < LEFT_INTERVAL)
             {
-                //cameraPos = charPos - (float)LEFT_INTERVAL;
+                //cameraPos = myAsis.myPosition.X - (float)LEFT_INTERVAL;
                 //ScrollBackward(); 
                 ScrollForward();
                 foreach (BackgroundSprite bs in myBackgrounds)
@@ -129,7 +127,8 @@ namespace Nebula
                     bs.myPosition += -scrollingDirection * aSpeed;
                 }
             }
-            else if (charPos > RIGHT_INTERVAL)
+            // scrolling when Asis is moving right
+            else if (myAsis.myPosition.X > RIGHT_INTERVAL && Keyboard.GetState().IsKeyDown(Keys.Right))
             {
                 float cameraMovement = charPos + (float) RIGHT_INTERVAL;
                 ScrollForward(); 
@@ -141,19 +140,15 @@ namespace Nebula
                 }
             }
 
-
             //updates all the background sprites 
             foreach (Sprite b in myBackgrounds)
             {
                 b.Update(totalSecs);
             }
-
         }
 
         public void Draw(SpriteBatch batch)
         {
-
-
             //draws all the background sprites
             foreach (Sprite b in myBackgrounds)
             {

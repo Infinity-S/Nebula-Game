@@ -114,3 +114,20 @@ C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Deb
 C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.exe
 C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.pdb
+C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Asis.xnb
+C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\enemy-blue.xnb
+C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\enemy-red.xnb
+C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background01.xnb
+C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background02.xnb
+C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background03.xnb
+C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background04.xnb
+C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background05.xnb
+C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LaserSoundEffect.xnb
+C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LaserSoundEffectBackwards.xnb
+C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Nebula.exe
+C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Nebula.pdb
+C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.exe
+C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.pdb
+C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Laser.xnb

@@ -16,6 +16,7 @@ namespace Nebula
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+        Camera camera;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         List<Sprite> mySprites = new List<Sprite>();
@@ -41,6 +42,8 @@ namespace Nebula
         {
             // TODO: Add your initialization logic here
 
+            
+
             base.Initialize();
         }
 
@@ -61,6 +64,10 @@ namespace Nebula
 
             Enemy redEnemy = new Enemy(Content.Load<Texture2D>("enemy-red"), new Vector2(0, 0),
                 new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight));
+
+
+            camera = new Camera(GraphicsDevice.Viewport, Asis);
+
 
             mySprites.Add(Asis);
             mySprites.Add(Laser);
@@ -125,6 +132,8 @@ namespace Nebula
             //updating the background for scrolling 
             //manager.Update(gameTime.ElapsedGameTime.TotalSeconds); 
 
+            camera.Update(gameTime);
+
             base.Update(gameTime);
         }
 
@@ -137,14 +146,13 @@ namespace Nebula
             GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
             manager.Draw(spriteBatch); 
             foreach (Sprite s in mySprites)
             {
                 s.Draw(spriteBatch);
             }
             spriteBatch.End();
-     
 
             base.Draw(gameTime);
         }
