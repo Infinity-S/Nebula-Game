@@ -122,7 +122,7 @@ namespace Nebula
             {
                 SpriteManager sm = (SpriteManager)(sprite);
 
-                sm.myScrollingManager.Update(elapsedTime); 
+                //sm.myScrollingManager.Update(elapsedTime); 
 
                 // Plays the laser sound effect in reverse when it falls into a certain range of x pixels 
                 // depending on which direction they were facing when they fired it
@@ -159,7 +159,7 @@ namespace Nebula
                 // Change background color to signify traveling back in time
                 SpriteManager sm = (SpriteManager)(sprite);
                 sm.myGame.GraphicsDevice.Clear(Color.Gray);
-                sm.myScrollingManager.Draw(batch);
+                //sm.myScrollingManager.Draw(batch);
                 batch.Draw(sprite.myTexture, sprite.myPosition,
                 null, Color.White,
                 sprite.myAngle, sprite.myOrigin,
@@ -206,7 +206,7 @@ namespace Nebula
                SpriteManager sm = (SpriteManager)(sprite);
                 sm.myGame.GraphicsDevice.Clear(Color.AliceBlue);
 
-                sm.myScrollingManager.Draw(batch);
+                //sm.myScrollingManager.Draw(batch);
 
                 batch.Draw(sprite.myTexture, sprite.myPosition,
                 null, Color.White,

@@ -89,10 +89,11 @@ namespace Nebula
             //Setting up so if the image that goes off the screen (player has 'passed' it)
             //it will be added back on to the end of the images.
             BackgroundSprite[] backgroundSprites = myBackgrounds.ToArray();
+            //for (int i = backgroundSprites.Length-1; i >= 0; i--)
             for (int i = 0; i < backgroundSprites.Length; i++)
             {
                 BackgroundSprite b = backgroundSprites[i];
-                if (b.myPosition.X < -b.size.Width)
+                if (b.myPosition.X > CameraSize + b.size.Width)
                 {
                     //if it is the first image in the array, 
                     // it should be added on the last image in the array
@@ -120,7 +121,7 @@ namespace Nebula
             if (charPos < LEFT_INTERVAL)
             {
                 //cameraPos = charPos - (float)LEFT_INTERVAL;
-                ScrollForward(); 
+                ScrollBackward(); 
                 foreach (BackgroundSprite bs in myBackgrounds)
                 {
                     //bs.myPosition += -scrollingDirection * aSpeed * (float)totalSecs;

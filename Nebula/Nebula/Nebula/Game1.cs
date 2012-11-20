@@ -21,7 +21,7 @@ namespace Nebula
         List<Sprite> mySprites = new List<Sprite>();
         //adding a sprite list for the scrolling background images 
         List<BackgroundSprite> myBackgroundSprites = new List<BackgroundSprite>();
-       // ScrollingManager manager; 
+       ScrollingManager manager; 
 
         public Game1()
         {   
@@ -85,7 +85,7 @@ namespace Nebula
             myBackgroundSprites.Add(b4);
             myBackgroundSprites.Add(b5);
 
-            ScrollingManager manager = new ScrollingManager(Asis, myBackgroundSprites, graphics.PreferredBackBufferWidth);
+            manager = new ScrollingManager(Asis, myBackgroundSprites, graphics.PreferredBackBufferWidth);
 
             SpriteManager SpriteManager = new SpriteManager(Content.Load<Texture2D>("Laser"), new Vector2(-1000, -1000),
                 new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), this, Asis, Laser,
@@ -137,7 +137,8 @@ namespace Nebula
             GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
-            spriteBatch.Begin(); 
+            spriteBatch.Begin();
+            manager.Draw(spriteBatch); 
             foreach (Sprite s in mySprites)
             {
                 s.Draw(spriteBatch);
