@@ -26,7 +26,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background01.xnb</Output>
-      <Time>2012-11-19T20:15:44.170631-05:00</Time>
+      <Time>2012-11-20T01:27:47.4175785-05:00</Time>
     </Item>
     <Item>
       <Source>Background02.png</Source>
@@ -35,7 +35,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background02.xnb</Output>
-      <Time>2012-11-19T20:15:44.171631-05:00</Time>
+      <Time>2012-11-20T01:33:37.8946246-05:00</Time>
     </Item>
     <Item>
       <Source>Background03.png</Source>
@@ -44,7 +44,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background03.xnb</Output>
-      <Time>2012-11-19T20:15:44.171631-05:00</Time>
+      <Time>2012-11-20T01:31:32.0044241-05:00</Time>
     </Item>
     <Item>
       <Source>Background04.png</Source>
@@ -53,7 +53,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background04.xnb</Output>
-      <Time>2012-11-19T20:15:44.1726311-05:00</Time>
+      <Time>2012-11-20T01:29:27.7373164-05:00</Time>
     </Item>
     <Item>
       <Source>Background05.png</Source>
@@ -62,7 +62,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background05.xnb</Output>
-      <Time>2012-11-19T20:15:44.1736311-05:00</Time>
+      <Time>2012-11-20T01:29:27.7383165-05:00</Time>
     </Item>
     <Item>
       <Source>LaserSoundEffect.mp3</Source>
@@ -99,6 +99,15 @@
       <Options>None</Options>
       <Output>C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Laser.xnb</Output>
       <Time>2012-11-19T22:31:37.8379941-05:00</Time>
+    </Item>
+    <Item>
+      <Source>blueLaser.jpg</Source>
+      <Name>blueLaser</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\blueLaser.xnb</Output>
+      <Time>2012-11-20T01:51:21.6464678-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

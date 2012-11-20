@@ -62,6 +62,9 @@ namespace Nebula
             Laser Laser = new Laser(Content.Load<Texture2D>("Laser"), new Vector2(0, 0),
                 new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight));
 
+            BlueLaser blueLaser = new BlueLaser(Content.Load<Texture2D>("blueLaser"), new Vector2(0, 0),
+                new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight));
+
             Enemy redEnemy = new Enemy(Content.Load<Texture2D>("enemy-red"), new Vector2(0, 0),
                 new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight));
 
@@ -71,20 +74,24 @@ namespace Nebula
 
             mySprites.Add(Asis);
             mySprites.Add(Laser);
+            mySprites.Add(blueLaser);
             mySprites.Add(redEnemy); 
 
             //adding the test background images/Sprites
             //their positions are tacked on to each other, so they form one long background image 
-            BackgroundSprite b1 = new BackgroundSprite(Content.Load<Texture2D>("Background01"), 
-                new Vector2(0,0), 2.0f);
-            BackgroundSprite b2 = new BackgroundSprite(Content.Load<Texture2D>("Background02"), 
-                new Vector2(b1.myPosition.X + b1.size.Width, 0), 2.0f); 
+            BackgroundSprite b1 = new BackgroundSprite(Content.Load<Texture2D>("Background01"),
+                new Vector2(0, 0), 1.0f);
+
+            // b1 = new BackgroundSprite(Content.Load<Texture2D>("Background01"), 
+               // new Vector2(0, 0), 1.0f);
+            BackgroundSprite b2 = new BackgroundSprite(Content.Load<Texture2D>("Background02"),
+                new Vector2(b1.myPosition.X + b1.myTexture.Width, 0), 1.0f); 
             BackgroundSprite b3 = new BackgroundSprite(Content.Load<Texture2D>("Background03"),
-                new Vector2(b2.myPosition.X + b2.size.Width, 0), 2.0f); 
+                new Vector2(b2.myPosition.X + b2.size.Width, graphics.PreferredBackBufferHeight - b2.myTexture.Height), 1.0f); 
             BackgroundSprite b4 = new BackgroundSprite(Content.Load<Texture2D>("Background04"),
-                new Vector2(b3.myPosition.X + b3.size.Width, 0), 2.0f); 
+                new Vector2(b3.myPosition.X + b3.size.Width, graphics.PreferredBackBufferHeight - b3.myTexture.Height), 1.0f); 
             BackgroundSprite b5 = new BackgroundSprite(Content.Load<Texture2D>("Background05"),
-                new Vector2(b4.myPosition.X + b4.size.Width, 0), 2.0f);
+                new Vector2(b4.myPosition.X + b4.size.Width, graphics.PreferredBackBufferHeight - b4.myTexture.Height), 1.0f);
 
             myBackgroundSprites.Add(b1);
             myBackgroundSprites.Add(b2);
@@ -95,7 +102,7 @@ namespace Nebula
             manager = new ScrollingManager(Asis, myBackgroundSprites, graphics.PreferredBackBufferWidth);
 
             SpriteManager SpriteManager = new SpriteManager(Content.Load<Texture2D>("Laser"), new Vector2(-1000, -1000),
-                new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), this, Asis, Laser,
+                new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), this, Asis, Laser, blueLaser,
                 redEnemy, Content.Load<SoundEffect>("LaserSoundEffect"), Content.Load<SoundEffect>("LaserSoundEffectBackwards"), manager);
             mySprites.Add(SpriteManager);
 

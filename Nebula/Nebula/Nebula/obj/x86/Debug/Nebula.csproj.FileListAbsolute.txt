@@ -131,3 +131,4 @@ C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\
 C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.exe
 C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.pdb
 C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Laser.xnb
+C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\blueLaser.xnb

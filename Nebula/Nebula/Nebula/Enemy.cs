@@ -23,7 +23,8 @@ namespace Nebula
             myScreenSize = screen;
             myState = new ExistState(this);
             // Start in lower right hand of screen
-            myPosition.X = myScreenSize.X + myScreenSize.X/2;
+
+            myPosition.X = myScreenSize.X + myScreenSize.X / 2;
             myPosition.Y = myScreenSize.Y - myTexture.Height;
         }
 

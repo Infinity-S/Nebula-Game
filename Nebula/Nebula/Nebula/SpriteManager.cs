@@ -16,8 +16,9 @@ namespace Nebula
 {
     class SpriteManager : Sprite
     {
-        protected Asis Asis;
-        protected Laser Laser;
+        protected Asis asis;
+        protected Laser redLaser;
+        protected BlueLaser blueLaser;
         protected Enemy redEnemy; 
         SoundEffect LaserSoundEffect;
         SoundEffect BackwardsLaserSoundEffect;
@@ -27,29 +28,31 @@ namespace Nebula
         private ScrollingManager myScrollingManager; 
 
         public SpriteManager(Texture2D texture, Vector2 position, Vector2 screen, Game1 aGame, Asis anAsis, 
-            Laser aLaser, Enemy aEnemy, SoundEffect aLaserSoundEffect, SoundEffect aBackwardsLaserSoundEffect, ScrollingManager manager)
+            Laser aLaser, BlueLaser aBlueLaser, Enemy aEnemy, SoundEffect aLaserSoundEffect, SoundEffect aBackwardsLaserSoundEffect, ScrollingManager manager)
             : base(texture, position)
         {
             myPosition = position;
             myScreenSize = screen;
             myGame = aGame;
-            Asis = anAsis;
-            Laser = aLaser;
+            asis = anAsis;
+            redLaser = aLaser;
+            blueLaser = aBlueLaser;
             redEnemy = aEnemy; 
             LaserSoundEffect = aLaserSoundEffect;
             BackwardsLaserSoundEffect = aBackwardsLaserSoundEffect;
             myState = new IdleState(this);
             TimeStack = new Stack();
-            PositionsArray = new Sprite[3];
+            PositionsArray = new Sprite[4];
             SetUpInput();
             myScrollingManager = manager; 
         }
 
         public void SetUpInput()
         {
-            PositionsArray[0] = Asis;
-            PositionsArray[1] = Laser;
+            PositionsArray[0] = asis;
+            PositionsArray[1] = redLaser;
             PositionsArray[2] = redEnemy;
+            PositionsArray[3] = blueLaser;
 
             GameAction fire = new GameAction(
                 this, this.GetType().GetMethod("Fire"),
@@ -64,21 +67,21 @@ namespace Nebula
 
         public void Fire() {
             // Only one laser beam from Asis is allowed on the screen at a time - this makes it so the player cannot just spam the fire button
-            if (Laser.myPosition.X + Laser.myTexture.Width < Asis.myPosition.X - myScreenSize.X/6 || Laser.myPosition.X > Asis.myPosition.X + myScreenSize.X || Laser.myPosition.Y < 0 || Laser.myPosition.Y > myScreenSize.Y)
+            if (blueLaser.myPosition.X + blueLaser.myTexture.Width < asis.myPosition.X - myScreenSize.X / 6 || blueLaser.myPosition.X > asis.myPosition.X + myScreenSize.X || blueLaser.myPosition.Y < 0 || blueLaser.myPosition.Y > myScreenSize.Y)
             {
                 // If the direction they were last moving was to the left, then fire to the left
-                if (Asis.getDirection().Equals("left"))
+                if (asis.getDirection().Equals("left"))
                 {
-                    Laser.myPosition = new Vector2(Asis.myPosition.X - Laser.myTexture.Width, Asis.myPosition.Y + Asis.myTexture.Height / 4);
+                    blueLaser.myPosition = new Vector2(asis.myPosition.X - blueLaser.myTexture.Width, asis.myPosition.Y + asis.myTexture.Height / 4);
                     LaserSoundEffect.Play();
-                    Laser.myVelocity.X = -24;
+                    blueLaser.myVelocity.X = -24;
                 }
                 // Otherwise fire to the right
                 else
                 {
-                    Laser.myPosition = new Vector2(Asis.myPosition.X + Asis.myTexture.Width, Asis.myPosition.Y + Asis.myTexture.Height / 4);
+                    blueLaser.myPosition = new Vector2(asis.myPosition.X + asis.myTexture.Width, asis.myPosition.Y + asis.myTexture.Height / 4);
                     LaserSoundEffect.Play();
-                    Laser.myVelocity.X = 24;
+                    blueLaser.myVelocity.X = 24;
                 }
             }        
         }
@@ -116,18 +119,18 @@ namespace Nebula
                 double t = sprite.time;
                 if (sprite.time > .5)
                 {
-                        float xFireFromLeft = sm.Asis.myPosition.X - (sm.Laser.myTexture.Width * 2) - sm.myScreenSize.X / 2;
+                    float xFireFromLeft = sm.asis.myPosition.X - (sm.blueLaser.myTexture.Width * 2) - sm.myScreenSize.X / 2;
                         // sm.myScreenSize.X/8 = size of x range
                         float xFireFromLeftPlus = xFireFromLeft - sm.myScreenSize.X/8;
-                        if (sm.Laser.myPosition.X <= xFireFromLeft && sm.Laser.myPosition.X >= xFireFromLeftPlus)
+                        if (sm.blueLaser.myPosition.X <= xFireFromLeft && sm.blueLaser.myPosition.X >= xFireFromLeftPlus)
                         {
                             sm.BackwardsLaserSoundEffect.Play();
                             sprite.time = 0;
                         }
-                        float xFireFromRight = sm.Asis.myPosition.X + (sm.Asis.myTexture.Width * 2) + sm.myScreenSize.X / 2;
+                        float xFireFromRight = sm.asis.myPosition.X + (sm.asis.myTexture.Width * 2) + sm.myScreenSize.X / 2;
                         // sm.myScreenSize.X/8 = size of x range
                         float xFireFromRightPlus = xFireFromRight + sm.myScreenSize.X/8;
-                        if (sm.Laser.myPosition.X >= xFireFromRight && sm.Laser.myPosition.X <= xFireFromRightPlus)
+                        if (sm.blueLaser.myPosition.X >= xFireFromRight && sm.blueLaser.myPosition.X <= xFireFromRightPlus)
                         {
                             sm.BackwardsLaserSoundEffect.Play();
                             sprite.time = 0;
@@ -165,22 +168,43 @@ namespace Nebula
 
                 // If X key is not being pressed, add positions of sprites to Stack
                 if (!Keyboard.GetState().IsKeyDown(Keys.X))
-                {  
+                {
+                    for (int i = 0; i < sm.PositionsArray.Length; i ++) {
+                    sm.TimeStack.Push(sm.PositionsArray[i].myPosition);
+                }
+                    /*
                     sm.TimeStack.Push(sm.Asis.myPosition);
                     sm.TimeStack.Push(sm.Laser.myPosition);
-                    sm.TimeStack.Push(sm.redEnemy.myPosition); 
+                    sm.TimeStack.Push(sm.redEnemy.myPosition);
+                    sm.TimeStack.Push(sm.blueLaser.myPosition);
+                    */
                 }
                 // If center of laser sprite is at anytime between the two vertical and two horizontal edges, kill the sprite
-                float xCenterOfLaserSprite = sm.Laser.myPosition.X + sm.Laser.myTexture.Width / 2;
+                float xCenterOfLaserSprite = sm.blueLaser.myPosition.X + sm.blueLaser.myTexture.Width / 2;
                 float leftEdgeOfEnemy = sm.redEnemy.myPosition.X;
                 float rightEdgeOfEnemy = sm.redEnemy.myTexture.Width + sm.redEnemy.myPosition.X;
-                float yCenterOfLaserSprite = sm.Laser.myPosition.Y + sm.Laser.myTexture.Height / 2;
+                float yCenterOfLaserSprite = sm.blueLaser.myPosition.Y + sm.blueLaser.myTexture.Height / 2;
                 float topEdgeOfEnemy = sm.redEnemy.myPosition.Y;
                 float bottomEdgeOfEnemy = sm.redEnemy.myPosition.Y + sm.redEnemy.myTexture.Height;
                 if ((xCenterOfLaserSprite >= leftEdgeOfEnemy && xCenterOfLaserSprite <= rightEdgeOfEnemy) && (yCenterOfLaserSprite >= topEdgeOfEnemy && yCenterOfLaserSprite <= bottomEdgeOfEnemy))
                 {
                     sm.redEnemy.Die(); 
                 }
+
+                if (sm.asis.myPosition.X == sm.myScreenSize.X/2 + sm.myScreenSize.X/4)
+                {
+
+                    sm.redLaser.myPosition = new Vector2(sm.redEnemy.myPosition.X - sm.redLaser.myTexture.Width, sm.redEnemy.myPosition.Y);
+                    sm.redLaser.myVelocity.X = -16;
+                }
+
+                if (sm.redLaser.myPosition.X + sm.redLaser.myTexture.Width / 2 > sm.asis.myPosition.X 
+                    && sm.redLaser.myPosition.X + sm.redLaser.myTexture.Width / 2 < sm.asis.myPosition.X + sm.asis.myTexture.Width 
+                    && sm.redLaser.myPosition.Y > sm.asis.myPosition.Y && sm.redLaser.myPosition.Y < sm.asis.myPosition.Y + sm.asis.myTexture.Height)
+                {
+                    sm.asis.myPosition.X = 0;
+                }
+
             }
             public void Draw(Sprite sprite, SpriteBatch batch)
             {

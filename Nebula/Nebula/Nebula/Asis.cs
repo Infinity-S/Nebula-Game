@@ -56,7 +56,7 @@ namespace Nebula
         {
             // if (myPosition.X > myScreenSize.X * .10)
             // {
-                myPosition.X -= 7;
+                myPosition.X -= 5;
                 direction = "left";
             // }
         }
@@ -64,7 +64,7 @@ namespace Nebula
         {
             // if (myPosition.X < myScreenSize.X * .60)
             // {
-                myPosition.X += 7;
+                myPosition.X += 5;
                 direction = "right";
 
             // }
@@ -81,7 +81,7 @@ namespace Nebula
                 if (Keyboard.GetState().IsKeyDown(Keys.Space) && sprite.hasJumped == false)
                 {
                     sprite.myPosition.Y -= 10f;
-                    sprite.myVelocity.Y = -5f;
+                    sprite.myVelocity.Y = -7f;
                     sprite.hasJumped = true;
                 }
                 if (sprite.hasJumped == true)

@@ -30,7 +30,7 @@ namespace Nebula
        // private float rightMargin; 
         private float MAX_CAMERA_POS; 
         private Vector2 scrollingDirection = new Vector2(-1, 0);
-        private Vector2 aSpeed = new Vector2(8, 0);
+        private Vector2 aSpeed = new Vector2(4, 0);
 
         public ScrollingManager(Asis MainChar, List<BackgroundSprite> backgroundsList, float ScreenWidth)
         {
@@ -116,7 +116,8 @@ namespace Nebula
         {
 
             // scrolling when Asis is moving left
-            if (Keyboard.GetState().IsKeyDown(Keys.Left) && charPos < LEFT_INTERVAL)
+            //  && charPos < LEFT_INTERVAL
+            if (Keyboard.GetState().IsKeyDown(Keys.Left))
             {
                 //cameraPos = myAsis.myPosition.X - (float)LEFT_INTERVAL;
                 //ScrollBackward(); 
@@ -128,7 +129,8 @@ namespace Nebula
                 }
             }
             // scrolling when Asis is moving right
-            else if (myAsis.myPosition.X > RIGHT_INTERVAL && Keyboard.GetState().IsKeyDown(Keys.Right))
+            // myAsis.myPosition.X > RIGHT_INTERVAL && 
+            else if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
                 float cameraMovement = charPos + (float) RIGHT_INTERVAL;
                 ScrollForward(); 
