@@ -65,8 +65,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Laser.png">
-      <Name>Laser</Name>
+    <Compile Include="redLaser.png">
+      <Name>redLaser</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -107,6 +107,13 @@
   <ItemGroup>
     <Compile Include="blueLaser.jpg">
       <Name>blueLaser</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="grass.jpg">
+      <Name>grass</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

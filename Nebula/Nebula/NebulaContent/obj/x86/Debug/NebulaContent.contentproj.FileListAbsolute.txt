@@ -9,3 +9,7 @@ U:\Nebula-Game\Nebula\Nebula\NebulaContent\obj\x86\Debug\ResolveAssemblyReferenc
 C:\Users\gpisarkiewicz\Documents\GitHub\Nebula-Game\Nebula\Nebula\NebulaContent\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\NebulaContent\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Zaz v2\Documents\GitHub\Nebula-Game\Nebula\Nebula\NebulaContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Tamara\Documents\GitHub\Nebula-Game\Nebula\Nebula\NebulaContent\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\Nebula\Nebula\NebulaContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Tamara\Desktop\Nebula\Nebula\NebulaContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\sgoodwin3\Downloads\Nebula\Nebula\Nebula\NebulaContent\obj\x86\Debug\ResolveAssemblyReference.cache

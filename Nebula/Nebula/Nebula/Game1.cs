@@ -8,6 +8,8 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using Nebula.SuperClasses;
+using Nebula.Subclasses;
 
 namespace Nebula
 {
@@ -20,9 +22,11 @@ namespace Nebula
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         List<Sprite> mySprites = new List<Sprite>();
+        List<Sprite> spritesList = new List<Sprite>();
+        Sprite[] platformsArray;
         //adding a sprite list for the scrolling background images 
         List<BackgroundSprite> myBackgroundSprites = new List<BackgroundSprite>();
-       ScrollingManager manager; 
+        ScrollingManager scrollingManager; 
 
         public Game1()
         {   
@@ -46,6 +50,11 @@ namespace Nebula
 
             base.Initialize();
         }
+        
+        public void AddSprite(Sprite s)
+        {
+            mySprites.Add(s);
+        }
 
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
@@ -56,34 +65,65 @@ namespace Nebula
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            Asis Asis = new Asis(Content.Load<Texture2D>("Asis"), new Vector2(0, 0),
+            Asis asis = new Asis(Content.Load<Texture2D>("Asis"), new Vector2(0, 0),
                 new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight));
 
-            Laser Laser = new Laser(Content.Load<Texture2D>("Laser"), new Vector2(0, 0),
+            AsisLaser aLaser = new AsisLaser(Content.Load<Texture2D>("blueLaser"), new Vector2(0, 0),
                 new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight));
 
-            BlueLaser blueLaser = new BlueLaser(Content.Load<Texture2D>("blueLaser"), new Vector2(0, 0),
+            DraconisEnemy dEnemy = new DraconisEnemy(Content.Load<Texture2D>("enemy-red"), 
+                new Vector2(graphics.PreferredBackBufferWidth + graphics.PreferredBackBufferWidth/4 - asis.myTexture.Width/2, 
+                    graphics.PreferredBackBufferHeight/2 + graphics.PreferredBackBufferHeight/4 - graphics.PreferredBackBufferHeight/8),
                 new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight));
 
-            Enemy redEnemy = new Enemy(Content.Load<Texture2D>("enemy-red"), new Vector2(0, 0),
+            DraconisLaser dLaser = new DraconisLaser(Content.Load<Texture2D>("redLaser"), new Vector2(0, 0),
                 new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight));
 
+            GrassPlatform grassPlatform = new GrassPlatform((Content.Load<Texture2D>("grass")), 
+                new Vector2(graphics.PreferredBackBufferWidth/2, graphics.PreferredBackBufferHeight - graphics.PreferredBackBufferHeight/8),
+                new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight));
 
-            camera = new Camera(GraphicsDevice.Viewport, Asis);
+            // grassPlatforms 2 and 3 are traps - Asis will fall through them if she tries to land on them
+            GrassPlatform grassPlatform2 = new GrassPlatform((Content.Load<Texture2D>("grass")), 
+                new Vector2(graphics.PreferredBackBufferWidth + graphics.PreferredBackBufferWidth / 2 + grassPlatform.myTexture.Width,
+               graphics.PreferredBackBufferHeight / 2 + graphics.PreferredBackBufferHeight / 16),
+                new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight));
 
+            GrassPlatform grassPlatform3 = new GrassPlatform((Content.Load<Texture2D>("grass")),
+                new Vector2(graphics.PreferredBackBufferWidth + graphics.PreferredBackBufferWidth / 2 + grassPlatform.myTexture.Width * 2,
+               graphics.PreferredBackBufferHeight / 2 + graphics.PreferredBackBufferHeight / 16),
+                new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight));
 
-            mySprites.Add(Asis);
-            mySprites.Add(Laser);
-            mySprites.Add(blueLaser);
-            mySprites.Add(redEnemy); 
+            DraconisEnemy dEnemy2 = new DraconisEnemy(Content.Load<Texture2D>("enemy-red"),
+                new Vector2(graphics.PreferredBackBufferWidth * 2 + grassPlatform.myTexture.Width * 7, 
+                    graphics.PreferredBackBufferHeight/2 + graphics.PreferredBackBufferHeight/4 - dEnemy.myTexture.Height/4),
+                new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight));
 
+            camera = new Camera(GraphicsDevice.Viewport, asis);
+
+            spritesList.Add(asis);
+            spritesList.Add(aLaser);
+            spritesList.Add(dEnemy);
+            spritesList.Add(dLaser);
+            spritesList.Add(dEnemy2);
+
+            platformsArray = new Sprite[1];
+
+            platformsArray[0] = grassPlatform;
+            
+            mySprites.Add(asis);
+            mySprites.Add(dLaser);
+            mySprites.Add(dEnemy); 
+            mySprites.Add(aLaser);
+            mySprites.Add(grassPlatform);
+            mySprites.Add(grassPlatform2);
+            mySprites.Add(grassPlatform3);
+            mySprites.Add(dEnemy2);
+            
             //adding the test background images/Sprites
             //their positions are tacked on to each other, so they form one long background image 
             BackgroundSprite b1 = new BackgroundSprite(Content.Load<Texture2D>("Background01"),
                 new Vector2(0, 0), 1.0f);
-
-            // b1 = new BackgroundSprite(Content.Load<Texture2D>("Background01"), 
-               // new Vector2(0, 0), 1.0f);
             BackgroundSprite b2 = new BackgroundSprite(Content.Load<Texture2D>("Background02"),
                 new Vector2(b1.myPosition.X + b1.myTexture.Width, 0), 1.0f); 
             BackgroundSprite b3 = new BackgroundSprite(Content.Load<Texture2D>("Background03"),
@@ -99,13 +139,19 @@ namespace Nebula
             myBackgroundSprites.Add(b4);
             myBackgroundSprites.Add(b5);
 
-            manager = new ScrollingManager(Asis, myBackgroundSprites, graphics.PreferredBackBufferWidth);
+            Sprite[] spritesArray = spritesList.ToArray();
 
-            SpriteManager SpriteManager = new SpriteManager(Content.Load<Texture2D>("Laser"), new Vector2(-1000, -1000),
-                new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), this, Asis, Laser, blueLaser,
-                redEnemy, Content.Load<SoundEffect>("LaserSoundEffect"), Content.Load<SoundEffect>("LaserSoundEffectBackwards"), manager);
-            mySprites.Add(SpriteManager);
+            scrollingManager = new ScrollingManager(asis, myBackgroundSprites, graphics.PreferredBackBufferWidth);
 
+            SpriteManager spriteManager = new SpriteManager(Content.Load<Texture2D>("blueLaser"), new Vector2(-1000, -1000),
+                new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), this, spritesArray);
+
+            Manager manager = new Manager(Content.Load<Texture2D>("blueLaser"), new Vector2(-1000, -1000),
+                new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), this, spritesArray,
+                 Content.Load<SoundEffect>("LaserSoundEffect"), Content.Load<SoundEffect>("LaserSoundEffectBackwards"), platformsArray);
+
+            mySprites.Add(spriteManager);
+            mySprites.Add(manager);
         }
 
         /// <summary>
@@ -136,6 +182,7 @@ namespace Nebula
             {
                 s.Update(gameTime.ElapsedGameTime.TotalSeconds);
             }
+
             //updating the background for scrolling 
             //manager.Update(gameTime.ElapsedGameTime.TotalSeconds); 
 
@@ -154,7 +201,7 @@ namespace Nebula
 
             // TODO: Add your drawing code here
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
-            manager.Draw(spriteBatch); 
+            scrollingManager.Draw(spriteBatch); 
             foreach (Sprite s in mySprites)
             {
                 s.Draw(spriteBatch);
