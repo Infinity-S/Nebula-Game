@@ -60,17 +60,18 @@ namespace Nebula
         public void ScrollForward()
         {
 
-            float one = myBackgrounds[0].myPosition.X;
-            float two = myBackgrounds[1].myPosition.X;
-            float three = myBackgrounds[2].myPosition.X;
-            float four = myBackgrounds[3].myPosition.X;
-            float five = myBackgrounds[4].myPosition.X;
-            float acePos = myAsis.myPosition.X;
+            //float one = myBackgrounds[0].myPosition.X;
+            //float two = myBackgrounds[1].myPosition.X;
+            //float three = myBackgrounds[2].myPosition.X;
+            //float four = myBackgrounds[3].myPosition.X;
+            //float five = myBackgrounds[4].myPosition.X;
+            //float acePos = myAsis.myPosition.X;
 
             // BackgroundSprite[] myBackgrounds = myBackgroundss.ToArray();
             // for (int i = 0; i < backgroundSprites.Length; i++)
             // {
                 //BackgroundSprite b = backgroundSprites[i];
+
             //for (int i = 0; i < myBackgrounds.Count(); i++)
             //{
             //    if (myAsis.myPosition.X > myBackgrounds[i].myPosition.X + myBackgrounds[i].myTexture.Width * 2)
@@ -81,37 +82,57 @@ namespace Nebula
             //            + myBackgrounds[4].myTexture.Width;
             //        }
             //        else myBackgrounds[i].myPosition.X = myBackgrounds[i--].myPosition.X
-            //            + myBackgrounds[i--].myTexture.Width; 
+            //            + myBackgrounds[i--].myTexture.Width;
             //    }
             //}
 
-
-
+            for (int i = 1; i < myBackgrounds.Count(); i++)
+            {
+                if (myAsis.myPosition.X > myBackgrounds[i].myPosition.X + myBackgrounds[i].myTexture.Width * 2)
+                {
+                    //if (i == 0)
+                    //{
+                    //    myBackgrounds[i].myPosition.X = myBackgrounds[4].myPosition.X
+                    //    + myBackgrounds[4].myTexture.Width;
+                    //}
+                    //else 
+                        myBackgrounds[i].myPosition.X = myBackgrounds[i-1].myPosition.X
+                        + myBackgrounds[i-1].myTexture.Width;
+                }
+            }
             if (myAsis.myPosition.X > myBackgrounds[0].myPosition.X + myBackgrounds[0].myTexture.Width * 2)
             {
                 myBackgrounds[0].myPosition.X = myBackgrounds[4].myPosition.X
-                    + myBackgrounds[4].myTexture.Width;
+                           + myBackgrounds[4].myTexture.Width;
             }
-            else if (myAsis.myPosition.X > myBackgrounds[1].myPosition.X + myBackgrounds[1].myTexture.Width * 2)
-            {
-                myBackgrounds[1].myPosition.X = myBackgrounds[0].myPosition.X
-                    + myBackgrounds[0].myTexture.Width;
-            }
-            else if (myAsis.myPosition.X > myBackgrounds[2].myPosition.X + myBackgrounds[2].myTexture.Width * 2)
-            {
-                myBackgrounds[2].myPosition.X = myBackgrounds[1].myPosition.X
-                    + myBackgrounds[1].myTexture.Width;
-            }
-            else if (myAsis.myPosition.X > myBackgrounds[3].myPosition.X + myBackgrounds[3].myTexture.Width * 2)
-            {
-                myBackgrounds[3].myPosition.X = myBackgrounds[2].myPosition.X
-                    + myBackgrounds[2].myTexture.Width;
-            }
-            else if (myAsis.myPosition.X > myBackgrounds[4].myPosition.X + myBackgrounds[4].myTexture.Width * 2)
-            {
-                myBackgrounds[4].myPosition.X = myBackgrounds[3].myPosition.X
-                    + myBackgrounds[3].myTexture.Width;
-            }
+
+
+
+            //if (myAsis.myPosition.X > myBackgrounds[0].myPosition.X + myBackgrounds[0].myTexture.Width * 2)
+            //{
+            //    myBackgrounds[0].myPosition.X = myBackgrounds[4].myPosition.X
+            //        + myBackgrounds[4].myTexture.Width;
+            //}
+            //else if (myAsis.myPosition.X > myBackgrounds[1].myPosition.X + myBackgrounds[1].myTexture.Width * 2)
+            //{
+            //    myBackgrounds[1].myPosition.X = myBackgrounds[0].myPosition.X
+            //        + myBackgrounds[0].myTexture.Width;
+            //}
+            //else if (myAsis.myPosition.X > myBackgrounds[2].myPosition.X + myBackgrounds[2].myTexture.Width * 2)
+            //{
+            //    myBackgrounds[2].myPosition.X = myBackgrounds[1].myPosition.X
+            //        + myBackgrounds[1].myTexture.Width;
+            //}
+            //else if (myAsis.myPosition.X > myBackgrounds[3].myPosition.X + myBackgrounds[3].myTexture.Width * 2)
+            //{
+            //    myBackgrounds[3].myPosition.X = myBackgrounds[2].myPosition.X
+            //        + myBackgrounds[2].myTexture.Width;
+            //}
+            //else if (myAsis.myPosition.X > myBackgrounds[4].myPosition.X + myBackgrounds[4].myTexture.Width * 2)
+            //{
+            //    myBackgrounds[4].myPosition.X = myBackgrounds[3].myPosition.X
+            //        + myBackgrounds[3].myTexture.Width;
+            //}
             }
 
         public void ScrollBackward()
@@ -122,6 +143,7 @@ namespace Nebula
             float four = myBackgrounds[3].myPosition.X;
             float five = myBackgrounds[4].myPosition.X;
             float acePos = myAsis.myPosition.X;
+
             //if (myAsis.myPosition.X < myBackgrounds[4].myPosition.X + myBackgrounds[4].myTexture.Width * 2)
             //{
             //    myBackgrounds[4].myPosition.X = myBackgrounds[0].myPosition.X
@@ -148,31 +170,46 @@ namespace Nebula
             //        - myBackgrounds[1].myTexture.Width;
             //}
 
-            if (myAsis.myPosition.X < myBackgrounds[0].myPosition.X - myBackgrounds[0].myTexture.Width * 2)
+            for (int i = 0; i < myBackgrounds.Count()-1; i++)
             {
-                myBackgrounds[0].myPosition.X = myBackgrounds[1].myPosition.X
-                    - myBackgrounds[1].myTexture.Width;
+                if (myAsis.myPosition.X < myBackgrounds[i].myPosition.X - myBackgrounds[i].myTexture.Width * 2)
+                { 
+                    myBackgrounds[i].myPosition.X = myBackgrounds[i - 1].myPosition.X
+                    + myBackgrounds[i - 1].myTexture.Width;
+                }
             }
-            else if (myAsis.myPosition.X < myBackgrounds[1].myPosition.X - myBackgrounds[1].myTexture.Width * 2)
+            if (myAsis.myPosition.X > myBackgrounds[0].myPosition.X + myBackgrounds[0].myTexture.Width * 2)
             {
-                myBackgrounds[1].myPosition.X = myBackgrounds[2].myPosition.X
-                    - myBackgrounds[2].myTexture.Width;
+                myBackgrounds[0].myPosition.X = myBackgrounds[4].myPosition.X
+                           + myBackgrounds[4].myTexture.Width;
             }
-            else if (myAsis.myPosition.X < myBackgrounds[2].myPosition.X - myBackgrounds[2].myTexture.Width * 2)
-            {
-                myBackgrounds[2].myPosition.X = myBackgrounds[3].myPosition.X
-                    - myBackgrounds[3].myTexture.Width;
-            }
-            else if (myAsis.myPosition.X < myBackgrounds[3].myPosition.X - myBackgrounds[3].myTexture.Width * 2)
-            {
-                myBackgrounds[3].myPosition.X = myBackgrounds[4].myPosition.X
-                    - myBackgrounds[4].myTexture.Width;
-            }
-            else if (myAsis.myPosition.X < myBackgrounds[4].myPosition.X - myBackgrounds[4].myTexture.Width * 2)
-            {
-                myBackgrounds[4].myPosition.X = myBackgrounds[0].myPosition.X
-                    - myBackgrounds[0].myTexture.Width;
-            }
+
+            //
+            //if (myAsis.myPosition.X < myBackgrounds[0].myPosition.X - myBackgrounds[0].myTexture.Width * 2)
+            //{
+            //    myBackgrounds[0].myPosition.X = myBackgrounds[1].myPosition.X
+            //        - myBackgrounds[1].myTexture.Width;
+            //}
+            //else if (myAsis.myPosition.X < myBackgrounds[1].myPosition.X - myBackgrounds[1].myTexture.Width * 2)
+            //{
+            //    myBackgrounds[1].myPosition.X = myBackgrounds[2].myPosition.X
+            //        - myBackgrounds[2].myTexture.Width;
+            //}
+            //else if (myAsis.myPosition.X < myBackgrounds[2].myPosition.X - myBackgrounds[2].myTexture.Width * 2)
+            //{
+            //    myBackgrounds[2].myPosition.X = myBackgrounds[3].myPosition.X
+            //        - myBackgrounds[3].myTexture.Width;
+            //}
+            //else if (myAsis.myPosition.X < myBackgrounds[3].myPosition.X - myBackgrounds[3].myTexture.Width * 2)
+            //{
+            //    myBackgrounds[3].myPosition.X = myBackgrounds[4].myPosition.X
+            //        - myBackgrounds[4].myTexture.Width;
+            //}
+            //else if (myAsis.myPosition.X < myBackgrounds[4].myPosition.X - myBackgrounds[4].myTexture.Width * 2)
+            //{
+            //    myBackgrounds[4].myPosition.X = myBackgrounds[0].myPosition.X
+            //        - myBackgrounds[0].myTexture.Width;
+            //}
         }
 
         public void Update(double totalSecs)
