@@ -23,6 +23,8 @@ namespace Nebula.Subclasses
         List<Sprite> platformsList = new List<Sprite>();
         List<BackgroundSprite> myBackgroundSprites = new List<BackgroundSprite>();
         ScrollingManager scrollingManager;
+        //private BackgroundLayer[] backgrounds; 
+       // private 
         SpriteFont myFont;
 
         public Ceres(Game1 aGame, GraphicsDeviceManager aGraphics, Asis anAsis, SpriteBatch aSpriteBatch)
@@ -123,7 +125,7 @@ namespace Nebula.Subclasses
                 s.Update(gameTime.ElapsedGameTime.TotalSeconds);
             }
             //updating the background for scrolling 
-            //manager.Update(gameTime.ElapsedGameTime.TotalSeconds); 
+            scrollingManager.Update(gameTime.ElapsedGameTime.TotalSeconds); 
         }
 
         public void Draw(GameTime gameTime)

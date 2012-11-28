@@ -80,6 +80,7 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackgroundLayer.cs" />
     <Compile Include="Subclasses\Asis.cs" />
     <Compile Include="BackgroundSprite.cs" />
     <Compile Include="Subclasses\AsisLaser.cs" />

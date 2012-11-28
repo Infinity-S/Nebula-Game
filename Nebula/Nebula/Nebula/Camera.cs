@@ -12,7 +12,7 @@ namespace Nebula
         public Matrix transform;
         Viewport view;
         Vector2 center;
-        protected Asis myAsis;
+        protected Asis myAsis; 
 
         public Camera(Viewport newView, Asis anAsis)
         {

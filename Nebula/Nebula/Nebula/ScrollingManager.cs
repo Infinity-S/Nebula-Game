@@ -19,11 +19,11 @@ namespace Nebula
     {
         private Asis myAsis;
         private List<BackgroundSprite> myBackgrounds;
-        private float globalPos = 0f;
+        //private float globalPos = 0f;
         private float backgroundLength;
-        private float charPos;
+        //private float charPos;
         private float CameraSize;
-        private float cameraPos = 0f;
+        //private float cameraPos = 0f;
         private double LEFT_INTERVAL;
        // private double leftMargin; 
         private double RIGHT_INTERVAL;
@@ -59,62 +59,142 @@ namespace Nebula
 
         public void ScrollForward()
         {
-            BackgroundSprite[] backgroundSprites = myBackgrounds.ToArray();
-            for (int i = 0; i < backgroundSprites.Length; i++)
+
+            float one = myBackgrounds[0].myPosition.X;
+            float two = myBackgrounds[1].myPosition.X;
+            float three = myBackgrounds[2].myPosition.X;
+            float four = myBackgrounds[3].myPosition.X;
+            float five = myBackgrounds[4].myPosition.X;
+            float acePos = myAsis.myPosition.X;
+
+            // BackgroundSprite[] myBackgrounds = myBackgroundss.ToArray();
+            // for (int i = 0; i < backgroundSprites.Length; i++)
+            // {
+                //BackgroundSprite b = backgroundSprites[i];
+            //for (int i = 0; i < myBackgrounds.Count(); i++)
+            //{
+            //    if (myAsis.myPosition.X > myBackgrounds[i].myPosition.X + myBackgrounds[i].myTexture.Width * 2)
+            //    {
+            //        if (i == 0)
+            //        {
+            //            myBackgrounds[i].myPosition.X = myBackgrounds[4].myPosition.X
+            //            + myBackgrounds[4].myTexture.Width;
+            //        }
+            //        else myBackgrounds[i].myPosition.X = myBackgrounds[i--].myPosition.X
+            //            + myBackgrounds[i--].myTexture.Width; 
+            //    }
+            //}
+
+
+
+            if (myAsis.myPosition.X > myBackgrounds[0].myPosition.X + myBackgrounds[0].myTexture.Width * 2)
             {
-                BackgroundSprite b = backgroundSprites[i];
-                if (b.myPosition.X < -b.size.Width)
-                {
-                    //if it is the first image in the array, 
-                    // it should be added on the last image in the array
-                    if (i == 0)
-                    {
-                        b.myPosition.X = backgroundSprites[backgroundSprites.Length - 1].myPosition.X
-                            + backgroundSprites[backgroundSprites.Length - 1].size.Width;
-                    }
-                    else
-                    {
-                        b.myPosition.X = backgroundSprites[i - 1].myPosition.X + backgroundSprites[i - 1].size.Width;
-                    }
-                }
+                myBackgrounds[0].myPosition.X = myBackgrounds[4].myPosition.X
+                    + myBackgrounds[4].myTexture.Width;
+            }
+            else if (myAsis.myPosition.X > myBackgrounds[1].myPosition.X + myBackgrounds[1].myTexture.Width * 2)
+            {
+                myBackgrounds[1].myPosition.X = myBackgrounds[0].myPosition.X
+                    + myBackgrounds[0].myTexture.Width;
+            }
+            else if (myAsis.myPosition.X > myBackgrounds[2].myPosition.X + myBackgrounds[2].myTexture.Width * 2)
+            {
+                myBackgrounds[2].myPosition.X = myBackgrounds[1].myPosition.X
+                    + myBackgrounds[1].myTexture.Width;
+            }
+            else if (myAsis.myPosition.X > myBackgrounds[3].myPosition.X + myBackgrounds[3].myTexture.Width * 2)
+            {
+                myBackgrounds[3].myPosition.X = myBackgrounds[2].myPosition.X
+                    + myBackgrounds[2].myTexture.Width;
+            }
+            else if (myAsis.myPosition.X > myBackgrounds[4].myPosition.X + myBackgrounds[4].myTexture.Width * 2)
+            {
+                myBackgrounds[4].myPosition.X = myBackgrounds[3].myPosition.X
+                    + myBackgrounds[3].myTexture.Width;
+            }
             }
 
-            //putting the result of these positions back into the list holding all the sprites 
-            myBackgrounds = backgroundSprites.ToList();
+        public void ScrollBackward()
+        {
+            float one = myBackgrounds[0].myPosition.X;
+            float two = myBackgrounds[1].myPosition.X;
+            float three = myBackgrounds[2].myPosition.X;
+            float four = myBackgrounds[3].myPosition.X;
+            float five = myBackgrounds[4].myPosition.X;
+            float acePos = myAsis.myPosition.X;
+            //if (myAsis.myPosition.X < myBackgrounds[4].myPosition.X + myBackgrounds[4].myTexture.Width * 2)
+            //{
+            //    myBackgrounds[4].myPosition.X = myBackgrounds[0].myPosition.X
+            //        - myBackgrounds[0].myTexture.Width;
+            //}
+            //else if (myAsis.myPosition.X < myBackgrounds[3].myPosition.X + myBackgrounds[3].myTexture.Width * 2)
+            //{
+            //    myBackgrounds[3].myPosition.X = myBackgrounds[4].myPosition.X
+            //        - myBackgrounds[4].myTexture.Width;
+            //}
+            //else if (myAsis.myPosition.X < myBackgrounds[2].myPosition.X + myBackgrounds[2].myTexture.Width * 2)
+            //{
+            //    myBackgrounds[2].myPosition.X = myBackgrounds[3].myPosition.X
+            //        - myBackgrounds[3].myTexture.Width;
+            //}
+            //else if (myAsis.myPosition.X < myBackgrounds[1].myPosition.X + myBackgrounds[1].myTexture.Width * 2)
+            //{
+            //    myBackgrounds[1].myPosition.X = myBackgrounds[2].myPosition.X
+            //        - myBackgrounds[2].myTexture.Width;
+            //}
+            //else if (myAsis.myPosition.X < myBackgrounds[0].myPosition.X + myBackgrounds[0].myTexture.Width * 2)
+            //{
+            //    myBackgrounds[0].myPosition.X = myBackgrounds[1].myPosition.X
+            //        - myBackgrounds[1].myTexture.Width;
+            //}
+
+            if (myAsis.myPosition.X < myBackgrounds[0].myPosition.X - myBackgrounds[0].myTexture.Width * 2)
+            {
+                myBackgrounds[0].myPosition.X = myBackgrounds[1].myPosition.X
+                    - myBackgrounds[1].myTexture.Width;
+            }
+            else if (myAsis.myPosition.X < myBackgrounds[1].myPosition.X - myBackgrounds[1].myTexture.Width * 2)
+            {
+                myBackgrounds[1].myPosition.X = myBackgrounds[2].myPosition.X
+                    - myBackgrounds[2].myTexture.Width;
+            }
+            else if (myAsis.myPosition.X < myBackgrounds[2].myPosition.X - myBackgrounds[2].myTexture.Width * 2)
+            {
+                myBackgrounds[2].myPosition.X = myBackgrounds[3].myPosition.X
+                    - myBackgrounds[3].myTexture.Width;
+            }
+            else if (myAsis.myPosition.X < myBackgrounds[3].myPosition.X - myBackgrounds[3].myTexture.Width * 2)
+            {
+                myBackgrounds[3].myPosition.X = myBackgrounds[4].myPosition.X
+                    - myBackgrounds[4].myTexture.Width;
+            }
+            else if (myAsis.myPosition.X < myBackgrounds[4].myPosition.X - myBackgrounds[4].myTexture.Width * 2)
+            {
+                myBackgrounds[4].myPosition.X = myBackgrounds[0].myPosition.X
+                    - myBackgrounds[0].myTexture.Width;
+            }
         }
-
-        //public void ScrollBackward()
-        //{
-        //    //Setting up so if the image that goes off the screen (player has 'passed' it)
-        //    //it will be added back on to the end of the images.
-        //    BackgroundSprite[] backgroundSprites = myBackgrounds.ToArray();
-        //    //for (int i = backgroundSprites.Length-1; i >= 0; i--)
-        //    for (int i = 0; i < backgroundSprites.Length; i++)
-        //    {
-        //        BackgroundSprite b = backgroundSprites[i];
-        //        if (b.myPosition.X > CameraSize + b.size.Width)
-        //        {
-        //            //if it is the first image in the array, 
-        //            // it should be added on the last image in the array
-        //            if (i == backgroundSprites.Length-1)
-        //            {
-        //                b.myPosition.X = backgroundSprites[0].myPosition.X
-        //                    + backgroundSprites[0].size.Width;
-        //            }
-        //            else
-        //            {
-        //                b.myPosition.X = backgroundSprites[i + 1].myPosition.X + backgroundSprites[i + 1].size.Width;
-        //            }
-        //        }
-        //    }
-
-        //    //putting the result of these positions back into the list holding all the sprites 
-        //    myBackgrounds = backgroundSprites.ToList();
-        //} 
 
         public void Update(double totalSecs)
         {
-
+            if (Keyboard.GetState().IsKeyDown(Keys.Left) /*&& myAsis.myPosition.X < LEFT_INTERVAL*/)
+            {
+                ScrollBackward();
+                foreach (BackgroundSprite bs in myBackgrounds)
+                {
+                    bs.myPosition += -scrollingDirection * aSpeed;
+                }
+            }
+                //&& only if Asis is less than the length of the level 
+            else if (Keyboard.GetState().IsKeyDown(Keys.Right)/*&& myAsis.myPosition.X < MAX_CAMERA_POS && myAsis.myPosition.X > LEFT_INTERVAL*/)
+            {
+                ScrollForward();
+                foreach (BackgroundSprite bs in myBackgrounds)
+                {
+                    bs.myPosition += scrollingDirection * aSpeed;
+                }
+            }
+            /*
             // scrolling when Asis is moving left
             //  && charPos < LEFT_INTERVAL
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
@@ -141,12 +221,14 @@ namespace Nebula
                    bs.myPosition += scrollingDirection * aSpeed;
                 }
             }
+             */
 
             //updates all the background sprites 
-            foreach (Sprite b in myBackgrounds)
-            {
-                b.Update(totalSecs);
-            }
+            //foreach (Sprite b in myBackgrounds)
+            //{
+            //    b.Update(totalSecs);
+            //}
+            
         }
 
         public void Draw(SpriteBatch batch)
