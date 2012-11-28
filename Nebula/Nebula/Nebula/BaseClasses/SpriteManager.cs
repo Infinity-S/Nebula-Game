@@ -19,20 +19,32 @@ namespace Nebula.SuperClasses
     class SpriteManager : Sprite
     {
         protected internal Stack TimeStack; 
-        protected internal Sprite[] PositionsArray;
+        protected internal List<Sprite> PositionsList;
         public Game1 myGame;
+        Asis myAsis;
         // private ScrollingManager myScrollingManager;
 
+        // To update list
+        public void setPositionsList(List<Sprite> myPositionsList)
+        {
+            PositionsList = myPositionsList;
+        }
+
         public SpriteManager(Texture2D texture, Vector2 position, Vector2 screen, Game1 aGame,
-            Sprite[] aPositionsArray)
+            List<Sprite> aPositionsList, Asis asis)
             : base(texture, position)
         {
+            myTexture = texture;
             myPosition = position;
-            myScreenSize = screen;
             myGame = aGame;
-            PositionsArray = aPositionsArray;
+            myScreenSize = screen;
+            PositionsList = aPositionsList;
+            myAsis = asis;
             myState = new IdleState(this);
             TimeStack = new Stack();
+
+            // myGame.Content.Load<SoundEffect>("time-swoosh")
+
             SetUpInput();
         }
 
@@ -49,14 +61,14 @@ namespace Nebula.SuperClasses
         // Method responsible for producing the effect of going back in time
         public void TimeTravel()
         {
-            Array stack = TimeStack.ToArray();
+            // Array stack = TimeStack.ToArray();
             // TimeStack.Count();
             // If stack is not empty
-            if (stack.Length > 0)
+            if (TimeStack.Count > 0)
             {
-                for (int i = PositionsArray.Length - 1; i >= 0; i--)
+                for (int i = PositionsList.Count - 1; i >= 0; i--)
                 {
-                    PositionsArray[i].myPosition = (Vector2)TimeStack.Pop();
+                    PositionsList[i].myPosition = (Vector2)TimeStack.Pop();
                 }
                 // Changes background color
                 myState = new TimeTravelState(this);
@@ -67,13 +79,15 @@ namespace Nebula.SuperClasses
         {
             public TimeTravelState(Sprite sprite) 
             {
-
             }
             public void Update(double elapsedTime, Sprite sprite)
             {
                 SpriteManager sm = (SpriteManager)(sprite);
                 // sm.myScrollingManager.Update(elapsedTime); 
                 // If x is not being pressed change its state
+
+                sprite.myPosition = new Vector2(sm.myAsis.myPosition.X ,sm.myAsis.myPosition.Y);
+
                 if (!Keyboard.GetState().IsKeyDown(Keys.X))
                 {
                     sprite.myState = new IdleState(sprite);
@@ -96,6 +110,7 @@ namespace Nebula.SuperClasses
         {
             public IdleState(Sprite sprite)
             {
+                sprite.myPosition = new Vector2(sprite.myScreenSize.X * -2, sprite.myScreenSize.Y * -2); 
             }
             public void Update(double elapsedTime, Sprite sprite)
             {
@@ -106,8 +121,8 @@ namespace Nebula.SuperClasses
                 // If X key is not being pressed, add positions of sprites to Stack
                 if (!Keyboard.GetState().IsKeyDown(Keys.X))
                 {
-                    for (int i = 0; i < sm.PositionsArray.Length; i ++) {
-                    sm.TimeStack.Push(sm.PositionsArray[i].myPosition);
+                    for (int i = 0; i < sm.PositionsList.Count; i ++) {
+                    sm.TimeStack.Push(sm.PositionsList[i].myPosition);
                 }
                 }  
             }

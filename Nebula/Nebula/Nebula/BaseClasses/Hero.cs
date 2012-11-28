@@ -32,7 +32,6 @@ namespace Nebula.SuperClasses
             myScreenSize = screen;
             myState = new ExistState(this);
             hasJumped = true;
-            // xSL/12, ySL - sm.grass.myTexture.Height * 2
             myPosition.X = myScreenSize.X/12;
             myPosition.Y = myScreenSize.Y - myTexture.Height * 2;
             // Start her facing to the right
@@ -86,28 +85,28 @@ namespace Nebula.SuperClasses
                     sprite.hasJumped = true;
                 }
 
-                if (sprite.myPosition.Y >= 0)
-                {
+                // if (sprite.myPosition.Y >= 0)
+                // {
                     float i = 1;
                     // change 0.18f to alter speed of falling
                     sprite.myVelocity.Y += 0.18f * i;
-                }
+                // }
 
                 /*
                 // If he's in the air make hero fall
                 if (sprite.hasJumped == true)
                 {
-                    float i = 1;
                     // change 0.18f to alter speed of falling
                    sprite.myVelocity.Y += 0.18f * i;
                 }
                 */
 
                 // Keeps player from falling through the bottom of the screen
-                if (sprite.myPosition.Y + sprite.myTexture.Height > sprite.myScreenSize.Y)
+                // sprite.myPosition.Y + sprite.myTexture.Height > sprite.myScreenSize.Y
+                if (sprite.myVelocity.Y == 0)
                 {
                     sprite.hasJumped = false;
-                    sprite.myVelocity.Y = 0f;
+                    // sprite.myVelocity.Y = 0f;
                 }
             }
             public void Draw(Sprite sprite, SpriteBatch batch)
