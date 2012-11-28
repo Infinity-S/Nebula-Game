@@ -213,20 +213,34 @@ namespace Nebula.Subclasses
                     }
                 }
 
-                // First enemy firing spot
-                // When asis is between 3/4 Screen length x and 3/4 Screen length + her texture width divided by 8
-                if (sm.asis.myPosition.X > sm.xSL / 2 + sm.xSL / 4 && sm.asis.myPosition.X < sm.xSL / 2 + sm.xSL / 4 + sm.asis.myTexture.Width/8)
+                //Schuyler worked on this!! to make it so that whener asis is in a specific proximity to a enemy, they attack 
+                foreach (Sprite enemy in sm.EnemiesList)
                 {
-                    sm.dLaser.myPosition = new Vector2(sm.dEnemy.myPosition.X - sm.dLaser.myTexture.Width, sm.dEnemy.myPosition.Y);
-                    sm.dLaser.myVelocity.X = -16;
+                    //if (sm.asis.myPosition.X > sm.xSL / 2 + sm.xSL / 4 && sm.asis.myPosition.X < sm.xSL / 2 + sm.xSL / 4 + sm.asis.myTexture.Width / 8)
+                    if ((sm.asis.myPosition.X > (enemy.myPosition.X - (enemy.myTexture.Width * 5)) && sm.asis.myPosition.X < enemy.myPosition.X + enemy.myTexture.Width) /*&& (sm.asis.myPosition.X > sm.xSL / 2 + sm.xSL / 4 && sm.asis.myPosition.X < sm.xSL / 2 + sm.xSL / 4 + sm.asis.myTexture.Width / 8)*/)
+                    {
+                        //need a time if statement, also to clone the lasers?
+                        //a checker 
+                        //if time since last laser been fired > 1.5 seconds
+                        sm.dLaser.myPosition = new Vector2(enemy.myPosition.X - sm.dLaser.myTexture.Width, enemy.myPosition.Y);
+                         sm.dLaser.myVelocity.X = -16; 
+                    }
                 }
 
-                // Second enemy firing spot
-                if (sm.asis.myPosition.X > sm.xSL * 2 + sm.grass.myTexture.Width * 3 && sm.asis.myPosition.X < sm.xSL * 2 + sm.grass.myTexture.Width * 3 + sm.grass.myTexture.Width / 16)
-                {
-                    sm.dLaser.myPosition = new Vector2(sm.dEnemy2.myPosition.X - sm.dLaser.myTexture.Width, sm.dEnemy2.myPosition.Y);
-                    sm.dLaser.myVelocity.X = -16;
-                }
+                //// First enemy firing spot
+                //// When asis is between 3/4 Screen length x and 3/4 Screen length + her texture width divided by 8
+                //if (sm.asis.myPosition.X > sm.xSL / 2 + sm.xSL / 4 && sm.asis.myPosition.X < sm.xSL / 2 + sm.xSL / 4 + sm.asis.myTexture.Width/8)
+                //{
+                //    sm.dLaser.myPosition = new Vector2(sm.dEnemy.myPosition.X - sm.dLaser.myTexture.Width, sm.dEnemy.myPosition.Y);
+                //    sm.dLaser.myVelocity.X = -16;
+                //}
+
+                //// Second enemy firing spot
+                //if (sm.asis.myPosition.X > sm.xSL * 2 + sm.grass.myTexture.Width * 3 && sm.asis.myPosition.X < sm.xSL * 2 + sm.grass.myTexture.Width * 3 + sm.grass.myTexture.Width / 16)
+                //{
+                //    sm.dLaser.myPosition = new Vector2(sm.dEnemy2.myPosition.X - sm.dLaser.myTexture.Width, sm.dEnemy2.myPosition.Y);
+                //    sm.dLaser.myVelocity.X = -16;
+                //}
 
                 // If Asis gets hit by Enemy laser, kill her (just sends her back to beginning right now)
                 if (sm.Hit(sm.asis, sm.dLaser))
