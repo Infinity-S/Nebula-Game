@@ -79,7 +79,7 @@ namespace Nebula.Subclasses
             //adding the test background images/Sprites
             //their positions are tacked on to each other, so they form one long background image 
             BackgroundSprite b1 = new BackgroundSprite(myGame.Content.Load<Texture2D>("Background01"),
-                new Vector2(0, 0), 1.0f);
+                new Vector2(0 - myGraphics.PreferredBackBufferWidth/12, 0), 1.0f);
             BackgroundSprite b2 = new BackgroundSprite(myGame.Content.Load<Texture2D>("Background02"),
                 new Vector2(b1.myPosition.X + b1.myTexture.Width, 0), 1.0f);
             BackgroundSprite b3 = new BackgroundSprite(myGame.Content.Load<Texture2D>("Background03"),
@@ -95,15 +95,25 @@ namespace Nebula.Subclasses
             myBackgroundSprites.Add(b4);
             myBackgroundSprites.Add(b5);
 
+            // Add each BackgroundSprite to the movingSpritesList
+            foreach (BackgroundSprite s in myBackgroundSprites)
+            {
+                movingSpritesList.Add(s);
+            }
+
+            GameOver gameOverScreen = new GameOver(myGame.Content.Load<Texture2D>("death-screen"), new Vector2(0, 0), 
+                new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
+
             scrollingManager = new ScrollingManager(asis, myBackgroundSprites, myGraphics.PreferredBackBufferWidth);
 
-            SpriteManager spriteManager = new SpriteManager(myGame.Content.Load<Texture2D>("TimeTravel"), new Vector2(-1000, -1000),
+            SpriteManager spriteManager = new SpriteManager(myGame.Content.Load<Texture2D>("timet-background"), new Vector2(-1000, -1000),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight), myGame, movingSpritesList, asis);
 
             Manager manager = new Manager(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(-1000, -1000),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight), 
-                myGame, this, movingSpritesList, platformsList, myFont, asis);
+                myGame, this, movingSpritesList, platformsList, myFont, asis, gameOverScreen);
 
+            allSprites.Add(gameOverScreen);
             allSprites.Add(spriteManager);
             allSprites.Add(manager);
         }

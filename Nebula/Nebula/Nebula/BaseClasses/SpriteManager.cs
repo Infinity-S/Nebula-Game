@@ -22,6 +22,8 @@ namespace Nebula.SuperClasses
         protected internal List<Sprite> PositionsList;
         public Game1 myGame;
         Asis myAsis;
+        SoundEffect TimeTravelSound;
+        SoundEffectInstance TimeTravelSoundInstance;
         // private ScrollingManager myScrollingManager;
 
         // To update list
@@ -40,10 +42,14 @@ namespace Nebula.SuperClasses
             myScreenSize = screen;
             PositionsList = aPositionsList;
             myAsis = asis;
+
+            TimeTravelSound = myGame.Content.Load<SoundEffect>("time-swoosh");
+            TimeTravelSoundInstance = TimeTravelSound.CreateInstance();
+            TimeTravelSoundInstance.IsLooped = true;
+
+
             myState = new IdleState(this);
             TimeStack = new Stack();
-
-            // myGame.Content.Load<SoundEffect>("time-swoosh")
 
             SetUpInput();
         }
@@ -79,6 +85,7 @@ namespace Nebula.SuperClasses
         {
             public TimeTravelState(Sprite sprite) 
             {
+                SpriteManager sm = (SpriteManager)(sprite);
             }
             public void Update(double elapsedTime, Sprite sprite)
             {
@@ -86,10 +93,14 @@ namespace Nebula.SuperClasses
                 // sm.myScrollingManager.Update(elapsedTime); 
                 // If x is not being pressed change its state
 
-                sprite.myPosition = new Vector2(sm.myAsis.myPosition.X ,sm.myAsis.myPosition.Y);
+                sm.TimeTravelSoundInstance.Play();
+
+                sprite.myPosition = new Vector2(sm.myAsis.myPosition.X - sm.myScreenSize.X/6, 
+                    sm.myAsis.myPosition.Y - sm.myScreenSize.Y + sm.myAsis.myTexture.Height + sm.myAsis.myTexture.Height/2);
 
                 if (!Keyboard.GetState().IsKeyDown(Keys.X))
                 {
+                    sm.TimeTravelSoundInstance.Stop();
                     sprite.myState = new IdleState(sprite);
                 }
             }
@@ -116,8 +127,6 @@ namespace Nebula.SuperClasses
             {
                 SpriteManager sm = (SpriteManager)(sprite);
 
-                // sm.myScrollingManager.Update(elapsedTime);
-
                 // If X key is not being pressed, add positions of sprites to Stack
                 if (!Keyboard.GetState().IsKeyDown(Keys.X))
                 {
@@ -130,7 +139,6 @@ namespace Nebula.SuperClasses
             {
                 SpriteManager sm = (SpriteManager)(sprite);
                 sm.myGame.GraphicsDevice.Clear(Color.AliceBlue);
-                //sm.myScrollingManager.Draw(batch);
                 batch.Draw(sprite.myTexture, sprite.myPosition,
                 null, Color.White,
                 sprite.myAngle, sprite.myOrigin,

@@ -35,8 +35,10 @@ namespace Nebula.Subclasses
         SoundEffect LaserSoundEffect;
         SoundEffect BackwardsLaserSoundEffect;
 
+        GameOver GameOverScreen;
+
         public Manager(Texture2D texture, Vector2 position, Vector2 screen, Game1 aGame, Ceres aCeres, 
-            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis asis2)
+            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis asis2, GameOver aGameOverScreen)
             : base(texture, position, screen, aGame, aPlatformsList, asis2) 
         {
             myTexture = texture;
@@ -49,6 +51,8 @@ namespace Nebula.Subclasses
 
             LaserSoundEffect = myGame.Content.Load<SoundEffect>("LaserSoundEffect");
             BackwardsLaserSoundEffect = myGame.Content.Load<SoundEffect>("LaserSoundEffectBackwards");
+            // xSL * -3, ySL * -3
+            GameOverScreen = aGameOverScreen;
 
             for (int i = 0; i < aPlatformsList.Count; i++)
             {
@@ -165,6 +169,7 @@ namespace Nebula.Subclasses
                 float ySL = sprite.myScreenSize.Y;
 
                 // ADD MORE PLATFORMS/ENEMIES HERE
+                
                 sm.AddGrassPlatform(new Vector2(xSL/12, ySL - sm.grass.myTexture.Height * 2), true);
                 sm.AddGrassPlatform(new Vector2(xSL / 2 + xSL / 4 + sm.grass.myTexture.Width / 8, ySL / 2 + ySL / 4), true);
                 sm.AddGrassPlatform(new Vector2(xSL + xSL / 4 - sprite.myTexture.Width, ySL / 2 + ySL / 4), true);
@@ -177,6 +182,7 @@ namespace Nebula.Subclasses
                 sm.AddGrassPlatform(new Vector2(xSL * 2 + sm.grass.myTexture.Width * 5, ySL / 2 + ySL / 4 + sm.grass.myTexture.Height * 2), true);
                 sm.AddGrassPlatform(new Vector2(xSL * 2 + sm.grass.myTexture.Width * 6, ySL / 2 + ySL / 4 + sm.grass.myTexture.Height * 2), true);
                 sm.AddGrassPlatform(new Vector2(xSL * 2 + sm.grass.myTexture.Width * 7, ySL / 2 + ySL / 4 + sm.grass.myTexture.Height * 2), true);
+                
 
             }
             public void Update(double elapsedTime, Sprite sprite)
@@ -188,22 +194,34 @@ namespace Nebula.Subclasses
                     sm.aLaser.myPosition = new Vector2(sm.aLaser.myPosition.X, sm.aLaser.myPosition.Y + sm.ySL);
                 }
 
-                // For each platform, if Asis jumps on it - set her y velocity to 0
-                for (int i = 0; i < sm.platformsList.Count; i++)
-                {
-                    if (sm.asis.myPosition.Y + sm.asis.myTexture.Height >= sm.platformsList[i].myPosition.Y
-                        && sm.asis.myPosition.Y + sm.asis.myTexture.Height <= sm.platformsList[i].myPosition.Y + sm.platformsList[i].myTexture.Height
-                        && sm.asis.myPosition.X + sm.asis.myTexture.Width /2 >= sm.platformsList[i].myPosition.X 
-                        && sm.asis.myPosition.X + sm.asis.myTexture.Width /2 <= sm.platformsList[i].myPosition.X + sm.platformsList[i].myTexture.Width)
+                    // For each platform, if Asis jumps on it - set her y velocity to 0
+                    for (int i = 0; i < sm.platformsList.Count; i++)
                     {
-                        sm.asis.myVelocity.Y = 0;
-                        // Allows hero to jump off platforms
-                        if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                        if (sm.asis.myPosition.Y + sm.asis.myTexture.Height >= sm.platformsList[i].myPosition.Y
+                            && sm.asis.myPosition.Y + sm.asis.myTexture.Height <= sm.platformsList[i].myPosition.Y + sm.platformsList[i].myTexture.Height
+                            && sm.asis.myPosition.X + sm.asis.myTexture.Width / 2 >= sm.platformsList[i].myPosition.X
+                            && sm.asis.myPosition.X + sm.asis.myTexture.Width / 2 <= sm.platformsList[i].myPosition.X + sm.platformsList[i].myTexture.Width)
                         {
-                            sm.asis.myVelocity.Y = -7f;
+                            /*
+                            // If statement helps avoid a glitch when going back in time Asis would get stuck below a platform
+                            if (Keyboard.GetState().IsKeyDown(Keys.X)
+                                && sm.asis.myPosition.Y + sm.asis.myTexture.Height <= sm.platformsList[i].myPosition.Y + sm.platformsList[i].myTexture.Height
+                                && sm.asis.myPosition.Y + sm.asis.myTexture.Height >= sm.platformsList[i].myPosition.Y)
+                            {
+                                sm.asis.myPosition.Y -= 5;
+                            }
+                            */
+
+                            sm.asis.myVelocity.Y = 0;
+
+                            // Allows hero to jump off platforms
+                            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                            {
+                                sm.asis.myVelocity.Y = -7f;
+                            }
                         }
                     }
-                }
+                
                 // For each enemy, if Asis's laser hits them, kill them
                 for (int i = 0; i < sm.EnemiesList.Count; i++)
                 {
@@ -217,12 +235,14 @@ namespace Nebula.Subclasses
                 foreach (Sprite enemy in sm.EnemiesList)
                 {
                     //if (sm.asis.myPosition.X > sm.xSL / 2 + sm.xSL / 4 && sm.asis.myPosition.X < sm.xSL / 2 + sm.xSL / 4 + sm.asis.myTexture.Width / 8)
-                    if ((sm.asis.myPosition.X > (enemy.myPosition.X - (enemy.myTexture.Width * 5)) && sm.asis.myPosition.X < enemy.myPosition.X + enemy.myTexture.Width) /*&& (sm.asis.myPosition.X > sm.xSL / 2 + sm.xSL / 4 && sm.asis.myPosition.X < sm.xSL / 2 + sm.xSL / 4 + sm.asis.myTexture.Width / 8)*/)
+                    if ((sm.asis.myPosition.X > (enemy.myPosition.X - enemy.myTexture.Width * 5) 
+                        && sm.asis.myPosition.X < enemy.myPosition.X - enemy.myTexture.Width * 4 - enemy.myTexture.Width/2 - enemy.myTexture.Width/4))
+                    /*&& (sm.asis.myPosition.X > sm.xSL / 2 + sm.xSL / 4 && sm.asis.myPosition.X < sm.xSL / 2 + sm.xSL / 4 + sm.asis.myTexture.Width / 8)*/
                     {
                         //need a time if statement, also to clone the lasers?
                         //a checker 
                         //if time since last laser been fired > 1.5 seconds
-                        sm.dLaser.myPosition = new Vector2(enemy.myPosition.X - sm.dLaser.myTexture.Width, enemy.myPosition.Y);
+                        sm.dLaser.myPosition = new Vector2(enemy.myPosition.X - sm.dLaser.myTexture.Width, enemy.myPosition.Y + enemy.myTexture.Height/8);
                          sm.dLaser.myVelocity.X = -16; 
                     }
                 }
@@ -242,11 +262,13 @@ namespace Nebula.Subclasses
                 //    sm.dLaser.myVelocity.X = -16;
                 //}
 
-                // If Asis gets hit by Enemy laser, kill her (just sends her back to beginning right now)
-                if (sm.Hit(sm.asis, sm.dLaser))
+                // If Asis gets hit by Enemy laser, display GameOverScreen - otherwise hide it
+                if (sm.Hit(sm.asis, sm.dLaser) || sm.asis.myPosition.Y > sm.ySL + sm.ySL/2)
                 {
-                    sm.asis.myPosition.X = 0;
+                    sm.asis.myPosition.Y = sm.asis.myPosition.Y + sm.ySL;
+                    sm.GameOverScreen.myPosition = new Vector2(sm.asis.myPosition.X - sm.xSL / 6, 0);
                 }
+                else sm.GameOverScreen.myPosition = new Vector2(sm.xSL * -3, sm.ySL * -3);
 
                 // Plays the laser sound effect in reverse when it falls into a certain range of x pixels 
                 // depending on which direction they were facing when they fired it (when going back in time)

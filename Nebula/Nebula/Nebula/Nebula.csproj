@@ -98,6 +98,7 @@
     <Compile Include="BaseClasses\SpriteManager.cs" />
     <Compile Include="BaseClasses\State.cs" />
     <Compile Include="BaseClasses\Hero.cs" />
+    <Compile Include="Subclasses\GameOver.cs" />
     <Compile Include="Subclasses\GrassPlatform.cs" />
     <Compile Include="Subclasses\HydromedaEnemy.cs" />
     <Compile Include="Subclasses\HydromedaLaser.cs" />

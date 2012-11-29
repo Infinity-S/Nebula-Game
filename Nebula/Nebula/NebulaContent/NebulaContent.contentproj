@@ -126,8 +126,29 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TimeTravel.png">
-      <Name>TimeTravel</Name>
+    <Compile Include="time-swoosh.wav">
+      <Name>time-swoosh</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="time-background.png">
+      <Name>time-background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="timet-background.png">
+      <Name>timet-background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="death-screen.png">
+      <Name>death-screen</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
