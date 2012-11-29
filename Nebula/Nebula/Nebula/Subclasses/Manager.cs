@@ -238,7 +238,8 @@ namespace Nebula.Subclasses
                 foreach (Sprite enemy in sm.EnemiesList)
                 {
                     //attack if Asis is in range between 5 texture widths before enemy position to enemy position 
-                    if ((sm.asis.myPosition.X > (enemy.myPosition.X - (enemy.myTexture.Width * 4)) && sm.asis.myPosition.X < enemy.myPosition.X))
+                    if ((sm.asis.myPosition.X > (enemy.myPosition.X - (enemy.myTexture.Width * 4)) 
+                        && sm.asis.myPosition.X < enemy.myPosition.X))
                     {
                         //Fire a laser every 1.5 seconds, will be an instance varible, so can be changed 
                         if (sm.accumTime > 1.5)
@@ -249,21 +250,6 @@ namespace Nebula.Subclasses
                         }
                     }
                 }
-
-                //// First enemy firing spot
-                //// When asis is between 3/4 Screen length x and 3/4 Screen length + her texture width divided by 8
-                //if (sm.asis.myPosition.X > sm.xSL / 2 + sm.xSL / 4 && sm.asis.myPosition.X < sm.xSL / 2 + sm.xSL / 4 + sm.asis.myTexture.Width/8)
-                //{
-                //    sm.dLaser.myPosition = new Vector2(sm.dEnemy.myPosition.X - sm.dLaser.myTexture.Width, sm.dEnemy.myPosition.Y);
-                //    sm.dLaser.myVelocity.X = -16;
-                //}
-
-                //// Second enemy firing spot
-                //if (sm.asis.myPosition.X > sm.xSL * 2 + sm.grass.myTexture.Width * 3 && sm.asis.myPosition.X < sm.xSL * 2 + sm.grass.myTexture.Width * 3 + sm.grass.myTexture.Width / 16)
-                //{
-                //    sm.dLaser.myPosition = new Vector2(sm.dEnemy2.myPosition.X - sm.dLaser.myTexture.Width, sm.dEnemy2.myPosition.Y);
-                //    sm.dLaser.myVelocity.X = -16;
-                //}
 
                 // If Asis gets hit by Enemy laser, display GameOverScreen - otherwise hide it
                 if (sm.Hit(sm.asis, sm.dLaser) || sm.asis.myPosition.Y > sm.ySL + sm.ySL/2)
