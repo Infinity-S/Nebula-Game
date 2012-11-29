@@ -48,7 +48,7 @@ namespace Nebula
             LEFT_INTERVAL = CameraSize * .10;
             //right interval is 40% of screen, so the player can see what is coming next
             RIGHT_INTERVAL = CameraSize * .60;
-            MAX_CAMERA_POS = backgroundLength; 
+            MAX_CAMERA_POS = backgroundLength; //1000 ; 
 
         }
 
@@ -70,8 +70,8 @@ namespace Nebula
             }
             if (myAsis.myPosition.X > myBackgrounds[0].myPosition.X + myBackgrounds[0].myTexture.Width * 2)
             {
-                myBackgrounds[0].myPosition.X = myBackgrounds[4].myPosition.X
-                           + myBackgrounds[4].myTexture.Width;
+                myBackgrounds[0].myPosition.X = myBackgrounds[myBackgrounds.Count-1].myPosition.X
+                           + myBackgrounds[myBackgrounds.Count - 1].myTexture.Width;
             }
 
             }
@@ -87,9 +87,9 @@ namespace Nebula
                     - myBackgrounds[i + 1].myTexture.Width;
                 }
             }
-            if (myAsis.myPosition.X < myBackgrounds[4].myPosition.X - myBackgrounds[4].myTexture.Width * 2)
+            if (myAsis.myPosition.X < myBackgrounds[myBackgrounds.Count - 1].myPosition.X - myBackgrounds[myBackgrounds.Count - 1].myTexture.Width * 2)
             {
-                myBackgrounds[4].myPosition.X = myBackgrounds[0].myPosition.X
+                myBackgrounds[myBackgrounds.Count - 1].myPosition.X = myBackgrounds[0].myPosition.X
                            - myBackgrounds[0].myTexture.Width;
             }
 
