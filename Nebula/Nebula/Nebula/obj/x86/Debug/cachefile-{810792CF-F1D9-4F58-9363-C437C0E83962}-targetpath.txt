@@ -15,4 +15,7 @@ Content\timet-background.xnb
 Content\death-screen.xnb
 Content\LaserSoundEffectBackwards.xnb
 Content\time-swoosh.xnb
+Content\breathofdeath.xnb
+Content\warp.xnb
+Content\CeresMusic.xnb
 Content\SpriteFont1.xnb

@@ -38,15 +38,15 @@ namespace Nebula.SuperClasses
         {
             myTexture = texture;
             myPosition = position;
+            myScale = new Vector2(1, 2);
             myGame = aGame;
             myScreenSize = screen;
             PositionsList = aPositionsList;
             myAsis = asis;
 
-            TimeTravelSound = myGame.Content.Load<SoundEffect>("time-swoosh");
+            TimeTravelSound = myGame.Content.Load<SoundEffect>("warp");
             TimeTravelSoundInstance = TimeTravelSound.CreateInstance();
             TimeTravelSoundInstance.IsLooped = true;
-
 
             myState = new IdleState(this);
             TimeStack = new Stack();
@@ -62,13 +62,12 @@ namespace Nebula.SuperClasses
                 new object[0]);
 
             InputManager.AddToKeyboardMap(Keys.X, timeTravel);
+            InputManager.AddToButtonsMap(Buttons.X, timeTravel);
         }
         
         // Method responsible for producing the effect of going back in time
         public void TimeTravel()
         {
-            // Array stack = TimeStack.ToArray();
-            // TimeStack.Count();
             // If stack is not empty
             if (TimeStack.Count > 0)
             {
@@ -85,20 +84,17 @@ namespace Nebula.SuperClasses
         {
             public TimeTravelState(Sprite sprite) 
             {
-                SpriteManager sm = (SpriteManager)(sprite);
             }
             public void Update(double elapsedTime, Sprite sprite)
             {
                 SpriteManager sm = (SpriteManager)(sprite);
-                // sm.myScrollingManager.Update(elapsedTime); 
                 // If x is not being pressed change its state
-
                 sm.TimeTravelSoundInstance.Play();
 
                 sprite.myPosition = new Vector2(sm.myAsis.myPosition.X - sm.myScreenSize.X/6, 
-                    sm.myAsis.myPosition.Y - sm.myScreenSize.Y + sm.myAsis.myTexture.Height + sm.myAsis.myTexture.Height/2);
+                    sm.myAsis.myPosition.Y - sm.myScreenSize.Y - sm.myScreenSize.Y/2);
 
-                if (!Keyboard.GetState().IsKeyDown(Keys.X))
+                if (!Keyboard.GetState().IsKeyDown(Keys.X) && GamePad.GetState(PlayerIndex.One).IsButtonUp(Buttons.X))
                 {
                     sm.TimeTravelSoundInstance.Stop();
                     sprite.myState = new IdleState(sprite);
@@ -121,14 +117,14 @@ namespace Nebula.SuperClasses
         {
             public IdleState(Sprite sprite)
             {
-                sprite.myPosition = new Vector2(sprite.myScreenSize.X * -2, sprite.myScreenSize.Y * -2); 
+                sprite.myPosition = new Vector2(sprite.myScreenSize.X * -4, sprite.myScreenSize.Y * -4); 
             }
             public void Update(double elapsedTime, Sprite sprite)
             {
                 SpriteManager sm = (SpriteManager)(sprite);
 
                 // If X key is not being pressed, add positions of sprites to Stack
-                if (!Keyboard.GetState().IsKeyDown(Keys.X))
+                if (!Keyboard.GetState().IsKeyDown(Keys.X) && GamePad.GetState(PlayerIndex.One).IsButtonUp(Buttons.X))
                 {
                     for (int i = 0; i < sm.PositionsList.Count; i ++) {
                     sm.TimeStack.Push(sm.PositionsList[i].myPosition);

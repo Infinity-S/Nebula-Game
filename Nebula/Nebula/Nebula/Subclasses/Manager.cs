@@ -29,12 +29,13 @@ namespace Nebula.Subclasses
         float xSL;
         float ySL;
         Ceres myCeres;
-        double accumTime = 0;
 
         protected internal SpriteFont myFont;
 
         SoundEffect LaserSoundEffect;
         SoundEffect BackwardsLaserSoundEffect;
+        SoundEffectInstance GameOverSoundInstance;
+        SoundEffectInstance CeresMusic;
 
         GameOver GameOverScreen;
 
@@ -49,9 +50,14 @@ namespace Nebula.Subclasses
             myCeres = aCeres;
             spritesList = aSpritesList;
             
-
             LaserSoundEffect = myGame.Content.Load<SoundEffect>("LaserSoundEffect");
             BackwardsLaserSoundEffect = myGame.Content.Load<SoundEffect>("LaserSoundEffectBackwards");
+            SoundEffect GameOverSound = myGame.Content.Load<SoundEffect>("breathofdeath");
+            GameOverSoundInstance = GameOverSound.CreateInstance();
+            SoundEffect Level1Music = myGame.Content.Load<SoundEffect>("CeresMusic");
+            CeresMusic = Level1Music.CreateInstance();
+            CeresMusic.IsLooped = true;
+
             // xSL * -3, ySL * -3
             GameOverScreen = aGameOverScreen;
 
@@ -111,6 +117,8 @@ namespace Nebula.Subclasses
                 new object[0]);
 
             InputManager.AddToKeyboardMap(Keys.F, fire);
+            InputManager.AddToButtonsMap(Buttons.RightTrigger, fire);
+
         }
 
         // Helper method that returns true if Asis's laser is offscreen, false otherwise
@@ -160,7 +168,6 @@ namespace Nebula.Subclasses
             else return false;
         }
 
-
         class GameState : State
         {
             public GameState(Sprite sprite) 
@@ -170,7 +177,6 @@ namespace Nebula.Subclasses
                 float ySL = sprite.myScreenSize.Y;
 
                 // ADD MORE PLATFORMS/ENEMIES HERE
-                
                 sm.AddGrassPlatform(new Vector2(xSL/12, ySL - sm.grass.myTexture.Height * 2), true);
                 sm.AddGrassPlatform(new Vector2(xSL / 2 + xSL / 4 + sm.grass.myTexture.Width / 8, ySL / 2 + ySL / 4), true);
                 sm.AddGrassPlatform(new Vector2(xSL + xSL / 4 - sprite.myTexture.Width, ySL / 2 + ySL / 4), true);
@@ -183,14 +189,16 @@ namespace Nebula.Subclasses
                 sm.AddGrassPlatform(new Vector2(xSL * 2 + sm.grass.myTexture.Width * 5, ySL / 2 + ySL / 4 + sm.grass.myTexture.Height * 2), true);
                 sm.AddGrassPlatform(new Vector2(xSL * 2 + sm.grass.myTexture.Width * 6, ySL / 2 + ySL / 4 + sm.grass.myTexture.Height * 2), true);
                 sm.AddGrassPlatform(new Vector2(xSL * 2 + sm.grass.myTexture.Width * 7, ySL / 2 + ySL / 4 + sm.grass.myTexture.Height * 2), true);
-                
-
             }
             public void Update(double elapsedTime, Sprite sprite)
             {
                 Manager sm = (Manager)sprite;
 
-                sm.accumTime += elapsedTime;
+                if (Keyboard.GetState().IsKeyDown(Keys.X) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.X))
+                {
+                    sm.CeresMusic.Stop();
+                } 
+                else sm.CeresMusic.Play();
 
                 if (sm.aLaserOffScreen())
                 {
@@ -218,7 +226,7 @@ namespace Nebula.Subclasses
                             sm.asis.myVelocity.Y = 0;
 
                             // Allows hero to jump off platforms
-                            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                            if (Keyboard.GetState().IsKeyDown(Keys.Space) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.A))
                             {
                                 sm.asis.myVelocity.Y = -7f;
                             }
@@ -234,20 +242,19 @@ namespace Nebula.Subclasses
                     }
                 }
 
-                //Schuyler worked on this!! to make it so that whener asis is in a specific proximity to a enemy, they attack
+                //Schuyler worked on this!! to make it so that whener asis is in a specific proximity to a enemy, they attack 
                 foreach (Sprite enemy in sm.EnemiesList)
                 {
-                    //attack if Asis is in range between 5 texture widths before enemy position to enemy position 
-                    if ((sm.asis.myPosition.X > (enemy.myPosition.X - (enemy.myTexture.Width * 4)) 
-                        && sm.asis.myPosition.X < enemy.myPosition.X))
+                    //if (sm.asis.myPosition.X > sm.xSL / 2 + sm.xSL / 4 && sm.asis.myPosition.X < sm.xSL / 2 + sm.xSL / 4 + sm.asis.myTexture.Width / 8)
+                    if ((sm.asis.myPosition.X > (enemy.myPosition.X - enemy.myTexture.Width * 5) 
+                        && sm.asis.myPosition.X < enemy.myPosition.X - enemy.myTexture.Width * 4 - enemy.myTexture.Width/2 - enemy.myTexture.Width/4))
+                    /*&& (sm.asis.myPosition.X > sm.xSL / 2 + sm.xSL / 4 && sm.asis.myPosition.X < sm.xSL / 2 + sm.xSL / 4 + sm.asis.myTexture.Width / 8)*/
                     {
-                        //Fire a laser every 1.5 seconds, will be an instance varible, so can be changed 
-                        if (sm.accumTime > 1.5)
-                        {
-                            sm.dLaser.myPosition = new Vector2(enemy.myPosition.X - sm.dLaser.myTexture.Width, enemy.myPosition.Y);
-                            sm.dLaser.myVelocity.X = -16;
-                            sm.accumTime = 0;
-                        }
+                        //need a time if statement, also to clone the lasers?
+                        //a checker 
+                        //if time since last laser been fired > 1.5 seconds
+                        sm.dLaser.myPosition = new Vector2(enemy.myPosition.X - sm.dLaser.myTexture.Width, enemy.myPosition.Y + enemy.myTexture.Height/8);
+                         sm.dLaser.myVelocity.X = -16; 
                     }
                 }
 
@@ -259,9 +266,17 @@ namespace Nebula.Subclasses
                 }
                 else sm.GameOverScreen.myPosition = new Vector2(sm.xSL * -3, sm.ySL * -3);
 
+                if (sm.asis.myPosition.Y > sm.ySL)
+                {
+                    sm.GameOverSoundInstance.Play();
+                    sm.CeresMusic.Stop();
+                }
+                else sm.GameOverSoundInstance.Stop();
+                
+
                 // Plays the laser sound effect in reverse when it falls into a certain range of x pixels 
                 // depending on which direction they were facing when they fired it (when going back in time)
-                if (Keyboard.GetState().IsKeyDown(Keys.X))
+                if (Keyboard.GetState().IsKeyDown(Keys.X) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.X))
                 {
                 double t = sprite.time;
                 // Using the arbitrary grass timer here instead of Asis's because hers is one being displayed on screen and we don't want to reset that one

@@ -50,7 +50,11 @@ namespace Nebula.SuperClasses
                 new object[0]);
 
             InputManager.AddToKeyboardMap(Keys.Left, moveLeft);
+            InputManager.AddToButtonsMap(Buttons.DPadLeft, moveLeft);
+            InputManager.AddToButtonsMap(Buttons.LeftThumbstickLeft, moveLeft);
             InputManager.AddToKeyboardMap(Keys.Right, moveRight);
+            InputManager.AddToButtonsMap(Buttons.DPadRight, moveRight);
+            InputManager.AddToButtonsMap(Buttons.LeftThumbstickRight, moveRight);
         }
         public void GoLeft()
         {
@@ -78,7 +82,7 @@ namespace Nebula.SuperClasses
             }
             public void Update(double elapsedTime, Sprite sprite)
             {
-                if (Keyboard.GetState().IsKeyDown(Keys.Space) && sprite.hasJumped == false)
+                if ((Keyboard.GetState().IsKeyDown(Keys.Space) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.A)) && sprite.hasJumped == false)
                 {
                     sprite.myPosition.Y -= 10f;
                     sprite.myVelocity.Y = -7f;

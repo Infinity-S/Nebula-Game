@@ -106,7 +106,7 @@ namespace Nebula.Subclasses
 
             scrollingManager = new ScrollingManager(asis, myBackgroundSprites, myGraphics.PreferredBackBufferWidth);
 
-            SpriteManager spriteManager = new SpriteManager(myGame.Content.Load<Texture2D>("timet-background"), new Vector2(-1000, -1000),
+            SpriteManager spriteManager = new SpriteManager(myGame.Content.Load<Texture2D>("timet-background"), new Vector2(0, 0),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight), myGame, movingSpritesList, asis);
 
             Manager manager = new Manager(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(-1000, -1000),
@@ -128,6 +128,7 @@ namespace Nebula.Subclasses
 
             InputManager.ActKeyboard(Keyboard.GetState());
             InputManager.ActMouse(Mouse.GetState());
+            InputManager.ActGamePad(GamePad.GetState(PlayerIndex.One));
 
             // TODO: Add your update logic here
             foreach (Sprite s in allSprites)

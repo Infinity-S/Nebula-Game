@@ -32,6 +32,9 @@ namespace Nebula
         // This is the mapping from Keyboard Keys to GameAction objects
         static Dictionary<Keys, List<GameAction>> myKeyboardMap = new Dictionary<Keys, List<GameAction>>();
 
+        // This is the mapping from Gamepad Buttons to GameAction objects
+        static Dictionary<Buttons, List<GameAction>> myButtonsMap = new Dictionary<Buttons, List<GameAction>>();
+
         // Anyone can add a new mapping from key to action.  This method is generic, since I don't
         // want to copy and paste this method for the two different types of Dictionaries I deal with.
         public static void AddToMap<T>(Dictionary<T, List<GameAction>> map, T key, GameAction action)
@@ -56,6 +59,11 @@ namespace Nebula
         public static void AddToKeyboardMap(Keys key, GameAction action)
         {
             AddToMap<Keys>(myKeyboardMap, key, action);
+        }
+
+        public static void AddToButtonsMap(Buttons button, GameAction action)
+        {
+            AddToMap<Buttons>(myButtonsMap, button, action);
         }
 
         // Perform the functions in the MouseDictionary, given the current MouseState.
@@ -87,6 +95,87 @@ namespace Nebula
                 foreach (GameAction a in myMouseMap[POSITION])
                 {
                     a.Invoke(parameterList);
+                }
+            }
+        }
+
+        public static void ActGamePad(GamePadState gamePadState)
+        {
+            if (gamePadState.Buttons.A == ButtonState.Pressed && myButtonsMap.ContainsKey(Buttons.A))
+            {
+                foreach (GameAction a in myButtonsMap[Buttons.A])
+                {
+                    a.Invoke();
+                }
+            }
+            if (gamePadState.Buttons.B == ButtonState.Pressed && myButtonsMap.ContainsKey(Buttons.B))
+            {
+                foreach (GameAction a in myButtonsMap[Buttons.B])
+                {
+                    a.Invoke();
+                }
+            }
+            if (gamePadState.Buttons.X == ButtonState.Pressed && myButtonsMap.ContainsKey(Buttons.X))
+            {
+                foreach (GameAction a in myButtonsMap[Buttons.X])
+                {
+                    a.Invoke();
+                }
+            }
+            if (gamePadState.Buttons.Y == ButtonState.Pressed && myButtonsMap.ContainsKey(Buttons.Y))
+            {
+                foreach (GameAction a in myButtonsMap[Buttons.Y])
+                {
+                    a.Invoke();
+                }
+            }
+            if (gamePadState.Buttons.Start == ButtonState.Pressed && myButtonsMap.ContainsKey(Buttons.Start))
+            {
+                foreach (GameAction a in myButtonsMap[Buttons.Start])
+                {
+                    a.Invoke();
+                }
+            }
+            if (gamePadState.Buttons.Back == ButtonState.Pressed && myButtonsMap.ContainsKey(Buttons.Back))
+            {
+                foreach (GameAction a in myButtonsMap[Buttons.Back])
+                {
+                    a.Invoke();
+                }
+            }
+            if (gamePadState.DPad.Left == ButtonState.Pressed && myButtonsMap.ContainsKey(Buttons.DPadLeft))
+            {
+                foreach (GameAction a in myButtonsMap[Buttons.DPadLeft])
+                {
+                    a.Invoke();
+                }
+            }
+            if (gamePadState.DPad.Right == ButtonState.Pressed && myButtonsMap.ContainsKey(Buttons.DPadRight))
+            {
+                foreach (GameAction a in myButtonsMap[Buttons.DPadRight])
+                {
+                    a.Invoke();
+                }
+            }
+            if (gamePadState.Triggers.Right > 0 && myButtonsMap.ContainsKey(Buttons.RightTrigger))
+            {
+                foreach (GameAction a in myButtonsMap[Buttons.RightTrigger])
+                {
+                    a.Invoke();
+                }
+            }
+            if (gamePadState.ThumbSticks.Left.X == -1 && myButtonsMap.ContainsKey(Buttons.LeftThumbstickLeft))
+            {
+                foreach (GameAction a in myButtonsMap[Buttons.LeftThumbstickLeft])
+                {
+                    a.Invoke();
+                }
+            }
+            if (gamePadState.ThumbSticks.Left.X == 1 && myButtonsMap.ContainsKey(Buttons.LeftThumbstickRight))
+            {
+                foreach (GameAction a in myButtonsMap[Buttons.LeftThumbstickRight])
+                {
+                    a.Invoke();
                 }
             }
         }

@@ -48,7 +48,7 @@ namespace Nebula
             LEFT_INTERVAL = CameraSize * .10;
             //right interval is 40% of screen, so the player can see what is coming next
             RIGHT_INTERVAL = CameraSize * .60;
-            MAX_CAMERA_POS = backgroundLength; //1000 ; 
+            MAX_CAMERA_POS = backgroundLength; 
 
         }
 
@@ -70,8 +70,8 @@ namespace Nebula
             }
             if (myAsis.myPosition.X > myBackgrounds[0].myPosition.X + myBackgrounds[0].myTexture.Width * 2)
             {
-                myBackgrounds[0].myPosition.X = myBackgrounds[myBackgrounds.Count-1].myPosition.X
-                           + myBackgrounds[myBackgrounds.Count - 1].myTexture.Width;
+                myBackgrounds[0].myPosition.X = myBackgrounds[4].myPosition.X
+                           + myBackgrounds[4].myTexture.Width;
             }
 
             }
@@ -87,9 +87,9 @@ namespace Nebula
                     - myBackgrounds[i + 1].myTexture.Width;
                 }
             }
-            if (myAsis.myPosition.X < myBackgrounds[myBackgrounds.Count - 1].myPosition.X - myBackgrounds[myBackgrounds.Count - 1].myTexture.Width * 2)
+            if (myAsis.myPosition.X < myBackgrounds[4].myPosition.X - myBackgrounds[4].myTexture.Width * 2)
             {
-                myBackgrounds[myBackgrounds.Count - 1].myPosition.X = myBackgrounds[0].myPosition.X
+                myBackgrounds[4].myPosition.X = myBackgrounds[0].myPosition.X
                            - myBackgrounds[0].myTexture.Width;
             }
 
@@ -97,7 +97,9 @@ namespace Nebula
 
         public void Update(double totalSecs)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Left) /*&& myAsis.myPosition.X < LEFT_INTERVAL*/)
+            /*&& myAsis.myPosition.X < LEFT_INTERVAL*/
+            if (Keyboard.GetState().IsKeyDown(Keys.Left) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftThumbstickLeft)
+                || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadLeft))
             {
                 ScrollBackward();
                 
@@ -108,7 +110,9 @@ namespace Nebula
                 
             }
                 //&& only if Asis is less than the length of the level 
-            else if (Keyboard.GetState().IsKeyDown(Keys.Right)/*&& myAsis.myPosition.X < MAX_CAMERA_POS && myAsis.myPosition.X > LEFT_INTERVAL*/)
+            /*&& myAsis.myPosition.X < MAX_CAMERA_POS && myAsis.myPosition.X > LEFT_INTERVAL*/
+            else if (Keyboard.GetState().IsKeyDown(Keys.Right) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftThumbstickRight)
+                || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadRight))
             {
                 ScrollForward();
                 
@@ -146,12 +150,6 @@ namespace Nebula
                 }
             }
              */
-
-            //updates all the background sprites 
-            //foreach (Sprite b in myBackgrounds)
-            //{
-            //    b.Update(totalSecs);
-            //}
             
         }
 
