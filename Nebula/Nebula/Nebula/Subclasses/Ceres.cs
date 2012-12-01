@@ -33,10 +33,10 @@ namespace Nebula.Subclasses
             myGame = aGame;
             asis = anAsis;
             spriteBatch = aSpriteBatch;
-            LoadCeresSprites();
+            LoadSprites();
         }
 
-        private void LoadCeresSprites()
+        private void LoadSprites()
         {
             AsisLaser aLaser = new AsisLaser(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(0, 0),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));

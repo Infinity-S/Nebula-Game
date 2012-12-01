@@ -29,6 +29,7 @@ namespace Nebula.Subclasses
         float xSL;
         float ySL;
         Ceres myCeres;
+        double accumTime = 0; 
 
         protected internal SpriteFont myFont;
 
@@ -194,6 +195,8 @@ namespace Nebula.Subclasses
             {
                 Manager sm = (Manager)sprite;
 
+                sm.accumTime += elapsedTime; 
+
                 if (Keyboard.GetState().IsKeyDown(Keys.X) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.X))
                 {
                     sm.CeresMusic.Stop();
@@ -242,19 +245,20 @@ namespace Nebula.Subclasses
                     }
                 }
 
-                //Schuyler worked on this!! to make it so that whener asis is in a specific proximity to a enemy, they attack 
+                //Schuyler worked on this!! to make it so that whener asis is in a specific proximity to a enemy, they attack
                 foreach (Sprite enemy in sm.EnemiesList)
                 {
-                    //if (sm.asis.myPosition.X > sm.xSL / 2 + sm.xSL / 4 && sm.asis.myPosition.X < sm.xSL / 2 + sm.xSL / 4 + sm.asis.myTexture.Width / 8)
-                    if ((sm.asis.myPosition.X > (enemy.myPosition.X - enemy.myTexture.Width * 5) 
-                        && sm.asis.myPosition.X < enemy.myPosition.X - enemy.myTexture.Width * 4 - enemy.myTexture.Width/2 - enemy.myTexture.Width/4))
-                    /*&& (sm.asis.myPosition.X > sm.xSL / 2 + sm.xSL / 4 && sm.asis.myPosition.X < sm.xSL / 2 + sm.xSL / 4 + sm.asis.myTexture.Width / 8)*/
+                    //attack if Asis is in range between 5 texture widths before enemy position to enemy position 
+                    if ((sm.asis.myPosition.X > (enemy.myPosition.X - (enemy.myTexture.Width * 4))
+                        && sm.asis.myPosition.X < enemy.myPosition.X))
                     {
-                        //need a time if statement, also to clone the lasers?
-                        //a checker 
-                        //if time since last laser been fired > 1.5 seconds
-                        sm.dLaser.myPosition = new Vector2(enemy.myPosition.X - sm.dLaser.myTexture.Width, enemy.myPosition.Y + enemy.myTexture.Height/8);
-                         sm.dLaser.myVelocity.X = -16; 
+                        //Fire a laser every 1.5 seconds, will be an instance varible, so can be changed 
+                        if (sm.accumTime > 1.5)
+                        {
+                            sm.dLaser.myPosition = new Vector2(enemy.myPosition.X - sm.dLaser.myTexture.Width, enemy.myPosition.Y);
+                            sm.dLaser.myVelocity.X = -16;
+                            sm.accumTime = 0;
+                        }
                     }
                 }
 
@@ -262,7 +266,7 @@ namespace Nebula.Subclasses
                 if (sm.Hit(sm.asis, sm.dLaser) || sm.asis.myPosition.Y > sm.ySL + sm.ySL/2)
                 {
                     sm.asis.myPosition.Y = sm.asis.myPosition.Y + sm.ySL;
-                    sm.GameOverScreen.myPosition = new Vector2(sm.asis.myPosition.X - sm.xSL / 6, 0);
+                    //sm.GameOverScreen.myPosition = new Vector2(sm.asis.myPosition.X - sm.xSL / 6, 0);
                 }
                 else sm.GameOverScreen.myPosition = new Vector2(sm.xSL * -3, sm.ySL * -3);
 
