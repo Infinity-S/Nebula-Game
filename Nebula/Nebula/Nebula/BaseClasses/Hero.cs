@@ -16,6 +16,7 @@ namespace Nebula.SuperClasses
     class Hero : Sprite
     {
         protected String direction;
+        SoundEffect BoostSound;
 
         public String getDirection()
         {
@@ -26,16 +27,22 @@ namespace Nebula.SuperClasses
             direction = s;
         }
 
-        public Hero(Texture2D texture, Vector2 position, Vector2 screen) 
+        public Hero(Texture2D texture, Vector2 position, Vector2 screen, Game1 myGame) 
             : base(texture, position)   
         {
             myScreenSize = screen;
             myState = new ExistState(this);
             hasJumped = true;
-            myPosition.X = myScreenSize.X/12;
+            // (myScreenSize.X * 2 + myScreenSize.X / 2);
+            // Change back to  for start of game
+            myPosition.X = myScreenSize.X / 12;
+                
             myPosition.Y = myScreenSize.Y - myTexture.Height * 2;
             // Start her facing to the right
             direction = "right";
+
+            BoostSound = myGame.Content.Load<SoundEffect>("boost-sound");
+
             SetUpInput();
         }
 
@@ -49,29 +56,46 @@ namespace Nebula.SuperClasses
                 this, this.GetType().GetMethod("GoRight"),
                 new object[0]);
 
+            GameAction boost = new GameAction(
+                this, this.GetType().GetMethod("Boost"),
+                new object[0]);
+
             InputManager.AddToKeyboardMap(Keys.Left, moveLeft);
             InputManager.AddToButtonsMap(Buttons.DPadLeft, moveLeft);
             InputManager.AddToButtonsMap(Buttons.LeftThumbstickLeft, moveLeft);
             InputManager.AddToKeyboardMap(Keys.Right, moveRight);
             InputManager.AddToButtonsMap(Buttons.DPadRight, moveRight);
             InputManager.AddToButtonsMap(Buttons.LeftThumbstickRight, moveRight);
+            InputManager.AddToButtonsMap(Buttons.B, boost);
+            InputManager.AddToKeyboardMap(Keys.B, boost);
         }
         public void GoLeft()
         {
-            // if (myPosition.X > myScreenSize.X * .10)
-            // {
                 myPosition.X -= 5;
                 direction = "left";
-            // }
         }
         public void GoRight()
         {
-            // if (myPosition.X < myScreenSize.X * .60)
-            // {
                 myPosition.X += 5;
                 direction = "right";
-
-            // }
+        }
+        public void Boost()
+        {
+            if (time > 5)
+            {
+                if (direction.Equals("right"))
+                {
+                    BoostSound.Play();
+                    myPosition.X += 200;
+                    time = 0;    
+                }
+                if (direction.Equals("left"))
+                {
+                    BoostSound.Play();
+                    myPosition.X -= 200;
+                    time = 0;
+                }
+            }
         }
 
         // State that Asis begins in - ability to jump and gravity are built into this state

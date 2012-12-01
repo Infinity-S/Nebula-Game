@@ -29,7 +29,7 @@ namespace Nebula.Subclasses
         float xSL;
         float ySL;
         Ceres myCeres;
-        double accumTime = 0; 
+        SpriteManager mySpriteManager;
 
         protected internal SpriteFont myFont;
 
@@ -40,8 +40,10 @@ namespace Nebula.Subclasses
 
         GameOver GameOverScreen;
 
+        private Sprite[] BoostBar = new Sprite[5];
+
         public Manager(Texture2D texture, Vector2 position, Vector2 screen, Game1 aGame, Ceres aCeres, 
-            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis asis2, GameOver aGameOverScreen)
+            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis asis2, GameOver aGameOverScreen, SpriteManager aSpriteManager)
             : base(texture, position, screen, aGame, aPlatformsList, asis2) 
         {
             myTexture = texture;
@@ -59,8 +61,20 @@ namespace Nebula.Subclasses
             CeresMusic = Level1Music.CreateInstance();
             CeresMusic.IsLooped = true;
 
+            BoostBar[0] = new Sprite(myGame.Content.Load<Texture2D>("boost-bar1"), new Vector2(0, 0));
+            BoostBar[1] = new Sprite(myGame.Content.Load<Texture2D>("boost-bar2"), new Vector2(0, 0));
+            BoostBar[2] = new Sprite(myGame.Content.Load<Texture2D>("boost-bar3"), new Vector2(0, 0));
+            BoostBar[3] = new Sprite(myGame.Content.Load<Texture2D>("boost-bar4"), new Vector2(0, 0));
+            BoostBar[4] = new Sprite(myGame.Content.Load<Texture2D>("boost-bar5"), new Vector2(0, 0));
+
+            foreach (Sprite s in BoostBar)
+            {
+                myCeres.AddSprite(s);
+            }
+
             // xSL * -3, ySL * -3
             GameOverScreen = aGameOverScreen;
+            mySpriteManager = aSpriteManager;
 
             for (int i = 0; i < aPlatformsList.Count; i++)
             {
@@ -85,7 +99,7 @@ namespace Nebula.Subclasses
         }
         
 
-        public void AddGrassPlatform(Vector2 position, bool canLandOn)
+        private void AddGrassPlatform(Vector2 position, bool canLandOn)
         {
             Sprite newGrassPlatform = grass.Clone();
             newGrassPlatform.myPosition = position;
@@ -97,16 +111,28 @@ namespace Nebula.Subclasses
             }
         }
 
-        /*
-        public DraconisEnemy AddDraconisEnemy(Vector2 position)
+        
+        private void AddDraconisEnemy(Vector2 position, char c)
         {
-            Sprite newDraconisEnemy = dEnemy.Clone();
-            newDraconisEnemy.myPosition = position;
-            myGame.AddSprite(newDraconisEnemy);
-            EnemiesList.Add((DraconisEnemy)newDraconisEnemy);
-            return (DraconisEnemy)newDraconisEnemy;
+            if (c == 'd')
+            {
+                Sprite newEnemy = dEnemy.Clone();
+                newEnemy.myPosition = position;
+                mySpriteManager.addToPositionsList(newEnemy);
+                myCeres.AddSprite(newEnemy);
+                EnemiesList.Add((DraconisEnemy)newEnemy);
+            }
+            if (c == 'h')
+            {
+                // Change to match HydromedaEnemy instead of DraconisEnemy
+                Sprite newEnemy = dEnemy.Clone();
+                newEnemy.myPosition = position;
+                mySpriteManager.addToPositionsList(newEnemy);
+                myCeres.AddSprite(newEnemy);
+                EnemiesList.Add((DraconisEnemy)newEnemy);
+            }
         }
-        */
+        
 
         public void SetUpInput2()
         {
@@ -190,24 +216,51 @@ namespace Nebula.Subclasses
                 sm.AddGrassPlatform(new Vector2(xSL * 2 + sm.grass.myTexture.Width * 5, ySL / 2 + ySL / 4 + sm.grass.myTexture.Height * 2), true);
                 sm.AddGrassPlatform(new Vector2(xSL * 2 + sm.grass.myTexture.Width * 6, ySL / 2 + ySL / 4 + sm.grass.myTexture.Height * 2), true);
                 sm.AddGrassPlatform(new Vector2(xSL * 2 + sm.grass.myTexture.Width * 7, ySL / 2 + ySL / 4 + sm.grass.myTexture.Height * 2), true);
+
+                // ySL / 2 + ySL / 4 + sm.grass.myTexture.Height * 2
+                sm.AddGrassPlatform(new Vector2(xSL * 3 + xSL / 16, ySL/2 + ySL/4), true);
+                sm.AddGrassPlatform(new Vector2(xSL * 3 - xSL/ 16, ySL / 2 + ySL/32), true);
+                sm.AddGrassPlatform(new Vector2(xSL * 3 + xSL/4 + sm.grass.myTexture.Width/2, ySL / 2), true);
+                sm.AddGrassPlatform(new Vector2(xSL * 3 + xSL / 4 + sm.grass.myTexture.Width, ySL / 2 - sm.grass.myTexture.Height), true);
+                sm.AddGrassPlatform(new Vector2(xSL * 3 + xSL / 4 + sm.grass.myTexture.Width * 2, ySL / 2 - sm.grass.myTexture.Height * 2), true);
+                sm.AddGrassPlatform(new Vector2(xSL * 3 + xSL / 4 + sm.grass.myTexture.Width * 3, ySL / 2 - sm.grass.myTexture.Height * 3), true);
+                sm.AddGrassPlatform(new Vector2(xSL * 3 + xSL / 4 + sm.grass.myTexture.Width * 4, ySL / 2 - sm.grass.myTexture.Height * 4), true);
+                sm.AddGrassPlatform(new Vector2(xSL * 3 + xSL / 4 + sm.grass.myTexture.Width * 5, ySL / 2 - sm.grass.myTexture.Height * 5), true);
+                sm.AddGrassPlatform(new Vector2(xSL * 3 + xSL / 4 + sm.grass.myTexture.Width * 6, ySL / 2 - sm.grass.myTexture.Height * 5), true);
+
+                sm.AddGrassPlatform(new Vector2(xSL * 3 + xSL / 4 + sm.grass.myTexture.Width * 11, ySL - sm.grass.myTexture.Height * 2), true);
+
+
+                // sm.AddDraconisEnemy(new Vector2(400,400), 'd');
+
             }
             public void Update(double elapsedTime, Sprite sprite)
             {
                 Manager sm = (Manager)sprite;
 
-                sm.accumTime += elapsedTime; 
+                for (int i = 0; i < sm.BoostBar.Length; i++)
+                {
+                    if (sm.asis.time >= i + 1)
+                    {
+                        sm.BoostBar[i].myPosition = new Vector2(sm.asis.myPosition.X + sm.xSL/2 + sm.xSL/6,0);
+                    }
+                    else
+                    {
+                        sm.BoostBar[i].myPosition = new Vector2(sm.xSL * -2, sm.ySL * -2);
+                    }
+                }
 
                 if (Keyboard.GetState().IsKeyDown(Keys.X) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.X))
                 {
                     sm.CeresMusic.Stop();
                 } 
-                else sm.CeresMusic.Play();
+                // else sm.CeresMusic.Play();
 
+                // If Asis's laser is off screen 
                 if (sm.aLaserOffScreen())
                 {
                     sm.aLaser.myPosition = new Vector2(sm.aLaser.myPosition.X, sm.aLaser.myPosition.Y + sm.ySL);
                 }
-
                     // For each platform, if Asis jumps on it - set her y velocity to 0
                     for (int i = 0; i < sm.platformsList.Count; i++)
                     {
@@ -225,9 +278,7 @@ namespace Nebula.Subclasses
                                 sm.asis.myPosition.Y -= 5;
                             }
                             */
-
                             sm.asis.myVelocity.Y = 0;
-
                             // Allows hero to jump off platforms
                             if (Keyboard.GetState().IsKeyDown(Keys.Space) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.A))
                             {
@@ -245,20 +296,19 @@ namespace Nebula.Subclasses
                     }
                 }
 
-                //Schuyler worked on this!! to make it so that whener asis is in a specific proximity to a enemy, they attack
+                //Schuyler worked on this!! to make it so that whener asis is in a specific proximity to a enemy, they attack 
                 foreach (Sprite enemy in sm.EnemiesList)
                 {
-                    //attack if Asis is in range between 5 texture widths before enemy position to enemy position 
-                    if ((sm.asis.myPosition.X > (enemy.myPosition.X - (enemy.myTexture.Width * 4))
-                        && sm.asis.myPosition.X < enemy.myPosition.X))
+                    //if (sm.asis.myPosition.X > sm.xSL / 2 + sm.xSL / 4 && sm.asis.myPosition.X < sm.xSL / 2 + sm.xSL / 4 + sm.asis.myTexture.Width / 8)
+                    if ((sm.asis.myPosition.X > (enemy.myPosition.X - enemy.myTexture.Width * 5) 
+                        && sm.asis.myPosition.X < enemy.myPosition.X - enemy.myTexture.Width * 4 - enemy.myTexture.Width/2 - enemy.myTexture.Width/4))
+                    /*&& (sm.asis.myPosition.X > sm.xSL / 2 + sm.xSL / 4 && sm.asis.myPosition.X < sm.xSL / 2 + sm.xSL / 4 + sm.asis.myTexture.Width / 8)*/
                     {
-                        //Fire a laser every 1.5 seconds, will be an instance varible, so can be changed 
-                        if (sm.accumTime > 1.5)
-                        {
-                            sm.dLaser.myPosition = new Vector2(enemy.myPosition.X - sm.dLaser.myTexture.Width, enemy.myPosition.Y);
-                            sm.dLaser.myVelocity.X = -16;
-                            sm.accumTime = 0;
-                        }
+                        //need a time if statement, also to clone the lasers?
+                        //a checker 
+                        //if time since last laser been fired > 1.5 seconds
+                        sm.dLaser.myPosition = new Vector2(enemy.myPosition.X - sm.dLaser.myTexture.Width, enemy.myPosition.Y + enemy.myTexture.Height/8);
+                         sm.dLaser.myVelocity.X = -16; 
                     }
                 }
 
@@ -266,7 +316,7 @@ namespace Nebula.Subclasses
                 if (sm.Hit(sm.asis, sm.dLaser) || sm.asis.myPosition.Y > sm.ySL + sm.ySL/2)
                 {
                     sm.asis.myPosition.Y = sm.asis.myPosition.Y + sm.ySL;
-                    //sm.GameOverScreen.myPosition = new Vector2(sm.asis.myPosition.X - sm.xSL / 6, 0);
+                    sm.GameOverScreen.myPosition = new Vector2(sm.asis.myPosition.X - sm.xSL / 6, 0);
                 }
                 else sm.GameOverScreen.myPosition = new Vector2(sm.xSL * -3, sm.ySL * -3);
 

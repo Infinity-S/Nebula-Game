@@ -23,8 +23,6 @@ namespace Nebula.Subclasses
         List<Sprite> platformsList = new List<Sprite>();
         List<BackgroundSprite> myBackgroundSprites = new List<BackgroundSprite>();
         ScrollingManager scrollingManager;
-        //private BackgroundLayer[] backgrounds; 
-       // private 
         SpriteFont myFont;
 
         public Ceres(Game1 aGame, GraphicsDeviceManager aGraphics, Asis anAsis, SpriteBatch aSpriteBatch)
@@ -33,10 +31,10 @@ namespace Nebula.Subclasses
             myGame = aGame;
             asis = anAsis;
             spriteBatch = aSpriteBatch;
-            LoadSprites();
+            LoadCeresSprites();
         }
 
-        private void LoadSprites()
+        private void LoadCeresSprites()
         {
             AsisLaser aLaser = new AsisLaser(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(0, 0),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
@@ -111,7 +109,7 @@ namespace Nebula.Subclasses
 
             Manager manager = new Manager(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(-1000, -1000),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight), 
-                myGame, this, movingSpritesList, platformsList, myFont, asis, gameOverScreen);
+                myGame, this, movingSpritesList, platformsList, myFont, asis, gameOverScreen, spriteManager);
 
             allSprites.Add(gameOverScreen);
             allSprites.Add(spriteManager);

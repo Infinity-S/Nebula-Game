@@ -19,12 +19,9 @@ namespace Nebula.Subclasses
         public HydromedaEnemy(Texture2D image, Vector2 position, Vector2 screen)
             : base(image, position)
         {
+            myTexture = image;
+            myPosition = position;
             myScreenSize = screen;
-            // myState = new ExistState(this);
-            // Start in lower right hand of screen
-
-            myPosition.X = myScreenSize.X + myScreenSize.X / 2;
-            myPosition.Y = myScreenSize.Y - myTexture.Height;
         }
 
 

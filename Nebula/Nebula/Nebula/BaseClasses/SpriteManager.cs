@@ -32,6 +32,11 @@ namespace Nebula.SuperClasses
             PositionsList = myPositionsList;
         }
 
+        public void addToPositionsList(Sprite s)
+        {
+            PositionsList.Add(s);
+        }
+
         public SpriteManager(Texture2D texture, Vector2 position, Vector2 screen, Game1 aGame,
             List<Sprite> aPositionsList, Asis asis)
             : base(texture, position)

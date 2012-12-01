@@ -122,6 +122,34 @@ namespace Nebula
                 }
                 
             }
+            /*
+            // scrolling when Asis is moving left
+            //  && charPos < LEFT_INTERVAL
+            if (Keyboard.GetState().IsKeyDown(Keys.Left))
+            {
+                //cameraPos = myAsis.myPosition.X - (float)LEFT_INTERVAL;
+                //ScrollBackward(); 
+                ScrollForward();
+                foreach (BackgroundSprite bs in myBackgrounds)
+                {
+                    //bs.myPosition += -scrollingDirection * aSpeed * (float)totalSecs;
+                    bs.myPosition += -scrollingDirection * aSpeed;
+                }
+            }
+            // scrolling when Asis is moving right
+            // myAsis.myPosition.X > RIGHT_INTERVAL && 
+            else if (Keyboard.GetState().IsKeyDown(Keys.Right))
+            {
+                float cameraMovement = charPos + (float) RIGHT_INTERVAL;
+                ScrollForward(); 
+                foreach (BackgroundSprite bs in myBackgrounds)
+                {
+                    //bs.myPosition += scrollingDirection * aSpeed * (float)totalSecs; 
+                    //bs.myPosition += new Vector2(cameraMovement, 0)*scrollingDirection*aSpeed; 
+                   bs.myPosition += scrollingDirection * aSpeed;
+                }
+            }
+             */
             
         }
 

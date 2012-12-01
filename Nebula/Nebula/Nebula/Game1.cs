@@ -54,7 +54,7 @@ namespace Nebula
             mySpriteBatch = new SpriteBatch(GraphicsDevice);
 
             Asis myAsis = new Asis(Content.Load<Texture2D>("Asis"), new Vector2(0, 0),
-                new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight));
+                new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), this);
 
             camera = new Camera(GraphicsDevice.Viewport, myAsis);
 
