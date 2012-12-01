@@ -161,7 +161,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-bar3.xnb</Output>
-      <Time>2012-12-01T06:57:34-05:00</Time>
+      <Time>2012-12-01T18:33:11.9148761-05:00</Time>
     </Item>
     <Item>
       <Source>boost-bar4.png</Source>
@@ -170,7 +170,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-bar4.xnb</Output>
-      <Time>2012-12-01T06:57:38-05:00</Time>
+      <Time>2012-12-01T18:33:11.9168763-05:00</Time>
     </Item>
     <Item>
       <Source>boost-bar5.png</Source>
@@ -179,7 +179,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-bar5.xnb</Output>
-      <Time>2012-12-01T06:57:42-05:00</Time>
+      <Time>2012-12-01T18:33:11.9188765-05:00</Time>
     </Item>
     <Item>
       <Source>boost-bar1.png</Source>
@@ -188,7 +188,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-bar1.xnb</Output>
-      <Time>2012-12-01T06:58:12-05:00</Time>
+      <Time>2012-12-01T18:33:11.9108757-05:00</Time>
     </Item>
     <Item>
       <Source>boost-bar2.png</Source>
@@ -197,7 +197,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-bar2.xnb</Output>
-      <Time>2012-12-01T06:58:14-05:00</Time>
+      <Time>2012-12-01T18:33:11.9128759-05:00</Time>
     </Item>
     <Item>
       <Source>time-swoosh.wav</Source>
@@ -242,7 +242,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-sound.xnb</Output>
-      <Time>2012-12-01T07:21:30-05:00</Time>
+      <Time>2012-12-01T18:33:11.923877-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
