@@ -9,38 +9,40 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Nebula.SuperClasses;
+using Nebula.BaseClasses; 
 
 namespace Nebula.Subclasses
 {
-    class Ceres
+    class Ceres : Level
     {
-        Game1 myGame;
-        GraphicsDeviceManager myGraphics;
-        Asis asis;
-        SpriteBatch spriteBatch;
-        List<Sprite> allSprites = new List<Sprite>();
-        List<Sprite> movingSpritesList = new List<Sprite>();
-        List<Sprite> platformsList = new List<Sprite>();
-        List<BackgroundSprite> myBackgroundSprites = new List<BackgroundSprite>();
-        ScrollingManager scrollingManager;
-        SpriteFont myFont;
+        //Game1 myGame;
+        //GraphicsDeviceManager myGraphics;
+        //Asis asis;
+        //SpriteBatch spriteBatch;
+        //List<Sprite> allSprites = new List<Sprite>();
+        //List<Sprite> movingSpritesList = new List<Sprite>();
+        //List<Sprite> platformsList = new List<Sprite>();
+        //List<BackgroundSprite> myBackgroundSprites = new List<BackgroundSprite>();
+        //ScrollingManager scrollingManager;
+        //SpriteFont myFont;
 
         public Ceres(Game1 aGame, GraphicsDeviceManager aGraphics, Asis anAsis, SpriteBatch aSpriteBatch)
+            : base (aGame, aGraphics, anAsis, aSpriteBatch)
         {
-            myGraphics = aGraphics;
-            myGame = aGame;
-            asis = anAsis;
-            spriteBatch = aSpriteBatch;
-            LoadCeresSprites();
+            //myGraphics = aGraphics;
+            //myGame = aGame;
+            //asis = anAsis;
+            //spriteBatch = aSpriteBatch;
+            //LoadCeresSprites();
         }
 
-        private void LoadCeresSprites()
+        public override void LoadSprites()
         {
             AsisLaser aLaser = new AsisLaser(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(0, 0),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
-            DraconisEnemy dEnemy = new DraconisEnemy(myGame.Content.Load<Texture2D>("enemy-red"),
-                new Vector2(myGraphics.PreferredBackBufferWidth + myGraphics.PreferredBackBufferWidth / 4 - asis.myTexture.Width / 2,
+            Enemy dEnemy = new Enemy(myGame.Content.Load<Texture2D>("enemy-red"),
+                new Vector2(myGraphics.PreferredBackBufferWidth + myGraphics.PreferredBackBufferWidth / 4 - myAsis.myTexture.Width / 2,
                     myGraphics.PreferredBackBufferHeight / 2 + myGraphics.PreferredBackBufferHeight / 4 - myGraphics.PreferredBackBufferHeight / 8),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
@@ -52,14 +54,14 @@ namespace Nebula.Subclasses
                 new Vector2(myGraphics.PreferredBackBufferWidth / 2, myGraphics.PreferredBackBufferHeight - myGraphics.PreferredBackBufferHeight / 8),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
-            DraconisEnemy dEnemy2 = new DraconisEnemy(myGame.Content.Load<Texture2D>("enemy-red"),
+            Enemy dEnemy2 = new Enemy(myGame.Content.Load<Texture2D>("enemy-red"),
                 new Vector2(myGraphics.PreferredBackBufferWidth * 2 + grassPlatform.myTexture.Width * 7,
                     myGraphics.PreferredBackBufferHeight / 2 + myGraphics.PreferredBackBufferHeight / 4 - dEnemy.myTexture.Height / 4),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
             myFont = myGame.Content.Load<SpriteFont>("SpriteFont1");
 
-            movingSpritesList.Add(asis);
+            movingSpritesList.Add(myAsis);
             movingSpritesList.Add(aLaser);
             movingSpritesList.Add(dEnemy);
             movingSpritesList.Add(dLaser);
@@ -67,7 +69,7 @@ namespace Nebula.Subclasses
 
             platformsList.Add(grassPlatform);
 
-            allSprites.Add(asis);
+            allSprites.Add(myAsis);
             allSprites.Add(dLaser);
             allSprites.Add(dEnemy);
             allSprites.Add(aLaser);
@@ -102,48 +104,60 @@ namespace Nebula.Subclasses
             GameOver gameOverScreen = new GameOver(myGame.Content.Load<Texture2D>("death-screen"), new Vector2(0, 0), 
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
-            scrollingManager = new ScrollingManager(asis, myBackgroundSprites, myGraphics.PreferredBackBufferWidth);
+            scrollingManager = new ScrollingManager(myAsis, myBackgroundSprites, myGraphics.PreferredBackBufferWidth);
 
             SpriteManager spriteManager = new SpriteManager(myGame.Content.Load<Texture2D>("timet-background"), new Vector2(0, 0),
-                new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight), myGame, movingSpritesList, asis);
+                new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight), myGame, movingSpritesList, myAsis);
 
             Manager manager = new Manager(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(-1000, -1000),
-                new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight), 
-                myGame, this, movingSpritesList, platformsList, myFont, asis, gameOverScreen, spriteManager);
+                new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight),
+                myGame, this, movingSpritesList, platformsList, myFont, myAsis, gameOverScreen, spriteManager);
 
             allSprites.Add(gameOverScreen);
             allSprites.Add(spriteManager);
             allSprites.Add(manager);
         }
 
-        public void AddSprite(Sprite s)
-        {
-            allSprites.Add(s);
-        }
-
         public void Update(GameTime gameTime)
         {
-
-            InputManager.ActKeyboard(Keyboard.GetState());
-            InputManager.ActMouse(Mouse.GetState());
-            InputManager.ActGamePad(GamePad.GetState(PlayerIndex.One));
-
-            // TODO: Add your update logic here
-            foreach (Sprite s in allSprites)
-            {
-                s.Update(gameTime.ElapsedGameTime.TotalSeconds);
-            }
-            //updating the background for scrolling 
+            base.Update(gameTime);
             scrollingManager.Update(gameTime.ElapsedGameTime.TotalSeconds); 
         }
 
         public void Draw(GameTime gameTime)
         {
-            scrollingManager.Draw(spriteBatch);
-            foreach (Sprite s in allSprites)
-            {
-                s.Draw(spriteBatch);
-            }
+            scrollingManager.Draw(spriteBatch); 
+            base.Draw(gameTime); 
         }
+
+        //public void AddSprite(Sprite s)
+        //{
+        //    allSprites.Add(s);
+        //}
+
+        //public void Update(GameTime gameTime)
+        //{
+
+        //    InputManager.ActKeyboard(Keyboard.GetState());
+        //    InputManager.ActMouse(Mouse.GetState());
+        //    InputManager.ActGamePad(GamePad.GetState(PlayerIndex.One));
+
+        //    // TODO: Add your update logic here
+        //    foreach (Sprite s in allSprites)
+        //    {
+        //        s.Update(gameTime.ElapsedGameTime.TotalSeconds);
+        //    }
+        //    //updating the background for scrolling 
+        //    scrollingManager.Update(gameTime.ElapsedGameTime.TotalSeconds); 
+        //}
+
+        //public void Draw(GameTime gameTime)
+        //{
+        //    scrollingManager.Draw(spriteBatch);
+        //    foreach (Sprite s in allSprites)
+        //    {
+        //        s.Draw(spriteBatch);
+        //    }
+        //}
     }
 }

@@ -81,12 +81,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackgroundLayer.cs" />
+    <Compile Include="BaseClasses\Level.cs" />
     <Compile Include="Subclasses\Asis.cs" />
     <Compile Include="BackgroundSprite.cs" />
     <Compile Include="Subclasses\AsisLaser.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="Subclasses\Ceres.cs" />
-    <Compile Include="Subclasses\DraconisEnemy.cs" />
+    <Compile Include="Subclasses\CeresLevelManager.cs" />
+    <Compile Include="Subclasses\Enemy.cs" />
     <Compile Include="GameAction.cs" />
     <Compile Include="BaseClasses\InputManager.cs" />
     <Compile Include="Subclasses\DraconisLaser.cs" />
@@ -100,7 +102,6 @@
     <Compile Include="BaseClasses\Hero.cs" />
     <Compile Include="Subclasses\GameOver.cs" />
     <Compile Include="Subclasses\GrassPlatform.cs" />
-    <Compile Include="Subclasses\HydromedaEnemy.cs" />
     <Compile Include="Subclasses\HydromedaLaser.cs" />
     <Compile Include="Subclasses\Manager.cs" />
     <Compile Include="Subclasses\Sycia.cs" />

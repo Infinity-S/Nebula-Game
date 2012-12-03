@@ -17,15 +17,13 @@ namespace Nebula.Subclasses
     {
         List<Sprite> spritesList;
         AsisLaser aLaser;
-        DraconisEnemy dEnemy;
-        DraconisEnemy dEnemy2;
+        Enemy dEnemy;
+        Enemy dEnemy2;
         DraconisLaser dLaser;
         Asis asis;
-        // Sprite[] platformsArray = new Sprite[50];
         List<Sprite> platformsList = new List<Sprite>();
-        List<DraconisEnemy> EnemiesList = new List<DraconisEnemy>();
+        List<Enemy> EnemiesList = new List<Enemy>();
         public GrassPlatform grass;
-        // Shorthand for X screen length and Y screen length
         float xSL;
         float ySL;
         Ceres myCeres;
@@ -87,9 +85,9 @@ namespace Nebula.Subclasses
 
             asis = (Asis)spritesList[0];
             aLaser = (AsisLaser)spritesList[1];
-            dEnemy = (DraconisEnemy)spritesList[2];
+            dEnemy = (Enemy)spritesList[2];
             dLaser = (DraconisLaser)spritesList[3];
-            dEnemy2 = (DraconisEnemy)spritesList[4];
+            dEnemy2 = (Enemy)spritesList[4];
 
             EnemiesList.Add(dEnemy);
             EnemiesList.Add(dEnemy2);
@@ -101,17 +99,17 @@ namespace Nebula.Subclasses
 
         private void AddPlatform(Vector2 position, bool canLandOn)
         {
-            Sprite newGrassPlatform = grass.Clone();
-            newGrassPlatform.myPosition = position;
-            myCeres.AddSprite(newGrassPlatform);
+            Sprite newPlatform = grass.Clone();
+            newPlatform.myPosition = position;
+            myCeres.AddSprite(newPlatform);
             // If we want Asis to be able to land on the platform and not fall through - add it to the platformsList
             if (canLandOn)
             {
-                platformsList.Add(newGrassPlatform);
+                platformsList.Add(newPlatform);
             }
         }
 
-        public void AddItemsToLevel(Sprite sprite, float xSL, float ySL)
+        public virtual void AddItemsToLevel(Sprite sprite, float xSL, float ySL)
         {
             // ADD MORE PLATFORMS/ENEMIES HERE
             AddPlatform(new Vector2(xSL / 12, ySL - grass.myTexture.Height * 2), true);
@@ -161,7 +159,7 @@ namespace Nebula.Subclasses
                 newEnemy.myPosition = position;
                 mySpriteManager.addToPositionsList(newEnemy);
                 myCeres.AddSprite(newEnemy);
-                EnemiesList.Add((DraconisEnemy)newEnemy);
+                EnemiesList.Add((Enemy)newEnemy);
             }
             if (c == 'h')
             {
@@ -170,7 +168,7 @@ namespace Nebula.Subclasses
                 newEnemy.myPosition = position;
                 mySpriteManager.addToPositionsList(newEnemy);
                 myCeres.AddSprite(newEnemy);
-                EnemiesList.Add((DraconisEnemy)newEnemy);
+                EnemiesList.Add((Enemy)newEnemy);
             }
         }
 
