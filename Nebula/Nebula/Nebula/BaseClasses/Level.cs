@@ -57,12 +57,12 @@ namespace Nebula.BaseClasses
                 s.Update(gameTime.ElapsedGameTime.TotalSeconds);
             }
             //updating the background for scrolling 
-           // scrollingManager.Update(gameTime.ElapsedGameTime.TotalSeconds);
+           scrollingManager.Update(gameTime.ElapsedGameTime.TotalSeconds);
         }
 
         public virtual void Draw(GameTime gameTime)
         {
-            //scrollingManager.Draw(spriteBatch);
+            scrollingManager.Draw(spriteBatch);
             foreach (Sprite s in allSprites)
             {
                 s.Draw(spriteBatch);

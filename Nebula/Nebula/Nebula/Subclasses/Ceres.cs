@@ -15,25 +15,10 @@ namespace Nebula.Subclasses
 {
     class Ceres : Level
     {
-        //Game1 myGame;
-        //GraphicsDeviceManager myGraphics;
-        //Asis asis;
-        //SpriteBatch spriteBatch;
-        //List<Sprite> allSprites = new List<Sprite>();
-        //List<Sprite> movingSpritesList = new List<Sprite>();
-        //List<Sprite> platformsList = new List<Sprite>();
-        //List<BackgroundSprite> myBackgroundSprites = new List<BackgroundSprite>();
-        //ScrollingManager scrollingManager;
-        //SpriteFont myFont;
 
         public Ceres(Game1 aGame, GraphicsDeviceManager aGraphics, Asis anAsis, SpriteBatch aSpriteBatch)
             : base (aGame, aGraphics, anAsis, aSpriteBatch)
         {
-            //myGraphics = aGraphics;
-            //myGame = aGame;
-            //asis = anAsis;
-            //spriteBatch = aSpriteBatch;
-            //LoadCeresSprites();
         }
 
         public override void LoadSprites()
@@ -46,17 +31,12 @@ namespace Nebula.Subclasses
                     myGraphics.PreferredBackBufferHeight / 2 + myGraphics.PreferredBackBufferHeight / 4 - myGraphics.PreferredBackBufferHeight / 8),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
-            DraconisLaser dLaser = new DraconisLaser(myGame.Content.Load<Texture2D>("redLaser"), new Vector2(myGraphics.PreferredBackBufferWidth * -1, myGraphics.PreferredBackBufferHeight * -1),
+            EnemyLaser dLaser = new EnemyLaser(myGame.Content.Load<Texture2D>("redLaser"), new Vector2(myGraphics.PreferredBackBufferWidth * -1, myGraphics.PreferredBackBufferHeight * -1),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
             // Initial grass platform, others are cloned in the Manager class 
-            GrassPlatform grassPlatform = new GrassPlatform((myGame.Content.Load<Texture2D>("grass")),
+            Platform grassPlatform = new Platform((myGame.Content.Load<Texture2D>("grass")),
                 new Vector2(myGraphics.PreferredBackBufferWidth / 2, myGraphics.PreferredBackBufferHeight - myGraphics.PreferredBackBufferHeight / 8),
-                new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
-
-            Enemy dEnemy2 = new Enemy(myGame.Content.Load<Texture2D>("enemy-red"),
-                new Vector2(myGraphics.PreferredBackBufferWidth * 2 + grassPlatform.myTexture.Width * 7,
-                    myGraphics.PreferredBackBufferHeight / 2 + myGraphics.PreferredBackBufferHeight / 4 - dEnemy.myTexture.Height / 4),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
             myFont = myGame.Content.Load<SpriteFont>("SpriteFont1");
@@ -65,7 +45,6 @@ namespace Nebula.Subclasses
             movingSpritesList.Add(aLaser);
             movingSpritesList.Add(dEnemy);
             movingSpritesList.Add(dLaser);
-            movingSpritesList.Add(dEnemy2);
 
             platformsList.Add(grassPlatform);
 
@@ -74,7 +53,6 @@ namespace Nebula.Subclasses
             allSprites.Add(dEnemy);
             allSprites.Add(aLaser);
             allSprites.Add(grassPlatform);
-            allSprites.Add(dEnemy2);
 
             //adding the test background images/Sprites
             //their positions are tacked on to each other, so they form one long background image 
@@ -109,7 +87,7 @@ namespace Nebula.Subclasses
             SpriteManager spriteManager = new SpriteManager(myGame.Content.Load<Texture2D>("timet-background"), new Vector2(0, 0),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight), myGame, movingSpritesList, myAsis);
 
-            Manager manager = new Manager(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(-1000, -1000),
+            CeresLevelManager manager = new CeresLevelManager(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(-1000, -1000),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight),
                 myGame, this, movingSpritesList, platformsList, myFont, myAsis, gameOverScreen, spriteManager);
 
@@ -117,47 +95,5 @@ namespace Nebula.Subclasses
             allSprites.Add(spriteManager);
             allSprites.Add(manager);
         }
-
-        public void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-            scrollingManager.Update(gameTime.ElapsedGameTime.TotalSeconds); 
-        }
-
-        public void Draw(GameTime gameTime)
-        {
-            scrollingManager.Draw(spriteBatch); 
-            base.Draw(gameTime); 
-        }
-
-        //public void AddSprite(Sprite s)
-        //{
-        //    allSprites.Add(s);
-        //}
-
-        //public void Update(GameTime gameTime)
-        //{
-
-        //    InputManager.ActKeyboard(Keyboard.GetState());
-        //    InputManager.ActMouse(Mouse.GetState());
-        //    InputManager.ActGamePad(GamePad.GetState(PlayerIndex.One));
-
-        //    // TODO: Add your update logic here
-        //    foreach (Sprite s in allSprites)
-        //    {
-        //        s.Update(gameTime.ElapsedGameTime.TotalSeconds);
-        //    }
-        //    //updating the background for scrolling 
-        //    scrollingManager.Update(gameTime.ElapsedGameTime.TotalSeconds); 
-        //}
-
-        //public void Draw(GameTime gameTime)
-        //{
-        //    scrollingManager.Draw(spriteBatch);
-        //    foreach (Sprite s in allSprites)
-        //    {
-        //        s.Draw(spriteBatch);
-        //    }
-        //}
     }
 }

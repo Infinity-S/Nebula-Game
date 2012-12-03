@@ -9,39 +9,39 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Nebula.SuperClasses;
+using Nebula.BaseClasses; 
 
 
 namespace Nebula.Subclasses
 {
-    class Manager : SpriteManager
+    class LevelManager : SpriteManager
     {
-        List<Sprite> spritesList;
-        AsisLaser aLaser;
-        Enemy dEnemy;
-        Enemy dEnemy2;
-        DraconisLaser dLaser;
-        Asis asis;
-        List<Sprite> platformsList = new List<Sprite>();
-        List<Enemy> EnemiesList = new List<Enemy>();
-        public GrassPlatform grass;
-        float xSL;
-        float ySL;
-        Ceres myCeres;
-        double enemyWeaponFireTime = 1.5;
-        SpriteManager mySpriteManager;
+        protected internal List<Sprite> spritesList;
+        protected internal AsisLaser aLaser;
+        protected internal Enemy aEnemy;
+        protected internal EnemyLaser eLaser;
+        protected internal Asis asis;
+        protected internal List<Sprite> platformsList = new List<Sprite>();
+        protected internal List<Enemy> EnemiesList = new List<Enemy>();
+        protected internal Platform myPlatform;
+        protected internal float xSL;
+        protected internal float ySL;
+        protected internal Level myLevel;
+        protected internal double enemyWeaponFireTime = 1.5;
+        protected internal SpriteManager mySpriteManager;
 
         protected internal SpriteFont myFont;
 
-        SoundEffect LaserSoundEffect;
-        SoundEffect BackwardsLaserSoundEffect;
-        SoundEffectInstance GameOverSoundInstance;
-        SoundEffectInstance CeresMusic;
+        protected internal  SoundEffect LaserSoundEffect;
+        protected internal SoundEffect BackwardsLaserSoundEffect;
+        protected internal SoundEffectInstance GameOverSoundInstance;
+        protected internal  SoundEffectInstance LevelMusic;
 
         GameOver GameOverScreen;
 
         private Sprite[] BoostBar = new Sprite[5];
 
-        public Manager(Texture2D texture, Vector2 position, Vector2 screen, Game1 aGame, Ceres aCeres,
+        public LevelManager(Texture2D texture, Vector2 position, Vector2 screen, Game1 aGame, Level aLevel,
             List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis asis2, GameOver aGameOverScreen, SpriteManager aSpriteManager)
             : base(texture, position, screen, aGame, aPlatformsList, asis2)
         {
@@ -49,16 +49,17 @@ namespace Nebula.Subclasses
             myPosition = position;
             myScreenSize = screen;
             myGame = aGame;
-            myCeres = aCeres;
-            spritesList = aSpritesList;
+            myLevel = aLevel;
+            spritesList = aSpritesList; 
 
+            //Music for the level 
             LaserSoundEffect = myGame.Content.Load<SoundEffect>("LaserSoundEffect");
             BackwardsLaserSoundEffect = myGame.Content.Load<SoundEffect>("LaserSoundEffectBackwards");
             SoundEffect GameOverSound = myGame.Content.Load<SoundEffect>("breathofdeath");
             GameOverSoundInstance = GameOverSound.CreateInstance();
-            SoundEffect Level1Music = myGame.Content.Load<SoundEffect>("CeresMusic");
-            CeresMusic = Level1Music.CreateInstance();
-            CeresMusic.IsLooped = true;
+            SoundEffect BackgroundMusic = myGame.Content.Load<SoundEffect>("CeresMusic");
+            LevelMusic = BackgroundMusic.CreateInstance();
+            LevelMusic.IsLooped = true;
 
             BoostBar[0] = new Sprite(myGame.Content.Load<Texture2D>("boost-bar1"), new Vector2(0, 0));
             BoostBar[1] = new Sprite(myGame.Content.Load<Texture2D>("boost-bar2"), new Vector2(0, 0));
@@ -68,7 +69,7 @@ namespace Nebula.Subclasses
 
             foreach (Sprite s in BoostBar)
             {
-                myCeres.AddSprite(s);
+                myLevel.AddSprite(s);
             }
 
             GameOverScreen = aGameOverScreen;
@@ -81,27 +82,24 @@ namespace Nebula.Subclasses
 
             myFont = aFont;
 
-            grass = (GrassPlatform)platformsList[0];
-
+            myPlatform = (Platform)platformsList[0];
             asis = (Asis)spritesList[0];
             aLaser = (AsisLaser)spritesList[1];
-            dEnemy = (Enemy)spritesList[2];
-            dLaser = (DraconisLaser)spritesList[3];
-            dEnemy2 = (Enemy)spritesList[4];
+            aEnemy = (Enemy)spritesList[2];
+            eLaser = (EnemyLaser)spritesList[3];
 
-            EnemiesList.Add(dEnemy);
-            EnemiesList.Add(dEnemy2);
+            EnemiesList.Add(aEnemy); 
 
             myState = new GameState(this);
             SetUpInput2();
         }
 
 
-        private void AddPlatform(Vector2 position, bool canLandOn)
+        public void AddPlatform(Vector2 position, bool canLandOn)
         {
-            Sprite newPlatform = grass.Clone();
+            Sprite newPlatform = myPlatform.Clone();
             newPlatform.myPosition = position;
-            myCeres.AddSprite(newPlatform);
+            myLevel.AddSprite(newPlatform);
             // If we want Asis to be able to land on the platform and not fall through - add it to the platformsList
             if (canLandOn)
             {
@@ -111,63 +109,35 @@ namespace Nebula.Subclasses
 
         public virtual void AddItemsToLevel(Sprite sprite, float xSL, float ySL)
         {
-            // ADD MORE PLATFORMS/ENEMIES HERE
-            AddPlatform(new Vector2(xSL / 12, ySL - grass.myTexture.Height * 2), true);
-            AddPlatform(new Vector2(xSL / 2 + xSL / 4 + grass.myTexture.Width / 8, ySL / 2 + ySL / 4), true);
-            AddPlatform(new Vector2(xSL + xSL / 4 - sprite.myTexture.Width, ySL / 2 + ySL / 4), true);
-            AddPlatform(new Vector2(xSL + xSL / 2, ySL / 2 + ySL / 16), true);
-            AddPlatform(new Vector2(xSL + xSL / 2 + grass.myTexture.Width, ySL / 2 + ySL / 16), false);
-            AddPlatform(new Vector2(xSL + xSL / 2 + grass.myTexture.Width * 2, ySL / 2 + ySL / 16), false);
-            AddPlatform(new Vector2(xSL + xSL / 2 + grass.myTexture.Width * 3, ySL / 2 + ySL / 16), true);
-            AddPlatform(new Vector2(xSL * 2 + grass.myTexture.Width * 3, ySL / 2 + ySL / 4 + grass.myTexture.Height * 2), true);
-            AddPlatform(new Vector2(xSL * 2 + grass.myTexture.Width * 4, ySL / 2 + ySL / 4 + grass.myTexture.Height * 2), true);
-            AddPlatform(new Vector2(xSL * 2 + grass.myTexture.Width * 5, ySL / 2 + ySL / 4 + grass.myTexture.Height * 2), true);
-            AddPlatform(new Vector2(xSL * 2 + grass.myTexture.Width * 6, ySL / 2 + ySL / 4 + grass.myTexture.Height * 2), true);
-            AddPlatform(new Vector2(xSL * 2 + grass.myTexture.Width * 7, ySL / 2 + ySL / 4 + grass.myTexture.Height * 2), true);
-
-            // ySL / 2 + ySL / 4 + sm.grass.myTexture.Height * 2
-            AddPlatform(new Vector2(xSL * 3 + xSL / 16, ySL / 2 + ySL / 4), true);
-            AddPlatform(new Vector2(xSL * 3 - xSL / 16, ySL / 2 + ySL / 32), true);
-            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + grass.myTexture.Width / 2, ySL / 2), true);
-            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + grass.myTexture.Width, ySL / 2 - grass.myTexture.Height), true);
-            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + grass.myTexture.Width * 2, ySL / 2 - grass.myTexture.Height * 2), true);
-            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + grass.myTexture.Width * 3, ySL / 2 - grass.myTexture.Height * 3), true);
-            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + grass.myTexture.Width * 4, ySL / 2 - grass.myTexture.Height * 4), true);
-            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + grass.myTexture.Width * 5, ySL / 2 - grass.myTexture.Height * 5), true);
-            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + grass.myTexture.Width * 6, ySL / 2 - grass.myTexture.Height * 5), true);
-
-            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + grass.myTexture.Width * 11, ySL - grass.myTexture.Height * 2), true);
-
-            AddEnemy(new Vector2(400, 400), 'd');
         }
 
         public void PlayLevelMusic()
         {
             if (Keyboard.GetState().IsKeyDown(Keys.X) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.X))
             {
-                CeresMusic.Stop();
+                LevelMusic.Stop();
             }
-            else CeresMusic.Play();
+            else LevelMusic.Play();
         }
 
 
-        private void AddEnemy(Vector2 position, char c)
+        public void AddEnemy(Vector2 position, char c)
         {
             if (c == 'd')
             {
-                Sprite newEnemy = dEnemy.Clone();
+                Sprite newEnemy = aEnemy.Clone();
                 newEnemy.myPosition = position;
                 mySpriteManager.addToPositionsList(newEnemy);
-                myCeres.AddSprite(newEnemy);
+                myLevel.AddSprite(newEnemy);
                 EnemiesList.Add((Enemy)newEnemy);
             }
             if (c == 'h')
             {
                 // Change to match HydromedaEnemy instead of DraconisEnemy
-                Sprite newEnemy = dEnemy.Clone();
+                Sprite newEnemy = aEnemy.Clone();
                 newEnemy.myPosition = position;
                 mySpriteManager.addToPositionsList(newEnemy);
-                myCeres.AddSprite(newEnemy);
+                myLevel.AddSprite(newEnemy);
                 EnemiesList.Add((Enemy)newEnemy);
             }
         }
@@ -295,8 +265,8 @@ namespace Nebula.Subclasses
                     //Fire a laser every 1.5 seconds, will be an instance varible, so can be changed 
                     if (enemy.time > enemyWeaponFireTime)
                     {
-                        dLaser.myPosition = new Vector2(enemy.myPosition.X - dLaser.myTexture.Width, enemy.myPosition.Y);
-                        dLaser.myVelocity.X = -16;
+                        eLaser.myPosition = new Vector2(enemy.myPosition.X - eLaser.myTexture.Width, enemy.myPosition.Y);
+                        eLaser.myVelocity.X = -16;
                         enemy.time = 0;
                     }
                 }
@@ -312,7 +282,7 @@ namespace Nebula.Subclasses
                 double t = sprite.time;
                 // Using the arbitrary grass timer here instead of Asis's because hers is one being displayed on screen and we don't want to reset that one
                 // even when she is going back in time
-                if (grass.time > .5)
+                if (myPlatform.time > .5)
                 {
                     float xFireFromLeft = asis.myPosition.X - (aLaser.myTexture.Width * 2) - myScreenSize.X / 2;
                     // sm.myScreenSize.X/8 = size of x range
@@ -320,7 +290,7 @@ namespace Nebula.Subclasses
                     if (aLaser.myPosition.X <= xFireFromLeft && aLaser.myPosition.X >= xFireFromLeftPlus)
                     {
                         BackwardsLaserSoundEffect.Play();
-                        grass.time = 0;
+                        myPlatform.time = 0;
                     }
                     float xFireFromRight = asis.myPosition.X + (asis.myTexture.Width * 2) + myScreenSize.X / 2;
                     // sm.myScreenSize.X/8 = size of x range
@@ -328,7 +298,7 @@ namespace Nebula.Subclasses
                     if (aLaser.myPosition.X >= xFireFromRight && aLaser.myPosition.X <= xFireFromRightPlus)
                     {
                         BackwardsLaserSoundEffect.Play();
-                        grass.time = 0;
+                        myPlatform.time = 0;
                     }
                 }
             }
@@ -352,7 +322,7 @@ namespace Nebula.Subclasses
         public void GameOverLogic()
         {
             // If Asis gets hit by Enemy laser, display GameOverScreen - otherwise hide it
-            if (Hit(asis, dLaser) || asis.myPosition.Y > ySL + ySL / 2)
+            if (Hit(asis, eLaser) || asis.myPosition.Y > ySL + ySL / 2)
             {
                 asis.myPosition.Y = asis.myPosition.Y + ySL;
                 GameOverScreen.myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
@@ -362,7 +332,7 @@ namespace Nebula.Subclasses
             if (asis.myPosition.Y > ySL)
             {
                 GameOverSoundInstance.Play();
-                CeresMusic.Stop();
+                LevelMusic.Stop();
             }
             else GameOverSoundInstance.Stop();
         }
@@ -373,7 +343,7 @@ namespace Nebula.Subclasses
             //and only the update if we add in more 'powers' 
             public GameState(Sprite sprite)
             {
-                Manager sm = (Manager)sprite;
+                LevelManager sm = (LevelManager)sprite;
                 float xSL = sprite.myScreenSize.X;
                 float ySL = sprite.myScreenSize.Y;
 
@@ -382,7 +352,7 @@ namespace Nebula.Subclasses
             }
             public void Update(double elapsedTime, Sprite sprite)
             {
-                Manager sm = (Manager)sprite;
+                LevelManager sm = (LevelManager)sprite;
 
                 sm.BoostAbility(); 
 
@@ -402,7 +372,7 @@ namespace Nebula.Subclasses
             }
             public void Draw(Sprite sprite, SpriteBatch batch)
             {
-                Manager sm = (Manager)sprite;
+                LevelManager sm = (LevelManager)sprite;
 
                 batch.Draw(sprite.myTexture, sprite.myPosition,
                 null, Color.White,
