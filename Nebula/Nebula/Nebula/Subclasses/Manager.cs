@@ -29,7 +29,6 @@ namespace Nebula.Subclasses
         float xSL;
         float ySL;
         Ceres myCeres;
-        double accumTime = 0;
         double enemyWeaponFireTime = 1.5;
         SpriteManager mySpriteManager;
 
@@ -74,7 +73,6 @@ namespace Nebula.Subclasses
                 myCeres.AddSprite(s);
             }
 
-            // xSL * -3, ySL * -3
             GameOverScreen = aGameOverScreen;
             mySpriteManager = aSpriteManager;
 
@@ -101,7 +99,7 @@ namespace Nebula.Subclasses
         }
 
 
-        private void AddGrassPlatform(Vector2 position, bool canLandOn)
+        private void AddPlatform(Vector2 position, bool canLandOn)
         {
             Sprite newGrassPlatform = grass.Clone();
             newGrassPlatform.myPosition = position;
@@ -111,6 +109,38 @@ namespace Nebula.Subclasses
             {
                 platformsList.Add(newGrassPlatform);
             }
+        }
+
+        public void AddItemsToLevel(Sprite sprite, float xSL, float ySL)
+        {
+            // ADD MORE PLATFORMS/ENEMIES HERE
+            AddPlatform(new Vector2(xSL / 12, ySL - grass.myTexture.Height * 2), true);
+            AddPlatform(new Vector2(xSL / 2 + xSL / 4 + grass.myTexture.Width / 8, ySL / 2 + ySL / 4), true);
+            AddPlatform(new Vector2(xSL + xSL / 4 - sprite.myTexture.Width, ySL / 2 + ySL / 4), true);
+            AddPlatform(new Vector2(xSL + xSL / 2, ySL / 2 + ySL / 16), true);
+            AddPlatform(new Vector2(xSL + xSL / 2 + grass.myTexture.Width, ySL / 2 + ySL / 16), false);
+            AddPlatform(new Vector2(xSL + xSL / 2 + grass.myTexture.Width * 2, ySL / 2 + ySL / 16), false);
+            AddPlatform(new Vector2(xSL + xSL / 2 + grass.myTexture.Width * 3, ySL / 2 + ySL / 16), true);
+            AddPlatform(new Vector2(xSL * 2 + grass.myTexture.Width * 3, ySL / 2 + ySL / 4 + grass.myTexture.Height * 2), true);
+            AddPlatform(new Vector2(xSL * 2 + grass.myTexture.Width * 4, ySL / 2 + ySL / 4 + grass.myTexture.Height * 2), true);
+            AddPlatform(new Vector2(xSL * 2 + grass.myTexture.Width * 5, ySL / 2 + ySL / 4 + grass.myTexture.Height * 2), true);
+            AddPlatform(new Vector2(xSL * 2 + grass.myTexture.Width * 6, ySL / 2 + ySL / 4 + grass.myTexture.Height * 2), true);
+            AddPlatform(new Vector2(xSL * 2 + grass.myTexture.Width * 7, ySL / 2 + ySL / 4 + grass.myTexture.Height * 2), true);
+
+            // ySL / 2 + ySL / 4 + sm.grass.myTexture.Height * 2
+            AddPlatform(new Vector2(xSL * 3 + xSL / 16, ySL / 2 + ySL / 4), true);
+            AddPlatform(new Vector2(xSL * 3 - xSL / 16, ySL / 2 + ySL / 32), true);
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + grass.myTexture.Width / 2, ySL / 2), true);
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + grass.myTexture.Width, ySL / 2 - grass.myTexture.Height), true);
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + grass.myTexture.Width * 2, ySL / 2 - grass.myTexture.Height * 2), true);
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + grass.myTexture.Width * 3, ySL / 2 - grass.myTexture.Height * 3), true);
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + grass.myTexture.Width * 4, ySL / 2 - grass.myTexture.Height * 4), true);
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + grass.myTexture.Width * 5, ySL / 2 - grass.myTexture.Height * 5), true);
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + grass.myTexture.Width * 6, ySL / 2 - grass.myTexture.Height * 5), true);
+
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + grass.myTexture.Width * 11, ySL - grass.myTexture.Height * 2), true);
+
+            AddEnemy(new Vector2(400, 400), 'd');
         }
 
         public void PlayLevelMusic()
@@ -123,7 +153,7 @@ namespace Nebula.Subclasses
         }
 
 
-        private void AddDraconisEnemy(Vector2 position, char c)
+        private void AddEnemy(Vector2 position, char c)
         {
             if (c == 'd')
             {
@@ -247,6 +277,14 @@ namespace Nebula.Subclasses
             }
         }
 
+        public void AsisLaserOffScreenLogic()
+        {
+            if (aLaserOffScreen())
+            {
+                aLaser.myPosition = new Vector2(aLaser.myPosition.X, aLaser.myPosition.Y + ySL);
+            }
+        }
+
         public void EnemyShootingAI()
         {
             //Schuyler worked on this!! to make it so that whener asis is in a specific proximity to a enemy, they attack
@@ -257,11 +295,11 @@ namespace Nebula.Subclasses
                     && asis.myPosition.X < enemy.myPosition.X))
                 {
                     //Fire a laser every 1.5 seconds, will be an instance varible, so can be changed 
-                    if (accumTime > enemyWeaponFireTime)
+                    if (enemy.time > enemyWeaponFireTime)
                     {
                         dLaser.myPosition = new Vector2(enemy.myPosition.X - dLaser.myTexture.Width, enemy.myPosition.Y);
                         dLaser.myVelocity.X = -16;
-                        accumTime = 0;
+                        enemy.time = 0;
                     }
                 }
             }
@@ -298,6 +336,21 @@ namespace Nebula.Subclasses
             }
         }
 
+        public void BoostAbility()
+        {
+            for (int i = 0; i < BoostBar.Length; i++)
+            {
+                if (asis.time >= i + 1)
+                {
+                    BoostBar[i].myPosition = new Vector2(asis.myPosition.X + xSL / 2 + xSL / 6, 0);
+                }
+                else
+                {
+                    BoostBar[i].myPosition = new Vector2(xSL * -2, ySL * -2);
+                }
+            }
+        }
+
         public void GameOverLogic()
         {
             // If Asis gets hit by Enemy laser, display GameOverScreen - otherwise hide it
@@ -326,172 +379,26 @@ namespace Nebula.Subclasses
                 float xSL = sprite.myScreenSize.X;
                 float ySL = sprite.myScreenSize.Y;
 
-                // ADD MORE PLATFORMS/ENEMIES HERE
-                sm.AddGrassPlatform(new Vector2(xSL / 12, ySL - sm.grass.myTexture.Height * 2), true);
-                sm.AddGrassPlatform(new Vector2(xSL / 2 + xSL / 4 + sm.grass.myTexture.Width / 8, ySL / 2 + ySL / 4), true);
-                sm.AddGrassPlatform(new Vector2(xSL + xSL / 4 - sprite.myTexture.Width, ySL / 2 + ySL / 4), true);
-                sm.AddGrassPlatform(new Vector2(xSL + xSL / 2, ySL / 2 + ySL / 16), true);
-                sm.AddGrassPlatform(new Vector2(xSL + xSL / 2 + sm.grass.myTexture.Width, ySL / 2 + ySL / 16), false);
-                sm.AddGrassPlatform(new Vector2(xSL + xSL / 2 + sm.grass.myTexture.Width * 2, ySL / 2 + ySL / 16), false);
-                sm.AddGrassPlatform(new Vector2(xSL + xSL / 2 + sm.grass.myTexture.Width * 3, ySL / 2 + ySL / 16), true);
-                sm.AddGrassPlatform(new Vector2(xSL * 2 + sm.grass.myTexture.Width * 3, ySL / 2 + ySL / 4 + sm.grass.myTexture.Height * 2), true);
-                sm.AddGrassPlatform(new Vector2(xSL * 2 + sm.grass.myTexture.Width * 4, ySL / 2 + ySL / 4 + sm.grass.myTexture.Height * 2), true);
-                sm.AddGrassPlatform(new Vector2(xSL * 2 + sm.grass.myTexture.Width * 5, ySL / 2 + ySL / 4 + sm.grass.myTexture.Height * 2), true);
-                sm.AddGrassPlatform(new Vector2(xSL * 2 + sm.grass.myTexture.Width * 6, ySL / 2 + ySL / 4 + sm.grass.myTexture.Height * 2), true);
-                sm.AddGrassPlatform(new Vector2(xSL * 2 + sm.grass.myTexture.Width * 7, ySL / 2 + ySL / 4 + sm.grass.myTexture.Height * 2), true);
-
-                // ySL / 2 + ySL / 4 + sm.grass.myTexture.Height * 2
-                sm.AddGrassPlatform(new Vector2(xSL * 3 + xSL / 16, ySL / 2 + ySL / 4), true);
-                sm.AddGrassPlatform(new Vector2(xSL * 3 - xSL / 16, ySL / 2 + ySL / 32), true);
-                sm.AddGrassPlatform(new Vector2(xSL * 3 + xSL / 4 + sm.grass.myTexture.Width / 2, ySL / 2), true);
-                sm.AddGrassPlatform(new Vector2(xSL * 3 + xSL / 4 + sm.grass.myTexture.Width, ySL / 2 - sm.grass.myTexture.Height), true);
-                sm.AddGrassPlatform(new Vector2(xSL * 3 + xSL / 4 + sm.grass.myTexture.Width * 2, ySL / 2 - sm.grass.myTexture.Height * 2), true);
-                sm.AddGrassPlatform(new Vector2(xSL * 3 + xSL / 4 + sm.grass.myTexture.Width * 3, ySL / 2 - sm.grass.myTexture.Height * 3), true);
-                sm.AddGrassPlatform(new Vector2(xSL * 3 + xSL / 4 + sm.grass.myTexture.Width * 4, ySL / 2 - sm.grass.myTexture.Height * 4), true);
-                sm.AddGrassPlatform(new Vector2(xSL * 3 + xSL / 4 + sm.grass.myTexture.Width * 5, ySL / 2 - sm.grass.myTexture.Height * 5), true);
-                sm.AddGrassPlatform(new Vector2(xSL * 3 + xSL / 4 + sm.grass.myTexture.Width * 6, ySL / 2 - sm.grass.myTexture.Height * 5), true);
-
-                sm.AddGrassPlatform(new Vector2(xSL * 3 + xSL / 4 + sm.grass.myTexture.Width * 11, ySL - sm.grass.myTexture.Height * 2), true);
-
-
-                // sm.AddDraconisEnemy(new Vector2(400,400), 'd');
+                sm.AddItemsToLevel(sprite, xSL, ySL); 
 
             }
             public void Update(double elapsedTime, Sprite sprite)
             {
                 Manager sm = (Manager)sprite;
 
-                sm.accumTime += elapsedTime;
-
-                for (int i = 0; i < sm.BoostBar.Length; i++)
-                {
-                    if (sm.asis.time >= i + 1)
-                    {
-                        sm.BoostBar[i].myPosition = new Vector2(sm.asis.myPosition.X + sm.xSL / 2 + sm.xSL / 6, 0);
-                    }
-                    else
-                    {
-                        sm.BoostBar[i].myPosition = new Vector2(sm.xSL * -2, sm.ySL * -2);
-                    }
-                }
-
-                //if (Keyboard.GetState().IsKeyDown(Keys.X) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.X))
-                //{
-                //    sm.CeresMusic.Stop();
-                //} 
-                //else sm.CeresMusic.Play();
+                sm.BoostAbility(); 
 
                 sm.PlayLevelMusic();
 
-                // If Asis's laser is off screen 
-                if (sm.aLaserOffScreen())
-                {
-                    sm.aLaser.myPosition = new Vector2(sm.aLaser.myPosition.X, sm.aLaser.myPosition.Y + sm.ySL);
-                }
+                sm.AsisLaserOffScreenLogic(); 
 
-                //// For each platform, if Asis jumps on it - set her y velocity to 0
-                //for (int i = 0; i < sm.platformsList.Count; i++)
-                //{
-                //    if (sm.asis.myPosition.Y + sm.asis.myTexture.Height >= sm.platformsList[i].myPosition.Y
-                //        && sm.asis.myPosition.Y + sm.asis.myTexture.Height <= sm.platformsList[i].myPosition.Y + sm.platformsList[i].myTexture.Height
-                //        && sm.asis.myPosition.X + sm.asis.myTexture.Width / 2 >= sm.platformsList[i].myPosition.X
-                //        && sm.asis.myPosition.X + sm.asis.myTexture.Width / 2 <= sm.platformsList[i].myPosition.X + sm.platformsList[i].myTexture.Width)
-                //    {
-                //        /*
-                //        // If statement helps avoid a glitch when going back in time Asis would get stuck below a platform
-                //        if (Keyboard.GetState().IsKeyDown(Keys.X)
-                //            && sm.asis.myPosition.Y + sm.asis.myTexture.Height <= sm.platformsList[i].myPosition.Y + sm.platformsList[i].myTexture.Height
-                //            && sm.asis.myPosition.Y + sm.asis.myTexture.Height >= sm.platformsList[i].myPosition.Y)
-                //        {
-                //            sm.asis.myPosition.Y -= 5;
-                //        }
-                //        */
-                //        sm.asis.myVelocity.Y = 0;
-                //        // Allows hero to jump off platforms
-                //        if (Keyboard.GetState().IsKeyDown(Keys.Space) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.A))
-                //        {
-                //            sm.asis.myVelocity.Y = -7f;
-                //        }
-                //    }
-                //}
                 sm.AsisPlatformLogic();
-
-                //// For each enemy, if Asis's laser hits them, kill them
-                //for (int i = 0; i < sm.EnemiesList.Count; i++)
-                //{
-                //    if (sm.Hit(sm.EnemiesList[i], sm.aLaser))
-                //    {
-                //        sm.EnemiesList[i].Die();
-                //    }
-                //}
 
                 sm.AsisKillEnemies();
 
-                ////Schuyler worked on this!! to make it so that whener asis is in a specific proximity to a enemy, they attack
-                //foreach (Sprite enemy in sm.EnemiesList)
-                //{
-                //    //attack if Asis is in range between 5 texture widths before enemy position to enemy position 
-                //    if ((sm.asis.myPosition.X > (enemy.myPosition.X - (enemy.myTexture.Width * 4))
-                //        && sm.asis.myPosition.X < enemy.myPosition.X))
-                //    {
-                //        //Fire a laser every 1.5 seconds, will be an instance varible, so can be changed 
-                //        if (sm.accumTime > 1.5)
-                //        {
-                //            sm.dLaser.myPosition = new Vector2(enemy.myPosition.X - sm.dLaser.myTexture.Width, enemy.myPosition.Y);
-                //            sm.dLaser.myVelocity.X = -16;
-                //            sm.accumTime = 0;
-                //        }
-                //    }
-                //}
-
                 sm.EnemyShootingAI();
 
-
-                //// If Asis gets hit by Enemy laser, display GameOverScreen - otherwise hide it
-                //if (sm.Hit(sm.asis, sm.dLaser) || sm.asis.myPosition.Y > sm.ySL + sm.ySL/2)
-                //{
-                //    sm.asis.myPosition.Y = sm.asis.myPosition.Y + sm.ySL;
-                //    sm.GameOverScreen.myPosition = new Vector2(sm.asis.myPosition.X - sm.xSL / 6, 0);
-                //}
-                //else sm.GameOverScreen.myPosition = new Vector2(sm.xSL * -3, sm.ySL * -3);
-
-                //if (sm.asis.myPosition.Y > sm.ySL)
-                //{
-                //    sm.GameOverSoundInstance.Play();
-                //    sm.CeresMusic.Stop();
-                //}
-                //else sm.GameOverSoundInstance.Stop();
-
                 sm.GameOverLogic();
-
-
-                //// Plays the laser sound effect in reverse when it falls into a certain range of x pixels 
-                //// depending on which direction they were facing when they fired it (when going back in time)
-                //if (Keyboard.GetState().IsKeyDown(Keys.X) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.X))
-                //{
-                //double t = sprite.time;
-                //// Using the arbitrary grass timer here instead of Asis's because hers is one being displayed on screen and we don't want to reset that one
-                //// even when she is going back in time
-                //if (sm.grass.time > .5)
-                // {
-                //    float xFireFromLeft = sm.asis.myPosition.X - (sm.aLaser.myTexture.Width * 2) - sm.myScreenSize.X / 2;
-                //        // sm.myScreenSize.X/8 = size of x range
-                //        float xFireFromLeftPlus = xFireFromLeft - sm.myScreenSize.X/8;
-                //        if (sm.aLaser.myPosition.X <= xFireFromLeft && sm.aLaser.myPosition.X >= xFireFromLeftPlus)
-                //        {
-                //            sm.BackwardsLaserSoundEffect.Play();
-                //            sm.grass.time = 0;
-                //        }
-                //        float xFireFromRight = sm.asis.myPosition.X + (sm.asis.myTexture.Width * 2) + sm.myScreenSize.X / 2;
-                //        // sm.myScreenSize.X/8 = size of x range
-                //        float xFireFromRightPlus = xFireFromRight + sm.myScreenSize.X/8;
-                //        if (sm.aLaser.myPosition.X >= xFireFromRight && sm.aLaser.myPosition.X <= xFireFromRightPlus)
-                //        {
-                //            sm.BackwardsLaserSoundEffect.Play();
-                //            sm.grass.time = 0;
-                //        }
-                //}
-                //}
 
                 sm.LaserTimeTravelSound(sprite);
             }
