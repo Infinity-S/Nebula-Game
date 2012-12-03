@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Nebula.SuperClasses;
+using Nebula.Subclasses; 
 
 namespace Nebula.BaseClasses
 {
@@ -24,7 +25,10 @@ namespace Nebula.BaseClasses
         protected internal List<Sprite> platformsList = new List<Sprite>();
         protected internal List<BackgroundSprite> myBackgroundSprites = new List<BackgroundSprite>();
         protected internal ScrollingManager scrollingManager;
-        protected internal SpriteFont myFont; 
+        protected internal GameOver myGameOverScreen;
+        protected internal SpriteManager spriteManager; 
+        protected internal SpriteFont myFont;
+         
 
         public Level(Game1 aGame, GraphicsDeviceManager aGraphics, Asis aAsis, SpriteBatch aSpriteBatch)
         {
@@ -32,8 +36,7 @@ namespace Nebula.BaseClasses
             myGraphics = aGraphics;
             myAsis = aAsis;
             spriteBatch = aSpriteBatch; 
-            LoadSprites(); 
-
+            LoadSprites();
         }
 
         public virtual void LoadSprites()

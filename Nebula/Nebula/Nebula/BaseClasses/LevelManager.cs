@@ -82,16 +82,25 @@ namespace Nebula.Subclasses
 
             myFont = aFont;
 
-            myPlatform = (Platform)platformsList[0];
-            asis = (Asis)spritesList[0];
-            aLaser = (AsisLaser)spritesList[1];
-            aEnemy = (Enemy)spritesList[2];
-            eLaser = (EnemyLaser)spritesList[3];
+            setUpSprites((Platform)platformsList[0], (Asis)spritesList[0], (AsisLaser)spritesList[1], 
+                (Enemy)spritesList[2], (EnemyLaser)spritesList[3]); 
 
             EnemiesList.Add(aEnemy); 
 
             myState = new GameState(this);
             SetUpInput2();
+        }
+
+        //this is virtual so you can override it if you want. 
+        //like if have more than the "basic" sprites of the level
+        //EG 1 Asis and her laser, 1 Platform type of platform, and 1 type of enemy and it's Laser
+        public virtual void setUpSprites(Platform aPlatform, Asis aAsis, AsisLaser anLaser, Enemy anEnemy, EnemyLaser anELaser)
+        {
+            myPlatform = aPlatform;
+            asis = aAsis;
+            aLaser = anLaser;
+            aEnemy = anEnemy;
+            eLaser = anELaser; 
         }
 
 
