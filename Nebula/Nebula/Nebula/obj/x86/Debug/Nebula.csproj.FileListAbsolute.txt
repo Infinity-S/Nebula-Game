@@ -277,3 +277,129 @@ C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Deb
 C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\warp.xnb
 C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\CeresMusic.xnb
 C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-sound.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LaserSoundEffect.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\enemy-blue.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Asis.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\enemy-red.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\redLaser.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background01.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background04.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background05.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background03.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background02.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\blueLaser.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\grass.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\time-background.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\timet-background.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\death-screen.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-bar3.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-bar4.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-bar5.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-bar1.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-bar2.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LaserSoundEffectBackwards.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\time-swoosh.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\breathofdeath.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\warp.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\CeresMusic.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-sound.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\SpriteFont1.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Nebula.exe
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Nebula.pdb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.exe
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.pdb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PlantPlatform.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PB01.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PB03.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PB04.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PB02.xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\InstructionScreen (2).xnb
+C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\SpaceBackground.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LaserSoundEffect.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\enemy-blue.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Asis.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\enemy-red.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\redLaser.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background01.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background04.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background05.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background03.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background02.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\blueLaser.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\grass.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\time-background.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\timet-background.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\death-screen.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-bar3.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-bar4.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-bar5.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-bar1.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-bar2.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PlantPlatform.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PB04.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PB01.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PB02.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PB03.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\InstructionScreen (2).xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\SpaceBackground.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LaserSoundEffectBackwards.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\time-swoosh.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\breathofdeath.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\warp.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\CeresMusic.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-sound.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\SpriteFont1.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Nebula.exe
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Nebula.pdb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\obj\x86\Debug\ResolveAssemblyReference.cache
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.exe
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.pdb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\victory1.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\stage1cleared.xnb
+U:\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\stage1-soundclear.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LaserSoundEffect.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\enemy-blue.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Asis.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\enemy-red.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\redLaser.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background01.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background04.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background05.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background03.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background02.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\blueLaser.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\grass.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\time-background.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\timet-background.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\death-screen.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-bar3.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-bar4.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-bar5.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-bar1.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-bar2.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PlantPlatform.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PB04.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PB01.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PB02.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PB03.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\InstructionScreen (2).xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\SpaceBackground.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\victory1.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\stage1cleared.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LaserSoundEffectBackwards.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\time-swoosh.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\breathofdeath.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\warp.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\CeresMusic.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-sound.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\stage1-soundclear.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Content\SpriteFont1.xnb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Nebula.exe
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\bin\x86\Debug\Nebula.pdb
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.exe
+C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.pdb

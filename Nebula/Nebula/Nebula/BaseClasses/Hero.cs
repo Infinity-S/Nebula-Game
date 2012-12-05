@@ -60,6 +60,8 @@ namespace Nebula.SuperClasses
                 this, this.GetType().GetMethod("Boost"),
                 new object[0]);
 
+
+
             InputManager.AddToKeyboardMap(Keys.Left, moveLeft);
             InputManager.AddToButtonsMap(Buttons.DPadLeft, moveLeft);
             InputManager.AddToButtonsMap(Buttons.LeftThumbstickLeft, moveLeft);
@@ -68,6 +70,7 @@ namespace Nebula.SuperClasses
             InputManager.AddToButtonsMap(Buttons.LeftThumbstickRight, moveRight);
             InputManager.AddToButtonsMap(Buttons.B, boost);
             InputManager.AddToKeyboardMap(Keys.B, boost);
+
         }
         public void GoLeft()
         {
@@ -97,6 +100,7 @@ namespace Nebula.SuperClasses
                 }
             }
         }
+
 
         // State that Asis begins in - ability to jump and gravity are built into this state
         class ExistState : State

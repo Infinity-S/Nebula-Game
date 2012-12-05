@@ -16,12 +16,33 @@ namespace Nebula.Subclasses
 {
     class CeresLevelManager : LevelManager
     {
+        bool runOnce = true;
 
         public CeresLevelManager(Texture2D texture, Vector2 position, Vector2 screen, Game1 aGame, Level aLevel, 
-            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis aAsis, GameOver aGameOverScreen, SpriteManager aSpriteManager)
-            : base (texture, position, screen, aGame, aLevel, aSpritesList, aPlatformsList, aFont, aAsis, aGameOverScreen, aSpriteManager)
+            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis aAsis, Instructions aInstructions, GameOver aGameOverScreen, VictoryScreen aVictoryScreen, SpriteManager aSpriteManager)
+            : base (texture, position, screen, aGame, aLevel, aSpritesList, aPlatformsList, aFont, aAsis, aInstructions, aGameOverScreen, aVictoryScreen, aSpriteManager)
         {
+            SetInput();
+        }
 
+        public void SetInput()
+        {
+           GameAction timerReset = new GameAction(
+                this, this.GetType().GetMethod("ResetTimer"),
+                new object[0]);
+
+           InputManager.AddToKeyboardMap(Keys.I, timerReset);
+           InputManager.AddToButtonsMap(Buttons.Start, timerReset);
+
+        }
+
+        public void ResetTimer()
+        {
+            if (runOnce == true)
+            {
+                time = 0;
+            }
+            runOnce = false;
         }
 
         public override void AddItemsToLevel(Nebula.Sprite sprite, float xSL, float ySL)
@@ -51,11 +72,37 @@ namespace Nebula.Subclasses
             AddPlatform(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 6, ySL / 2 - myPlatform.myTexture.Height * 5), true);
 
             AddPlatform(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 11, ySL - myPlatform.myTexture.Height * 2), true);
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 12, ySL - myPlatform.myTexture.Height * 2), true);
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 12, ySL - myPlatform.myTexture.Height * 6), true);
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 13, ySL - myPlatform.myTexture.Height * 10), true);
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 14, ySL - myPlatform.myTexture.Height * 14), true);
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 17, ySL - myPlatform.myTexture.Height * 6), true);
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 18, ySL - myPlatform.myTexture.Height * 6), true);
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 19, ySL - myPlatform.myTexture.Height * 6), true);
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 22, ySL - myPlatform.myTexture.Height * 4), true);
+
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 23, ySL - myPlatform.myTexture.Height * 4), true);
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 24, ySL - myPlatform.myTexture.Height * 4), true);
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 25, ySL - myPlatform.myTexture.Height * 4), true);
+
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 28, ySL - myPlatform.myTexture.Height * 7), true);
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 29, ySL - myPlatform.myTexture.Height * 8), true);
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 30, ySL - myPlatform.myTexture.Height * 8), true);
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 31, ySL - myPlatform.myTexture.Height * 8), true);
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 32, ySL - myPlatform.myTexture.Height * 8), true);
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 32, ySL - myPlatform.myTexture.Height * 10), true);
+
+            AddPlatform(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 37, ySL - myPlatform.myTexture.Height * 5), true);
 
             //ADDING ENEMIES 
-            AddEnemy(new Vector2(400, 400), 'd');
             AddEnemy(new Vector2(xSL * 2 + myPlatform.myTexture.Width * 7,
-                    ySL / 2 + ySL / 4 - aEnemy.myTexture.Height / 4), 'd'); 
+                    ySL / 2 + ySL / 4 - aEnemy.myTexture.Height / 4), 'd');
+
+            AddEnemy(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 25,
+                ySL - myPlatform.myTexture.Height * 4 - aEnemy.myTexture.Height), 'd');
+
+            AddEnemy(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 32,
+                ySL - myPlatform.myTexture.Height * 10 - aEnemy.myTexture.Height), 'd'); 
         }
   
     }

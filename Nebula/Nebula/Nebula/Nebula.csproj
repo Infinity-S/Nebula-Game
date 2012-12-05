@@ -86,8 +86,10 @@
     <Compile Include="BackgroundSprite.cs" />
     <Compile Include="Subclasses\AsisLaser.cs" />
     <Compile Include="Camera.cs" />
+    <Compile Include="Subclasses\BackgroundScreen.cs" />
     <Compile Include="Subclasses\Ceres.cs" />
     <Compile Include="Subclasses\CeresLevelManager.cs" />
+    <Compile Include="Subclasses\Instructions.cs" />
     <Compile Include="Subclasses\Enemy.cs" />
     <Compile Include="GameAction.cs" />
     <Compile Include="BaseClasses\InputManager.cs" />
@@ -104,6 +106,7 @@
     <Compile Include="Subclasses\Platform.cs" />
     <Compile Include="BaseClasses\LevelManager.cs" />
     <Compile Include="Subclasses\Sycia.cs" />
+    <Compile Include="Subclasses\VictoryScreen.cs" />
     <Compile Include="Subclasses\Vulkanis.cs" />
   </ItemGroup>
   <ItemGroup>

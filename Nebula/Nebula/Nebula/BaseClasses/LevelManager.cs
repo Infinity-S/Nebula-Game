@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Nebula.SuperClasses;
 using Nebula.BaseClasses; 
+using Nebula.Subclasses; 
 
 
 namespace Nebula.Subclasses
@@ -36,13 +37,17 @@ namespace Nebula.Subclasses
         protected internal SoundEffect BackwardsLaserSoundEffect;
         protected internal SoundEffectInstance GameOverSoundInstance;
         protected internal  SoundEffectInstance LevelMusic;
+        protected internal SoundEffectInstance StageClear;
+        private bool playOnce = true; 
 
+        Instructions InstructionScreen;
         GameOver GameOverScreen;
+        VictoryScreen VictoryScreen; 
 
         private Sprite[] BoostBar = new Sprite[5];
 
         public LevelManager(Texture2D texture, Vector2 position, Vector2 screen, Game1 aGame, Level aLevel,
-            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis asis2, GameOver aGameOverScreen, SpriteManager aSpriteManager)
+            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis asis2, Instructions aInstructions, GameOver aGameOverScreen, VictoryScreen aVictoryScreen, SpriteManager aSpriteManager)
             : base(texture, position, screen, aGame, aPlatformsList, asis2)
         {
             myTexture = texture;
@@ -60,6 +65,8 @@ namespace Nebula.Subclasses
             SoundEffect BackgroundMusic = myGame.Content.Load<SoundEffect>("CeresMusic");
             LevelMusic = BackgroundMusic.CreateInstance();
             LevelMusic.IsLooped = true;
+            SoundEffect Stage1 = myGame.Content.Load<SoundEffect>("Stage1-soundclear");
+            StageClear = Stage1.CreateInstance();
 
             BoostBar[0] = new Sprite(myGame.Content.Load<Texture2D>("boost-bar1"), new Vector2(0, 0));
             BoostBar[1] = new Sprite(myGame.Content.Load<Texture2D>("boost-bar2"), new Vector2(0, 0));
@@ -73,6 +80,7 @@ namespace Nebula.Subclasses
             }
 
             GameOverScreen = aGameOverScreen;
+            VictoryScreen = aVictoryScreen; 
             mySpriteManager = aSpriteManager;
 
             for (int i = 0; i < aPlatformsList.Count; i++)
@@ -81,6 +89,7 @@ namespace Nebula.Subclasses
             }
 
             myFont = aFont;
+            InstructionScreen = aInstructions;
 
             setUpSprites((Platform)platformsList[0], (Asis)spritesList[0], (AsisLaser)spritesList[1], 
                 (Enemy)spritesList[2], (EnemyLaser)spritesList[3]); 
@@ -151,6 +160,15 @@ namespace Nebula.Subclasses
             }
         }
 
+        public void StartGame()
+        {
+            InstructionScreen.myPosition = new Vector2(xSL * -3, 0);
+        }
+
+        public void DisplayInstructions()
+        {
+            InstructionScreen.myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+        }
 
         public void SetUpInput2()
         {
@@ -161,8 +179,17 @@ namespace Nebula.Subclasses
                 this, this.GetType().GetMethod("Fire"),
                 new object[0]);
 
+            GameAction instruct = new GameAction(this, this.GetType().GetMethod("StartGame"), new object[0]);
+            GameAction displayInstruct = new GameAction(this, this.GetType().GetMethod("DisplayInstructions"), new object[0]);
+
+            InputManager.AddToKeyboardMap(Keys.I, instruct);
+            InputManager.AddToButtonsMap(Buttons.Start, instruct);
+            InputManager.AddToKeyboardMap(Keys.Y, displayInstruct);
+            InputManager.AddToButtonsMap(Buttons.Y, displayInstruct);
             InputManager.AddToKeyboardMap(Keys.F, fire);
             InputManager.AddToButtonsMap(Buttons.RightTrigger, fire);
+
+
 
         }
 
@@ -346,6 +373,20 @@ namespace Nebula.Subclasses
             else GameOverSoundInstance.Stop();
         }
 
+        public void DisplayVictoryScreen()
+        {
+            if (asis.myPosition.X > xSL * 7 + xSL/2 + xSL /8)
+            {
+                if (playOnce == true)
+                {
+                    StageClear.Play();
+                }
+                playOnce = false;
+                LevelMusic.Stop();
+                VictoryScreen.myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+            }
+        }
+
         class GameState : State
         {
             //for each new level, the only thing we will need to change is the constructor.
@@ -378,6 +419,8 @@ namespace Nebula.Subclasses
                 sm.GameOverLogic();
 
                 sm.LaserTimeTravelSound(sprite);
+
+                sm.DisplayVictoryScreen();
             }
             public void Draw(Sprite sprite, SpriteBatch batch)
             {

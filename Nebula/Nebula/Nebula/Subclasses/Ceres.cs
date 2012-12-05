@@ -35,7 +35,7 @@ namespace Nebula.Subclasses
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
             // Initial grass platform, others are cloned in the Manager class 
-            Platform grassPlatform = new Platform((myGame.Content.Load<Texture2D>("grass")),
+            Platform grassPlatform = new Platform((myGame.Content.Load<Texture2D>("PlantPlatform")),
                 new Vector2(myGraphics.PreferredBackBufferWidth / 2, myGraphics.PreferredBackBufferHeight - myGraphics.PreferredBackBufferHeight / 8),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
@@ -48,6 +48,10 @@ namespace Nebula.Subclasses
 
             platformsList.Add(grassPlatform);
 
+            myBackgroundScreen = new BackgroundScreen(myGame.Content.Load<Texture2D>("SpaceBackground"), new Vector2(0 - myGraphics.PreferredBackBufferWidth / 12, 0),
+               new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
+
+            
             allSprites.Add(myAsis);
             allSprites.Add(dLaser);
             allSprites.Add(dEnemy);
@@ -56,22 +60,19 @@ namespace Nebula.Subclasses
 
             //adding the test background images/Sprites
             //their positions are tacked on to each other, so they form one long background image 
-            BackgroundSprite b1 = new BackgroundSprite(myGame.Content.Load<Texture2D>("Background01"),
+            BackgroundSprite b1 = new BackgroundSprite(myGame.Content.Load<Texture2D>("PB01"),
                 new Vector2(0 - myGraphics.PreferredBackBufferWidth/12, 0), 1.0f);
-            BackgroundSprite b2 = new BackgroundSprite(myGame.Content.Load<Texture2D>("Background02"),
+            BackgroundSprite b2 = new BackgroundSprite(myGame.Content.Load<Texture2D>("PB02"),
                 new Vector2(b1.myPosition.X + b1.myTexture.Width, 0), 1.0f);
-            BackgroundSprite b3 = new BackgroundSprite(myGame.Content.Load<Texture2D>("Background03"),
+            BackgroundSprite b3 = new BackgroundSprite(myGame.Content.Load<Texture2D>("PB03"),
                 new Vector2(b2.myPosition.X + b2.size.Width, myGraphics.PreferredBackBufferHeight - b2.myTexture.Height), 1.0f);
-            BackgroundSprite b4 = new BackgroundSprite(myGame.Content.Load<Texture2D>("Background04"),
+            BackgroundSprite b4 = new BackgroundSprite(myGame.Content.Load<Texture2D>("PB04"),
                 new Vector2(b3.myPosition.X + b3.size.Width, myGraphics.PreferredBackBufferHeight - b3.myTexture.Height), 1.0f);
-            BackgroundSprite b5 = new BackgroundSprite(myGame.Content.Load<Texture2D>("Background05"),
-                new Vector2(b4.myPosition.X + b4.size.Width, myGraphics.PreferredBackBufferHeight - b4.myTexture.Height), 1.0f);
 
             myBackgroundSprites.Add(b1);
             myBackgroundSprites.Add(b2);
             myBackgroundSprites.Add(b3);
             myBackgroundSprites.Add(b4);
-            myBackgroundSprites.Add(b5);
 
             // Add each BackgroundSprite to the movingSpritesList
             foreach (BackgroundSprite s in myBackgroundSprites)
@@ -79,19 +80,30 @@ namespace Nebula.Subclasses
                 movingSpritesList.Add(s);
             }
 
+           
+            myInstructionScreen = new Instructions(myGame.Content.Load<Texture2D>("InstructionScreen (2)"), new Vector2(0 - myGraphics.PreferredBackBufferWidth / 12, 0),
+                new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
+
              myGameOverScreen = new GameOver(myGame.Content.Load<Texture2D>("death-screen"), new Vector2(0, 0), 
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
-            scrollingManager = new ScrollingManager(myAsis, myBackgroundSprites, myGraphics.PreferredBackBufferWidth);
+             myVictoryScreen = new VictoryScreen(myGame.Content.Load<Texture2D>("stage1cleared"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
+                  new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
+
+            scrollingManager = new ScrollingManager(myAsis, myBackgroundSprites, myGraphics.PreferredBackBufferWidth, myBackgroundScreen);
 
             spriteManager = new SpriteManager(myGame.Content.Load<Texture2D>("timet-background"), new Vector2(0, 0),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight), myGame, movingSpritesList, myAsis);
 
             CeresLevelManager manager = new CeresLevelManager(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(-1000, -1000),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight),
-                myGame, this, movingSpritesList, platformsList, myFont, myAsis, myGameOverScreen, spriteManager);
+                myGame, this, movingSpritesList, platformsList, myFont, myAsis, myInstructionScreen, myGameOverScreen, myVictoryScreen, spriteManager);
 
+
+            
+            allSprites.Add(myInstructionScreen);
             allSprites.Add(myGameOverScreen);
+            allSprites.Add(myVictoryScreen); 
             allSprites.Add(spriteManager);
             allSprites.Add(manager);
         }

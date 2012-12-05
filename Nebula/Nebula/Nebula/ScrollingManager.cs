@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
 using System.Threading;
 using System.Collections;
+using Nebula.Subclasses; 
 
 namespace Nebula
 {
@@ -31,8 +32,9 @@ namespace Nebula
         private float MAX_CAMERA_POS; 
         private Vector2 scrollingDirection = new Vector2(-1, 0);
         private Vector2 aSpeed = new Vector2(1, 0);
+        private BackgroundScreen myBackgroundScreen;
 
-        public ScrollingManager(Asis MainChar, List<BackgroundSprite> backgroundsList, float ScreenWidth)
+        public ScrollingManager(Asis MainChar, List<BackgroundSprite> backgroundsList, float ScreenWidth, BackgroundScreen aBackgroundScreen)
         {
             myAsis = MainChar;
             myBackgrounds = backgroundsList;
@@ -48,7 +50,9 @@ namespace Nebula
             LEFT_INTERVAL = CameraSize * .10;
             //right interval is 40% of screen, so the player can see what is coming next
             RIGHT_INTERVAL = CameraSize * .60;
-            MAX_CAMERA_POS = backgroundLength; 
+            MAX_CAMERA_POS = backgroundLength;
+
+            myBackgroundScreen = aBackgroundScreen;
 
         }
 
@@ -70,8 +74,8 @@ namespace Nebula
             }
             if (myAsis.myPosition.X > myBackgrounds[0].myPosition.X + myBackgrounds[0].myTexture.Width * 2)
             {
-                myBackgrounds[0].myPosition.X = myBackgrounds[4].myPosition.X
-                           + myBackgrounds[4].myTexture.Width;
+                myBackgrounds[0].myPosition.X = myBackgrounds[myBackgrounds.Count-1].myPosition.X
+                           + myBackgrounds[myBackgrounds.Count - 1].myTexture.Width;
             }
 
             }
@@ -87,9 +91,9 @@ namespace Nebula
                     - myBackgrounds[i + 1].myTexture.Width;
                 }
             }
-            if (myAsis.myPosition.X < myBackgrounds[4].myPosition.X - myBackgrounds[4].myTexture.Width * 2)
+            if (myAsis.myPosition.X < myBackgrounds[myBackgrounds.Count - 1].myPosition.X - myBackgrounds[myBackgrounds.Count - 1].myTexture.Width * 2)
             {
-                myBackgrounds[4].myPosition.X = myBackgrounds[0].myPosition.X
+                myBackgrounds[myBackgrounds.Count - 1].myPosition.X = myBackgrounds[0].myPosition.X
                            - myBackgrounds[0].myTexture.Width;
             }
 
@@ -97,6 +101,8 @@ namespace Nebula
 
         public void Update(double totalSecs)
         {
+            myBackgroundScreen.myPosition = new Vector2(myAsis.myPosition.X - myAsis.myScreenSize.X /6, 0);
+
             /*&& myAsis.myPosition.X < LEFT_INTERVAL*/
             if (Keyboard.GetState().IsKeyDown(Keys.Left) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftThumbstickLeft)
                 || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadLeft))
@@ -155,6 +161,7 @@ namespace Nebula
 
         public void Draw(SpriteBatch batch)
         {
+            myBackgroundScreen.Draw(batch);
             //draws all the background sprites
             foreach (Sprite b in myBackgrounds)
             {
