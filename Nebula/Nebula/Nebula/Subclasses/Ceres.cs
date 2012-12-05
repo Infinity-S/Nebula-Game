@@ -15,7 +15,6 @@ namespace Nebula.Subclasses
 {
     class Ceres : Level
     {
-
         public Ceres(Game1 aGame, GraphicsDeviceManager aGraphics, Asis anAsis, SpriteBatch aSpriteBatch)
             : base (aGame, aGraphics, anAsis, aSpriteBatch)
         {
