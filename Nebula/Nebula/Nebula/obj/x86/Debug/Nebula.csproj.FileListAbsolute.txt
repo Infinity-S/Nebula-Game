@@ -403,3 +403,13 @@ C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\obj\x86\Debu
 C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.exe
 C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.pdb
+C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PlantPlatform.xnb
+C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PB04.xnb
+C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PB01.xnb
+C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PB02.xnb
+C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PB03.xnb
+C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\InstructionScreen (2).xnb
+C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\SpaceBackground.xnb
+C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\victory1.xnb
+C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\stage1cleared.xnb
+C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\stage1-soundclear.xnb
