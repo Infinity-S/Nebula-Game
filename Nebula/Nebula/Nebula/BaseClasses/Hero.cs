@@ -64,10 +64,8 @@ namespace Nebula.SuperClasses
 
             InputManager.AddToKeyboardMap(Keys.Left, moveLeft);
             InputManager.AddToButtonsMap(Buttons.DPadLeft, moveLeft);
-            InputManager.AddToButtonsMap(Buttons.LeftThumbstickLeft, moveLeft);
             InputManager.AddToKeyboardMap(Keys.Right, moveRight);
             InputManager.AddToButtonsMap(Buttons.DPadRight, moveRight);
-            InputManager.AddToButtonsMap(Buttons.LeftThumbstickRight, moveRight);
             InputManager.AddToButtonsMap(Buttons.B, boost);
             InputManager.AddToKeyboardMap(Keys.B, boost);
 
