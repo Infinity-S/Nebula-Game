@@ -80,6 +80,7 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseClasses\Laser.cs" />
     <Compile Include="BaseClasses\Level.cs" />
     <Compile Include="Subclasses\Asis.cs" />
     <Compile Include="Subclasses\BackgroundSprite.cs" />

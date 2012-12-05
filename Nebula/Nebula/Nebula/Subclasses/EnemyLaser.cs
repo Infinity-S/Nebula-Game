@@ -10,17 +10,18 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
 using System.Threading;
+using Nebula.BaseClasses; 
 
 namespace Nebula.Subclasses
 {
-    public class EnemyLaser : Sprite
+    class EnemyLaser : Laser
     {
         public EnemyLaser(Texture2D texture, Vector2 position, Vector2 screen) 
-            : base(texture, position)   
+            : base(texture, position, screen)   
         {
-            myTexture = texture;
-            myPosition = position;
-            myScreenSize = screen;
+            //myTexture = texture;
+            //myPosition = position;
+            //myScreenSize = screen;
         }
 
         public EnemyLaser Clone()
