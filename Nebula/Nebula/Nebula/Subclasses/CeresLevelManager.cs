@@ -16,39 +16,20 @@ namespace Nebula.Subclasses
 {
     class CeresLevelManager : LevelManager
     {
-        bool runOnce = true;
 
         public CeresLevelManager(Texture2D texture, Vector2 position, Vector2 screen, Game1 aGame, Level aLevel, 
             List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis aAsis, Screen aInstructions, Screen aGameOverScreen, Screen aVictoryScreen, SpriteManager aSpriteManager)
             : base (texture, position, screen, aGame, aLevel, aSpritesList, aPlatformsList, aFont, aAsis, aInstructions, aGameOverScreen, aVictoryScreen, aSpriteManager)
         {
-            SetInput();
-        }
-
-        public void SetInput()
-        {
-           GameAction timerReset = new GameAction(
-                this, this.GetType().GetMethod("ResetTimer"),
-                new object[0]);
-
-           InputManager.AddToKeyboardMap(Keys.I, timerReset);
-           InputManager.AddToButtonsMap(Buttons.Start, timerReset);
 
         }
 
-        public void ResetTimer()
-        {
-            if (runOnce == true)
-            {
-                time = 0;
-            }
-            runOnce = false;
-        }
 
         public override void AddItemsToLevel(Nebula.Sprite sprite, float xSL, float ySL)
         {
             //ADDING PLATFORMS 
             AddPlatform(new Vector2(xSL / 12, ySL - myPlatform.myTexture.Height * 2), true);
+            AddPlatform(new Vector2(xSL / 2, ySL - ySL / 8), true); 
             AddPlatform(new Vector2(xSL / 2 + xSL / 4 + myPlatform.myTexture.Width / 8, ySL / 2 + ySL / 4), true);
             AddPlatform(new Vector2(xSL + xSL / 4 - sprite.myTexture.Width, ySL / 2 + ySL / 4), true);
             AddPlatform(new Vector2(xSL + xSL / 2, ySL / 2 + ySL / 16), true);
@@ -95,6 +76,9 @@ namespace Nebula.Subclasses
             AddPlatform(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 37, ySL - myPlatform.myTexture.Height * 5), true);
 
             //ADDING ENEMIES 
+            AddEnemy(new Vector2(xSL + xSL / 4 - asis.myTexture.Width / 2,
+                   ySL / 2 + ySL / 4 - ySL / 8), 'd'); 
+
             AddEnemy(new Vector2(xSL * 2 + myPlatform.myTexture.Width * 7,
                     ySL / 2 + ySL / 4 - aEnemy.myTexture.Height / 4), 'd');
 

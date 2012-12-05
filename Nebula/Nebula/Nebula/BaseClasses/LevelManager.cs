@@ -17,6 +17,7 @@ namespace Nebula.Subclasses
 {
     class LevelManager : SpriteManager
     {
+        protected internal bool runOnce = true; 
         protected internal List<Sprite> spritesList;
         protected internal AsisLaser aLaser;
         protected internal Enemy aEnemy;
@@ -93,6 +94,7 @@ namespace Nebula.Subclasses
             myFont = aFont;
             InstructionScreen = aInstructions;
 
+            //should we pass these in as indivdual items?? 
             setUpSprites((Platform)platformsList[0], (Asis)spritesList[0], (AsisLaser)spritesList[1], 
                 (Enemy)spritesList[2], (EnemyLaser)spritesList[3]); 
 
@@ -101,6 +103,8 @@ namespace Nebula.Subclasses
             myState = new GameState(this);
             SetUpInput2();
         }
+
+
 
         //this is virtual so you can override it if you want. 
         //like if have more than the "basic" sprites of the level
@@ -191,8 +195,22 @@ namespace Nebula.Subclasses
             InputManager.AddToKeyboardMap(Keys.F, fire);
             InputManager.AddToButtonsMap(Buttons.RightTrigger, fire);
 
+            GameAction timerReset = new GameAction(
+                this, this.GetType().GetMethod("ResetTimer"),
+                new object[0]);
 
+            InputManager.AddToKeyboardMap(Keys.I, timerReset);
+            InputManager.AddToButtonsMap(Buttons.Start, timerReset);
 
+        }
+
+        public void ResetTimer()
+        {
+            if (runOnce == true)
+            {
+                time = 0;
+            }
+            runOnce = false;
         }
 
         // Helper method that returns true if Asis's laser is offscreen, false otherwise

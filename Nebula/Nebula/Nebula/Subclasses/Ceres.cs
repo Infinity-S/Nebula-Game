@@ -53,9 +53,11 @@ namespace Nebula.Subclasses
             
             allSprites.Add(myAsis);
             allSprites.Add(dLaser);
-            allSprites.Add(dEnemy);
+            //took this out as we want to use dEnemy as a template, not as an actual enemy in the level 
+            //allSprites.Add(dEnemy);
             allSprites.Add(aLaser);
-            allSprites.Add(grassPlatform);
+            //took this out as we want to use dEnemy as a template, not as an actual enemy in the level 
+            //allSprites.Add(grassPlatform);
 
             //adding the test background images/Sprites
             //their positions are tacked on to each other, so they form one long background image 
