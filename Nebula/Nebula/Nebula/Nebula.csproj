@@ -104,6 +104,8 @@
     <Compile Include="Subclasses\Platform.cs" />
     <Compile Include="BaseClasses\LevelManager.cs" />
     <Compile Include="Subclasses\Sycia.cs" />
+    <Compile Include="Subclasses\Tutorial.cs" />
+    <Compile Include="Subclasses\TutorialLevelManager.cs" />
     <Compile Include="Subclasses\Vulkanis.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -20,11 +20,12 @@ namespace Nebula
     {
         GraphicsDeviceManager graphics;
         SpriteBatch mySpriteBatch;
+        Tutorial TutorialContent;
         Ceres firstLevelContent;
         Camera camera;
 
         public Game1()
-        {   
+        {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferHeight = 720;
@@ -42,7 +43,7 @@ namespace Nebula
             // TODO: Add your initialization logic here
             base.Initialize();
         }
-        
+
 
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
@@ -58,7 +59,8 @@ namespace Nebula
 
             camera = new Camera(GraphicsDevice.Viewport, myAsis);
 
-            firstLevelContent = new Ceres(this, graphics, myAsis, mySpriteBatch);
+            TutorialContent = new Tutorial(this, graphics, myAsis, mySpriteBatch);
+            //firstLevelContent = new Ceres(this, graphics, myAsis, mySpriteBatch); 
         }
 
         /// <summary>
@@ -81,7 +83,8 @@ namespace Nebula
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            firstLevelContent.Update(gameTime);
+            TutorialContent.Update(gameTime);
+            //firstLevelContent.Update(gameTime);
             camera.Update(gameTime);
             base.Update(gameTime);
         }
@@ -93,7 +96,8 @@ namespace Nebula
         protected override void Draw(GameTime gameTime)
         {
             mySpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
-            firstLevelContent.Draw(gameTime);
+            TutorialContent.Draw(gameTime);
+            //firstLevelContent.Draw(gameTime);
             mySpriteBatch.End();
             base.Draw(gameTime);
         }

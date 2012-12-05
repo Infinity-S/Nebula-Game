@@ -32,6 +32,7 @@ namespace Nebula.Subclasses
         protected internal double enemyWeaponFireTime = 1.5;
         protected internal SpriteManager mySpriteManager;
 
+        protected internal Dictionary<String, Vector2> OnScreenText = new Dictionary<String, Vector2>(); 
         protected internal SpriteFont myFont;
 
         protected internal  SoundEffect LaserSoundEffect;
@@ -456,6 +457,11 @@ namespace Nebula.Subclasses
                 batch.DrawString(sm.myFont, "Boost Bar", 
                     new Vector2(sm.asis.myPosition.X + sm.xSL - 2*sm.myPlatform.myTexture.Width - sm.myPlatform.myTexture.Width/2,sm.myPlatform.myTexture.Height + sm.myPlatform.myTexture.Height/3), 
                     Color.White, 0, new Vector2(0,0), 1.3f, SpriteEffects.None, 0.5f);
+
+                foreach (KeyValuePair<String, Vector2> entry in sm.OnScreenText)
+                {
+                    batch.DrawString(sm.myFont, entry.Key,entry.Value, Color.White);
+                }
             }
         }
     }
