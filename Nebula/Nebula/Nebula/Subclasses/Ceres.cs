@@ -48,7 +48,7 @@ namespace Nebula.Subclasses
 
             platformsList.Add(grassPlatform);
 
-            myBackgroundScreen = new BackgroundScreen(myGame.Content.Load<Texture2D>("SpaceBackground"), new Vector2(0 - myGraphics.PreferredBackBufferWidth / 12, 0),
+            myBackgroundScreen = new Screen(myGame.Content.Load<Texture2D>("SpaceBackground"), new Vector2(0 - myGraphics.PreferredBackBufferWidth / 12, 0),
                new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
             
@@ -81,13 +81,13 @@ namespace Nebula.Subclasses
             }
 
            
-            myInstructionScreen = new Instructions(myGame.Content.Load<Texture2D>("InstructionScreen (2)"), new Vector2(0 - myGraphics.PreferredBackBufferWidth / 12, 0),
+            myInstructionScreen = new Screen(myGame.Content.Load<Texture2D>("InstructionScreen (2)"), new Vector2(0 - myGraphics.PreferredBackBufferWidth / 12, 0),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
-             myGameOverScreen = new GameOver(myGame.Content.Load<Texture2D>("death-screen"), new Vector2(0, 0), 
+             myGameOverScreen = new Screen(myGame.Content.Load<Texture2D>("death-screen"), new Vector2(0, 0), 
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
-             myVictoryScreen = new VictoryScreen(myGame.Content.Load<Texture2D>("stage1cleared"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
+             myVictoryScreen = new Screen(myGame.Content.Load<Texture2D>("stage1cleared"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
                   new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
             scrollingManager = new ScrollingManager(myAsis, myBackgroundSprites, myGraphics.PreferredBackBufferWidth, myBackgroundScreen);

@@ -31,7 +31,6 @@ namespace Nebula.Subclasses
         protected internal double enemyWeaponFireTime = 1.5;
         protected internal SpriteManager mySpriteManager;
 
-        protected internal Vector2 boostLabelPos = new Vector2(0, 0); 
         protected internal SpriteFont myFont;
 
         protected internal  SoundEffect LaserSoundEffect;
@@ -41,14 +40,16 @@ namespace Nebula.Subclasses
         protected internal SoundEffectInstance StageClear;
         private bool playOnce = true; 
 
-        Instructions InstructionScreen;
-        GameOver GameOverScreen;
-        VictoryScreen VictoryScreen; 
+        Screen InstructionScreen;
+        Screen GameOverScreen;
+        Screen VictoryScreen;
+        //not implemented yet, but so can change when victory screen displays if have a longer/shorter level 
+        float EndOfLevelPos;   
 
         private Sprite[] BoostBar = new Sprite[5];
 
         public LevelManager(Texture2D texture, Vector2 position, Vector2 screen, Game1 aGame, Level aLevel,
-            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis asis2, Instructions aInstructions, GameOver aGameOverScreen, VictoryScreen aVictoryScreen, SpriteManager aSpriteManager)
+            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis asis2, Screen aInstructions, Screen aGameOverScreen, Screen aVictoryScreen, SpriteManager aSpriteManager)
             : base(texture, position, screen, aGame, aPlatformsList, asis2)
         {
             myTexture = texture;
@@ -292,7 +293,7 @@ namespace Nebula.Subclasses
 
         public void EnemyShootingAI()
         {
-            //Schuyler worked on this!! to make it so that whener asis is in a specific proximity to a enemy, they attack
+            //make it so that whenever asis is in a specific proximity to a enemy, they attack
             foreach (Sprite enemy in EnemiesList)
             {
                 //attack if Asis is in range between 5 texture widths before enemy position to enemy position 
@@ -348,7 +349,6 @@ namespace Nebula.Subclasses
                 if (asis.time >= i + 1)
                 {
                     BoostBar[i].myPosition = new Vector2(asis.myPosition.X + xSL / 2 + xSL / 6, 0);
-                    //boostLabelPos = new Vector2(asis.myPosition.X + xSL / 2 + xSL / 6, 30); 
                 }
                 else
                 {
@@ -434,8 +434,7 @@ namespace Nebula.Subclasses
                 sprite.myScale, SpriteEffects.None, 0f);
                 // Timer gets drawn here - unaffected by time travel ability
                 batch.DrawString(sm.myFont, "Time: " + Convert.ToString(Convert.ToInt32(sprite.time)), new Vector2(sm.asis.myPosition.X - sm.xSL / 6, 0),
-                    Color.White, 0, new Vector2(0, 0), 1.3f, SpriteEffects.None, 0.5f);
-                //batch.DrawString(sm.myFont, "Boost Bar", new Vector2(sm.asis.myPosition.X + sm.xSL - 350, 50), Color.White); 
+                    Color.White, 0, new Vector2(0, 0), 1.3f, SpriteEffects.None, 0.5f); 
                 batch.DrawString(sm.myFont, "Boost Bar", 
                     new Vector2(sm.asis.myPosition.X + sm.xSL - 2*sm.myPlatform.myTexture.Width - sm.myPlatform.myTexture.Width/2,sm.myPlatform.myTexture.Height + sm.myPlatform.myTexture.Height/3), 
                     Color.White, 0, new Vector2(0,0), 1.3f, SpriteEffects.None, 0.5f);

@@ -80,16 +80,13 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BackgroundLayer.cs" />
     <Compile Include="BaseClasses\Level.cs" />
     <Compile Include="Subclasses\Asis.cs" />
-    <Compile Include="BackgroundSprite.cs" />
+    <Compile Include="Subclasses\BackgroundSprite.cs" />
     <Compile Include="Subclasses\AsisLaser.cs" />
     <Compile Include="Camera.cs" />
-    <Compile Include="Subclasses\BackgroundScreen.cs" />
     <Compile Include="Subclasses\Ceres.cs" />
     <Compile Include="Subclasses\CeresLevelManager.cs" />
-    <Compile Include="Subclasses\Instructions.cs" />
     <Compile Include="Subclasses\Enemy.cs" />
     <Compile Include="GameAction.cs" />
     <Compile Include="BaseClasses\InputManager.cs" />
@@ -97,16 +94,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="ScrollingManager.cs" />
+    <Compile Include="Subclasses\Screen.cs" />
+    <Compile Include="Subclasses\ScrollingManager.cs" />
     <Compile Include="BaseClasses\Sprite.cs" />
     <Compile Include="BaseClasses\SpriteManager.cs" />
     <Compile Include="BaseClasses\State.cs" />
     <Compile Include="BaseClasses\Hero.cs" />
-    <Compile Include="Subclasses\GameOver.cs" />
     <Compile Include="Subclasses\Platform.cs" />
     <Compile Include="BaseClasses\LevelManager.cs" />
     <Compile Include="Subclasses\Sycia.cs" />
-    <Compile Include="Subclasses\VictoryScreen.cs" />
     <Compile Include="Subclasses\Vulkanis.cs" />
   </ItemGroup>
   <ItemGroup>

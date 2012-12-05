@@ -32,9 +32,9 @@ namespace Nebula
         private float MAX_CAMERA_POS; 
         private Vector2 scrollingDirection = new Vector2(-1, 0);
         private Vector2 aSpeed = new Vector2(1, 0);
-        private BackgroundScreen myBackgroundScreen;
+        private Screen myBackgroundScreen;
 
-        public ScrollingManager(Asis MainChar, List<BackgroundSprite> backgroundsList, float ScreenWidth, BackgroundScreen aBackgroundScreen)
+        public ScrollingManager(Asis MainChar, List<BackgroundSprite> backgroundsList, float ScreenWidth, Screen aBackgroundScreen)
         {
             myAsis = MainChar;
             myBackgrounds = backgroundsList;

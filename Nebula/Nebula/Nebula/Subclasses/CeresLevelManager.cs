@@ -19,7 +19,7 @@ namespace Nebula.Subclasses
         bool runOnce = true;
 
         public CeresLevelManager(Texture2D texture, Vector2 position, Vector2 screen, Game1 aGame, Level aLevel, 
-            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis aAsis, Instructions aInstructions, GameOver aGameOverScreen, VictoryScreen aVictoryScreen, SpriteManager aSpriteManager)
+            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis aAsis, Screen aInstructions, Screen aGameOverScreen, Screen aVictoryScreen, SpriteManager aSpriteManager)
             : base (texture, position, screen, aGame, aLevel, aSpritesList, aPlatformsList, aFont, aAsis, aInstructions, aGameOverScreen, aVictoryScreen, aSpriteManager)
         {
             SetInput();

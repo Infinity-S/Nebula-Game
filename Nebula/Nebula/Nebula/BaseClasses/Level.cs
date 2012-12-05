@@ -25,10 +25,10 @@ namespace Nebula.BaseClasses
         protected internal List<Sprite> platformsList = new List<Sprite>();
         protected internal List<BackgroundSprite> myBackgroundSprites = new List<BackgroundSprite>();
         protected internal ScrollingManager scrollingManager;
-        protected internal Instructions myInstructionScreen;
-        protected internal VictoryScreen myVictoryScreen; 
-        protected internal BackgroundScreen myBackgroundScreen;
-        protected internal GameOver myGameOverScreen;
+        protected internal Screen myInstructionScreen;
+        protected internal Screen myVictoryScreen; 
+        protected internal Screen myBackgroundScreen;
+        protected internal Screen myGameOverScreen;
         protected internal SpriteManager spriteManager; 
         protected internal SpriteFont myFont;
          
