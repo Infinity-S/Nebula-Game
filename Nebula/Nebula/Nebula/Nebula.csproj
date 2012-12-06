@@ -107,6 +107,7 @@
     <Compile Include="Subclasses\Tutorial.cs" />
     <Compile Include="Subclasses\TutorialLevelManager.cs" />
     <Compile Include="Subclasses\Vulkanis.cs" />
+    <Compile Include="Subclasses\VulkanisLevelManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
