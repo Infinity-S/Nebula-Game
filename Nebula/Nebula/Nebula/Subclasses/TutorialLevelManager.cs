@@ -19,7 +19,7 @@ namespace Nebula.Subclasses
         String moveTxt = "Use the D-Pad to move left and right";
         String jumpTxt = "Use the A button to jump";
         String shootTxt = "Use the Right Trigger to shoot the enemy \n\n But don't get too close!!";
-        String timeTravelTxt = "Continuouly press down on the X button to travel back in time. \n\nIf you miss this platform try it out! \n\nDont believe that GameOver screen!";
+        String timeTravelTxt = "Press and HOLD down on the X button to travel back in time. \n\nIf you miss this platform try it out! \n\nDont believe that GameOver screen!";
         String boostTxt = "Use the B button to use your boost ablity. Try it out now!";
         String rechargeTxt = "But don't forget it has to recharge!"; 
         String boostTxt2 = "You can also use it to reach platforms that are too far away!";
