@@ -21,7 +21,7 @@ namespace Nebula.Subclasses
             List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis aAsis, Screen aInstructions, Screen aGameOverScreen, Screen aVictoryScreen, SpriteManager aSpriteManager)
             : base (texture, position, screen, aGame, aLevel, aSpritesList, aPlatformsList, aFont, aAsis, aInstructions, aGameOverScreen, aVictoryScreen, aSpriteManager)
         {
-
+            EndOfLevelPos = xSL * 7 + xSL / 2 + xSL / 8;
         }
 
 

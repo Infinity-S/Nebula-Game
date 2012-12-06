@@ -45,8 +45,8 @@ namespace Nebula.Subclasses
         Screen InstructionScreen;
         Screen GameOverScreen;
         Screen VictoryScreen;
-        //not implemented yet, but so can change when victory screen displays if have a longer/shorter level 
-        float EndOfLevelPos;   
+        // can change when victory screen displays if have a longer/shorter level 
+        protected internal float EndOfLevelPos;   
 
         private Sprite[] BoostBar = new Sprite[5];
 
@@ -396,7 +396,7 @@ namespace Nebula.Subclasses
 
         public void DisplayVictoryScreen()
         {
-            if (asis.myPosition.X > xSL * 7 + xSL/2 + xSL /8)
+            if (asis.myPosition.X > EndOfLevelPos)
             {
                 if (playOnce == true)
                 {
