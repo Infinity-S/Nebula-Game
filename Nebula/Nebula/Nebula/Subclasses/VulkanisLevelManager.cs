@@ -32,6 +32,10 @@ namespace Nebula.Subclasses
             AddPlatform(new Vector2(xSL / 12, ySL - myPlatform.myTexture.Height * 2), true);
             AddPlatform(new Vector2((xSL / 12) * 2, ySL - myPlatform.myTexture.Height * 2), true);
             AddPlatform(new Vector2((xSL / 12) * 3, ySL - myPlatform.myTexture.Height * 2), true);
+            AddPlatform(new Vector2((xSL / 12) * 4, ySL - myPlatform.myTexture.Height * 2), true);
+            AddPlatform(new Vector2((xSL / 12) * 5, ySL - myPlatform.myTexture.Height * 2), true);
+
+            AddEnemy(hEnemy, new Vector2((xSL / 12) * 5, ySL - myPlatform.myTexture.Height * 2 - aEnemy.myTexture.Height)); 
         }
 
         public override void setUpSprites(Platform aPlatform, Asis aAsis, AsisLaser anLaser, Enemy anEnemy, EnemyLaser anELaser)
