@@ -76,17 +76,17 @@ namespace Nebula.Subclasses
             AddPlatform(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 37, ySL - myPlatform.myTexture.Height * 5), true);
 
             //ADDING ENEMIES 
-            AddEnemy(new Vector2(xSL + xSL / 4 - asis.myTexture.Width / 2,
-                   ySL / 2 + ySL / 4 - ySL / 8), 'd'); 
+            AddEnemy(aEnemy, new Vector2(xSL + xSL / 4 - asis.myTexture.Width / 2,
+                   ySL / 2 + ySL / 4 - ySL / 8)); 
 
-            AddEnemy(new Vector2(xSL * 2 + myPlatform.myTexture.Width * 7,
-                    ySL / 2 + ySL / 4 - aEnemy.myTexture.Height / 4), 'd');
+            AddEnemy(aEnemy, new Vector2(xSL * 2 + myPlatform.myTexture.Width * 7,
+                    ySL / 2 + ySL / 4 - aEnemy.myTexture.Height / 4));
 
-            AddEnemy(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 25,
-                ySL - myPlatform.myTexture.Height * 4 - aEnemy.myTexture.Height), 'd');
+            AddEnemy(aEnemy, new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 25,
+                ySL - myPlatform.myTexture.Height * 4 - aEnemy.myTexture.Height));
 
-            AddEnemy(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 32,
-                ySL - myPlatform.myTexture.Height * 10 - aEnemy.myTexture.Height), 'd'); 
+            AddEnemy(aEnemy, new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 32,
+                ySL - myPlatform.myTexture.Height * 10 - aEnemy.myTexture.Height)); 
         }
   
     }

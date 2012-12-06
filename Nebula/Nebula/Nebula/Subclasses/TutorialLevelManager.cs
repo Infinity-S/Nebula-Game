@@ -114,8 +114,8 @@ namespace Nebula.Subclasses
             AddPlatform(new Vector2((xSL / 12) * 89, ySL - myPlatform.myTexture.Height * 3), true);
 
 
-            AddEnemy(new Vector2((xSL / 12) * 25, ySL - myPlatform.myTexture.Height * 6 - aEnemy.myTexture.Height),'d');
-            AddEnemy(new Vector2((xSL / 12) * 69, ySL - myPlatform.myTexture.Height * 8 - aEnemy.myTexture.Height), 'd');
+            AddEnemy(aEnemy, new Vector2((xSL / 12) * 25, ySL - myPlatform.myTexture.Height * 6 - aEnemy.myTexture.Height));
+            AddEnemy(aEnemy, new Vector2((xSL / 12) * 69, ySL - myPlatform.myTexture.Height * 8 - aEnemy.myTexture.Height));
 
 
         }

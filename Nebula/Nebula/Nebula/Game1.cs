@@ -22,6 +22,7 @@ namespace Nebula
         SpriteBatch mySpriteBatch;
         Tutorial TutorialContent;
         Ceres firstLevelContent;
+        Vulkanis secondLevelContent; 
         Camera camera;
 
         public Game1()
@@ -60,7 +61,8 @@ namespace Nebula
             camera = new Camera(GraphicsDevice.Viewport, myAsis);
 
             //TutorialContent = new Tutorial(this, graphics, myAsis, mySpriteBatch);
-            firstLevelContent = new Ceres(this, graphics, myAsis, mySpriteBatch); 
+            //firstLevelContent = new Ceres(this, graphics, myAsis, mySpriteBatch); 
+            secondLevelContent = new Vulkanis(this, graphics, myAsis, mySpriteBatch); 
         }
 
         /// <summary>
@@ -84,7 +86,8 @@ namespace Nebula
                 this.Exit();
 
             //TutorialContent.Update(gameTime);
-            firstLevelContent.Update(gameTime);
+            //firstLevelContent.Update(gameTime);
+            secondLevelContent.Update(gameTime); 
             camera.Update(gameTime);
             base.Update(gameTime);
         }
@@ -97,7 +100,8 @@ namespace Nebula
         {
             mySpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
             //TutorialContent.Draw(gameTime);
-            firstLevelContent.Draw(gameTime);
+            //firstLevelContent.Draw(gameTime);
+            secondLevelContent.Draw(gameTime); 
             mySpriteBatch.End();
             base.Draw(gameTime);
         }

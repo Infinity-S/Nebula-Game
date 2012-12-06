@@ -146,25 +146,25 @@ namespace Nebula.Subclasses
         }
 
 
-        public void AddEnemy(Vector2 position, char c)
+        public void AddEnemy(Enemy aEnemy, Vector2 position)
         {
-            if (c == 'd')
-            {
+            //if (c == 'd')
+            //{
                 Sprite newEnemy = aEnemy.Clone();
                 newEnemy.myPosition = position;
                 mySpriteManager.addToPositionsList(newEnemy);
                 myLevel.AddSprite(newEnemy);
                 EnemiesList.Add((Enemy)newEnemy);
-            }
-            if (c == 'h')
-            {
+            //}
+            //if (c == 'h')
+            //{
                 // Change to match HydromedaEnemy instead of DraconisEnemy
-                Sprite newEnemy = aEnemy.Clone();
-                newEnemy.myPosition = position;
-                mySpriteManager.addToPositionsList(newEnemy);
-                myLevel.AddSprite(newEnemy);
-                EnemiesList.Add((Enemy)newEnemy);
-            }
+                //Sprite newEnemy = aEnemy.Clone();
+                //newEnemy.myPosition = position;
+                //mySpriteManager.addToPositionsList(newEnemy);
+                //myLevel.AddSprite(newEnemy);
+                //EnemiesList.Add((Enemy)newEnemy);
+            //}
         }
 
         public void StartGame()

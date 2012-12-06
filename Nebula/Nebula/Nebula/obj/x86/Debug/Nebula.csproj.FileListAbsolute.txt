@@ -413,3 +413,4 @@ C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Deb
 C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\victory1.xnb
 C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\stage1cleared.xnb
 C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\stage1-soundclear.xnb
+C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\purpleLaser.xnb

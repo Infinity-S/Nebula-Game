@@ -53,6 +53,8 @@ namespace Nebula.Subclasses
             movingSpritesList.Add(aLaser);
             movingSpritesList.Add(dEnemy);
             movingSpritesList.Add(dLaser);
+            movingSpritesList.Add(hEnemy);
+            movingSpritesList.Add(hLaser); 
 
             platformsList.Add(grassPlatform);
 
@@ -62,6 +64,7 @@ namespace Nebula.Subclasses
 
             allSprites.Add(myAsis);
             allSprites.Add(dLaser);
+            allSprites.Add(hLaser); 
             //took this out as we want to use dEnemy as a template, not as an actual enemy in the level 
             //allSprites.Add(dEnemy);
             allSprites.Add(aLaser);
@@ -105,7 +108,7 @@ namespace Nebula.Subclasses
             spriteManager = new SpriteManager(myGame.Content.Load<Texture2D>("timet-background"), new Vector2(0, 0),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight), myGame, movingSpritesList, myAsis);
 
-            CeresLevelManager manager = new CeresLevelManager(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(-1000, -1000),
+            VulkanisLevelManager manager = new VulkanisLevelManager(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(-1000, -1000),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight),
                 myGame, this, movingSpritesList, platformsList, myFont, myAsis, myInstructionScreen, myGameOverScreen, myVictoryScreen, spriteManager);
 

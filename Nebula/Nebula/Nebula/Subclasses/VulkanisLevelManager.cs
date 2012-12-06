@@ -13,19 +13,32 @@ using Nebula.SuperClasses;
 using Nebula.BaseClasses; 
 
 namespace Nebula.Subclasses
-{
+{ 
     class VulkanisLevelManager : LevelManager
     {
+        Enemy hEnemy;
+        Laser hLaser; 
         public VulkanisLevelManager(Texture2D texture, Vector2 position, Vector2 screen, Game1 aGame, Level aLevel,
             List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis aAsis, Screen aInstructions, Screen aGameOverScreen, Screen aVictoryScreen, SpriteManager aSpriteManager)
             : base(texture, position, screen, aGame, aLevel, aSpritesList, aPlatformsList, aFont, aAsis, aInstructions, aGameOverScreen, aVictoryScreen, aSpriteManager)
         {
             EndOfLevelPos = xSL * 7 + xSL / 2 + xSL / 8;
+
         }
 
         public override void AddItemsToLevel(Sprite sprite, float xSL, float ySL)
         {
-            
+            AddPlatform(new Vector2(0, ySL - myPlatform.myTexture.Height * 2), true);
+            AddPlatform(new Vector2(xSL / 12, ySL - myPlatform.myTexture.Height * 2), true);
+            AddPlatform(new Vector2((xSL / 12) * 2, ySL - myPlatform.myTexture.Height * 2), true);
+            AddPlatform(new Vector2((xSL / 12) * 3, ySL - myPlatform.myTexture.Height * 2), true);
+        }
+
+        public override void setUpSprites(Platform aPlatform, Asis aAsis, AsisLaser anLaser, Enemy anEnemy, EnemyLaser anELaser)
+        {
+            base.setUpSprites(aPlatform, aAsis, anLaser, anEnemy, anELaser);
+            hEnemy = (Enemy)spritesList[4];
+            hLaser = (EnemyLaser)spritesList[5];
         }
     }
 }
