@@ -18,11 +18,14 @@ namespace Nebula.Subclasses
     {
         String moveTxt = "Use the D-Pad to move left and right";
         String jumpTxt = "Use the A button to jump";
-        String shootTxt = "Use the Right Trigger to shoot the enemy \n But don't get too close!!";
-        String timeTravelTxt = "Continuouly press down on the X button to travel back in time. \nIf you miss this platform try it out! \nDont believe that GameOver screen!";
+        String shootTxt = "Use the Right Trigger to shoot the enemy \n\n But don't get too close!!";
+        String timeTravelTxt = "Continuouly press down on the X button to travel back in time. \n\nIf you miss this platform try it out! \n\nDont believe that GameOver screen!";
         String boostTxt = "Use the B button to use your boost ablity. Try it out now!";
-        String boostTxt2 = "You can also use it to reach platforms that are too far away to reach just by jump!"; 
-        String instrTxt = "Press the Y button to display the instructions. Press START to exit them"; 
+        String rechargeTxt = "But don't forget it has to recharge!"; 
+        String boostTxt2 = "You can also use it to reach platforms that are too far away!";
+        String ttTxt2 = "Don't forget to use that timetravel ability if that enemy \n\nsucceeds in shooting you!";
+        String basicsTxt = "Thst concludes the basics of Nebula!"; 
+        String instrTxt = "At any time\n\n Press the Y button to display the instructions \n\nand START to exit them"; 
 
         public TutorialLevelManager(Texture2D texture, Vector2 position, Vector2 screen, Game1 aGame, Level aLevel,
             List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis aAsis, Screen aInstructions, Screen aGameOverScreen, Screen aVictoryScreen, SpriteManager aSpriteManager)
@@ -72,14 +75,46 @@ namespace Nebula.Subclasses
             AddPlatform(new Vector2((xSL / 12) * 45, ySL - myPlatform.myTexture.Height * 6), true);
             AddPlatform(new Vector2((xSL / 12) * 46, ySL - myPlatform.myTexture.Height * 6), true);
             AddPlatform(new Vector2((xSL / 12) * 47, ySL - myPlatform.myTexture.Height * 6), true);
+            OnScreenText.Add(rechargeTxt, new Vector2((xSL / 12) * 48, ySL - 2 * (ySL / 4)));
             AddPlatform(new Vector2((xSL / 12) * 48, ySL - myPlatform.myTexture.Height * 6), true);
             AddPlatform(new Vector2((xSL / 12) * 49, ySL - myPlatform.myTexture.Height * 6), true);
 
+            OnScreenText.Add(boostTxt2, new Vector2((xSL / 12) * 51, ySL - 3 * (ySL / 4)));
+            AddPlatform(new Vector2((xSL / 12) * 55, ySL - myPlatform.myTexture.Height * 6), true);
+            AddPlatform(new Vector2((xSL / 12) * 56, ySL - myPlatform.myTexture.Height * 6), true);
+            AddPlatform(new Vector2((xSL / 12) * 57, ySL - myPlatform.myTexture.Height * 6), true);
+            AddPlatform(new Vector2((xSL / 12) * 58, ySL - myPlatform.myTexture.Height * 6), true);
+            AddPlatform(new Vector2((xSL / 12) * 59, ySL - myPlatform.myTexture.Height * 6), true);
+            AddPlatform(new Vector2((xSL / 12) * 60, ySL - myPlatform.myTexture.Height * 6), true);
+ 
+
+            AddPlatform(new Vector2((xSL / 12) * 64, ySL - myPlatform.myTexture.Height * 8), true);
+            OnScreenText.Add(ttTxt2, new Vector2((xSL / 12) * 64, ySL - 3 * (ySL / 4)));
+            AddPlatform(new Vector2((xSL / 12) * 69, ySL - myPlatform.myTexture.Height * 8), true);
 
 
+            AddPlatform(new Vector2((xSL / 12) * 74, ySL - myPlatform.myTexture.Height * 3), true);
+            AddPlatform(new Vector2((xSL / 12) * 75, ySL - myPlatform.myTexture.Height * 3), true);
+            OnScreenText.Add(basicsTxt, new Vector2((xSL / 12) * 75, ySL - 2 * (ySL / 4)));
+            AddPlatform(new Vector2((xSL / 12) * 76, ySL - myPlatform.myTexture.Height * 3), true);
+            AddPlatform(new Vector2((xSL / 12) * 77, ySL - myPlatform.myTexture.Height * 3), true);
+            AddPlatform(new Vector2((xSL / 12) * 78, ySL - myPlatform.myTexture.Height * 3), true);
+            AddPlatform(new Vector2((xSL / 12) * 79, ySL - myPlatform.myTexture.Height * 3), true);
+            AddPlatform(new Vector2((xSL / 12) * 80, ySL - myPlatform.myTexture.Height * 3), true);
+            AddPlatform(new Vector2((xSL / 12) * 81, ySL - myPlatform.myTexture.Height * 3), true);
+            AddPlatform(new Vector2((xSL / 12) * 82, ySL - myPlatform.myTexture.Height * 3), true);
+            OnScreenText.Add(instrTxt, new Vector2((xSL / 12) * 82, ySL - 3 * (ySL / 4)));
+            AddPlatform(new Vector2((xSL / 12) * 83, ySL - myPlatform.myTexture.Height * 3), true);
+            AddPlatform(new Vector2((xSL / 12) * 84, ySL - myPlatform.myTexture.Height * 3), true);
+            AddPlatform(new Vector2((xSL / 12) * 85, ySL - myPlatform.myTexture.Height * 3), true);
+            AddPlatform(new Vector2((xSL / 12) * 86, ySL - myPlatform.myTexture.Height * 3), true);
+            AddPlatform(new Vector2((xSL / 12) * 87, ySL - myPlatform.myTexture.Height * 3), true);
+            AddPlatform(new Vector2((xSL / 12) * 88, ySL - myPlatform.myTexture.Height * 3), true);
+            AddPlatform(new Vector2((xSL / 12) * 89, ySL - myPlatform.myTexture.Height * 3), true);
 
 
-            AddEnemy(new Vector2((xSL / 12) * 25, ySL - myPlatform.myTexture.Height * 6 - aEnemy.myTexture.Height),'d'); 
+            AddEnemy(new Vector2((xSL / 12) * 25, ySL - myPlatform.myTexture.Height * 6 - aEnemy.myTexture.Height),'d');
+            AddEnemy(new Vector2((xSL / 12) * 69, ySL - myPlatform.myTexture.Height * 8 - aEnemy.myTexture.Height), 'd');
 
 
         }
