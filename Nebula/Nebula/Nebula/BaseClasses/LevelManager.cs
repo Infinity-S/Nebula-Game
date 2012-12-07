@@ -359,7 +359,7 @@ namespace Nebula.Subclasses
                 {
                     float xFireFromLeft = asis.myPosition.X - (aLaser.myTexture.Width * 2) - myScreenSize.X / 2;
                     // sm.myScreenSize.X/8 = size of x range
-                    float xFireFromLeftPlus = xFireFromLeft - myScreenSize.X / 8;
+                    float xFireFromLeftPlus = xFireFromLeft - myScreenSize.X/8;
                     if (aLaser.myPosition.X <= xFireFromLeft && aLaser.myPosition.X >= xFireFromLeftPlus)
                     {
                         BackwardsLaserSoundEffect.Play();
@@ -367,7 +367,7 @@ namespace Nebula.Subclasses
                     }
                     float xFireFromRight = asis.myPosition.X + (asis.myTexture.Width * 2) + myScreenSize.X / 2;
                     // sm.myScreenSize.X/8 = size of x range
-                    float xFireFromRightPlus = xFireFromRight + myScreenSize.X / 8;
+                    float xFireFromRightPlus = xFireFromRight + myScreenSize.X/8;
                     if (aLaser.myPosition.X >= xFireFromRight && aLaser.myPosition.X <= xFireFromRightPlus)
                     {
                         BackwardsLaserSoundEffect.Play();
@@ -415,20 +415,31 @@ namespace Nebula.Subclasses
             // If player has reached the end of the level
             if (asis.myPosition.X > EndOfLevelPos)
             {
-                if (finishingTime <= 50)
+                // If tutorial level
+                if (levelCounter == 0)
                 {
                     VictoryScreenList[0].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
                 }
-                else if (finishingTime <= 70)
+
+                // If first level
+                if (levelCounter == 1)
                 {
-                    VictoryScreenList[1].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+                    if (finishingTime <= 50)
+                    {
+                        VictoryScreenList[0].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+                    }
+                    else if (finishingTime <= 70)
+                    {
+                        VictoryScreenList[1].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+                    }
+                    else if (finishingTime <= 110)
+                    {
+                        VictoryScreenList[2].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+                    }
+                    else VictoryScreenList[3].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
                 }
-                else if (finishingTime <= 110)
-                {
-                    VictoryScreenList[2].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
-                }
-                else VictoryScreenList[3].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
                 
+
                 if (playOnce == true)
                 {
                     StageClear.Play();
@@ -436,14 +447,14 @@ namespace Nebula.Subclasses
                 playOnce = false;
                 LevelMusic.Stop();
 
+                // If they press N on the keyboard or start on the gamepad go to the next level
                 if ((Keyboard.GetState().IsKeyDown(Keys.N)) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Start))
                 {
                     levelCounter = myGame.getLevelNumber();
                     levelCounter++;
-                    asis.myPosition = new Vector2(myScreenSize.X / 12, myScreenSize.Y - myScreenSize.Y/4);
+                    asis.myPosition = new Vector2(myScreenSize.X / 12, myScreenSize.Y - myScreenSize.Y / 4);
                     myGame.setLevel(levelCounter, asis);
                 }
-                
 
                 return true;
             } 

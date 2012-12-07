@@ -39,11 +39,18 @@ namespace Nebula
                 level = new Ceres(this, graphics, asi, mySpriteBatch);
                 levelNumber = 1;
             }
-            else if (i == 2)
+            /*
+            if (i == 2)
             {
-                level = new Tutorial(this, graphics, asi, mySpriteBatch);
+                level = new Vulkanis(this, graphics, asi, mySpriteBatch);
                 levelNumber = 2;
             }
+            if (i == 3)
+            {
+                level = new Sycia(this, graphics, asi, mySpriteBatch);
+                levelNumber = 3;
+            }
+            */
 
         }
 
@@ -66,7 +73,6 @@ namespace Nebula
             // TODO: Add your initialization logic here
             base.Initialize();
         }
-
 
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
@@ -106,21 +112,8 @@ namespace Nebula
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
-
-            /*
-            if (levelNumber == 0)
-            {
-                TutorialContent.Update(gameTime);
-            }
-            else if (levelNumber == 1)
-            {
-                firstLevelContent.Update(gameTime);
-            }
-            */
-
             
             level.Update(gameTime);
-            //secondLevelContent.Update(gameTime); 
             camera.Update(gameTime);
             base.Update(gameTime);
         }
@@ -133,19 +126,7 @@ namespace Nebula
         {
             mySpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
 
-            /*
-            if (levelNumber == 0)
-            {
-                TutorialContent.Draw(gameTime);
-            }
-            else if (levelNumber == 1)
-            {
-                firstLevelContent.Draw(gameTime);
-            }
-            */
-            // TutorialContent.Draw(gameTime);
             level.Draw(gameTime);
-            //secondLevelContent.Draw(gameTime); 
             mySpriteBatch.End();
             base.Draw(gameTime);
         }

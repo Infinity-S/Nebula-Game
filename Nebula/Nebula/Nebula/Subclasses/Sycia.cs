@@ -9,15 +9,17 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Nebula.SuperClasses;
+using Nebula.BaseClasses;
 
 namespace Nebula.Subclasses
 {
-    class Sycia
+    class Sycia : Level
     {
         Game1 myGame;
         GraphicsDeviceManager myGraphics;
 
-        public Sycia(Game1 aGame, GraphicsDeviceManager aGraphics)
+        public Sycia(Game1 aGame, GraphicsDeviceManager aGraphics, Asis anAsis, SpriteBatch aSpriteBatch)
+            : base (aGame, aGraphics, anAsis, aSpriteBatch)
         {
             myGame = aGame;
             myGraphics = aGraphics;

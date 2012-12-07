@@ -24,7 +24,6 @@ namespace Nebula.Subclasses
             EndOfLevelPos = xSL * 7 + xSL / 2 + xSL / 8;
         }
 
-
         public override void AddItemsToLevel(Nebula.Sprite sprite, float xSL, float ySL)
         {
             //ADDING PLATFORMS 

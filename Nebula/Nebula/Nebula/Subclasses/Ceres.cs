@@ -115,8 +115,6 @@ namespace Nebula.Subclasses
             CeresLevelManager manager = new CeresLevelManager(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(-1000, -1000),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight),
                 myGame, this, movingSpritesList, platformsList, myFont, myAsis, myInstructionScreen, myGameOverScreen, myVictoryScreens, spriteManager);
-
-
             
             allSprites.Add(myInstructionScreen);
             allSprites.Add(myGameOverScreen);
