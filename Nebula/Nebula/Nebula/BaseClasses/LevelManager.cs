@@ -138,13 +138,18 @@ namespace Nebula.Subclasses
         {
             Platform newPlatform = myPlatform.Clone();
             newPlatform.myPosition = position;
-            newPlatform.setCanStandOn(canLandOn); 
+            newPlatform.setCanStandOn(canLandOn);
+            newPlatform.setmovingHorz(movHorz);
+            newPlatform.setmovingVert(movVert); 
+            newPlatform.setPositionMoveTo(posMoveTo);
+            newPlatform.setSpeed(speed); 
             myLevel.AddSprite(newPlatform);
+            mySpriteManager.addToPositionsList(newPlatform); 
       
-            if (newPlatform.getMovingHorz() || newPlatform.getMovingHorz())
-            {
-                newPlatform.movePlatform(asis.myPosition, posMoveTo, speed); 
-            }
+            //if (newPlatform.getMovingHorz() || newPlatform.getMovingHorz())
+            //{
+            //    newPlatform.movePlatform(asis.myPosition, posMoveTo, speed); 
+            //}
 
             // If we want Asis to be able to land on the platform and not fall through - add it to the platformsList
             if (canLandOn)
@@ -169,23 +174,11 @@ namespace Nebula.Subclasses
 
         public void AddEnemy(Enemy aEnemy, Vector2 position)
         {
-            //if (c == 'd')
-            //{
                 Sprite newEnemy = aEnemy.Clone();
                 newEnemy.myPosition = position;
                 mySpriteManager.addToPositionsList(newEnemy);
                 myLevel.AddSprite(newEnemy);
                 EnemiesList.Add((Enemy)newEnemy);
-            //}
-            //if (c == 'h')
-            //{
-                // Change to match HydromedaEnemy instead of DraconisEnemy
-                //Sprite newEnemy = aEnemy.Clone();
-                //newEnemy.myPosition = position;
-                //mySpriteManager.addToPositionsList(newEnemy);
-                //myLevel.AddSprite(newEnemy);
-                //EnemiesList.Add((Enemy)newEnemy);
-            //}
         }
 
         public void StartGame()
@@ -461,6 +454,18 @@ namespace Nebula.Subclasses
                 sm.GameOverLogic();
 
                 sm.LaserTimeTravelSound(sprite);
+
+                foreach (Platform p in sm.platformsList)
+                {
+                    if (p.getMovingVert())
+                    {
+                        p.movePlatformVert(p, sm.asis.myPosition);
+                    }
+                    else
+                    {
+                        p.movePlatformHorz(p, sm.asis.myPosition);
+                    }
+                }
 
                 sm.DisplayVictoryScreen();
             }

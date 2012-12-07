@@ -16,21 +16,18 @@ namespace Nebula.Subclasses
 {
     public class Platform : Sprite
     {
-        bool canStandOn;
-        bool movingHorz;
-        bool movingVert;
-        bool stationary;
+        bool canStandOn = false;
+        bool movingHorz = false;
+        bool movingVert = false;
+        bool stationary = true;
+        float positionMoveTo = 0f;
+        float speed = 0f; 
         public Platform(Texture2D image, Vector2 position, Vector2 screen)
             : base(image, position)
         {
             myPosition = position;
             myScreenSize = screen;
             myState = new ExistState(this);
-
-            canStandOn = false;
-            movingHorz = false;
-            movingVert = false;
-            stationary = true; 
         }
 
         public Platform Clone()
@@ -38,10 +35,50 @@ namespace Nebula.Subclasses
             return new Platform(this.myTexture, this.myPosition, this.myScreenSize);
         }
 
-        public bool getCanStandOn()
+        public void movePlatformVert(Platform aPlatform, Vector2 AsisPos)
         {
-            return canStandOn;
+            if (AsisPos.X >= aPlatform.myPosition.X - aPlatform.myTexture.Width)
+            {
+                //aPlatform.setMovingVelocity(speed);
+                aPlatform.myVelocity = new Vector2(0, aPlatform.speed * -1);
+                //aPlatform.move(aPlatform.getPositionMoveTo());
+                if (aPlatform.myPosition.Y <= aPlatform.positionMoveTo)
+                {
+                    aPlatform.myVelocity = new Vector2(0, 0);
+                }
+
+            }
+            //aPlatform.move(aPlatform.getPositionMoveTo());
+            if (AsisPos.X <= aPlatform.myPosition.X - aPlatform.myTexture.Width)
+            {
+                aPlatform.myVelocity = new Vector2(0, 0);
+            }
         }
+
+        public void movePlatformHorz(Platform aPlatform, Vector2 AsisPos)
+        {
+            float intialPlatformPos = aPlatform.myPosition.X; 
+            //start moving when asis is 1 platform lengths away 
+            if (AsisPos.X >= aPlatform.myPosition.X - aPlatform.myTexture.Width)
+            {
+                //aPlatform.setMovingVelocity(aPlatform.getSpeed());
+                aPlatform.myVelocity = new Vector2(speed, 0);
+            }
+            if (aPlatform.myPosition.X >= positionMoveTo || AsisPos.X < intialPlatformPos - aPlatform.myTexture.Width)
+            {
+                aPlatform.myVelocity = new Vector2(0, 0);
+            }
+            //if (AsisPos.X <= intialPlatformPos - aPlatform.myTexture.Width)
+            //{
+            //    aPlatform.myVelocity = new Vector2(0, 0);
+            //}
+ 
+        }
+
+        //public bool getCanStandOn()
+        //{
+        //    return canStandOn;
+        //}
 
         public void setCanStandOn(bool canStand)
         {
@@ -69,59 +106,82 @@ namespace Nebula.Subclasses
             movingVert = movingVertical;
         }
 
-        public bool getStationary()
-        {
-            return stationary;
-        }
+        //public bool getStationary()
+        //{
+        //    return stationary;
+        //}
 
         public void setStationary(bool isStationary)
         {
             stationary = isStationary;
         }
 
-        //position of asis
-        //posMovTo - either x or y position for platform to move to and then stay there
-        //speed - speed to move at 
-        public void movePlatform(Vector2 AsisPos, float PositionMoveTo, float speed)
+        //public float getPositionMoveTo()
+        //{
+        //    return positionMoveTo;
+        //}
+
+        public void setPositionMoveTo(float position)
         {
-            //start moving when asis is 1 platform lengths away 
-            if (AsisPos.X >= myPosition.X - this.myTexture.Width)
-            {
-                setSpeed(speed);
-            }
-            move(PositionMoveTo); 
+            positionMoveTo = position;
         }
 
-        private void setSpeed(float speed)
+        //public float getSpeed()
+        //{
+        //    return speed;
+        //}
+
+        public void setSpeed(float aSpeed)
         {
-            if (movingHorz)
-            {
-                myVelocity = new Vector2(speed, 0);
-            }
-            else
-            {
-                myVelocity = new Vector2(0, speed);
-            }
+            speed = aSpeed; 
         }
 
-        private void move(float position)
-        {
-            if (movingHorz)
-            {
-                if (myPosition.X >= position)
-                {
-                    setSpeed(0f);
-                }
-            }
-            else
-            {
-               if (myPosition.Y >= position) 
-               {
-                    setSpeed(0f);
-               }
+        //     public void movePlatformVert (Platform aPlatform, Vector2 AsisPos)
+        //{
+        //    //start moving when asis is 1 platform lengths away 
+        //    if (AsisPos.X >= aPlatform.myPosition.X - aPlatform.myTexture.Width)
+        //    {
+        //        aPlatform.setMovingVelocity(aPlatform.getSpeed());
+        //        aPlatform.move(aPlatform.getPositionMoveTo()); 
+        //    } 
+        //    //aPlatform.move(aPlatform.getPositionMoveTo());
+        //    if (AsisPos.X <= aPlatform.myPosition.X - aPlatform.myTexture.Width)
+        //    {
+        //        aPlatform.setMovingVelocity(0f);
+        //    }
+            
+        //}
 
-            }
-         }
+        //public void setMovingVelocity(float speed)
+        //{
+        //    if (movingHorz)
+        //    {
+        //        myVelocity = new Vector2(speed, 0);
+        //    }
+        //    else
+        //    {
+        //        myVelocity = new Vector2(0, -speed);
+        //    }
+        //}
+
+        //public void move(float position)
+        //{
+        //    if (movingHorz)
+        //    {
+        //        if (myPosition.X >= position)
+        //        {
+        //            setMovingVelocity(0f);
+        //        }
+        //    }
+        //    else
+        //    {
+        //       if (myPosition.Y <= position) 
+        //       {
+        //            setMovingVelocity(0f);
+        //       }
+
+        //    }
+        // }
 
 
 
