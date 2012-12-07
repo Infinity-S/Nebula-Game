@@ -122,8 +122,9 @@ namespace Nebula.Subclasses
 
         public void AddPlatform(Vector2 position, bool canLandOn)
         {
-            Sprite newPlatform = myPlatform.Clone();
+            Platform newPlatform = myPlatform.Clone();
             newPlatform.myPosition = position;
+            newPlatform.setCanStandOn(canLandOn); 
             myLevel.AddSprite(newPlatform);
             // If we want Asis to be able to land on the platform and not fall through - add it to the platformsList
             if (canLandOn)

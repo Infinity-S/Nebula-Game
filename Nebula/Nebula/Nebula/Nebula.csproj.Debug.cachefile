@@ -27,6 +27,7 @@ Content\InstructionScreen (2).xnb
 Content\SpaceBackground.xnb
 Content\victory1.xnb
 Content\stage1cleared.xnb
+Content\purpleLaser.xnb
 Content\LaserSoundEffectBackwards.xnb
 Content\time-swoosh.xnb
 Content\breathofdeath.xnb
@@ -35,4 +36,3 @@ Content\CeresMusic.xnb
 Content\boost-sound.xnb
 Content\stage1-soundclear.xnb
 Content\SpriteFont1.xnb
-Content\purpleLaser.xnb
