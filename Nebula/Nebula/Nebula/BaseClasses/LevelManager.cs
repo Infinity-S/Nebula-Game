@@ -41,6 +41,8 @@ namespace Nebula.Subclasses
         protected internal  SoundEffectInstance LevelMusic;
         protected internal SoundEffectInstance StageClear;
         private bool playOnce = true; 
+        private double finishingTime;
+        private bool runOnce2 = true;
 
         Screen InstructionScreen;
         Screen GameOverScreen;
@@ -122,9 +124,8 @@ namespace Nebula.Subclasses
 
         public void AddPlatform(Vector2 position, bool canLandOn)
         {
-            Platform newPlatform = myPlatform.Clone();
+            Sprite newPlatform = myPlatform.Clone();
             newPlatform.myPosition = position;
-            newPlatform.setCanStandOn(canLandOn); 
             myLevel.AddSprite(newPlatform);
             // If we want Asis to be able to land on the platform and not fall through - add it to the platformsList
             if (canLandOn)
@@ -276,6 +277,8 @@ namespace Nebula.Subclasses
 
         public void AsisPlatformLogic()
         {
+            //if ((!Keyboard.GetState().IsKeyDown(Keys.X)) && (!GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.X))) {
+
             // For each platform, if Asis jumps on it - set her y velocity to 0
             for (int i = 0; i < platformsList.Count; i++)
             {
@@ -295,10 +298,13 @@ namespace Nebula.Subclasses
                     */
                     asis.myVelocity.Y = 0;
                     // Allows hero to jump off platforms
-                    if (Keyboard.GetState().IsKeyDown(Keys.Space) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.A))
+                    if (Keyboard.GetState().IsKeyDown(Keys.Space) 
+                        || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.A) 
+                        || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftShoulder))
                     {
                         asis.myVelocity.Y = -7f;
                     }
+                //}
                 }
             }
         }
@@ -395,7 +401,7 @@ namespace Nebula.Subclasses
             else GameOverSoundInstance.Stop();
         }
 
-        public void DisplayVictoryScreen()
+        public bool DisplayVictoryScreen()
         {
             if (asis.myPosition.X > EndOfLevelPos)
             {
@@ -403,10 +409,14 @@ namespace Nebula.Subclasses
                 {
                     StageClear.Play();
                 }
+                
                 playOnce = false;
                 LevelMusic.Stop();
                 VictoryScreen.myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
-            }
+
+                return true;
+            } 
+            return false;
         }
 
         class GameState : State
@@ -442,7 +452,15 @@ namespace Nebula.Subclasses
 
                 sm.LaserTimeTravelSound(sprite);
 
-                sm.DisplayVictoryScreen();
+                if (sm.DisplayVictoryScreen())
+                {
+                    if (sm.runOnce2)
+                    {
+                        sm.finishingTime = sprite.time;
+                        sm.runOnce2 = false;
+                    }
+                }
+
             }
             public void Draw(Sprite sprite, SpriteBatch batch)
             {
@@ -452,12 +470,25 @@ namespace Nebula.Subclasses
                 null, Color.White,
                 sprite.myAngle, sprite.myOrigin,
                 sprite.myScale, SpriteEffects.None, 0f);
-                // Timer gets drawn here - unaffected by time travel ability
-                batch.DrawString(sm.myFont, "Time: " + Convert.ToString(Convert.ToInt32(sprite.time)), new Vector2(sm.asis.myPosition.X - sm.xSL / 6, 0),
-                    Color.White, 0, new Vector2(0, 0), 1.3f, SpriteEffects.None, 0.5f); 
-                batch.DrawString(sm.myFont, "Boost Bar", 
-                    new Vector2(sm.asis.myPosition.X + sm.xSL - 2*sm.myPlatform.myTexture.Width - sm.myPlatform.myTexture.Width/2,sm.myPlatform.myTexture.Height + sm.myPlatform.myTexture.Height/3), 
-                    Color.White, 0, new Vector2(0,0), 1.3f, SpriteEffects.None, 0.5f);
+
+                if (!sm.DisplayVictoryScreen())
+                {
+                    // Timer gets drawn here - unaffected by time travel ability
+                    batch.DrawString(sm.myFont, "Time: " + Convert.ToString(Convert.ToInt32(sprite.time)), 
+                        new Vector2(sm.asis.myPosition.X - sm.xSL / 6, 0),
+                        Color.White, 0, new Vector2(0, 0), 1.3f, SpriteEffects.None, 0.5f);
+
+                    batch.DrawString(sm.myFont, "Boost Bar",
+                   new Vector2(sm.asis.myPosition.X + sm.xSL - 2 * sm.myPlatform.myTexture.Width - sm.myPlatform.myTexture.Width / 2, sm.myPlatform.myTexture.Height + sm.myPlatform.myTexture.Height / 3),
+                   Color.White, 0, new Vector2(0, 0), 1.3f, SpriteEffects.None, 0.5f);
+                }
+
+                if (sm.DisplayVictoryScreen())
+                {
+                    batch.DrawString(sm.myFont, "Time Completed In: " + Convert.ToString(Convert.ToInt32(sm.finishingTime)), 
+                        new Vector2(sm.asis.myPosition.X - sm.xSL / 6, 0), Color.White, 0, 
+                        new Vector2(0, 0), 1.3f, SpriteEffects.None, 0.5f);
+                }
 
                 foreach (KeyValuePair<String, Vector2> entry in sm.OnScreenText)
                 {

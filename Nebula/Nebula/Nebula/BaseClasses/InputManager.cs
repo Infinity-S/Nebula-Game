@@ -178,6 +178,20 @@ namespace Nebula
                     a.Invoke();
                 }
             }
+            if (gamePadState.Buttons.LeftShoulder == ButtonState.Pressed && myButtonsMap.ContainsKey(Buttons.LeftShoulder))
+            {
+                foreach (GameAction a in myButtonsMap[Buttons.LeftShoulder])
+                {
+                    a.Invoke();
+                }
+            }
+            if (gamePadState.Buttons.RightShoulder == ButtonState.Pressed && myButtonsMap.ContainsKey(Buttons.RightShoulder))
+            {
+                foreach (GameAction a in myButtonsMap[Buttons.RightShoulder])
+                {
+                    a.Invoke();
+                }
+            }
         }
 
         // This is called by the game - it gives the current 

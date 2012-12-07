@@ -34,9 +34,10 @@ namespace Nebula.SuperClasses
             myState = new ExistState(this);
             hasJumped = true;
             // (myScreenSize.X * 2 + myScreenSize.X / 2);
-            // Change back to  for start of game
+            // Change back to  for start of game 
             myPosition.X = myScreenSize.X / 12;
-                
+                // myScreenSize.X * 7;
+
             myPosition.Y = myScreenSize.Y - myTexture.Height * 2;
             // Start her facing to the right
             direction = "right";
@@ -67,7 +68,9 @@ namespace Nebula.SuperClasses
             InputManager.AddToKeyboardMap(Keys.Right, moveRight);
             InputManager.AddToButtonsMap(Buttons.DPadRight, moveRight);
             InputManager.AddToButtonsMap(Buttons.B, boost);
+            InputManager.AddToButtonsMap(Buttons.RightShoulder, boost);
             InputManager.AddToKeyboardMap(Keys.B, boost);
+
 
         }
         public void GoLeft()
@@ -108,7 +111,10 @@ namespace Nebula.SuperClasses
             }
             public void Update(double elapsedTime, Sprite sprite)
             {
-                if ((Keyboard.GetState().IsKeyDown(Keys.Space) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.A)) && sprite.hasJumped == false)
+                if ((Keyboard.GetState().IsKeyDown(Keys.Space)
+                    || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.A) 
+                    || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftShoulder)) 
+                    && sprite.hasJumped == false)
                 {
                     sprite.myPosition.Y -= 10f;
                     sprite.myVelocity.Y = -7f;
@@ -146,8 +152,6 @@ namespace Nebula.SuperClasses
                 sprite.myAngle, sprite.myOrigin,
                 sprite.myScale, SpriteEffects.None, 0f);
             }
-
         }
-
     }
 }
