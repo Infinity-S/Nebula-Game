@@ -79,6 +79,9 @@ namespace Nebula.Subclasses
             stationary = isStationary;
         }
 
+        //position of asis
+        //posMovTo - either x or y position for platform to move to and then stay there
+        //speed - speed to move at 
         public void movePlatform(Vector2 AsisPos, float PositionMoveTo, float speed)
         {
             //start moving when asis is 1 platform lengths away 
