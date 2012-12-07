@@ -22,6 +22,8 @@ namespace Nebula.Subclasses
 
         public override void LoadSprites()
         {
+
+
             AsisLaser aLaser = new AsisLaser(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(0, 0),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
@@ -88,8 +90,22 @@ namespace Nebula.Subclasses
              myGameOverScreen = new Screen(myGame.Content.Load<Texture2D>("death-screen"), new Vector2(0, 0), 
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
-             myVictoryScreen = new Screen(myGame.Content.Load<Texture2D>("stage1cleared"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
+             myVictoryScreen1 = new Screen(myGame.Content.Load<Texture2D>("Stage1Cleared1st"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
                   new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
+
+             myVictoryScreen2 = new Screen(myGame.Content.Load<Texture2D>("Stage1Cleared2nd"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
+                   new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
+
+             myVictoryScreen3 = new Screen(myGame.Content.Load<Texture2D>("Stage1Cleared3rd"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
+                   new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
+
+             myVictoryScreen4 = new Screen(myGame.Content.Load<Texture2D>("Stage1Cleared4th"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
+                   new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
+
+             myVictoryScreens.Add(myVictoryScreen1);
+             myVictoryScreens.Add(myVictoryScreen2);
+             myVictoryScreens.Add(myVictoryScreen3);
+             myVictoryScreens.Add(myVictoryScreen4);
 
             scrollingManager = new ScrollingManager(myAsis, myBackgroundSprites, myGraphics.PreferredBackBufferWidth, myBackgroundScreen);
 
@@ -98,13 +114,16 @@ namespace Nebula.Subclasses
 
             CeresLevelManager manager = new CeresLevelManager(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(-1000, -1000),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight),
-                myGame, this, movingSpritesList, platformsList, myFont, myAsis, myInstructionScreen, myGameOverScreen, myVictoryScreen, spriteManager);
+                myGame, this, movingSpritesList, platformsList, myFont, myAsis, myInstructionScreen, myGameOverScreen, myVictoryScreens, spriteManager);
 
 
             
             allSprites.Add(myInstructionScreen);
             allSprites.Add(myGameOverScreen);
-            allSprites.Add(myVictoryScreen); 
+            allSprites.Add(myVictoryScreen1);
+            allSprites.Add(myVictoryScreen2);
+            allSprites.Add(myVictoryScreen3);
+            allSprites.Add(myVictoryScreen4); 
             allSprites.Add(spriteManager);
             allSprites.Add(manager);
         }

@@ -276,8 +276,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
-    <Compile Include="stage1cleared.png">
-      <Name>stage1cleared</Name>
+    <Compile Include="Stage1Cleared4th.png">
+      <Name>Stage1Cleared4th</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -285,6 +285,25 @@
   <ItemGroup>
     <Compile Include="purpleLaser.png">
       <Name>purpleLaser</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Stage1Cleared1st.png">
+      <Name>Stage1Cleared1st</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Stage1Cleared2nd.png">
+      <Name>Stage1Cleared2nd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Stage1Cleared3rd.png">
+      <Name>Stage1Cleared3rd</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

@@ -44,16 +44,21 @@ namespace Nebula.Subclasses
         private double finishingTime;
         private bool runOnce2 = true;
 
+        private int levelCounter;
+
         Screen InstructionScreen;
         Screen GameOverScreen;
-        Screen VictoryScreen;
+
+        protected internal List<Screen> VictoryScreenList = new List<Screen>();
+
         // can change when victory screen displays if have a longer/shorter level 
         protected internal float EndOfLevelPos;   
 
         private Sprite[] BoostBar = new Sprite[5];
 
         public LevelManager(Texture2D texture, Vector2 position, Vector2 screen, Game1 aGame, Level aLevel,
-            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis asis2, Screen aInstructions, Screen aGameOverScreen, Screen aVictoryScreen, SpriteManager aSpriteManager)
+            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis asis2, 
+            Screen aInstructions, Screen aGameOverScreen, List<Screen> aVictoryScreenList, SpriteManager aSpriteManager)
             : base(texture, position, screen, aGame, aPlatformsList, asis2)
         {
             myTexture = texture;
@@ -86,7 +91,7 @@ namespace Nebula.Subclasses
             }
 
             GameOverScreen = aGameOverScreen;
-            VictoryScreen = aVictoryScreen; 
+            VictoryScreenList = aVictoryScreenList; 
             mySpriteManager = aSpriteManager;
 
             for (int i = 0; i < aPlatformsList.Count; i++)
@@ -107,6 +112,10 @@ namespace Nebula.Subclasses
             SetUpInput2();
         }
 
+        public void setLevelCounter(int integer)
+        {
+            levelCounter = integer;
+        }
 
 
         //this is virtual so you can override it if you want. 
@@ -403,16 +412,38 @@ namespace Nebula.Subclasses
 
         public bool DisplayVictoryScreen()
         {
+            // If player has reached the end of the level
             if (asis.myPosition.X > EndOfLevelPos)
             {
+                if (finishingTime <= 50)
+                {
+                    VictoryScreenList[0].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+                }
+                else if (finishingTime <= 70)
+                {
+                    VictoryScreenList[1].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+                }
+                else if (finishingTime <= 110)
+                {
+                    VictoryScreenList[2].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+                }
+                else VictoryScreenList[3].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+                
                 if (playOnce == true)
                 {
                     StageClear.Play();
                 }
-                
                 playOnce = false;
                 LevelMusic.Stop();
-                VictoryScreen.myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+
+                if ((Keyboard.GetState().IsKeyDown(Keys.N)) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Start))
+                {
+                    levelCounter = myGame.getLevelNumber();
+                    levelCounter++;
+                    asis.myPosition = new Vector2(myScreenSize.X / 12, myScreenSize.Y - myScreenSize.Y/4);
+                    myGame.setLevel(levelCounter, asis);
+                }
+                
 
                 return true;
             } 
@@ -438,7 +469,7 @@ namespace Nebula.Subclasses
 
                 sm.BoostAbility(); 
 
-                sm.PlayLevelMusic();
+                // sm.PlayLevelMusic();
 
                 sm.AsisLaserOffScreenLogic(); 
 
@@ -488,6 +519,13 @@ namespace Nebula.Subclasses
                     batch.DrawString(sm.myFont, "Time Completed In: " + Convert.ToString(Convert.ToInt32(sm.finishingTime)), 
                         new Vector2(sm.asis.myPosition.X - sm.xSL / 6, 0), Color.White, 0, 
                         new Vector2(0, 0), 1.3f, SpriteEffects.None, 0.5f);
+
+                    // Not appearing where I want it to - add text in photoshop?
+                    /*
+                    batch.DrawString(sm.myFont, "Press Start to continue on to the next level",
+                        new Vector2(sm.asis.myPosition.X - sm.xSL / 6, 0), Color.White, 0,
+                        new Vector2(0, 0), 1.7f, SpriteEffects.None, 0.5f);
+                    */
                 }
 
                 foreach (KeyValuePair<String, Vector2> entry in sm.OnScreenText)

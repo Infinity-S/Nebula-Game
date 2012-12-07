@@ -16,12 +16,12 @@ using Nebula.Subclasses;
 
 namespace Nebula.SuperClasses
 {
-    class SpriteManager : Sprite
+    public class SpriteManager : Sprite
     {
         protected internal Stack TimeStack; 
         protected internal List<Sprite> PositionsList;
         public Game1 myGame;
-        Asis myAsis;
+        protected internal Asis asis;
         SoundEffect TimeTravelSound;
         SoundEffectInstance TimeTravelSoundInstance;
         // private ScrollingManager myScrollingManager;
@@ -38,7 +38,7 @@ namespace Nebula.SuperClasses
         }
 
         public SpriteManager(Texture2D texture, Vector2 position, Vector2 screen, Game1 aGame,
-            List<Sprite> aPositionsList, Asis asis)
+            List<Sprite> aPositionsList, Asis anAsis)
             : base(texture, position)
         {
             myTexture = texture;
@@ -47,7 +47,7 @@ namespace Nebula.SuperClasses
             myGame = aGame;
             myScreenSize = screen;
             PositionsList = aPositionsList;
-            myAsis = asis;
+            asis = anAsis;
 
             TimeTravelSound = myGame.Content.Load<SoundEffect>("warp");
             TimeTravelSoundInstance = TimeTravelSound.CreateInstance();
@@ -96,8 +96,8 @@ namespace Nebula.SuperClasses
                 // If x is not being pressed change its state
                 sm.TimeTravelSoundInstance.Play();
 
-                sprite.myPosition = new Vector2(sm.myAsis.myPosition.X - sm.myScreenSize.X/6, 
-                    sm.myAsis.myPosition.Y - sm.myScreenSize.Y - sm.myScreenSize.Y/2);
+                sprite.myPosition = new Vector2(sm.asis.myPosition.X - sm.myScreenSize.X/6, 
+                    sm.asis.myPosition.Y - sm.myScreenSize.Y - sm.myScreenSize.Y/2);
 
                 if (!Keyboard.GetState().IsKeyDown(Keys.X) && GamePad.GetState(PlayerIndex.One).IsButtonUp(Buttons.X))
                 {

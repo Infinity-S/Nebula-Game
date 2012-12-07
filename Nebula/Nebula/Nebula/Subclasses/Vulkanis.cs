@@ -100,8 +100,10 @@ namespace Nebula.Subclasses
             myGameOverScreen = new Screen(myGame.Content.Load<Texture2D>("death-screen"), new Vector2(0, 0),
                new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
-            myVictoryScreen = new Screen(myGame.Content.Load<Texture2D>("stage1cleared"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
+            myVictoryScreen4 = new Screen(myGame.Content.Load<Texture2D>("stage1cleared"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
                  new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
+
+            myVictoryScreens.Add(myVictoryScreen4);
 
             scrollingManager = new ScrollingManager(myAsis, myBackgroundSprites, myGraphics.PreferredBackBufferWidth, myBackgroundScreen);
 
@@ -110,13 +112,13 @@ namespace Nebula.Subclasses
 
             VulkanisLevelManager manager = new VulkanisLevelManager(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(-1000, -1000),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight),
-                myGame, this, movingSpritesList, platformsList, myFont, myAsis, myInstructionScreen, myGameOverScreen, myVictoryScreen, spriteManager);
+                myGame, this, movingSpritesList, platformsList, myFont, myAsis, myInstructionScreen, myGameOverScreen, myVictoryScreens, spriteManager);
 
 
 
             allSprites.Add(myInstructionScreen);
             allSprites.Add(myGameOverScreen);
-            allSprites.Add(myVictoryScreen);
+            allSprites.Add(myVictoryScreen4);
             allSprites.Add(spriteManager);
             allSprites.Add(manager);
         }

@@ -14,7 +14,7 @@ using System.Collections;
 
 namespace Nebula
 {
-    class BackgroundSprite : Sprite
+    public class BackgroundSprite : Sprite
     {
         //Size object will be used to store the height and width of the scaled sprite
         protected internal Rectangle size; 

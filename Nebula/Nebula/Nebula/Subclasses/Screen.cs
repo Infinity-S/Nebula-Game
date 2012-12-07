@@ -14,7 +14,7 @@ using System.Threading;
 
 namespace Nebula.Subclasses
 {
-    class Screen : Sprite
+   public class Screen : Sprite
     {
         public Screen(Texture2D image, Vector2 position, Vector2 screen)
             : base(image, position)

@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Nebula.SuperClasses;
 using Nebula.Subclasses;
+using Nebula.BaseClasses;
 
 namespace Nebula
 {
@@ -21,9 +22,30 @@ namespace Nebula
         GraphicsDeviceManager graphics;
         SpriteBatch mySpriteBatch;
         Tutorial TutorialContent;
-        Ceres firstLevelContent;
+        Level level;
         Vulkanis secondLevelContent; 
         Camera camera;
+        int levelNumber;
+
+        public int getLevelNumber()
+        {
+            return levelNumber;
+        }
+
+        public void setLevel(int i, Asis asi)
+        {
+            if (i == 1)
+            {
+                level = new Ceres(this, graphics, asi, mySpriteBatch);
+                levelNumber = 1;
+            }
+            else if (i == 2)
+            {
+                level = new Tutorial(this, graphics, asi, mySpriteBatch);
+                levelNumber = 2;
+            }
+
+        }
 
         public Game1()
         {
@@ -61,7 +83,7 @@ namespace Nebula
             camera = new Camera(GraphicsDevice.Viewport, myAsis);
 
             // TutorialContent = new Tutorial(this, graphics, myAsis, mySpriteBatch);
-            firstLevelContent = new Ceres(this, graphics, myAsis, mySpriteBatch); 
+            level = new Tutorial(this, graphics, myAsis, mySpriteBatch); 
             //secondLevelContent = new Vulkanis(this, graphics, myAsis, mySpriteBatch); 
         }
 
@@ -85,8 +107,19 @@ namespace Nebula
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TutorialContent.Update(gameTime);
-            firstLevelContent.Update(gameTime);
+            /*
+            if (levelNumber == 0)
+            {
+                TutorialContent.Update(gameTime);
+            }
+            else if (levelNumber == 1)
+            {
+                firstLevelContent.Update(gameTime);
+            }
+            */
+
+            
+            level.Update(gameTime);
             //secondLevelContent.Update(gameTime); 
             camera.Update(gameTime);
             base.Update(gameTime);
@@ -99,8 +132,19 @@ namespace Nebula
         protected override void Draw(GameTime gameTime)
         {
             mySpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
+
+            /*
+            if (levelNumber == 0)
+            {
+                TutorialContent.Draw(gameTime);
+            }
+            else if (levelNumber == 1)
+            {
+                firstLevelContent.Draw(gameTime);
+            }
+            */
             // TutorialContent.Draw(gameTime);
-            firstLevelContent.Draw(gameTime);
+            level.Draw(gameTime);
             //secondLevelContent.Draw(gameTime); 
             mySpriteBatch.End();
             base.Draw(gameTime);

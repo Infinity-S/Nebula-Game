@@ -11,10 +11,11 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Nebula.SuperClasses;
 using Nebula.Subclasses; 
+using Nebula.BaseClasses;
 
 namespace Nebula.BaseClasses
 {
-    class Level
+    public class Level
     {
         protected internal Game1 myGame;
         protected internal GraphicsDeviceManager myGraphics;
@@ -26,7 +27,11 @@ namespace Nebula.BaseClasses
         protected internal List<BackgroundSprite> myBackgroundSprites = new List<BackgroundSprite>();
         protected internal ScrollingManager scrollingManager;
         protected internal Screen myInstructionScreen;
-        protected internal Screen myVictoryScreen; 
+        protected internal Screen myVictoryScreen1;
+        protected internal Screen myVictoryScreen2;
+        protected internal Screen myVictoryScreen3;
+        protected internal Screen myVictoryScreen4;
+        protected internal List<Screen> myVictoryScreens = new List<Screen>();
         protected internal Screen myBackgroundScreen;
         protected internal Screen myGameOverScreen;
         protected internal SpriteManager spriteManager; 

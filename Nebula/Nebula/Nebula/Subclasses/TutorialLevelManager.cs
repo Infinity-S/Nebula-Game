@@ -28,8 +28,10 @@ namespace Nebula.Subclasses
         String instrTxt = "At any time\n\n Press the Y button to display the instructions \n\nand START to exit them"; 
 
         public TutorialLevelManager(Texture2D texture, Vector2 position, Vector2 screen, Game1 aGame, Level aLevel,
-            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis aAsis, Screen aInstructions, Screen aGameOverScreen, Screen aVictoryScreen, SpriteManager aSpriteManager)
-            : base(texture, position, screen, aGame, aLevel, aSpritesList, aPlatformsList, aFont, aAsis, aInstructions, aGameOverScreen, aVictoryScreen, aSpriteManager)
+            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis aAsis,
+            Screen aInstructions, Screen aGameOverScreen, List<Screen> aVictoryScreenList, SpriteManager aSpriteManager)
+            : base(texture, position, screen, aGame, aLevel, aSpritesList, aPlatformsList, aFont, aAsis,
+            aInstructions, aGameOverScreen, aVictoryScreenList, aSpriteManager)
         {
             EndOfLevelPos = (xSL / 12) * 89; 
         }

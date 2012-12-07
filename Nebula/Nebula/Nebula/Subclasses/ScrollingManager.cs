@@ -16,7 +16,7 @@ using Nebula.Subclasses;
 
 namespace Nebula
 {
-    class ScrollingManager
+    public class ScrollingManager
     {
         private Asis myAsis;
         private List<BackgroundSprite> myBackgrounds;

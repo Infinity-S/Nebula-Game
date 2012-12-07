@@ -14,7 +14,7 @@ using Nebula.SuperClasses;
 
 namespace Nebula
 {
-    class Asis : Hero
+    public class Asis : Hero
 
     {
         public Asis(Texture2D image, Vector2 position, Vector2 screen, Game1 myGame)
