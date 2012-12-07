@@ -126,6 +126,26 @@ namespace Nebula.Subclasses
             newPlatform.myPosition = position;
             newPlatform.setCanStandOn(canLandOn); 
             myLevel.AddSprite(newPlatform);
+
+            // If we want Asis to be able to land on the platform and not fall through - add it to the platformsList
+            if (canLandOn)
+            {
+                platformsList.Add(newPlatform);
+            }
+        }
+
+        public void AddMovingPlatform(Vector2 position, bool canLandOn, bool movHorz, bool movVert, float posMoveTo, float speed)
+        {
+            Platform newPlatform = myPlatform.Clone();
+            newPlatform.myPosition = position;
+            newPlatform.setCanStandOn(canLandOn); 
+            myLevel.AddSprite(newPlatform);
+      
+            if (newPlatform.getMovingHorz() || newPlatform.getMovingHorz())
+            {
+                newPlatform.movePlatform(asis.myPosition, posMoveTo, speed); 
+            }
+
             // If we want Asis to be able to land on the platform and not fall through - add it to the platformsList
             if (canLandOn)
             {

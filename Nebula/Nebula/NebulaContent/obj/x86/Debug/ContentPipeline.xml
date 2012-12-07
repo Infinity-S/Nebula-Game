@@ -8,7 +8,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LaserSoundEffect.xnb</Output>
-      <Time>2012-12-06T17:46:02.4913543-05:00</Time>
+      <Time>2012-12-06T19:41:55.2567687-05:00</Time>
     </Item>
     <Item>
       <Source>enemy-blue.png</Source>
@@ -17,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\enemy-blue.xnb</Output>
-      <Time>2012-12-06T17:46:02.5515125-05:00</Time>
+      <Time>2012-12-06T19:41:55.3635547-05:00</Time>
     </Item>
     <Item>
       <Source>Asis.JPG</Source>
@@ -26,7 +26,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Asis.xnb</Output>
-      <Time>2012-12-06T17:46:02.2526939-05:00</Time>
+      <Time>2012-12-06T19:41:55.1519787-05:00</Time>
     </Item>
     <Item>
       <Source>enemy-red.jpg</Source>
@@ -35,7 +35,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\enemy-red.xnb</Output>
-      <Time>2012-12-06T17:46:02.6323809-05:00</Time>
+      <Time>2012-12-06T19:41:55.3795227-05:00</Time>
     </Item>
     <Item>
       <Source>redLaser.png</Source>
@@ -44,7 +44,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\redLaser.xnb</Output>
-      <Time>2012-12-06T17:46:02.6560497-05:00</Time>
+      <Time>2012-12-06T19:41:55.3895027-05:00</Time>
     </Item>
     <Item>
       <Source>Background01.png</Source>
@@ -53,7 +53,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background01.xnb</Output>
-      <Time>2012-12-06T17:46:02.2556525-05:00</Time>
+      <Time>2012-12-06T19:41:55.1539747-05:00</Time>
     </Item>
     <Item>
       <Source>Background04.png</Source>
@@ -62,7 +62,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background04.xnb</Output>
-      <Time>2012-12-06T17:46:02.3187693-05:00</Time>
+      <Time>2012-12-06T19:41:55.1839147-05:00</Time>
     </Item>
     <Item>
       <Source>Background05.png</Source>
@@ -71,7 +71,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background05.xnb</Output>
-      <Time>2012-12-06T17:46:02.3217279-05:00</Time>
+      <Time>2012-12-06T19:41:55.1859107-05:00</Time>
     </Item>
     <Item>
       <Source>Background03.png</Source>
@@ -80,7 +80,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background03.xnb</Output>
-      <Time>2012-12-06T17:46:02.3167969-05:00</Time>
+      <Time>2012-12-06T19:41:55.1819187-05:00</Time>
     </Item>
     <Item>
       <Source>Background02.png</Source>
@@ -89,7 +89,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Background02.xnb</Output>
-      <Time>2012-12-06T17:46:02.3138383-05:00</Time>
+      <Time>2012-12-06T19:41:55.1799227-05:00</Time>
     </Item>
     <Item>
       <Source>blueLaser.jpg</Source>
@@ -98,7 +98,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\blueLaser.xnb</Output>
-      <Time>2012-12-06T17:46:02.5189679-05:00</Time>
+      <Time>2012-12-06T19:41:55.2916987-05:00</Time>
     </Item>
     <Item>
       <Source>grass.jpg</Source>
@@ -107,7 +107,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\grass.xnb</Output>
-      <Time>2012-12-06T17:46:02.6363257-05:00</Time>
+      <Time>2012-12-06T19:41:55.3805207-05:00</Time>
     </Item>
     <Item>
       <Source>time-background.png</Source>
@@ -116,7 +116,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\time-background.xnb</Output>
-      <Time>2012-12-06T17:46:02.6767599-05:00</Time>
+      <Time>2012-12-06T19:41:55.4074667-05:00</Time>
     </Item>
     <Item>
       <Source>timet-background.png</Source>
@@ -125,7 +125,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\timet-background.xnb</Output>
-      <Time>2012-12-06T17:46:02.7231113-05:00</Time>
+      <Time>2012-12-06T19:41:55.4793227-05:00</Time>
     </Item>
     <Item>
       <Source>death-screen.png</Source>
@@ -134,7 +134,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\death-screen.xnb</Output>
-      <Time>2012-12-06T17:46:02.5495401-05:00</Time>
+      <Time>2012-12-06T19:41:55.3615587-05:00</Time>
     </Item>
     <Item>
       <Source>boost-bar3.png</Source>
@@ -143,7 +143,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-bar3.xnb</Output>
-      <Time>2012-12-06T17:46:02.5209403-05:00</Time>
+      <Time>2012-12-06T19:41:55.3056707-05:00</Time>
     </Item>
     <Item>
       <Source>boost-bar4.png</Source>
@@ -152,7 +152,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-bar4.xnb</Output>
-      <Time>2012-12-06T17:46:02.5219265-05:00</Time>
+      <Time>2012-12-06T19:41:55.3066687-05:00</Time>
     </Item>
     <Item>
       <Source>boost-bar5.png</Source>
@@ -161,7 +161,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-bar5.xnb</Output>
-      <Time>2012-12-06T17:46:02.5238989-05:00</Time>
+      <Time>2012-12-06T19:41:55.3076667-05:00</Time>
     </Item>
     <Item>
       <Source>boost-bar1.png</Source>
@@ -170,7 +170,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-bar1.xnb</Output>
-      <Time>2012-12-06T17:46:02.5199541-05:00</Time>
+      <Time>2012-12-06T19:41:55.3036747-05:00</Time>
     </Item>
     <Item>
       <Source>boost-bar2.png</Source>
@@ -179,7 +179,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-bar2.xnb</Output>
-      <Time>2012-12-06T17:46:02.5209403-05:00</Time>
+      <Time>2012-12-06T19:41:55.3046727-05:00</Time>
     </Item>
     <Item>
       <Source>PlantPlatform.png</Source>
@@ -188,7 +188,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PlantPlatform.xnb</Output>
-      <Time>2012-12-06T17:46:02.5120645-05:00</Time>
+      <Time>2012-12-06T19:41:55.2837147-05:00</Time>
     </Item>
     <Item>
       <Source>PB04.png</Source>
@@ -197,7 +197,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PB04.xnb</Output>
-      <Time>2012-12-06T17:46:02.5110783-05:00</Time>
+      <Time>2012-12-06T19:41:55.2827167-05:00</Time>
     </Item>
     <Item>
       <Source>PB01.png</Source>
@@ -206,7 +206,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PB01.xnb</Output>
-      <Time>2012-12-06T17:46:02.5031887-05:00</Time>
+      <Time>2012-12-06T19:41:55.2667487-05:00</Time>
     </Item>
     <Item>
       <Source>PB02.png</Source>
@@ -215,7 +215,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PB02.xnb</Output>
-      <Time>2012-12-06T17:46:02.5051611-05:00</Time>
+      <Time>2012-12-06T19:41:55.2717387-05:00</Time>
     </Item>
     <Item>
       <Source>PB03.png</Source>
@@ -224,7 +224,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PB03.xnb</Output>
-      <Time>2012-12-06T17:46:02.5081197-05:00</Time>
+      <Time>2012-12-06T19:41:55.2767287-05:00</Time>
     </Item>
     <Item>
       <Source>InstructionScreen (2).png</Source>
@@ -233,7 +233,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\InstructionScreen (2).xnb</Output>
-      <Time>2012-12-06T17:46:02.4874095-05:00</Time>
+      <Time>2012-12-06T19:41:55.2557707-05:00</Time>
     </Item>
     <Item>
       <Source>SpaceBackground.png</Source>
@@ -242,7 +242,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\SpaceBackground.xnb</Output>
-      <Time>2012-12-06T17:46:02.5150231-05:00</Time>
+      <Time>2012-12-06T19:41:55.2897027-05:00</Time>
     </Item>
     <Item>
       <Source>victory1.jpg</Source>
@@ -251,7 +251,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\victory1.xnb</Output>
-      <Time>2012-12-06T17:46:02.7250837-05:00</Time>
+      <Time>2012-12-06T19:41:55.4803207-05:00</Time>
     </Item>
     <Item>
       <Source>stage1cleared.png</Source>
@@ -260,7 +260,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\stage1cleared.xnb</Output>
-      <Time>2012-12-06T17:46:02.6747875-05:00</Time>
+      <Time>2012-12-06T19:41:55.4054707-05:00</Time>
     </Item>
     <Item>
       <Source>purpleLaser.png</Source>
@@ -269,7 +269,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\purpleLaser.xnb</Output>
-      <Time>2012-12-06T17:46:02.6540773-05:00</Time>
+      <Time>2012-12-06T19:41:55.3885047-05:00</Time>
     </Item>
     <Item>
       <Source>LaserSoundEffectBackwards.wav</Source>
@@ -278,7 +278,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LaserSoundEffectBackwards.xnb</Output>
-      <Time>2012-12-06T17:46:02.4972715-05:00</Time>
+      <Time>2012-12-06T19:41:55.2617587-05:00</Time>
     </Item>
     <Item>
       <Source>time-swoosh.wav</Source>
@@ -287,7 +287,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\time-swoosh.xnb</Output>
-      <Time>2012-12-06T17:46:02.7211389-05:00</Time>
+      <Time>2012-12-06T19:41:55.4773267-05:00</Time>
     </Item>
     <Item>
       <Source>breathofdeath.wav</Source>
@@ -296,7 +296,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\breathofdeath.xnb</Output>
-      <Time>2012-12-06T17:46:02.5485539-05:00</Time>
+      <Time>2012-12-06T19:41:55.3605607-05:00</Time>
     </Item>
     <Item>
       <Source>warp.wav</Source>
@@ -305,7 +305,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\warp.xnb</Output>
-      <Time>2012-12-06T17:46:02.7743937-05:00</Time>
+      <Time>2012-12-06T19:41:55.5811187-05:00</Time>
     </Item>
     <Item>
       <Source>CeresMusic.wav</Source>
@@ -314,7 +314,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\CeresMusic.xnb</Output>
-      <Time>2012-12-06T17:46:02.4775475-05:00</Time>
+      <Time>2012-12-06T19:41:55.2477867-05:00</Time>
     </Item>
     <Item>
       <Source>boost-sound.wav</Source>
@@ -323,7 +323,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\boost-sound.xnb</Output>
-      <Time>2012-12-06T17:46:02.5258713-05:00</Time>
+      <Time>2012-12-06T19:41:55.3136547-05:00</Time>
     </Item>
     <Item>
       <Source>stage1-soundclear.wav</Source>
@@ -332,7 +332,7 @@
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\stage1-soundclear.xnb</Output>
-      <Time>2012-12-06T17:46:02.6698565-05:00</Time>
+      <Time>2012-12-06T19:41:55.4014787-05:00</Time>
     </Item>
     <Item>
       <Source>SpriteFont1.spritefont</Source>
@@ -341,7 +341,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\SpriteFont1.xnb</Output>
-      <Time>2012-12-06T17:46:02.5169955-05:00</Time>
+      <Time>2012-12-06T19:41:55.2907007-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -356,32 +356,32 @@
     </Settings>
     <Assemblies>
       <Assembly>
-        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
         <Value>2010-08-23T12:41:18-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
         <Value>2010-08-23T12:41:18-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
         <Value>2010-08-23T12:41:18-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
         <Value>2010-08-23T12:41:18-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
         <Value>2010-08-23T12:41:18-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
         <Value>2010-08-23T12:41:18-04:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2012-06-22T19:56:50.4156083-04:00</Value>
+        <Value>2012-06-24T13:38:39.1453402-04:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>
