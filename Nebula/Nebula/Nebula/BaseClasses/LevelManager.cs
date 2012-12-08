@@ -41,7 +41,7 @@ namespace Nebula.Subclasses
         protected internal  SoundEffectInstance LevelMusic;
         protected internal SoundEffectInstance StageClear;
         private bool playOnce = true; 
-        private double finishingTime;
+        protected internal double finishingTime;
         private bool runOnce2 = true;
 
         private int levelCounter;
@@ -215,6 +215,8 @@ namespace Nebula.Subclasses
             InputManager.AddToButtonsMap(Buttons.Start, timerReset);
 
         }
+
+
 
         public void ResetTimer()
         {
@@ -409,35 +411,16 @@ namespace Nebula.Subclasses
             }
             else GameOverSoundInstance.Stop();
         }
+        public virtual void LevelDisplay()
+        {
 
+        }
         public bool DisplayVictoryScreen()
         {
             // If player has reached the end of the level
             if (asis.myPosition.X > EndOfLevelPos)
             {
-                // If tutorial level
-                if (levelCounter == 0)
-                {
-                    VictoryScreenList[0].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
-                }
-
-                // If first level
-                if (levelCounter == 1)
-                {
-                    if (finishingTime <= 50)
-                    {
-                        VictoryScreenList[0].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
-                    }
-                    else if (finishingTime <= 70)
-                    {
-                        VictoryScreenList[1].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
-                    }
-                    else if (finishingTime <= 110)
-                    {
-                        VictoryScreenList[2].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
-                    }
-                    else VictoryScreenList[3].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
-                }
+                LevelDisplay();
                 
 
                 if (playOnce == true)
@@ -543,6 +526,9 @@ namespace Nebula.Subclasses
                 {
                     batch.DrawString(sm.myFont, entry.Key,entry.Value, Color.White);
                 }
+
+                sm.InstructionScreen.Draw(batch);
+
             }
         }
     }

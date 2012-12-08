@@ -36,6 +36,11 @@ namespace Nebula.Subclasses
             EndOfLevelPos = (xSL / 12) * 89; 
         }
 
+        public override void LevelDisplay()
+        {
+            VictoryScreenList[0].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+        }
+
         public override void AddItemsToLevel(Sprite sprite, float xSL, float ySL)
         {
             AddPlatform(new Vector2(0, ySL - myPlatform.myTexture.Height * 2), true);

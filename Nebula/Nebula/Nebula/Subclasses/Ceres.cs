@@ -116,7 +116,7 @@ namespace Nebula.Subclasses
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight),
                 myGame, this, movingSpritesList, platformsList, myFont, myAsis, myInstructionScreen, myGameOverScreen, myVictoryScreens, spriteManager);
             
-            allSprites.Add(myInstructionScreen);
+            // allSprites.Add(myInstructionScreen);
             allSprites.Add(myGameOverScreen);
             allSprites.Add(myVictoryScreen1);
             allSprites.Add(myVictoryScreen2);

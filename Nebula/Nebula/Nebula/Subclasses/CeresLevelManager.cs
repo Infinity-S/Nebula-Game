@@ -24,6 +24,23 @@ namespace Nebula.Subclasses
             EndOfLevelPos = xSL * 7 + xSL / 2 + xSL / 8;
         }
 
+        public override void LevelDisplay()
+        {
+            if (finishingTime <= 50)
+            {
+                VictoryScreenList[0].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+            }
+            else if (finishingTime <= 70)
+            {
+                VictoryScreenList[1].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+            }
+            else if (finishingTime <= 110)
+            {
+                VictoryScreenList[2].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+            }
+            else VictoryScreenList[3].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+        }
+
         public override void AddItemsToLevel(Nebula.Sprite sprite, float xSL, float ySL)
         {
             //ADDING PLATFORMS 

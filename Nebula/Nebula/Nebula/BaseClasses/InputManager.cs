@@ -164,20 +164,6 @@ namespace Nebula
                     a.Invoke();
                 }
             }
-            if (gamePadState.ThumbSticks.Left.X == -1 && myButtonsMap.ContainsKey(Buttons.LeftThumbstickLeft))
-            {
-                foreach (GameAction a in myButtonsMap[Buttons.LeftThumbstickLeft])
-                {
-                    a.Invoke();
-                }
-            }
-            if (gamePadState.ThumbSticks.Left.X == 1 && myButtonsMap.ContainsKey(Buttons.LeftThumbstickRight))
-            {
-                foreach (GameAction a in myButtonsMap[Buttons.LeftThumbstickRight])
-                {
-                    a.Invoke();
-                }
-            }
             if (gamePadState.Buttons.LeftShoulder == ButtonState.Pressed && myButtonsMap.ContainsKey(Buttons.LeftShoulder))
             {
                 foreach (GameAction a in myButtonsMap[Buttons.LeftShoulder])
