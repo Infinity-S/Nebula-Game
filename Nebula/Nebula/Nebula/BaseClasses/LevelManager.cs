@@ -160,24 +160,53 @@ namespace Nebula.Subclasses
 
         public void movePlatformVert(Platform p)
         {
-            if (asis.myPosition.X >= p.myPosition.X + p.myTexture.Width / 4)
+            //Vector2 intialPos = p.myPosition;
+            //if (asis.myPosition.X >= p.myPosition.X + p.myTexture.Width / 6)
+            if (asis.myPosition.X >= p.myPosition.X && asis.myPosition.X <= p.myPosition.X + p.myTexture.Width)
             {
-                p.myVelocity = new Vector2(0, p.getSpeed() * -1); 
+                p.myVelocity = new Vector2(0, p.getSpeed() * -1);
+
+                if (p.myPosition.Y <= p.getPositionMoveTo())
+                {
+                    //p.myVelocity = new Vector2(0, p.getSpeed());
+                    p.myVelocity = new Vector2(0, 0);
+                }
             }
-            if (p.myPosition.Y <= p.getPositionMoveTo())
+            else
             {
                 p.myVelocity = new Vector2(0, 0);
             }
+            //if (p.myPosition.Y <= p.getPositionMoveTo())
+            //{
+            //    p.myVelocity = new Vector2(0, p.getSpeed());
+            //}
+            //if(p.myPosition.Y >= intialPos.Y) 
+            //{
+            //    p.myVelocity = new Vector2(0, p.getSpeed() * -1);
+            //}
         }
 
         public void movePlatformHorz(Platform p)
         {
-            if (asis.myPosition.X >= p.myPosition.X + p.myTexture.Width / 4)
+
+            //if (asis.myPosition.X >= p.myPosition.X + p.myTexture.Width / 4)
+            if (asis.myPosition.X >= p.myPosition.X && asis.myPosition.X <= p.myPosition.X + p.myTexture.Width)
             {
                 p.myVelocity = new Vector2(p.getSpeed(), 0);
+
+                //if (p.myPosition.X >= p.getPositionMoveTo())
+                //{
+                //    // p.myVelocity = new Vector2(p.getSpeed()*-1, 0);
+                //    p.myVelocity = new Vector2(0, 0);
+                //}
+            }
+            else
+            {
+                p.myVelocity = new Vector2(0, 0);
             }
             if (p.myPosition.X >= p.getPositionMoveTo())
             {
+                // p.myVelocity = new Vector2(p.getSpeed()*-1, 0);
                 p.myVelocity = new Vector2(0, 0);
             }
         }
