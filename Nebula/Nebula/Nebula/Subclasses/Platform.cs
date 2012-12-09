@@ -35,46 +35,7 @@ namespace Nebula.Subclasses
             return new Platform(this.myTexture, this.myPosition, this.myScreenSize);
         }
 
-        public void movePlatformVert(Platform aPlatform, Vector2 AsisPos)
-        {
-            if (AsisPos.X >= aPlatform.myPosition.X - aPlatform.myTexture.Width)
-            {
-                //aPlatform.setMovingVelocity(speed);
-                aPlatform.myVelocity = new Vector2(0, aPlatform.speed * -1);
-                //aPlatform.move(aPlatform.getPositionMoveTo());
-                if (aPlatform.myPosition.Y <= aPlatform.positionMoveTo)
-                {
-                    aPlatform.myVelocity = new Vector2(0, 0);
-                }
-
-            }
-            //aPlatform.move(aPlatform.getPositionMoveTo());
-            if (AsisPos.X <= aPlatform.myPosition.X - aPlatform.myTexture.Width)
-            {
-                aPlatform.myVelocity = new Vector2(0, 0);
-            }
-        }
-
-        public void movePlatformHorz(Platform aPlatform, Vector2 AsisPos)
-        {
-            float intialPlatformPos = aPlatform.myPosition.X; 
-            //start moving when asis is 1 platform lengths away 
-            if (AsisPos.X >= aPlatform.myPosition.X - aPlatform.myTexture.Width)
-            {
-                //aPlatform.setMovingVelocity(aPlatform.getSpeed());
-                aPlatform.myVelocity = new Vector2(speed, 0);
-            }
-            if (aPlatform.myPosition.X >= positionMoveTo || AsisPos.X < intialPlatformPos - aPlatform.myTexture.Width)
-            {
-                aPlatform.myVelocity = new Vector2(0, 0);
-            }
-            //if (AsisPos.X <= intialPlatformPos - aPlatform.myTexture.Width)
-            //{
-            //    aPlatform.myVelocity = new Vector2(0, 0);
-            //}
- 
-        }
-
+       
         //public bool getCanStandOn()
         //{
         //    return canStandOn;
@@ -106,30 +67,30 @@ namespace Nebula.Subclasses
             movingVert = movingVertical;
         }
 
-        //public bool getStationary()
-        //{
-        //    return stationary;
-        //}
+        public bool getStationary()
+        {
+            return stationary;
+        }
 
         public void setStationary(bool isStationary)
         {
             stationary = isStationary;
         }
 
-        //public float getPositionMoveTo()
-        //{
-        //    return positionMoveTo;
-        //}
+        public float getPositionMoveTo()
+        {
+            return positionMoveTo;
+        }
 
         public void setPositionMoveTo(float position)
         {
             positionMoveTo = position;
         }
 
-        //public float getSpeed()
-        //{
-        //    return speed;
-        //}
+        public float getSpeed()
+        {
+            return speed;
+        }
 
         public void setSpeed(float aSpeed)
         {

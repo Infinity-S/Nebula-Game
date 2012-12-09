@@ -38,7 +38,7 @@ namespace Nebula.Subclasses
             AddPlatform(new Vector2((xSL / 12) * 7, ySL - myPlatform.myTexture.Height * 2), true);
 
             AddMovingPlatform(new Vector2((xSL / 12) * 8, ySL - myPlatform.myTexture.Height * 2), true, true, false, (xSL / 12) * 12, 5); 
-            AddMovingPlatform(new Vector2((xSL / 12) * 8, ySL - myPlatform.myTexture.Height * 2), true, false, true, ySL - myPlatform.myTexture.Height * 8, 5);
+            //AddMovingPlatform(new Vector2((xSL / 12) * 8, ySL - myPlatform.myTexture.Height * 2), true, false, true, ySL - myPlatform.myTexture.Height * 8, 5);
 
             //AddEnemy(hEnemy, new Vector2((xSL / 12) * 5, ySL - myPlatform.myTexture.Height * 2 - aEnemy.myTexture.Height)); 
         }

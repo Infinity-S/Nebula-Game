@@ -158,6 +158,30 @@ namespace Nebula.Subclasses
             }
         }
 
+        public void movePlatformVert(Platform p)
+        {
+            if (asis.myPosition.X >= p.myPosition.X + p.myTexture.Width / 4)
+            {
+                p.myVelocity = new Vector2(0, p.getSpeed() * -1); 
+            }
+            if (p.myPosition.Y <= p.getPositionMoveTo())
+            {
+                p.myVelocity = new Vector2(0, 0);
+            }
+        }
+
+        public void movePlatformHorz(Platform p)
+        {
+            if (asis.myPosition.X >= p.myPosition.X + p.myTexture.Width / 4)
+            {
+                p.myVelocity = new Vector2(p.getSpeed(), 0);
+            }
+            if (p.myPosition.X >= p.getPositionMoveTo())
+            {
+                p.myVelocity = new Vector2(0, 0);
+            }
+        }
+
         public virtual void AddItemsToLevel(Sprite sprite, float xSL, float ySL)
         {
         }
@@ -316,6 +340,7 @@ namespace Nebula.Subclasses
             }
         }
 
+
         public void AsisLaserOffScreenLogic()
         {
             if (aLaserOffScreen())
@@ -445,8 +470,6 @@ namespace Nebula.Subclasses
 
                 sm.AsisLaserOffScreenLogic(); 
 
-                sm.AsisPlatformLogic();
-
                 sm.AsisKillEnemies();
 
                 sm.EnemyShootingAI();
@@ -459,13 +482,16 @@ namespace Nebula.Subclasses
                 {
                     if (p.getMovingVert())
                     {
-                        p.movePlatformVert(p, sm.asis.myPosition);
+                        sm.movePlatformVert(p); 
                     }
                     else
                     {
-                        p.movePlatformHorz(p, sm.asis.myPosition);
+                        sm.movePlatformHorz(p); 
+
                     }
                 }
+
+                sm.AsisPlatformLogic();
 
                 sm.DisplayVictoryScreen();
             }
