@@ -450,7 +450,7 @@ namespace Nebula.Subclasses
             if (Hit(asis, eLaser) || asis.myPosition.Y > ySL + ySL / 2)
             {
                 asis.myPosition.Y = asis.myPosition.Y + ySL;
-                GameOverScreen.myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+                //GameOverScreen.myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
             }
             else GameOverScreen.myPosition = new Vector2(xSL * -3, ySL * -3);
 
@@ -507,6 +507,8 @@ namespace Nebula.Subclasses
 
                 sm.LaserTimeTravelSound(sprite);
 
+                sm.AsisPlatformLogic(); 
+
                 foreach (Platform p in sm.platformsList)
                 {
                     if (p.getMovingVert())
@@ -520,7 +522,7 @@ namespace Nebula.Subclasses
                     }
                 }
 
-                sm.AsisPlatformLogic();
+               // sm.AsisPlatformLogic();
 
                 sm.DisplayVictoryScreen();
             }
