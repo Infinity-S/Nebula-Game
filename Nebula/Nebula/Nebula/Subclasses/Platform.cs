@@ -21,7 +21,7 @@ namespace Nebula.Subclasses
         bool movingVert = false;
         bool stationary = true;
         float positionMoveTo = 0f;
-        float speed = 0f; 
+        float speed = 0f;
         public Platform(Texture2D image, Vector2 position, Vector2 screen)
             : base(image, position)
         {
