@@ -161,9 +161,9 @@ namespace Nebula
                 //tutorial Score
                 //mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[0])), new Vector2(500, 300), Color.White);
                 //Ceres Score
-                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[1])), new Vector2(800, 350), Color.White);
+                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[1])), new Vector2(800, 375), Color.White);
                 //Vulkanis Score 
-                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[2])), new Vector2(800, 450), Color.White);
+                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[2])), new Vector2(800, 500), Color.White);
                 //Sycia Score
                 //mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[23])), new Vector2(500, 300), Color.White);
                 //levelNum = 0; 
