@@ -33,35 +33,6 @@ namespace Nebula
         int levelNumber;
         int levelNum = 2; 
 
-        //public int getLevelNumber()
-        //{
-        //    return levelNumber;
-        //}
-
-        //public void setLevel(int i, Asis asi)
-        //{
-            
-        //    if (i == 1)
-        //    {
-        //        level = new Ceres(this, graphics, asi, mySpriteBatch);
-        //        levelNumber = 1;
-        //    }
-            
-        //    if (i == 2)
-        //    {
-        //        level = new Vulkanis(this, graphics, asi, mySpriteBatch);
-        //        levelNumber = 2;
-        //    }
-        //    /*
-        //    if (i == 3)
-        //    {
-        //        level = new Sycia(this, graphics, asi, mySpriteBatch);
-        //        levelNumber = 3;
-        //    }
-        //    */
-
-        //}
-
         public NebulaGame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -159,11 +130,11 @@ namespace Nebula
                 FinishTimes.myPosition = new Vector2(myLevels[myLevels.Count-1].myLevelManager.myHero.myPosition.X - myLevels[2].myLevelManager.xSL / 6, 0); 
                 FinishTimes.Draw(mySpriteBatch);
                 //tutorial Score
-                //mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[0])), new Vector2(500, 300), Color.White);
+                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[0])), new Vector2(500, 300), Color.White);
                 //Ceres Score
-                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[1])), new Vector2(800, 375), Color.White);
+                //mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[1])), new Vector2(800, 375), Color.White);
                 //Vulkanis Score 
-                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[2])), new Vector2(800, 500), Color.White);
+                //mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[2])), new Vector2(800, 500), Color.White);
                 //Sycia Score
                 //mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[3])), new Vector2(500, 300), Color.White);
                 //levelNum = 0; 

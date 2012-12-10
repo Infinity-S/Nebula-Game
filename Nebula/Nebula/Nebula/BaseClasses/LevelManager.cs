@@ -444,7 +444,7 @@ namespace Nebula.Subclasses
             foreach (Sprite enemy in EnemiesList)
             {
                 //attack if Asis is in range between 5 texture widths before enemy position to enemy position 
-                if ((aHero.myPosition.X > (enemy.myPosition.X - (enemy.myTexture.Width * 4))
+                if ((aHero.myPosition.X > (enemy.myPosition.X - (myPlatform.myTexture.Width * 4))
                     && aHero.myPosition.X < enemy.myPosition.X))
                 {
                     //Fire a laser every 1.5 seconds, will be an instance varible, so can be changed 
