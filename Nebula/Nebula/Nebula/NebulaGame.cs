@@ -23,6 +23,8 @@ namespace Nebula
         List<double> playerScore = new List<double>();
         List<Level> myLevels = new List<Level>(); 
         SpriteBatch mySpriteBatch;
+        Screen FinishTimes;
+        SpriteFont timesFont; 
         //Tutorial TutorialContent;
         //Ceres firstLevelContent; 
         //Level level;
@@ -102,6 +104,8 @@ namespace Nebula
             myLevels.Add(firstLevelContent);
             myLevels.Add(secondLevelContent); 
             //add another screen for the finishing times!!!
+            FinishTimes = new Screen(Content.Load<Texture2D>("FinalTimes"), new Vector2(0, 0), new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight));
+            timesFont = Content.Load<SpriteFont>("FinishTimesFont"); 
 
         }
 
@@ -146,7 +150,18 @@ namespace Nebula
         {
             mySpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
 
+            if (levelNum < myLevels.Count)
+            {
                 myLevels[levelNum].Draw(gameTime);
+            }
+            else
+            {
+                FinishTimes.Draw(mySpriteBatch);
+                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[0])), new Vector2(300, 300), Color.White);
+                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[1])), new Vector2(400, 300), Color.White);
+                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[2])), new Vector2(500, 300), Color.White);
+                //levelNum = 0; 
+            }
 
             mySpriteBatch.End();
             base.Draw(gameTime);

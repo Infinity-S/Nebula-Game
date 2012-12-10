@@ -442,6 +442,24 @@
       <Output>C:\Users\TEMP\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\SpriteFont1.xnb</Output>
       <Time>2012-12-10T08:49:14.0375444-05:00</Time>
     </Item>
+    <Item>
+      <Source>FinalTimes.png</Source>
+      <Name>FinalTimes</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\TEMP\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\FinalTimes.xnb</Output>
+      <Time>2012-12-10T11:23:51.543515-05:00</Time>
+    </Item>
+    <Item>
+      <Source>FinishTimesFont.spritefont</Source>
+      <Name>FinishTimesFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\TEMP\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\FinishTimesFont.xnb</Output>
+      <Time>2012-12-10T11:35:35.675124-05:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

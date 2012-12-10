@@ -622,3 +622,5 @@ C:\Users\TEMP\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Re
 C:\Users\TEMP\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\TEMP\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.exe
 C:\Users\TEMP\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.pdb
+C:\Users\TEMP\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\FinalTimes.xnb
+C:\Users\TEMP\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\FinishTimesFont.xnb
