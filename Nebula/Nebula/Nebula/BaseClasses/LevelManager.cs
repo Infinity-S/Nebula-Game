@@ -673,7 +673,7 @@ namespace Nebula.Subclasses
 
                 foreach (KeyValuePair<String, Vector2> entry in sm.OnScreenText)
                 {
-                    batch.DrawString(sm.myFont, entry.Key,entry.Value, Color.White);
+                    batch.DrawString(sm.myFont, entry.Key,entry.Value, Color.Yellow);
                 }
 
                     sm.InstructionScreen.Draw(batch);

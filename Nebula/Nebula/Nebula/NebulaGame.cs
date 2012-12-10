@@ -31,7 +31,7 @@ namespace Nebula
         //Vulkanis secondLevelContent; 
         Camera camera;
         int levelNumber;
-        int levelNum = 1; 
+        int levelNum = 0; 
 
         //public int getLevelNumber()
         //{

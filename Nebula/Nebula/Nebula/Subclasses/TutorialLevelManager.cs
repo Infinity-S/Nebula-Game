@@ -33,7 +33,7 @@ namespace Nebula.Subclasses
             : base(texture, position, screen, aGame, aLevel, aSpritesList, aPlatformsList, aFont, aAsis,
             aInstructions, aGameOverScreen, aVictoryScreenList, aTimeTravelManager, backgroundMusic)
         {
-            EndOfLevelPos = (xSL / 12) * 87; 
+            EndOfLevelPos = (xSL / 12) * 89; 
         }
 
         public override void FinishLevelDisplay()
