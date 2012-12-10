@@ -40,3 +40,10 @@ Content\CeresMusic.xnb
 Content\boost-sound.xnb
 Content\stage1-soundclear.xnb
 Content\SpriteFont1.xnb
+Content\PlantPlatformDead.xnb
+Content\LavaB1.xnb
+Content\LavaB2.xnb
+Content\LavaB3.xnb
+Content\LavaB4.xnb
+Content\LavaPlatform.xnb
+Content\LavaPlatformDead.xnb

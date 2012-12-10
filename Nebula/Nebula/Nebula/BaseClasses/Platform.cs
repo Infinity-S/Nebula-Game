@@ -16,30 +16,39 @@ namespace Nebula.Subclasses
 {
     public class Platform : Sprite
     {
-        bool canStandOn = false;
+        bool canStandOn = true;
         bool movingHorz = false;
         bool movingVert = false;
         bool stationary = true;
         float positionMoveTo = 0f;
         float speed = 0f;
-        public Platform(Texture2D image, Vector2 position, Vector2 screen)
+        Texture2D badPlatform; 
+        public Platform(Texture2D image, Texture2D image2, Vector2 position, Vector2 screen)
             : base(image, position)
         {
             myPosition = position;
             myScreenSize = screen;
             myState = new ExistState(this);
+            badPlatform = image2;
         }
 
         public Platform Clone()
         {
-            return new Platform(this.myTexture, this.myPosition, this.myScreenSize);
+            return new Platform(this.myTexture, this.badPlatform, this.myPosition, this.myScreenSize);
         }
-
 
         //public bool getCanStandOn()
         //{
         //    return canStandOn;
         //}
+
+        public void setBadPlatformImage()
+        {
+            if (!canStandOn)
+            {
+                myTexture = badPlatform;
+            }
+        }
 
         public void setCanStandOn(bool canStand)
         {

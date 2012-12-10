@@ -43,8 +43,6 @@ namespace Nebula
             {
                 backgroundLength += bs.size.Width;
             }
-           // myAsis.myPosition.X = 200f; 
-            //charPos = myAsis.myPosition.X;
             CameraSize = ScreenWidth;
             //left interval is 10% of screen
             LEFT_INTERVAL = CameraSize * .10;
@@ -54,11 +52,6 @@ namespace Nebula
 
             myBackgroundScreen = aBackgroundScreen;
 
-        }
-
-        public void SwitchDirection()
-        {
-            scrollingDirection = -scrollingDirection;
         }
 
         public void ScrollForward()
@@ -103,7 +96,6 @@ namespace Nebula
         {
             myBackgroundScreen.myPosition = new Vector2(myAsis.myPosition.X - myAsis.myScreenSize.X /6, 0);
 
-            /*&& myAsis.myPosition.X < LEFT_INTERVAL*/
             if (Keyboard.GetState().IsKeyDown(Keys.Left) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftThumbstickLeft)
                 || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadLeft))
             {
@@ -115,8 +107,7 @@ namespace Nebula
                 }
                 
             }
-                //&& only if Asis is less than the length of the level 
-            /*&& myAsis.myPosition.X < MAX_CAMERA_POS && myAsis.myPosition.X > LEFT_INTERVAL*/
+
             else if (Keyboard.GetState().IsKeyDown(Keys.Right) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftThumbstickRight)
                 || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadRight))
             {
@@ -128,34 +119,6 @@ namespace Nebula
                 }
                 
             }
-            /*
-            // scrolling when Asis is moving left
-            //  && charPos < LEFT_INTERVAL
-            if (Keyboard.GetState().IsKeyDown(Keys.Left))
-            {
-                //cameraPos = myAsis.myPosition.X - (float)LEFT_INTERVAL;
-                //ScrollBackward(); 
-                ScrollForward();
-                foreach (BackgroundSprite bs in myBackgrounds)
-                {
-                    //bs.myPosition += -scrollingDirection * aSpeed * (float)totalSecs;
-                    bs.myPosition += -scrollingDirection * aSpeed;
-                }
-            }
-            // scrolling when Asis is moving right
-            // myAsis.myPosition.X > RIGHT_INTERVAL && 
-            else if (Keyboard.GetState().IsKeyDown(Keys.Right))
-            {
-                float cameraMovement = charPos + (float) RIGHT_INTERVAL;
-                ScrollForward(); 
-                foreach (BackgroundSprite bs in myBackgrounds)
-                {
-                    //bs.myPosition += scrollingDirection * aSpeed * (float)totalSecs; 
-                    //bs.myPosition += new Vector2(cameraMovement, 0)*scrollingDirection*aSpeed; 
-                   bs.myPosition += scrollingDirection * aSpeed;
-                }
-            }
-             */
             
         }
 

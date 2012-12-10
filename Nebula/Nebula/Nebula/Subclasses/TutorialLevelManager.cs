@@ -27,11 +27,11 @@ namespace Nebula.Subclasses
         String basicsTxt = "Thst concludes the basics of Nebula!"; 
         String instrTxt = "At any time\n\n Press the Y button to display the instructions \n\nand START to exit them"; 
 
-        public TutorialLevelManager(Texture2D texture, Vector2 position, Vector2 screen, Game1 aGame, Level aLevel,
+        public TutorialLevelManager(Texture2D texture, Vector2 position, Vector2 screen, NebulaGame aGame, Level aLevel,
             List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis aAsis,
-            Screen aInstructions, Screen aGameOverScreen, List<Screen> aVictoryScreenList, SpriteManager aSpriteManager)
+            Screen aInstructions, Screen aGameOverScreen, List<Screen> aVictoryScreenList, TimeTravelManager aTimeTravelManager, SoundEffect backgroundMusic)
             : base(texture, position, screen, aGame, aLevel, aSpritesList, aPlatformsList, aFont, aAsis,
-            aInstructions, aGameOverScreen, aVictoryScreenList, aSpriteManager)
+            aInstructions, aGameOverScreen, aVictoryScreenList, aTimeTravelManager, backgroundMusic)
         {
             EndOfLevelPos = (xSL / 12) * 89; 
         }

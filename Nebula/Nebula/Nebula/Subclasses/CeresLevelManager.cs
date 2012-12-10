@@ -17,28 +17,12 @@ namespace Nebula.Subclasses
     class CeresLevelManager : LevelManager
     {
 
-        public CeresLevelManager(Texture2D texture, Vector2 position, Vector2 screen, Game1 aGame, Level aLevel, 
-            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis aAsis, Screen aInstructions, Screen aGameOverScreen, List<Screen> aVictoryScreens, SpriteManager aSpriteManager)
-            : base(texture, position, screen, aGame, aLevel, aSpritesList, aPlatformsList, aFont, aAsis, aInstructions, aGameOverScreen, aVictoryScreens, aSpriteManager)
+        public CeresLevelManager(Texture2D texture, Vector2 position, Vector2 screen, NebulaGame aGame, Level aLevel,
+            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis aAsis, Screen aInstructions, Screen aGameOverScreen, List<Screen> aVictoryScreens, TimeTravelManager aTimeTravelManager, SoundEffect backgroundMusic)
+            : base(texture, position, screen, aGame, aLevel, aSpritesList, aPlatformsList, aFont, aAsis, aInstructions, aGameOverScreen, aVictoryScreens, aTimeTravelManager, backgroundMusic)
         {
             EndOfLevelPos = xSL * 7 + xSL / 2 + xSL / 8;
-        }
-
-        public override void LevelDisplay()
-        {
-            if (finishingTime <= 50)
-            {
-                VictoryScreenList[0].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
-            }
-            else if (finishingTime <= 70)
-            {
-                VictoryScreenList[1].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
-            }
-            else if (finishingTime <= 110)
-            {
-                VictoryScreenList[2].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
-            }
-            else VictoryScreenList[3].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+            setFinishingTimes(50, 70, 110); 
         }
 
         public override void AddItemsToLevel(Nebula.Sprite sprite, float xSL, float ySL)

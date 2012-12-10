@@ -10,7 +10,7 @@ namespace Nebula
         /// </summary>
         static void Main(string[] args)
         {
-            using (Game1 game = new Game1())
+            using (NebulaGame game = new NebulaGame())
             {
                 game.Run();
             }

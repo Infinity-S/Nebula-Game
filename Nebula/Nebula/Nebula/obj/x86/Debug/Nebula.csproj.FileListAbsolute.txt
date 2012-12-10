@@ -559,3 +559,11 @@ G:\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\ResolveAssemblyReference.cache
 G:\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 G:\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.exe
 G:\Nebula-Game\Nebula\Nebula\Nebula\obj\x86\Debug\Nebula.pdb
+C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\StageClearedTutorial.xnb
+C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PlantPlatformDead.xnb
+C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LavaB1.xnb
+C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LavaB2.xnb
+C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LavaB3.xnb
+C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LavaB4.xnb
+C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LavaPlatform.xnb
+C:\Users\sgoodwin3\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\LavaPlatformDead.xnb

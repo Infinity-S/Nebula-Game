@@ -16,11 +16,11 @@ using Nebula.Subclasses;
 
 namespace Nebula.SuperClasses
 {
-    public class SpriteManager : Sprite
+    public class TimeTravelManager : Sprite
     {
         protected internal Stack TimeStack; 
         protected internal List<Sprite> PositionsList;
-        public Game1 myGame;
+        public NebulaGame myGame;
         protected internal Asis asis;
         SoundEffect TimeTravelSound;
         SoundEffectInstance TimeTravelSoundInstance;
@@ -37,7 +37,7 @@ namespace Nebula.SuperClasses
             PositionsList.Add(s);
         }
 
-        public SpriteManager(Texture2D texture, Vector2 position, Vector2 screen, Game1 aGame,
+        public TimeTravelManager(Texture2D texture, Vector2 position, Vector2 screen, NebulaGame aGame,
             List<Sprite> aPositionsList, Asis anAsis)
             : base(texture, position)
         {
@@ -92,7 +92,7 @@ namespace Nebula.SuperClasses
             }
             public void Update(double elapsedTime, Sprite sprite)
             {
-                SpriteManager sm = (SpriteManager)(sprite);
+                TimeTravelManager sm = (TimeTravelManager)(sprite);
                 // If x is not being pressed change its state
                 sm.TimeTravelSoundInstance.Play();
 
@@ -108,7 +108,7 @@ namespace Nebula.SuperClasses
             public void Draw(Sprite sprite, SpriteBatch batch)
             {
                 // Change background color to signify traveling back in time
-                SpriteManager sm = (SpriteManager)(sprite);
+                TimeTravelManager sm = (TimeTravelManager)(sprite);
                 sm.myGame.GraphicsDevice.Clear(Color.Gray);
                 //sm.myScrollingManager.Draw(batch);
                 batch.Draw(sprite.myTexture, sprite.myPosition,
@@ -126,7 +126,7 @@ namespace Nebula.SuperClasses
             }
             public void Update(double elapsedTime, Sprite sprite)
             {
-                SpriteManager sm = (SpriteManager)(sprite);
+                TimeTravelManager sm = (TimeTravelManager)(sprite);
 
                 // If X key is not being pressed, add positions of sprites to Stack
                 if (!Keyboard.GetState().IsKeyDown(Keys.X) && GamePad.GetState(PlayerIndex.One).IsButtonUp(Buttons.X))
@@ -138,7 +138,7 @@ namespace Nebula.SuperClasses
             }
             public void Draw(Sprite sprite, SpriteBatch batch)
             {
-                SpriteManager sm = (SpriteManager)(sprite);
+                TimeTravelManager sm = (TimeTravelManager)(sprite);
                 sm.myGame.GraphicsDevice.Clear(Color.AliceBlue);
                 batch.Draw(sprite.myTexture, sprite.myPosition,
                 null, Color.White,

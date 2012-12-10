@@ -27,7 +27,7 @@ namespace Nebula.SuperClasses
             direction = s;
         }
 
-        public Hero(Texture2D texture, Vector2 position, Vector2 screen, Game1 myGame) 
+        public Hero(Texture2D texture, Vector2 position, Vector2 screen, NebulaGame myGame) 
             : base(texture, position)   
         {
             myScreenSize = screen;

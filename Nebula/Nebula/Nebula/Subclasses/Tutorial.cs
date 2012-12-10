@@ -16,14 +16,14 @@ namespace Nebula.Subclasses
 {
     class Tutorial : Level
     {
-        public Tutorial(Game1 aGame, GraphicsDeviceManager aGraphics, Asis anAsis, SpriteBatch aSpriteBatch)
+        public Tutorial(NebulaGame aGame, GraphicsDeviceManager aGraphics, Asis anAsis, SpriteBatch aSpriteBatch)
             : base(aGame, aGraphics, anAsis, aSpriteBatch)
         {
         }
 
         public override void LoadSprites()
         {
-            AsisLaser aLaser = new AsisLaser(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(0, 0),
+            HeroLaser aLaser = new HeroLaser(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(0, 0),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
             Enemy dEnemy = new Enemy(myGame.Content.Load<Texture2D>("enemy-red"),
@@ -35,7 +35,7 @@ namespace Nebula.Subclasses
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
             // Initial grass platform, others are cloned in the Manager class 
-            Platform grassPlatform = new Platform((myGame.Content.Load<Texture2D>("PlantPlatform")),
+            Platform grassPlatform = new Platform((myGame.Content.Load<Texture2D>("PlantPlatform")), myGame.Content.Load<Texture2D>("PlantPlatformDead"),
                 new Vector2(myGraphics.PreferredBackBufferWidth / 2, myGraphics.PreferredBackBufferHeight - myGraphics.PreferredBackBufferHeight / 8),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
@@ -94,19 +94,21 @@ namespace Nebula.Subclasses
 
             myVictoryScreens.Add(myVictoryScreen4);
 
+            SoundEffect levelMusic = myGame.Content.Load<SoundEffect>("CeresMusic");
+
             scrollingManager = new ScrollingManager(myAsis, myBackgroundSprites, myGraphics.PreferredBackBufferWidth, myBackgroundScreen);
 
-            spriteManager = new SpriteManager(myGame.Content.Load<Texture2D>("timet-background"), new Vector2(0, 0),
+            myTimeTravelManager = new TimeTravelManager(myGame.Content.Load<Texture2D>("timet-background"), new Vector2(0, 0),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight), myGame, movingSpritesList, myAsis);
 
             TutorialLevelManager manager = new TutorialLevelManager(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(-1000, -1000),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight),
-                myGame, this, movingSpritesList, platformsList, myFont, myAsis, myInstructionScreen, myGameOverScreen, myVictoryScreens, spriteManager);
+                myGame, this, movingSpritesList, platformsList, myFont, myAsis, myInstructionScreen, myGameOverScreen, myVictoryScreens, myTimeTravelManager, levelMusic);
 
             allSprites.Add(myInstructionScreen);
             allSprites.Add(myGameOverScreen);
             allSprites.Add(myVictoryScreen4);
-            allSprites.Add(spriteManager);
+            allSprites.Add(myTimeTravelManager);
             allSprites.Add(manager);
         }
     }

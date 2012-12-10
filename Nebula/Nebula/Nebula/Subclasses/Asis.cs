@@ -17,7 +17,7 @@ namespace Nebula
     public class Asis : Hero
 
     {
-        public Asis(Texture2D image, Vector2 position, Vector2 screen, Game1 myGame)
+        public Asis(Texture2D image, Vector2 position, Vector2 screen, NebulaGame myGame)
             : base(image, position, screen, myGame)
         {
         }

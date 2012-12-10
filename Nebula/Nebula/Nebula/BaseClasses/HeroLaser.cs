@@ -14,9 +14,9 @@ using Nebula.BaseClasses;
 
 namespace Nebula
 {
-    class AsisLaser : Laser 
+    class HeroLaser : Laser 
     {
-        public AsisLaser(Texture2D texture, Vector2 position, Vector2 screen) 
+        public HeroLaser(Texture2D texture, Vector2 position, Vector2 screen) 
             : base(texture, position, screen)   
         {
             myPosition.X = myScreenSize.X * -2;

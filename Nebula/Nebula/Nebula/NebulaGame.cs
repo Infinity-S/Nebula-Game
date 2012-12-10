@@ -17,13 +17,13 @@ namespace Nebula
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class Game1 : Microsoft.Xna.Framework.Game
+    public class NebulaGame : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch mySpriteBatch;
         Tutorial TutorialContent;
         Level level;
-        //Vulkanis secondLevelContent; 
+        Vulkanis secondLevelContent; 
         Camera camera;
         int levelNumber;
 
@@ -34,17 +34,19 @@ namespace Nebula
 
         public void setLevel(int i, Asis asi)
         {
+            
             if (i == 1)
             {
                 level = new Ceres(this, graphics, asi, mySpriteBatch);
                 levelNumber = 1;
             }
-            /*
+            
             if (i == 2)
             {
                 level = new Vulkanis(this, graphics, asi, mySpriteBatch);
                 levelNumber = 2;
             }
+            /*
             if (i == 3)
             {
                 level = new Sycia(this, graphics, asi, mySpriteBatch);
@@ -54,7 +56,7 @@ namespace Nebula
 
         }
 
-        public Game1()
+        public NebulaGame()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";

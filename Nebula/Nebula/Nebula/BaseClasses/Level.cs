@@ -17,7 +17,7 @@ namespace Nebula.BaseClasses
 {
     public class Level
     {
-        protected internal Game1 myGame;
+        protected internal NebulaGame myGame;
         protected internal GraphicsDeviceManager myGraphics;
         protected internal Asis myAsis;
         protected internal SpriteBatch spriteBatch;
@@ -34,11 +34,11 @@ namespace Nebula.BaseClasses
         protected internal List<Screen> myVictoryScreens = new List<Screen>();
         protected internal Screen myBackgroundScreen;
         protected internal Screen myGameOverScreen;
-        protected internal SpriteManager spriteManager; 
+        protected internal TimeTravelManager myTimeTravelManager; 
         protected internal SpriteFont myFont;
          
 
-        public Level(Game1 aGame, GraphicsDeviceManager aGraphics, Asis aAsis, SpriteBatch aSpriteBatch)
+        public Level(NebulaGame aGame, GraphicsDeviceManager aGraphics, Asis aAsis, SpriteBatch aSpriteBatch)
         {
             myGame = aGame;
             myGraphics = aGraphics;

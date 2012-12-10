@@ -15,11 +15,11 @@ using Nebula.Subclasses;
 
 namespace Nebula.Subclasses
 {
-    class LevelManager : SpriteManager
+    class LevelManager : TimeTravelManager
     {
         protected internal bool runOnce = true; 
         protected internal List<Sprite> spritesList;
-        protected internal AsisLaser aLaser;
+        protected internal HeroLaser aLaser;
         protected internal Enemy aEnemy;
         protected internal EnemyLaser eLaser;
         protected internal Asis asis;
@@ -36,7 +36,7 @@ namespace Nebula.Subclasses
         protected internal float ySL;
         protected internal Level myLevel;
         protected internal double enemyWeaponFireTime = 1.5;
-        protected internal SpriteManager mySpriteManager;
+        protected internal TimeTravelManager myTimeTravelManager;
 
         protected internal Dictionary<String, Vector2> OnScreenText = new Dictionary<String, Vector2>(); 
         protected internal SpriteFont myFont;
@@ -45,7 +45,7 @@ namespace Nebula.Subclasses
         protected internal SoundEffect BackwardsLaserSoundEffect;
         protected internal SoundEffectInstance GameOverSoundInstance;
         protected internal  SoundEffectInstance LevelMusic;
-        protected internal SoundEffectInstance StageClear;
+        protected internal SoundEffectInstance StageClearInstance;
         private bool playOnce = true; 
         protected internal double finishingTime;
         private bool runOnce2 = true;
@@ -55,6 +55,10 @@ namespace Nebula.Subclasses
         Screen InstructionScreen;
         Screen GameOverScreen;
 
+        private double bestTime;
+        private double middleTime;
+        private double worstTime; 
+
         protected internal List<Screen> VictoryScreenList = new List<Screen>();
 
         // can change when victory screen displays if have a longer/shorter level 
@@ -62,9 +66,9 @@ namespace Nebula.Subclasses
 
         private Sprite[] BoostBar = new Sprite[5];
 
-        public LevelManager(Texture2D texture, Vector2 position, Vector2 screen, Game1 aGame, Level aLevel,
+        public LevelManager(Texture2D texture, Vector2 position, Vector2 screen, NebulaGame aGame, Level aLevel,
             List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis asis2, 
-            Screen aInstructions, Screen aGameOverScreen, List<Screen> aVictoryScreenList, SpriteManager aSpriteManager)
+            Screen aInstructions, Screen aGameOverScreen, List<Screen> aVictoryScreenList, TimeTravelManager aTimeTravelManager, SoundEffect backgroundMusic)
             : base(texture, position, screen, aGame, aPlatformsList, asis2)
         {
             myTexture = texture;
@@ -88,11 +92,11 @@ namespace Nebula.Subclasses
             BackwardsLaserSoundEffect = myGame.Content.Load<SoundEffect>("LaserSoundEffectBackwards");
             SoundEffect GameOverSound = myGame.Content.Load<SoundEffect>("breathofdeath");
             GameOverSoundInstance = GameOverSound.CreateInstance();
-            SoundEffect BackgroundMusic = myGame.Content.Load<SoundEffect>("CeresMusic");
+            SoundEffect BackgroundMusic = backgroundMusic;
             LevelMusic = BackgroundMusic.CreateInstance();
             LevelMusic.IsLooped = true;
-            SoundEffect Stage1 = myGame.Content.Load<SoundEffect>("Stage1-soundclear");
-            StageClear = Stage1.CreateInstance();
+            SoundEffect StageClear = myGame.Content.Load<SoundEffect>("Stage1-soundclear");
+            StageClearInstance = StageClear.CreateInstance();
 
             BoostBar[0] = new Sprite(myGame.Content.Load<Texture2D>("boost-bar1"), new Vector2(0, 0));
             BoostBar[1] = new Sprite(myGame.Content.Load<Texture2D>("boost-bar2"), new Vector2(0, 0));
@@ -107,7 +111,7 @@ namespace Nebula.Subclasses
 
             GameOverScreen = aGameOverScreen;
             VictoryScreenList = aVictoryScreenList; 
-            mySpriteManager = aSpriteManager;
+            myTimeTravelManager = aTimeTravelManager;
 
             for (int i = 0; i < aPlatformsList.Count; i++)
             {
@@ -118,7 +122,7 @@ namespace Nebula.Subclasses
             InstructionScreen = aInstructions;
 
             //should we pass these in as indivdual items?? 
-            setUpSprites((Platform)platformsList[0], (Asis)spritesList[0], (AsisLaser)spritesList[1], 
+            setUpSprites((Platform)platformsList[0], (Asis)spritesList[0], (HeroLaser)spritesList[1], 
                 (Enemy)spritesList[2], (EnemyLaser)spritesList[3]); 
 
             EnemiesList.Add(aEnemy); 
@@ -136,7 +140,7 @@ namespace Nebula.Subclasses
         //this is virtual so you can override it if you want. 
         //like if have more than the "basic" sprites of the level
         //EG 1 Asis and her laser, 1 Platform type of platform, and 1 type of enemy and it's Laser
-        public virtual void setUpSprites(Platform aPlatform, Asis aAsis, AsisLaser anLaser, Enemy anEnemy, EnemyLaser anELaser)
+        public virtual void setUpSprites(Platform aPlatform, Asis aAsis, HeroLaser anLaser, Enemy anEnemy, EnemyLaser anELaser)
         {
             myPlatform = aPlatform;
             asis = aAsis;
@@ -151,6 +155,7 @@ namespace Nebula.Subclasses
             Platform newPlatform = myPlatform.Clone();
             newPlatform.myPosition = position;
             newPlatform.setCanStandOn(canLandOn);
+            newPlatform.setBadPlatformImage(); 
             myLevel.AddSprite(newPlatform);
 
             // If we want Asis to be able to land on the platform and not fall through - add it to the platformsList
@@ -165,12 +170,13 @@ namespace Nebula.Subclasses
             Platform newPlatform = myPlatform.Clone();
             newPlatform.myPosition = position;
             newPlatform.setCanStandOn(canLandOn);
+            newPlatform.setBadPlatformImage(); 
             newPlatform.setmovingHorz(movHorz);
             newPlatform.setmovingVert(movVert);
             newPlatform.setPositionMoveTo(posMoveTo);
             newPlatform.setSpeed(speed);
             myLevel.AddSprite(newPlatform);
-            mySpriteManager.addToPositionsList(newPlatform);
+            myTimeTravelManager.addToPositionsList(newPlatform);
 
             //if (newPlatform.getMovingHorz() || newPlatform.getMovingHorz())
             //{
@@ -256,7 +262,7 @@ namespace Nebula.Subclasses
 
                 Sprite newEnemy = aEnemy.Clone();
                 newEnemy.myPosition = position;
-                mySpriteManager.addToPositionsList(newEnemy);
+                myTimeTravelManager.addToPositionsList(newEnemy);
                 myLevel.AddSprite(newEnemy);
                 EnemiesList.Add((Enemy)newEnemy);
         }
@@ -512,9 +518,30 @@ namespace Nebula.Subclasses
             }
             else GameOverSoundInstance.Stop();
         }
+
+        public void setFinishingTimes(double bestTime, double middleTime, double worstTime)
+        {
+            this.bestTime = bestTime;
+            this.middleTime = middleTime;
+            this.worstTime = worstTime;
+        }
+
+
         public virtual void LevelDisplay()
         {
-
+            if (finishingTime <= bestTime)
+            {
+                VictoryScreenList[0].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+            }
+            else if (finishingTime <= middleTime)
+            {
+                VictoryScreenList[1].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+            }
+            else if (finishingTime <= worstTime)
+            {
+                VictoryScreenList[2].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+            }
+            else VictoryScreenList[3].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
         }
         public bool DisplayVictoryScreen()
         {
@@ -526,7 +553,7 @@ namespace Nebula.Subclasses
 
                 if (playOnce == true)
                 {
-                    StageClear.Play();
+                    StageClearInstance.Play();
                 }
                 playOnce = false;
                 LevelMusic.Stop();
