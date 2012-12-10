@@ -48,6 +48,7 @@ namespace Nebula.Subclasses
         protected internal SoundEffectInstance StageClearInstance;
         private bool playOnce = true; 
         protected internal double finishingTime;
+
         private bool runOnce2 = true;
 
         private int levelCounter;
