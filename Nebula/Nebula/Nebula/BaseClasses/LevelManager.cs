@@ -555,7 +555,6 @@ namespace Nebula.Subclasses
             if (aHero.myPosition.X > EndOfLevelPos)
             {
                 FinishLevelDisplay();
-                
 
                 if (playOnce == true)
                 {
@@ -567,10 +566,9 @@ namespace Nebula.Subclasses
                 // If they press N on the keyboard or start on the gamepad go to the next level
                 if ((Keyboard.GetState().IsKeyDown(Keys.N)) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Start))
                 {
-                    aHero.myPosition = new Vector2(myScreenSize.X / 12, myScreenSize.Y - myScreenSize.Y / 4);
+                   aHero.myPosition = new Vector2(myScreenSize.X / 12, myScreenSize.Y - myScreenSize.Y / 4);
                    isFinished = true; 
                 }
-
                 return true;
             } 
             return false;
@@ -617,7 +615,11 @@ namespace Nebula.Subclasses
 
                 sm.LaserTimeTravelSound(sprite);
 
-                sm.PlatformLogic();
+                // && (!GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.X))
+                if (!Keyboard.GetState().IsKeyDown(Keys.X))
+                {
+                    sm.PlatformLogic();
+                }
 
                 foreach (Platform p in sm.platformsList)
                 {
@@ -628,10 +630,8 @@ namespace Nebula.Subclasses
                     else
                     {
                         sm.movePlatformHorz(p);
-
                     }
                 }
-
                 if (sm.DisplayVictoryScreen())
                 {
                     if (sm.runOnce2)
@@ -640,7 +640,6 @@ namespace Nebula.Subclasses
                         sm.runOnce2 = false;
                     }
                 }
-
             }
             public void Draw(Sprite sprite, SpriteBatch batch)
             {
@@ -653,14 +652,10 @@ namespace Nebula.Subclasses
 
                 if (!sm.DisplayVictoryScreen())
                 {
-
                     // Convert.ToString(sm.CeresText[0])
                     batch.DrawString(sm.myFont, sm.CeresText[sm.textIndex],
                    new Vector2(500, 500),
                    Color.White, 0, new Vector2(0, 0), 1.3f, SpriteEffects.None, 0.5f);
-                
-
-
 
                     // Timer gets drawn here - unaffected by time travel ability
                     batch.DrawString(sm.myFont, "Time: " + Convert.ToString(Convert.ToInt32(sprite.time)), 
@@ -671,7 +666,6 @@ namespace Nebula.Subclasses
                    new Vector2(sm.aHero.myPosition.X + sm.xSL - 2 * sm.myPlatform.myTexture.Width - sm.myPlatform.myTexture.Width / 2, sm.myPlatform.myTexture.Height + sm.myPlatform.myTexture.Height / 3),
                    Color.White, 0, new Vector2(0, 0), 1.3f, SpriteEffects.None, 0.5f);
                 }
-
                 if (sm.DisplayVictoryScreen())
                 {
                     batch.DrawString(sm.myFont, "Time Completed In: " + Convert.ToString(Convert.ToInt32(sm.finishingTime)), 
@@ -683,9 +677,7 @@ namespace Nebula.Subclasses
                 {
                     batch.DrawString(sm.myFont, entry.Key,entry.Value, Color.Yellow);
                 }
-
                     sm.InstructionScreen.Draw(batch);
-
             }
         }
     }

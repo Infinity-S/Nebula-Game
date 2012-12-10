@@ -35,8 +35,8 @@ namespace Nebula.SuperClasses
             hasJumped = true;
             // (myScreenSize.X * 2 + myScreenSize.X / 2);
             // Change back to  for start of game 
-            myPosition.X = (myScreenSize.X / 12); //94
-            // myScreenSize.X * 7
+            myPosition.X = (myScreenSize.X / 12);
+                //  //94
 
             myPosition.Y = myScreenSize.Y - myTexture.Height * 2;
             // Start her facing to the right
@@ -61,8 +61,6 @@ namespace Nebula.SuperClasses
                 this, this.GetType().GetMethod("Boost"),
                 new object[0]);
 
-
-
             InputManager.AddToKeyboardMap(Keys.Left, moveLeft);
             InputManager.AddToButtonsMap(Buttons.DPadLeft, moveLeft);
             InputManager.AddToKeyboardMap(Keys.Right, moveRight);
@@ -70,9 +68,8 @@ namespace Nebula.SuperClasses
             InputManager.AddToButtonsMap(Buttons.B, boost);
             InputManager.AddToButtonsMap(Buttons.RightShoulder, boost);
             InputManager.AddToKeyboardMap(Keys.B, boost);
-
-
         }
+
         public void GoLeft()
         {
                 myPosition.X -= 5;
@@ -102,7 +99,6 @@ namespace Nebula.SuperClasses
             }
         }
 
-
         // State that Asis begins in - ability to jump and gravity are built into this state
         class ExistState : State
         {
@@ -111,38 +107,41 @@ namespace Nebula.SuperClasses
             }
             public void Update(double elapsedTime, Sprite sprite)
             {
-                if ((Keyboard.GetState().IsKeyDown(Keys.Space)
-                    || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.A) 
-                    || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftShoulder)) 
-                    && sprite.hasJumped == false)
+                if (!Keyboard.GetState().IsKeyDown(Keys.X))
                 {
-                    sprite.myPosition.Y -= 10f;
-                    sprite.myVelocity.Y = -7f;
-                    sprite.hasJumped = true;
-                }
+                    if ((Keyboard.GetState().IsKeyDown(Keys.Space)
+                        || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.A)
+                        || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftShoulder))
+                        && sprite.hasJumped == false)
+                    {
+                        sprite.myPosition.Y -= 10f;
+                        sprite.myVelocity.Y = -7f;
+                        sprite.hasJumped = true;
+                    }
 
-                // if (sprite.myPosition.Y >= 0)
-                // {
+                    // if (sprite.myPosition.Y >= 0)
+                    // {
                     float i = 1;
                     // change 0.18f to alter speed of falling
                     sprite.myVelocity.Y += 0.18f * i;
-                // }
+                    // }
 
-                /*
-                // If he's in the air make hero fall
-                if (sprite.hasJumped == true)
-                {
-                    // change 0.18f to alter speed of falling
-                   sprite.myVelocity.Y += 0.18f * i;
-                }
-                */
+                    /*
+                    // If he's in the air make hero fall
+                    if (sprite.hasJumped == true)
+                    {
+                        // change 0.18f to alter speed of falling
+                       sprite.myVelocity.Y += 0.18f * i;
+                    }
+                    */
 
-                // Keeps player from falling through the bottom of the screen
-                // sprite.myPosition.Y + sprite.myTexture.Height > sprite.myScreenSize.Y
-                if (sprite.myVelocity.Y == 0)
-                {
-                    sprite.hasJumped = false;
-                    // sprite.myVelocity.Y = 0f;
+                    // Keeps player from falling through the bottom of the screen
+                    // sprite.myPosition.Y + sprite.myTexture.Height > sprite.myScreenSize.Y
+                    if (sprite.myVelocity.Y == 0)
+                    {
+                        sprite.hasJumped = false;
+                        // sprite.myVelocity.Y = 0f;
+                    }
                 }
             }
             public void Draw(Sprite sprite, SpriteBatch batch)

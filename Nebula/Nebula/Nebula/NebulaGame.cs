@@ -31,7 +31,7 @@ namespace Nebula
         //Vulkanis secondLevelContent; 
         Camera camera;
         int levelNumber;
-        int levelNum = 0; 
+        int levelNum = 2; 
 
         //public int getLevelNumber()
         //{
@@ -165,7 +165,7 @@ namespace Nebula
                 //Vulkanis Score 
                 mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[2])), new Vector2(800, 500), Color.White);
                 //Sycia Score
-                //mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[23])), new Vector2(500, 300), Color.White);
+                //mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[3])), new Vector2(500, 300), Color.White);
                 //levelNum = 0; 
             }
 

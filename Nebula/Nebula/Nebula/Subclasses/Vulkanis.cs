@@ -114,6 +114,9 @@ namespace Nebula.Subclasses
                 myGame, this, movingSpritesList, platformsList, myFont, (Asis) myHero, myInstructionScreen, myGameOverScreen, myVictoryScreens, myTimeTravelManager, levelMusic);
 
             allSprites.Add(myGameOverScreen);
+            allSprites.Add(myVictoryScreen1);
+            allSprites.Add(myVictoryScreen2);
+            allSprites.Add(myVictoryScreen3);
             allSprites.Add(myVictoryScreen4);
             allSprites.Add(myTimeTravelManager);
             allSprites.Add(myLevelManager);

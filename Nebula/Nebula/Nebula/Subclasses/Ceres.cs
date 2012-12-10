@@ -23,7 +23,6 @@ namespace Nebula.Subclasses
         public override void LoadSprites()
         {
 
-
             HeroLaser aLaser = new HeroLaser(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(0, 0),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
@@ -51,7 +50,6 @@ namespace Nebula.Subclasses
 
             myBackgroundScreen = new Screen(myGame.Content.Load<Texture2D>("SpaceBackground"), new Vector2(0 - myGraphics.PreferredBackBufferWidth / 12, 0),
                new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
-
             
             allSprites.Add(myHero);
             allSprites.Add(dLaser);
