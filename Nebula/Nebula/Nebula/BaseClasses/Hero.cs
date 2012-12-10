@@ -35,7 +35,7 @@ namespace Nebula.SuperClasses
             hasJumped = true;
             // (myScreenSize.X * 2 + myScreenSize.X / 2);
             // Change back to  for start of game 
-            myPosition.X = myScreenSize.X / 12;
+            myPosition.X = (myScreenSize.X / 12); //94
             // myScreenSize.X * 7
 
             myPosition.Y = myScreenSize.Y - myTexture.Height * 2;

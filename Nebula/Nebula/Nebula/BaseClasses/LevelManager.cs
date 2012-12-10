@@ -532,14 +532,17 @@ namespace Nebula.Subclasses
 
         public virtual void FinishLevelDisplay()
         {
+            //this is problem 
             if (finishingTime <= bestTime)
             {
                 VictoryScreenList[0].myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
             }
+                //this is problem 
             else if (finishingTime <= middleTime)
             {
                 VictoryScreenList[1].myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
             }
+                //this is problem 
             else if (finishingTime <= worstTime)
             {
                 VictoryScreenList[2].myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
@@ -565,7 +568,7 @@ namespace Nebula.Subclasses
                 if ((Keyboard.GetState().IsKeyDown(Keys.N)) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Start))
                 {
                     aHero.myPosition = new Vector2(myScreenSize.X / 12, myScreenSize.Y - myScreenSize.Y / 4);
-                    isFinished = true; 
+                   isFinished = true; 
                 }
 
                 return true;
@@ -576,6 +579,11 @@ namespace Nebula.Subclasses
         public bool getIsFinished()
         {
             return isFinished;
+        }
+
+        public void setIsFinished(bool levelFinished)
+        {
+            isFinished = levelFinished; 
         }
 
         class GameState : State

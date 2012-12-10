@@ -21,7 +21,7 @@ namespace Nebula.Subclasses
             : base(texture, position, screen, aGame, aLevel, aSpritesList, aPlatformsList, aFont, aAsis, aInstructions, aGameOverScreen, aVictoryScreens, aTimeTravelManager, backgroundMusic)
         {
             EndOfLevelPos = (xSL / 12) * 103; 
-            setFinishingTimes(65, 80, 120); 
+            setFinishingTimes(50, 70, 110); 
 
         }
 

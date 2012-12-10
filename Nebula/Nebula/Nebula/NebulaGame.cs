@@ -156,10 +156,16 @@ namespace Nebula
             }
             else
             {
+                FinishTimes.myPosition = new Vector2(myLevels[myLevels.Count-1].myLevelManager.myHero.myPosition.X - myLevels[2].myLevelManager.xSL / 6, 0); 
                 FinishTimes.Draw(mySpriteBatch);
-                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[0])), new Vector2(500, 300), Color.White);
-                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[1])), new Vector2(600, 300), Color.White);
-                //mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[2])), new Vector2(500, 300), Color.White);
+                //tutorial Score
+                //mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[0])), new Vector2(500, 300), Color.White);
+                //Ceres Score
+                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[1])), new Vector2(800, 350), Color.White);
+                //Vulkanis Score 
+                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[2])), new Vector2(800, 450), Color.White);
+                //Sycia Score
+                //mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[23])), new Vector2(500, 300), Color.White);
                 //levelNum = 0; 
             }
 
