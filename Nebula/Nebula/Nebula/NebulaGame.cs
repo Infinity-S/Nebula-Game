@@ -34,7 +34,7 @@ namespace Nebula
 
         public void setLevel(int i, Asis asi)
         {
-            /*
+            
             if (i == 1)
             {
                 level = new Ceres(this, graphics, asi, mySpriteBatch);

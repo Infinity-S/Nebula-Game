@@ -37,11 +37,6 @@ namespace Nebula.Subclasses
             return new Platform(this.myTexture, this.badPlatform, this.myPosition, this.myScreenSize);
         }
 
-        //public bool getCanStandOn()
-        //{
-        //    return canStandOn;
-        //}
-
         public void setBadPlatformImage()
         {
             if (!canStandOn)
@@ -105,55 +100,6 @@ namespace Nebula.Subclasses
         {
             speed = aSpeed;
         }
-
-        //     public void movePlatformVert (Platform aPlatform, Vector2 AsisPos)
-        //{
-        //    //start moving when asis is 1 platform lengths away 
-        //    if (AsisPos.X >= aPlatform.myPosition.X - aPlatform.myTexture.Width)
-        //    {
-        //        aPlatform.setMovingVelocity(aPlatform.getSpeed());
-        //        aPlatform.move(aPlatform.getPositionMoveTo()); 
-        //    } 
-        //    //aPlatform.move(aPlatform.getPositionMoveTo());
-        //    if (AsisPos.X <= aPlatform.myPosition.X - aPlatform.myTexture.Width)
-        //    {
-        //        aPlatform.setMovingVelocity(0f);
-        //    }
-
-        //}
-
-        //public void setMovingVelocity(float speed)
-        //{
-        //    if (movingHorz)
-        //    {
-        //        myVelocity = new Vector2(speed, 0);
-        //    }
-        //    else
-        //    {
-        //        myVelocity = new Vector2(0, -speed);
-        //    }
-        //}
-
-        //public void move(float position)
-        //{
-        //    if (movingHorz)
-        //    {
-        //        if (myPosition.X >= position)
-        //        {
-        //            setMovingVelocity(0f);
-        //        }
-        //    }
-        //    else
-        //    {
-        //       if (myPosition.Y <= position) 
-        //       {
-        //            setMovingVelocity(0f);
-        //       }
-
-        //    }
-        // }
-
-
 
         class ExistState : State
         {

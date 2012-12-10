@@ -22,7 +22,7 @@ namespace Nebula.Subclasses
         protected internal HeroLaser aLaser;
         protected internal Enemy aEnemy;
         protected internal EnemyLaser eLaser;
-        protected internal Asis asis;
+        protected internal Hero aHero;
         protected internal List<Sprite> platformsList = new List<Sprite>();
         protected internal List<Enemy> EnemiesList = new List<Enemy>();
 
@@ -67,9 +67,9 @@ namespace Nebula.Subclasses
         private Sprite[] BoostBar = new Sprite[5];
 
         public LevelManager(Texture2D texture, Vector2 position, Vector2 screen, NebulaGame aGame, Level aLevel,
-            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis asis2, 
+            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Hero anHero, 
             Screen aInstructions, Screen aGameOverScreen, List<Screen> aVictoryScreenList, TimeTravelManager aTimeTravelManager, SoundEffect backgroundMusic)
-            : base(texture, position, screen, aGame, aPlatformsList, asis2)
+            : base(texture, position, screen, aGame, aPlatformsList, anHero)
         {
             myTexture = texture;
             myPosition = position;
@@ -122,7 +122,7 @@ namespace Nebula.Subclasses
             InstructionScreen = aInstructions;
 
             //should we pass these in as indivdual items?? 
-            setUpSprites((Platform)platformsList[0], (Asis)spritesList[0], (HeroLaser)spritesList[1], 
+            setUpSprites((Platform)platformsList[0], (Hero)spritesList[0], (HeroLaser)spritesList[1], 
                 (Enemy)spritesList[2], (EnemyLaser)spritesList[3]); 
 
             EnemiesList.Add(aEnemy); 
@@ -140,10 +140,10 @@ namespace Nebula.Subclasses
         //this is virtual so you can override it if you want. 
         //like if have more than the "basic" sprites of the level
         //EG 1 Asis and her laser, 1 Platform type of platform, and 1 type of enemy and it's Laser
-        public virtual void setUpSprites(Platform aPlatform, Asis aAsis, HeroLaser anLaser, Enemy anEnemy, EnemyLaser anELaser)
+        public virtual void setUpSprites(Platform aPlatform, Hero anHero, HeroLaser anLaser, Enemy anEnemy, EnemyLaser anELaser)
         {
             myPlatform = aPlatform;
-            asis = aAsis;
+            aHero = anHero;
             aLaser = anLaser;
             aEnemy = anEnemy;
             eLaser = anELaser; 
@@ -194,7 +194,7 @@ namespace Nebula.Subclasses
         {
             //Vector2 intialPos = p.myPosition;
             //if (asis.myPosition.X >= p.myPosition.X + p.myTexture.Width / 6)
-            if (asis.myPosition.X >= p.myPosition.X && asis.myPosition.X <= p.myPosition.X + p.myTexture.Width)
+            if (aHero.myPosition.X >= p.myPosition.X && aHero.myPosition.X <= p.myPosition.X + p.myTexture.Width)
             {
                 p.myVelocity = new Vector2(0, p.getSpeed() * -1);
 
@@ -222,7 +222,7 @@ namespace Nebula.Subclasses
         {
 
             //if (asis.myPosition.X >= p.myPosition.X + p.myTexture.Width / 4)
-            if (asis.myPosition.X >= p.myPosition.X && asis.myPosition.X <= p.myPosition.X + p.myTexture.Width)
+            if (aHero.myPosition.X >= p.myPosition.X && aHero.myPosition.X <= p.myPosition.X + p.myTexture.Width)
             {
                 p.myVelocity = new Vector2(p.getSpeed(), 0);
 
@@ -274,7 +274,7 @@ namespace Nebula.Subclasses
 
         public void DisplayInstructions()
         {
-            InstructionScreen.myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+            InstructionScreen.myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
         }
 
         public void SetUpInput2()
@@ -337,8 +337,8 @@ namespace Nebula.Subclasses
         // Helper method that returns true if Asis's laser is offscreen, false otherwise
         private bool aLaserOffScreen()
         {
-            if (aLaser.myPosition.X + aLaser.myTexture.Width < asis.myPosition.X - myScreenSize.X / 6
-                || aLaser.myPosition.X > asis.myPosition.X + myScreenSize.X
+            if (aLaser.myPosition.X + aLaser.myTexture.Width < aHero.myPosition.X - myScreenSize.X / 6
+                || aLaser.myPosition.X > aHero.myPosition.X + myScreenSize.X
                 || aLaser.myPosition.Y < 0
                 || aLaser.myPosition.Y > myScreenSize.Y)
             {
@@ -353,16 +353,16 @@ namespace Nebula.Subclasses
             if (aLaserOffScreen())
             {
                 // If the direction they were last moving was to the left, then fire to the left
-                if (asis.getDirection().Equals("left"))
+                if (aHero.getDirection().Equals("left"))
                 {
-                    aLaser.myPosition = new Vector2(asis.myPosition.X - aLaser.myTexture.Width, asis.myPosition.Y + asis.myTexture.Height / 4);
+                    aLaser.myPosition = new Vector2(aHero.myPosition.X - aLaser.myTexture.Width, aHero.myPosition.Y + aHero.myTexture.Height / 4);
                     LaserSoundEffect.Play();
                     aLaser.myVelocity.X = -24;
                 }
                 // Otherwise fire to the right
                 else
                 {
-                    aLaser.myPosition = new Vector2(asis.myPosition.X + asis.myTexture.Width, asis.myPosition.Y + asis.myTexture.Height / 4);
+                    aLaser.myPosition = new Vector2(aHero.myPosition.X + aHero.myTexture.Width, aHero.myPosition.Y + aHero.myTexture.Height / 4);
                     LaserSoundEffect.Play();
                     aLaser.myVelocity.X = 24;
                 }
@@ -381,7 +381,7 @@ namespace Nebula.Subclasses
             else return false;
         }
 
-        public void AsisKillEnemies()
+        public void HeroKillEnemies()
         {
             // For each enemy, if Asis's laser hits them, kill them
             for (int i = 0; i < EnemiesList.Count; i++)
@@ -393,17 +393,17 @@ namespace Nebula.Subclasses
             }
         }
 
-        public void AsisPlatformLogic()
+        public void PlatformLogic()
         {
             //if ((!Keyboard.GetState().IsKeyDown(Keys.X)) && (!GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.X))) {
 
             // For each platform, if Asis jumps on it - set her y velocity to 0
             for (int i = 0; i < platformsList.Count; i++)
             {
-                if (asis.myPosition.Y + asis.myTexture.Height >= platformsList[i].myPosition.Y
-                    && asis.myPosition.Y + asis.myTexture.Height <= platformsList[i].myPosition.Y + platformsList[i].myTexture.Height
-                    && asis.myPosition.X + asis.myTexture.Width / 2 >= platformsList[i].myPosition.X
-                    && asis.myPosition.X + asis.myTexture.Width / 2 <= platformsList[i].myPosition.X + platformsList[i].myTexture.Width)
+                if (aHero.myPosition.Y + aHero.myTexture.Height >= platformsList[i].myPosition.Y
+                    && aHero.myPosition.Y + aHero.myTexture.Height <= platformsList[i].myPosition.Y + platformsList[i].myTexture.Height
+                    && aHero.myPosition.X + aHero.myTexture.Width / 2 >= platformsList[i].myPosition.X
+                    && aHero.myPosition.X + aHero.myTexture.Width / 2 <= platformsList[i].myPosition.X + platformsList[i].myTexture.Width)
                 {
                     /*
                     // If statement helps avoid a glitch when going back in time Asis would get stuck below a platform
@@ -414,20 +414,20 @@ namespace Nebula.Subclasses
                         sm.asis.myPosition.Y -= 5;
                     }
                     */
-                    asis.myVelocity.Y = 0;
+                    aHero.myVelocity.Y = 0;
                     // Allows hero to jump off platforms
                     if (Keyboard.GetState().IsKeyDown(Keys.Space) 
                         || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.A) 
                         || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftShoulder))
                     {
-                        asis.myVelocity.Y = -7f;
+                        aHero.myVelocity.Y = -7f;
                     }
                 //}
                 }
             }
         }
 
-        public void AsisLaserOffScreenLogic()
+        public void HeroLaserOffScreenLogic()
         {
             if (aLaserOffScreen())
             {
@@ -441,8 +441,8 @@ namespace Nebula.Subclasses
             foreach (Sprite enemy in EnemiesList)
             {
                 //attack if Asis is in range between 5 texture widths before enemy position to enemy position 
-                if ((asis.myPosition.X > (enemy.myPosition.X - (enemy.myTexture.Width * 4))
-                    && asis.myPosition.X < enemy.myPosition.X))
+                if ((aHero.myPosition.X > (enemy.myPosition.X - (enemy.myTexture.Width * 4))
+                    && aHero.myPosition.X < enemy.myPosition.X))
                 {
                     //Fire a laser every 1.5 seconds, will be an instance varible, so can be changed 
                     if (enemy.time > enemyWeaponFireTime)
@@ -466,7 +466,7 @@ namespace Nebula.Subclasses
                 // even when she is going back in time
                 if (myPlatform.time > .5)
                 {
-                    float xFireFromLeft = asis.myPosition.X - (aLaser.myTexture.Width * 2) - myScreenSize.X / 2;
+                    float xFireFromLeft = aHero.myPosition.X - (aLaser.myTexture.Width * 2) - myScreenSize.X / 2;
                     // sm.myScreenSize.X/8 = size of x range
                     float xFireFromLeftPlus = xFireFromLeft - myScreenSize.X/8;
                     if (aLaser.myPosition.X <= xFireFromLeft && aLaser.myPosition.X >= xFireFromLeftPlus)
@@ -474,7 +474,7 @@ namespace Nebula.Subclasses
                         BackwardsLaserSoundEffect.Play();
                         myPlatform.time = 0;
                     }
-                    float xFireFromRight = asis.myPosition.X + (asis.myTexture.Width * 2) + myScreenSize.X / 2;
+                    float xFireFromRight = aHero.myPosition.X + (aHero.myTexture.Width * 2) + myScreenSize.X / 2;
                     // sm.myScreenSize.X/8 = size of x range
                     float xFireFromRightPlus = xFireFromRight + myScreenSize.X/8;
                     if (aLaser.myPosition.X >= xFireFromRight && aLaser.myPosition.X <= xFireFromRightPlus)
@@ -490,9 +490,9 @@ namespace Nebula.Subclasses
         {
             for (int i = 0; i < BoostBar.Length; i++)
             {
-                if (asis.time >= i + 1)
+                if (aHero.time >= i + 1)
                 {
-                    BoostBar[i].myPosition = new Vector2(asis.myPosition.X + xSL / 2 + xSL / 6, 0);
+                    BoostBar[i].myPosition = new Vector2(aHero.myPosition.X + xSL / 2 + xSL / 6, 0);
                 }
                 else
                 {
@@ -504,14 +504,14 @@ namespace Nebula.Subclasses
         public void GameOverLogic()
         {
             // If Asis gets hit by Enemy laser, display GameOverScreen - otherwise hide it
-            if (Hit(asis, eLaser) || asis.myPosition.Y > ySL + ySL / 2)
+            if (Hit(aHero, eLaser) || aHero.myPosition.Y > ySL + ySL / 2)
             {
-                asis.myPosition.Y = asis.myPosition.Y + ySL;
-                GameOverScreen.myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+                aHero.myPosition.Y = aHero.myPosition.Y + ySL;
+                GameOverScreen.myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
             }
             else GameOverScreen.myPosition = new Vector2(xSL * -3, ySL * -3);
 
-            if (asis.myPosition.Y > ySL)
+            if (aHero.myPosition.Y > ySL)
             {
                 GameOverSoundInstance.Play();
                 LevelMusic.Stop();
@@ -531,22 +531,22 @@ namespace Nebula.Subclasses
         {
             if (finishingTime <= bestTime)
             {
-                VictoryScreenList[0].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+                VictoryScreenList[0].myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
             }
             else if (finishingTime <= middleTime)
             {
-                VictoryScreenList[1].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+                VictoryScreenList[1].myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
             }
             else if (finishingTime <= worstTime)
             {
-                VictoryScreenList[2].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+                VictoryScreenList[2].myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
             }
-            else VictoryScreenList[3].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+            else VictoryScreenList[3].myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
         }
         public bool DisplayVictoryScreen()
         {
             // If player has reached the end of the level
-            if (asis.myPosition.X > EndOfLevelPos)
+            if (aHero.myPosition.X > EndOfLevelPos)
             {
                 LevelDisplay();
                 
@@ -563,8 +563,8 @@ namespace Nebula.Subclasses
                 {
                     levelCounter = myGame.getLevelNumber();
                     levelCounter++;
-                    asis.myPosition = new Vector2(myScreenSize.X / 12, myScreenSize.Y - myScreenSize.Y / 4);
-                    myGame.setLevel(levelCounter, asis);
+                    aHero.myPosition = new Vector2(myScreenSize.X / 12, myScreenSize.Y - myScreenSize.Y / 4);
+                    myGame.setLevel(levelCounter, (Asis) aHero);
                 }
 
                 return true;
@@ -593,9 +593,9 @@ namespace Nebula.Subclasses
 
                 sm.PlayLevelMusic();
 
-                sm.AsisLaserOffScreenLogic(); 
+                sm.HeroLaserOffScreenLogic(); 
 
-                sm.AsisKillEnemies();
+                sm.HeroKillEnemies();
 
                 sm.EnemyShootingAI();
 
@@ -603,7 +603,7 @@ namespace Nebula.Subclasses
 
                 sm.LaserTimeTravelSound(sprite);
 
-                sm.AsisPlatformLogic();
+                sm.PlatformLogic();
 
                 foreach (Platform p in sm.platformsList)
                 {
@@ -650,18 +650,18 @@ namespace Nebula.Subclasses
 
                     // Timer gets drawn here - unaffected by time travel ability
                     batch.DrawString(sm.myFont, "Time: " + Convert.ToString(Convert.ToInt32(sprite.time)), 
-                        new Vector2(sm.asis.myPosition.X - sm.xSL / 6, 0),
+                        new Vector2(sm.aHero.myPosition.X - sm.xSL / 6, 0),
                         Color.White, 0, new Vector2(0, 0), 1.3f, SpriteEffects.None, 0.5f);
 
                     batch.DrawString(sm.myFont, "Boost Bar",
-                   new Vector2(sm.asis.myPosition.X + sm.xSL - 2 * sm.myPlatform.myTexture.Width - sm.myPlatform.myTexture.Width / 2, sm.myPlatform.myTexture.Height + sm.myPlatform.myTexture.Height / 3),
+                   new Vector2(sm.aHero.myPosition.X + sm.xSL - 2 * sm.myPlatform.myTexture.Width - sm.myPlatform.myTexture.Width / 2, sm.myPlatform.myTexture.Height + sm.myPlatform.myTexture.Height / 3),
                    Color.White, 0, new Vector2(0, 0), 1.3f, SpriteEffects.None, 0.5f);
                 }
 
                 if (sm.DisplayVictoryScreen())
                 {
                     batch.DrawString(sm.myFont, "Time Completed In: " + Convert.ToString(Convert.ToInt32(sm.finishingTime)), 
-                        new Vector2(sm.asis.myPosition.X - sm.xSL / 6, 0), Color.White, 0, 
+                        new Vector2(sm.aHero.myPosition.X - sm.xSL / 6, 0), Color.White, 0, 
                         new Vector2(0, 0), 1.3f, SpriteEffects.None, 0.5f);
                 }
 

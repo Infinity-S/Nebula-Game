@@ -76,7 +76,7 @@ namespace Nebula.Subclasses
             AddPlatform(new Vector2(xSL * 3 + xSL / 4 + myPlatform.myTexture.Width * 37, ySL - myPlatform.myTexture.Height * 5), true);
 
             //ADDING ENEMIES 
-            AddEnemy(aEnemy, new Vector2(xSL + xSL / 4 - asis.myTexture.Width / 2,
+            AddEnemy(aEnemy, new Vector2(xSL + xSL / 4 - aHero.myTexture.Width / 2,
                    ySL / 2 + ySL / 4 - ySL / 8)); 
 
             AddEnemy(aEnemy, new Vector2(xSL * 2 + myPlatform.myTexture.Width * 7,

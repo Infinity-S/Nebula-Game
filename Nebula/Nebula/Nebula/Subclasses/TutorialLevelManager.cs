@@ -38,7 +38,7 @@ namespace Nebula.Subclasses
 
         public override void LevelDisplay()
         {
-            VictoryScreenList[0].myPosition = new Vector2(asis.myPosition.X - xSL / 6, 0);
+            VictoryScreenList[0].myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
         }
 
         public override void AddItemsToLevel(Sprite sprite, float xSL, float ySL)

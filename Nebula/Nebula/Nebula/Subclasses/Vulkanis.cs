@@ -27,7 +27,7 @@ namespace Nebula.Subclasses
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
             Enemy hEnemy = new Enemy(myGame.Content.Load<Texture2D>("enemy-red"),
-                new Vector2(myGraphics.PreferredBackBufferWidth + myGraphics.PreferredBackBufferWidth / 4 - myAsis.myTexture.Width / 2,
+                new Vector2(myGraphics.PreferredBackBufferWidth + myGraphics.PreferredBackBufferWidth / 4 - myHero.myTexture.Width / 2,
                     myGraphics.PreferredBackBufferHeight / 2 + myGraphics.PreferredBackBufferHeight / 4 - myGraphics.PreferredBackBufferHeight / 8),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
@@ -41,7 +41,7 @@ namespace Nebula.Subclasses
 
             myFont = myGame.Content.Load<SpriteFont>("SpriteFont1");
 
-            movingSpritesList.Add(myAsis);
+            movingSpritesList.Add(myHero);
             movingSpritesList.Add(aLaser);
             movingSpritesList.Add(hEnemy);
             movingSpritesList.Add(dLaser);
@@ -52,7 +52,7 @@ namespace Nebula.Subclasses
                new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
 
-            allSprites.Add(myAsis);
+            allSprites.Add(myHero);
             allSprites.Add(dLaser);
             allSprites.Add(aLaser);
 
@@ -85,33 +85,33 @@ namespace Nebula.Subclasses
             myGameOverScreen = new Screen(myGame.Content.Load<Texture2D>("death-screen"), new Vector2(0, 0),
                new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
-            //myVictoryScreen1 = new Screen(myGame.Content.Load<Texture2D>("Stage1Cleared1st"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
-            //      new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
+            myVictoryScreen1 = new Screen(myGame.Content.Load<Texture2D>("Stage1Cleared1st"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
+                  new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
-            //myVictoryScreen2 = new Screen(myGame.Content.Load<Texture2D>("Stage1Cleared2nd"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
-            //      new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
+            myVictoryScreen2 = new Screen(myGame.Content.Load<Texture2D>("Stage1Cleared2nd"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
+                  new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
-            //myVictoryScreen3 = new Screen(myGame.Content.Load<Texture2D>("Stage1Cleared3rd"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
-            //      new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
+            myVictoryScreen3 = new Screen(myGame.Content.Load<Texture2D>("Stage1Cleared3rd"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
+                  new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
             myVictoryScreen4 = new Screen(myGame.Content.Load<Texture2D>("Stage1Cleared4th"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
                   new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
-            //myVictoryScreens.Add(myVictoryScreen1);
-            //myVictoryScreens.Add(myVictoryScreen2);
-            //myVictoryScreens.Add(myVictoryScreen3);
+            myVictoryScreens.Add(myVictoryScreen1);
+            myVictoryScreens.Add(myVictoryScreen2);
+            myVictoryScreens.Add(myVictoryScreen3);
             myVictoryScreens.Add(myVictoryScreen4);
 
             SoundEffect levelMusic = myGame.Content.Load<SoundEffect>("CeresMusic"); 
 
-            scrollingManager = new ScrollingManager(myAsis, myBackgroundSprites, myGraphics.PreferredBackBufferWidth, myBackgroundScreen);
+            scrollingManager = new ScrollingManager(myHero, myBackgroundSprites, myGraphics.PreferredBackBufferWidth, myBackgroundScreen);
 
             myTimeTravelManager = new TimeTravelManager(myGame.Content.Load<Texture2D>("timet-background"), new Vector2(0, 0),
-                new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight), myGame, movingSpritesList, myAsis);
+                new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight), myGame, movingSpritesList, myHero);
 
             VulkanisLevelManager manager = new VulkanisLevelManager(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(-1000, -1000),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight),
-                myGame, this, movingSpritesList, platformsList, myFont, myAsis, myInstructionScreen, myGameOverScreen, myVictoryScreens, myTimeTravelManager, levelMusic);
+                myGame, this, movingSpritesList, platformsList, myFont, (Asis) myHero, myInstructionScreen, myGameOverScreen, myVictoryScreens, myTimeTravelManager, levelMusic);
 
             allSprites.Add(myGameOverScreen);
             allSprites.Add(myVictoryScreen4);

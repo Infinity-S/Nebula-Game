@@ -19,7 +19,7 @@ namespace Nebula.BaseClasses
     {
         protected internal NebulaGame myGame;
         protected internal GraphicsDeviceManager myGraphics;
-        protected internal Asis myAsis;
+        protected internal Hero myHero;
         protected internal SpriteBatch spriteBatch;
         protected internal List<Sprite> allSprites = new List<Sprite>();
         protected internal List<Sprite> movingSpritesList = new List<Sprite>();
@@ -38,11 +38,11 @@ namespace Nebula.BaseClasses
         protected internal SpriteFont myFont;
          
 
-        public Level(NebulaGame aGame, GraphicsDeviceManager aGraphics, Asis aAsis, SpriteBatch aSpriteBatch)
+        public Level(NebulaGame aGame, GraphicsDeviceManager aGraphics, Hero aHero, SpriteBatch aSpriteBatch)
         {
             myGame = aGame;
             myGraphics = aGraphics;
-            myAsis = aAsis;
+            myHero = aHero;
             spriteBatch = aSpriteBatch; 
             LoadSprites();
         }

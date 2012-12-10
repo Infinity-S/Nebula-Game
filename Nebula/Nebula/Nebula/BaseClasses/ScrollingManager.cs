@@ -12,13 +12,15 @@ using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
 using System.Threading;
 using System.Collections;
-using Nebula.Subclasses; 
+using Nebula.Subclasses;
+using Nebula.BaseClasses;
+using Nebula.SuperClasses; 
 
 namespace Nebula
 {
     public class ScrollingManager
     {
-        private Asis myAsis;
+        private Hero myHero;
         private List<BackgroundSprite> myBackgrounds;
         //private float globalPos = 0f;
         private float backgroundLength;
@@ -34,9 +36,9 @@ namespace Nebula
         private Vector2 aSpeed = new Vector2(1, 0);
         private Screen myBackgroundScreen;
 
-        public ScrollingManager(Asis MainChar, List<BackgroundSprite> backgroundsList, float ScreenWidth, Screen aBackgroundScreen)
+        public ScrollingManager(Hero anHero, List<BackgroundSprite> backgroundsList, float ScreenWidth, Screen aBackgroundScreen)
         {
-            myAsis = MainChar;
+            myHero = anHero;
             myBackgrounds = backgroundsList;
             //caculating the size of the whole background put together
             foreach (BackgroundSprite bs in myBackgrounds)
@@ -59,13 +61,13 @@ namespace Nebula
 
             for (int i = 1; i < myBackgrounds.Count(); i++)
             {
-                if (myAsis.myPosition.X > myBackgrounds[i].myPosition.X + myBackgrounds[i].myTexture.Width * 2)
+                if (myHero.myPosition.X > myBackgrounds[i].myPosition.X + myBackgrounds[i].myTexture.Width * 2)
                 {
                         myBackgrounds[i].myPosition.X = myBackgrounds[i-1].myPosition.X
                         + myBackgrounds[i-1].myTexture.Width;
                 }
             }
-            if (myAsis.myPosition.X > myBackgrounds[0].myPosition.X + myBackgrounds[0].myTexture.Width * 2)
+            if (myHero.myPosition.X > myBackgrounds[0].myPosition.X + myBackgrounds[0].myTexture.Width * 2)
             {
                 myBackgrounds[0].myPosition.X = myBackgrounds[myBackgrounds.Count-1].myPosition.X
                            + myBackgrounds[myBackgrounds.Count - 1].myTexture.Width;
@@ -78,13 +80,13 @@ namespace Nebula
 
             for (int i = 0; i < myBackgrounds.Count()-1; i++)
             {
-                if (myAsis.myPosition.X < myBackgrounds[i].myPosition.X - myBackgrounds[i].myTexture.Width * 2)
+                if (myHero.myPosition.X < myBackgrounds[i].myPosition.X - myBackgrounds[i].myTexture.Width * 2)
                 { 
                     myBackgrounds[i].myPosition.X = myBackgrounds[i + 1].myPosition.X
                     - myBackgrounds[i + 1].myTexture.Width;
                 }
             }
-            if (myAsis.myPosition.X < myBackgrounds[myBackgrounds.Count - 1].myPosition.X - myBackgrounds[myBackgrounds.Count - 1].myTexture.Width * 2)
+            if (myHero.myPosition.X < myBackgrounds[myBackgrounds.Count - 1].myPosition.X - myBackgrounds[myBackgrounds.Count - 1].myTexture.Width * 2)
             {
                 myBackgrounds[myBackgrounds.Count - 1].myPosition.X = myBackgrounds[0].myPosition.X
                            - myBackgrounds[0].myTexture.Width;
@@ -94,7 +96,7 @@ namespace Nebula
 
         public void Update(double totalSecs)
         {
-            myBackgroundScreen.myPosition = new Vector2(myAsis.myPosition.X - myAsis.myScreenSize.X /6, 0);
+            myBackgroundScreen.myPosition = new Vector2(myHero.myPosition.X - myHero.myScreenSize.X /6, 0);
 
             if (Keyboard.GetState().IsKeyDown(Keys.Left) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.LeftThumbstickLeft)
                 || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadLeft))
