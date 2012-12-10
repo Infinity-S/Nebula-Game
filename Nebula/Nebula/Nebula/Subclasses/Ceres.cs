@@ -83,8 +83,8 @@ namespace Nebula.Subclasses
                 movingSpritesList.Add(s);
             }
 
-           
-            myInstructionScreen = new Screen(myGame.Content.Load<Texture2D>("InstructionScreen (2)"), new Vector2(0 - myGraphics.PreferredBackBufferWidth / 12, 0),
+            // 0 - myGraphics.PreferredBackBufferWidth / 12, 0
+            myInstructionScreen = new Screen(myGame.Content.Load<Texture2D>("InstructionScreen (2)"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, myGraphics.PreferredBackBufferHeight * -3),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
              myGameOverScreen = new Screen(myGame.Content.Load<Texture2D>("death-screen"), new Vector2(0, 0), 

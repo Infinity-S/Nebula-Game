@@ -31,6 +31,7 @@ Content\purpleLaser.xnb
 Content\Stage1Cleared1st.xnb
 Content\Stage1Cleared2nd.xnb
 Content\Stage1Cleared3rd.xnb
+Content\StageClearedTutorial.xnb
 Content\LaserSoundEffectBackwards.xnb
 Content\time-swoosh.xnb
 Content\breathofdeath.xnb

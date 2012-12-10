@@ -157,6 +157,13 @@ namespace Nebula
                     a.Invoke();
                 }
             }
+            if (gamePadState.DPad.Down == ButtonState.Pressed && myButtonsMap.ContainsKey(Buttons.DPadDown))
+            {
+                foreach (GameAction a in myButtonsMap[Buttons.DPadDown])
+                {
+                    a.Invoke();
+                }
+            }
             if (gamePadState.Triggers.Right > 0 && myButtonsMap.ContainsKey(Buttons.RightTrigger))
             {
                 foreach (GameAction a in myButtonsMap[Buttons.RightTrigger])

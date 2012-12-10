@@ -25,6 +25,12 @@ namespace Nebula.Subclasses
         protected internal Asis asis;
         protected internal List<Sprite> platformsList = new List<Sprite>();
         protected internal List<Enemy> EnemiesList = new List<Enemy>();
+
+
+        protected internal List<String> CeresText = new List<String>();
+        int textIndex = 0;
+
+
         protected internal Platform myPlatform;
         protected internal float xSL;
         protected internal float ySL;
@@ -66,7 +72,16 @@ namespace Nebula.Subclasses
             myScreenSize = screen;
             myGame = aGame;
             myLevel = aLevel;
-            spritesList = aSpritesList; 
+            spritesList = aSpritesList;
+
+
+            CeresText.Add("This is the first line of text");
+            CeresText.Add("This is the second line of text");
+            CeresText.Add("Third");
+            CeresText.Add("Fourth");
+            CeresText.Add("Fifth");
+            
+
 
             //Music for the level 
             LaserSoundEffect = myGame.Content.Load<SoundEffect>("LaserSoundEffect");
@@ -282,7 +297,25 @@ namespace Nebula.Subclasses
             InputManager.AddToKeyboardMap(Keys.I, timerReset);
             InputManager.AddToButtonsMap(Buttons.Start, timerReset);
 
+
+            GameAction nextLineOfText = new GameAction(
+                this, this.GetType().GetMethod("GetNextLine"),
+                new object[0]);
+
+            InputManager.AddToKeyboardMap(Keys.Enter, nextLineOfText);
+            InputManager.AddToButtonsMap(Buttons.DPadDown, nextLineOfText);
+
         }
+
+        public void GetNextLine()
+    {
+
+        if (InstructionScreen.time > .5)
+        {
+            textIndex++;
+            InstructionScreen.time = 0;
+        }
+    }
 
 
 
@@ -579,6 +612,15 @@ namespace Nebula.Subclasses
 
                 if (!sm.DisplayVictoryScreen())
                 {
+
+                    // Convert.ToString(sm.CeresText[0])
+                    batch.DrawString(sm.myFont, sm.CeresText[sm.textIndex],
+                   new Vector2(500, 500),
+                   Color.White, 0, new Vector2(0, 0), 1.3f, SpriteEffects.None, 0.5f);
+                
+
+
+
                     // Timer gets drawn here - unaffected by time travel ability
                     batch.DrawString(sm.myFont, "Time: " + Convert.ToString(Convert.ToInt32(sprite.time)), 
                         new Vector2(sm.asis.myPosition.X - sm.xSL / 6, 0),
@@ -594,13 +636,6 @@ namespace Nebula.Subclasses
                     batch.DrawString(sm.myFont, "Time Completed In: " + Convert.ToString(Convert.ToInt32(sm.finishingTime)), 
                         new Vector2(sm.asis.myPosition.X - sm.xSL / 6, 0), Color.White, 0, 
                         new Vector2(0, 0), 1.3f, SpriteEffects.None, 0.5f);
-
-                    // Not appearing where I want it to - add text in photoshop?
-                    /*
-                    batch.DrawString(sm.myFont, "Press Start to continue on to the next level",
-                        new Vector2(sm.asis.myPosition.X - sm.xSL / 6, 0), Color.White, 0,
-                        new Vector2(0, 0), 1.7f, SpriteEffects.None, 0.5f);
-                    */
                 }
 
                 foreach (KeyValuePair<String, Vector2> entry in sm.OnScreenText)
@@ -608,7 +643,7 @@ namespace Nebula.Subclasses
                     batch.DrawString(sm.myFont, entry.Key,entry.Value, Color.White);
                 }
 
-                sm.InstructionScreen.Draw(batch);
+                    sm.InstructionScreen.Draw(batch);
 
             }
         }

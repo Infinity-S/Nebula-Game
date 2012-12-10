@@ -89,7 +89,7 @@ namespace Nebula.Subclasses
             myGameOverScreen = new Screen(myGame.Content.Load<Texture2D>("death-screen"), new Vector2(0, 0),
                new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
-            myVictoryScreen4 = new Screen(myGame.Content.Load<Texture2D>("Stage1Cleared4th"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
+            myVictoryScreen4 = new Screen(myGame.Content.Load<Texture2D>("StageClearedTutorial"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
                  new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
             myVictoryScreens.Add(myVictoryScreen4);

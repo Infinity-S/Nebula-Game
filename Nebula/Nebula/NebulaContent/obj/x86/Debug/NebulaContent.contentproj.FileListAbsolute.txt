@@ -16,3 +16,4 @@ C:\Users\Zaz v2\Desktop\Nebula\Nebula\NebulaContent\obj\x86\Debug\ResolveAssembl
 C:\Users\eszymanski\Documents\GitHub\Nebula-Game\Nebula\Nebula\NebulaContent\obj\x86\Debug\ResolveAssemblyReference.cache
 U:\Nebula for Playtesting\Nebula\Nebula\NebulaContent\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Zaz v2\Desktop\Nebula for Playtesting\Nebula\Nebula\NebulaContent\obj\x86\Debug\ResolveAssemblyReference.cache
+G:\Nebula-Game\Nebula\Nebula\NebulaContent\obj\x86\Debug\ResolveAssemblyReference.cache
