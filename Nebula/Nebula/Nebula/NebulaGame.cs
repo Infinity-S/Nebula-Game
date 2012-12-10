@@ -31,7 +31,7 @@ namespace Nebula
         //Vulkanis secondLevelContent; 
         Camera camera;
         int levelNumber;
-        int levelNum = 0; 
+        int levelNum = 1; 
 
         //public int getLevelNumber()
         //{
@@ -157,9 +157,9 @@ namespace Nebula
             else
             {
                 FinishTimes.Draw(mySpriteBatch);
-                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[0])), new Vector2(300, 300), Color.White);
-                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[1])), new Vector2(400, 300), Color.White);
-                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[2])), new Vector2(500, 300), Color.White);
+                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[0])), new Vector2(500, 300), Color.White);
+                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[1])), new Vector2(600, 300), Color.White);
+                //mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[2])), new Vector2(500, 300), Color.White);
                 //levelNum = 0; 
             }
 

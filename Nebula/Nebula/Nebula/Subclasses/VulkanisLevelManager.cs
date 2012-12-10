@@ -20,7 +20,7 @@ namespace Nebula.Subclasses
             List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis aAsis, Screen aInstructions, Screen aGameOverScreen, List<Screen> aVictoryScreens, TimeTravelManager aTimeTravelManager, SoundEffect backgroundMusic)
             : base(texture, position, screen, aGame, aLevel, aSpritesList, aPlatformsList, aFont, aAsis, aInstructions, aGameOverScreen, aVictoryScreens, aTimeTravelManager, backgroundMusic)
         {
-            EndOfLevelPos = (xSL / 12) * 104;
+            EndOfLevelPos = (xSL / 12) * 103; 
             setFinishingTimes(65, 80, 120); 
 
         }

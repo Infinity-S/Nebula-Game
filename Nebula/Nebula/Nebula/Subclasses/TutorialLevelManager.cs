@@ -33,7 +33,7 @@ namespace Nebula.Subclasses
             : base(texture, position, screen, aGame, aLevel, aSpritesList, aPlatformsList, aFont, aAsis,
             aInstructions, aGameOverScreen, aVictoryScreenList, aTimeTravelManager, backgroundMusic)
         {
-            EndOfLevelPos = (xSL / 12) * 89; 
+            EndOfLevelPos = (xSL / 12) * 87; 
         }
 
         public override void FinishLevelDisplay()
@@ -119,6 +119,8 @@ namespace Nebula.Subclasses
             AddPlatform(new Vector2((xSL / 12) * 87, ySL - myPlatform.myTexture.Height * 3), true);
             AddPlatform(new Vector2((xSL / 12) * 88, ySL - myPlatform.myTexture.Height * 3), true);
             AddPlatform(new Vector2((xSL / 12) * 89, ySL - myPlatform.myTexture.Height * 3), true);
+            AddPlatform(new Vector2((xSL / 12) * 90, ySL - myPlatform.myTexture.Height * 3), true);
+            AddPlatform(new Vector2((xSL / 12) * 91, ySL - myPlatform.myTexture.Height * 3), true);
 
 
             AddEnemy(aEnemy, new Vector2((xSL / 12) * 25, ySL - myPlatform.myTexture.Height * 6 - aEnemy.myTexture.Height));
