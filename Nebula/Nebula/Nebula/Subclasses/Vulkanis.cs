@@ -85,21 +85,21 @@ namespace Nebula.Subclasses
             myGameOverScreen = new Screen(myGame.Content.Load<Texture2D>("death-screen"), new Vector2(0, 0),
                new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
-            myVictoryScreen1 = new Screen(myGame.Content.Load<Texture2D>("Stage1Cleared1st"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
-                  new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
+            //myVictoryScreen1 = new Screen(myGame.Content.Load<Texture2D>("Stage1Cleared1st"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
+            //      new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
-            myVictoryScreen2 = new Screen(myGame.Content.Load<Texture2D>("Stage1Cleared2nd"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
-                  new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
+            //myVictoryScreen2 = new Screen(myGame.Content.Load<Texture2D>("Stage1Cleared2nd"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
+            //      new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
-            myVictoryScreen3 = new Screen(myGame.Content.Load<Texture2D>("Stage1Cleared3rd"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
-                  new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
+            //myVictoryScreen3 = new Screen(myGame.Content.Load<Texture2D>("Stage1Cleared3rd"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
+            //      new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
             myVictoryScreen4 = new Screen(myGame.Content.Load<Texture2D>("Stage1Cleared4th"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
                   new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
-            myVictoryScreens.Add(myVictoryScreen1);
-            myVictoryScreens.Add(myVictoryScreen2);
-            myVictoryScreens.Add(myVictoryScreen3);
+            //myVictoryScreens.Add(myVictoryScreen1);
+            //myVictoryScreens.Add(myVictoryScreen2);
+            //myVictoryScreens.Add(myVictoryScreen3);
             myVictoryScreens.Add(myVictoryScreen4);
 
             SoundEffect levelMusic = myGame.Content.Load<SoundEffect>("CeresMusic"); 

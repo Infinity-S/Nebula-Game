@@ -32,6 +32,13 @@ Content\Stage1Cleared1st.xnb
 Content\Stage1Cleared2nd.xnb
 Content\Stage1Cleared3rd.xnb
 Content\StageClearedTutorial.xnb
+Content\LavaB1.xnb
+Content\LavaB2.xnb
+Content\LavaB3.xnb
+Content\LavaB4.xnb
+Content\LavaPlatform.xnb
+Content\LavaPlatformDead.xnb
+Content\PlantPlatformDead.xnb
 Content\LaserSoundEffectBackwards.xnb
 Content\time-swoosh.xnb
 Content\breathofdeath.xnb
@@ -40,10 +47,3 @@ Content\CeresMusic.xnb
 Content\boost-sound.xnb
 Content\stage1-soundclear.xnb
 Content\SpriteFont1.xnb
-Content\PlantPlatformDead.xnb
-Content\LavaB1.xnb
-Content\LavaB2.xnb
-Content\LavaB3.xnb
-Content\LavaB4.xnb
-Content\LavaPlatform.xnb
-Content\LavaPlatformDead.xnb
