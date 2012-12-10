@@ -36,7 +36,7 @@ namespace Nebula.Subclasses
             EndOfLevelPos = (xSL / 12) * 89; 
         }
 
-        public override void LevelDisplay()
+        public override void FinishLevelDisplay()
         {
             VictoryScreenList[0].myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
         }

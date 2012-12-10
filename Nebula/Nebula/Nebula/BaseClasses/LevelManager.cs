@@ -15,7 +15,7 @@ using Nebula.Subclasses;
 
 namespace Nebula.Subclasses
 {
-    class LevelManager : TimeTravelManager
+    public class LevelManager : TimeTravelManager
     {
         protected internal bool runOnce = true; 
         protected internal List<Sprite> spritesList;
@@ -58,7 +58,9 @@ namespace Nebula.Subclasses
 
         private double bestTime;
         private double middleTime;
-        private double worstTime; 
+        private double worstTime;
+
+        private bool isFinished = false; 
 
         protected internal List<Screen> VictoryScreenList = new List<Screen>();
 
@@ -528,7 +530,7 @@ namespace Nebula.Subclasses
         }
 
 
-        public virtual void LevelDisplay()
+        public virtual void FinishLevelDisplay()
         {
             if (finishingTime <= bestTime)
             {
@@ -549,7 +551,7 @@ namespace Nebula.Subclasses
             // If player has reached the end of the level
             if (aHero.myPosition.X > EndOfLevelPos)
             {
-                LevelDisplay();
+                FinishLevelDisplay();
                 
 
                 if (playOnce == true)
@@ -562,15 +564,18 @@ namespace Nebula.Subclasses
                 // If they press N on the keyboard or start on the gamepad go to the next level
                 if ((Keyboard.GetState().IsKeyDown(Keys.N)) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Start))
                 {
-                    levelCounter = myGame.getLevelNumber();
-                    levelCounter++;
                     aHero.myPosition = new Vector2(myScreenSize.X / 12, myScreenSize.Y - myScreenSize.Y / 4);
-                    myGame.setLevel(levelCounter, (Asis) aHero);
+                    isFinished = true; 
                 }
 
                 return true;
             } 
             return false;
+        }
+
+        public bool getIsFinished()
+        {
+            return isFinished;
         }
 
         class GameState : State

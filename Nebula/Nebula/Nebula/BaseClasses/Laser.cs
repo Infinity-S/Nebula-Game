@@ -15,7 +15,7 @@ using System.Threading;
 
 namespace Nebula.BaseClasses
 {
-    class Laser : Sprite
+   public class Laser : Sprite
     {
         public Laser(Texture2D texture, Vector2 position, Vector2 screen)
             : base(texture, position)

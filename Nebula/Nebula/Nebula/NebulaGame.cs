@@ -20,41 +20,45 @@ namespace Nebula
     public class NebulaGame : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
+        List<double> playerScore = new List<double>();
+        List<Level> myLevels = new List<Level>(); 
         SpriteBatch mySpriteBatch;
-        Tutorial TutorialContent;
-        Level level;
-        Vulkanis secondLevelContent; 
+        //Tutorial TutorialContent;
+        //Ceres firstLevelContent; 
+        //Level level;
+        //Vulkanis secondLevelContent; 
         Camera camera;
         int levelNumber;
+        int levelNum = 0; 
 
-        public int getLevelNumber()
-        {
-            return levelNumber;
-        }
+        //public int getLevelNumber()
+        //{
+        //    return levelNumber;
+        //}
 
-        public void setLevel(int i, Asis asi)
-        {
+        //public void setLevel(int i, Asis asi)
+        //{
             
-            if (i == 1)
-            {
-                level = new Ceres(this, graphics, asi, mySpriteBatch);
-                levelNumber = 1;
-            }
+        //    if (i == 1)
+        //    {
+        //        level = new Ceres(this, graphics, asi, mySpriteBatch);
+        //        levelNumber = 1;
+        //    }
             
-            if (i == 2)
-            {
-                level = new Vulkanis(this, graphics, asi, mySpriteBatch);
-                levelNumber = 2;
-            }
-            /*
-            if (i == 3)
-            {
-                level = new Sycia(this, graphics, asi, mySpriteBatch);
-                levelNumber = 3;
-            }
-            */
+        //    if (i == 2)
+        //    {
+        //        level = new Vulkanis(this, graphics, asi, mySpriteBatch);
+        //        levelNumber = 2;
+        //    }
+        //    /*
+        //    if (i == 3)
+        //    {
+        //        level = new Sycia(this, graphics, asi, mySpriteBatch);
+        //        levelNumber = 3;
+        //    }
+        //    */
 
-        }
+        //}
 
         public NebulaGame()
         {
@@ -90,9 +94,15 @@ namespace Nebula
 
             camera = new Camera(GraphicsDevice.Viewport, myAsis);
 
-            // TutorialContent = new Tutorial(this, graphics, myAsis, mySpriteBatch);
-            level = new Tutorial(this, graphics, myAsis, mySpriteBatch); 
-            //secondLevelContent = new Vulkanis(this, graphics, myAsis, mySpriteBatch); 
+            Tutorial TutorialContent = new Tutorial(this, graphics, myAsis, mySpriteBatch);
+            Ceres firstLevelContent = new Ceres(this, graphics, myAsis, mySpriteBatch); 
+            //level = new Tutorial(this, graphics, myAsis, mySpriteBatch); 
+            Vulkanis secondLevelContent = new Vulkanis(this, graphics, myAsis, mySpriteBatch);
+            myLevels.Add(TutorialContent);
+            myLevels.Add(firstLevelContent);
+            myLevels.Add(secondLevelContent); 
+            //add another screen for the finishing times!!!
+
         }
 
         /// <summary>
@@ -114,8 +124,16 @@ namespace Nebula
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
-            
-            level.Update(gameTime);
+
+            if (levelNum < myLevels.Count)
+            {
+                myLevels[levelNum].Update(gameTime);
+                if (myLevels[levelNum].myLevelManager.getIsFinished())
+                {
+                    playerScore.Add(myLevels[levelNum].myLevelManager.finishingTime); 
+                    levelNum++;
+                }
+            }
             camera.Update(gameTime);
             base.Update(gameTime);
         }
@@ -128,7 +146,8 @@ namespace Nebula
         {
             mySpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
 
-            level.Draw(gameTime);
+                myLevels[levelNum].Draw(gameTime);
+
             mySpriteBatch.End();
             base.Draw(gameTime);
         }

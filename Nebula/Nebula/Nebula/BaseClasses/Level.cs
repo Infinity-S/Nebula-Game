@@ -34,8 +34,10 @@ namespace Nebula.BaseClasses
         protected internal List<Screen> myVictoryScreens = new List<Screen>();
         protected internal Screen myBackgroundScreen;
         protected internal Screen myGameOverScreen;
-        protected internal TimeTravelManager myTimeTravelManager; 
+        protected internal TimeTravelManager myTimeTravelManager;
+        protected internal LevelManager myLevelManager; 
         protected internal SpriteFont myFont;
+        protected internal bool levelFinished; 
          
 
         public Level(NebulaGame aGame, GraphicsDeviceManager aGraphics, Hero aHero, SpriteBatch aSpriteBatch)

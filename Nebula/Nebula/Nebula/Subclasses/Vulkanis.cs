@@ -13,7 +13,7 @@ using Nebula.BaseClasses;
 
 namespace Nebula.Subclasses
 {
-    class Vulkanis : Level
+   public class Vulkanis : Level
     {
 
         public Vulkanis(NebulaGame aGame, GraphicsDeviceManager aGraphics, Asis anAsis, SpriteBatch aSpriteBatch)
@@ -109,14 +109,14 @@ namespace Nebula.Subclasses
             myTimeTravelManager = new TimeTravelManager(myGame.Content.Load<Texture2D>("timet-background"), new Vector2(0, 0),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight), myGame, movingSpritesList, myHero);
 
-            VulkanisLevelManager manager = new VulkanisLevelManager(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(-1000, -1000),
+            myLevelManager = new VulkanisLevelManager(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(-1000, -1000),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight),
                 myGame, this, movingSpritesList, platformsList, myFont, (Asis) myHero, myInstructionScreen, myGameOverScreen, myVictoryScreens, myTimeTravelManager, levelMusic);
 
             allSprites.Add(myGameOverScreen);
             allSprites.Add(myVictoryScreen4);
             allSprites.Add(myTimeTravelManager);
-            allSprites.Add(manager);
+            allSprites.Add(myLevelManager);
         }
 
     }

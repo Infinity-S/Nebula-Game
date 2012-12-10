@@ -14,7 +14,7 @@ using Nebula.BaseClasses;
 
 namespace Nebula.Subclasses
 {
-    class EnemyLaser : Laser
+    public class EnemyLaser : Laser
     {
         public EnemyLaser(Texture2D texture, Vector2 position, Vector2 screen) 
             : base(texture, position, screen)   
