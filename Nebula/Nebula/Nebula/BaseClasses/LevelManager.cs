@@ -133,13 +133,92 @@ namespace Nebula.Subclasses
 
         public void AddPlatform(Vector2 position, bool canLandOn)
         {
-            Sprite newPlatform = myPlatform.Clone();
+            Platform newPlatform = myPlatform.Clone();
             newPlatform.myPosition = position;
+            newPlatform.setCanStandOn(canLandOn);
             myLevel.AddSprite(newPlatform);
+
             // If we want Asis to be able to land on the platform and not fall through - add it to the platformsList
             if (canLandOn)
             {
                 platformsList.Add(newPlatform);
+            }
+        }
+
+        public void AddMovingPlatform(Vector2 position, bool canLandOn, bool movHorz, bool movVert, float posMoveTo, float speed)
+        {
+            Platform newPlatform = myPlatform.Clone();
+            newPlatform.myPosition = position;
+            newPlatform.setCanStandOn(canLandOn);
+            newPlatform.setmovingHorz(movHorz);
+            newPlatform.setmovingVert(movVert);
+            newPlatform.setPositionMoveTo(posMoveTo);
+            newPlatform.setSpeed(speed);
+            myLevel.AddSprite(newPlatform);
+            mySpriteManager.addToPositionsList(newPlatform);
+
+            //if (newPlatform.getMovingHorz() || newPlatform.getMovingHorz())
+            //{
+            //    newPlatform.movePlatform(asis.myPosition, posMoveTo, speed); 
+            //}
+
+            // If we want Asis to be able to land on the platform and not fall through - add it to the platformsList
+            if (canLandOn)
+            {
+                platformsList.Add(newPlatform);
+            }
+        }
+
+        public void movePlatformVert(Platform p)
+        {
+            //Vector2 intialPos = p.myPosition;
+            //if (asis.myPosition.X >= p.myPosition.X + p.myTexture.Width / 6)
+            if (asis.myPosition.X >= p.myPosition.X && asis.myPosition.X <= p.myPosition.X + p.myTexture.Width)
+            {
+                p.myVelocity = new Vector2(0, p.getSpeed() * -1);
+
+                if (p.myPosition.Y <= p.getPositionMoveTo())
+                {
+                    //p.myVelocity = new Vector2(0, p.getSpeed());
+                    p.myVelocity = new Vector2(0, 0);
+                }
+            }
+            else
+            {
+                p.myVelocity = new Vector2(0, 0);
+            }
+            //if (p.myPosition.Y <= p.getPositionMoveTo())
+            //{
+            //    p.myVelocity = new Vector2(0, p.getSpeed());
+            //}
+            //if(p.myPosition.Y >= intialPos.Y) 
+            //{
+            //    p.myVelocity = new Vector2(0, p.getSpeed() * -1);
+            //}
+        }
+
+        public void movePlatformHorz(Platform p)
+        {
+
+            //if (asis.myPosition.X >= p.myPosition.X + p.myTexture.Width / 4)
+            if (asis.myPosition.X >= p.myPosition.X && asis.myPosition.X <= p.myPosition.X + p.myTexture.Width)
+            {
+                p.myVelocity = new Vector2(p.getSpeed(), 0);
+
+                //if (p.myPosition.X >= p.getPositionMoveTo())
+                //{
+                //    // p.myVelocity = new Vector2(p.getSpeed()*-1, 0);
+                //    p.myVelocity = new Vector2(0, 0);
+                //}
+            }
+            else
+            {
+                p.myVelocity = new Vector2(0, 0);
+            }
+            if (p.myPosition.X >= p.getPositionMoveTo())
+            {
+                // p.myVelocity = new Vector2(p.getSpeed()*-1, 0);
+                p.myVelocity = new Vector2(0, 0);
             }
         }
 
@@ -159,23 +238,12 @@ namespace Nebula.Subclasses
 
         public void AddEnemy(Enemy aEnemy, Vector2 position)
         {
-            //if (c == 'd')
-            //{
+
                 Sprite newEnemy = aEnemy.Clone();
                 newEnemy.myPosition = position;
                 mySpriteManager.addToPositionsList(newEnemy);
                 myLevel.AddSprite(newEnemy);
                 EnemiesList.Add((Enemy)newEnemy);
-            //}
-            //if (c == 'h')
-            //{
-                // Change to match HydromedaEnemy instead of DraconisEnemy
-                //Sprite newEnemy = aEnemy.Clone();
-                //newEnemy.myPosition = position;
-                //mySpriteManager.addToPositionsList(newEnemy);
-                //myLevel.AddSprite(newEnemy);
-                //EnemiesList.Add((Enemy)newEnemy);
-            //}
         }
 
         public void StartGame()
@@ -463,11 +531,9 @@ namespace Nebula.Subclasses
 
                 sm.BoostAbility(); 
 
-                // sm.PlayLevelMusic();
+                sm.PlayLevelMusic();
 
                 sm.AsisLaserOffScreenLogic(); 
-
-                sm.AsisPlatformLogic();
 
                 sm.AsisKillEnemies();
 
@@ -476,6 +542,21 @@ namespace Nebula.Subclasses
                 sm.GameOverLogic();
 
                 sm.LaserTimeTravelSound(sprite);
+
+                sm.AsisPlatformLogic();
+
+                foreach (Platform p in sm.platformsList)
+                {
+                    if (p.getMovingVert())
+                    {
+                        sm.movePlatformVert(p);
+                    }
+                    else
+                    {
+                        sm.movePlatformHorz(p);
+
+                    }
+                }
 
                 if (sm.DisplayVictoryScreen())
                 {

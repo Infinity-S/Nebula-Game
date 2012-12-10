@@ -23,7 +23,7 @@ namespace Nebula
         SpriteBatch mySpriteBatch;
         Tutorial TutorialContent;
         Level level;
-        Vulkanis secondLevelContent; 
+        //Vulkanis secondLevelContent; 
         Camera camera;
         int levelNumber;
 
