@@ -17,11 +17,11 @@ namespace Nebula.Subclasses
     class VulkanisLevelManager : LevelManager
     {
         public VulkanisLevelManager(Texture2D texture, Vector2 position, Vector2 screen, NebulaGame aGame, Level aLevel,
-            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis aAsis, Screen aInstructions, Screen aGameOverScreen, List<Screen> aVictoryScreens, TimeTravelManager aTimeTravelManager, SoundEffect backgroundMusic)
-            : base(texture, position, screen, aGame, aLevel, aSpritesList, aPlatformsList, aFont, aAsis, aInstructions, aGameOverScreen, aVictoryScreens, aTimeTravelManager, backgroundMusic)
+            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis aAsis, Screen aInstructions, Screen aGameOverScreen, List<Screen> aVictoryScreens, Screen aCutScene, TimeTravelManager aTimeTravelManager, SoundEffect backgroundMusic)
+            : base(texture, position, screen, aGame, aLevel, aSpritesList, aPlatformsList, aFont, aAsis, aInstructions, aGameOverScreen, aVictoryScreens, aCutScene, aTimeTravelManager, backgroundMusic)
         {
             EndOfLevelPos = xSL * 9 - xSL / 4;
-            setFinishingTimes(50, 70, 110); 
+            setFinishingTimes(50, 75, 112); 
 
         }
 

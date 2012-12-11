@@ -18,16 +18,12 @@ namespace Nebula.Subclasses
     {
 
         public CeresLevelManager(Texture2D texture, Vector2 position, Vector2 screen, NebulaGame aGame, Level aLevel,
-            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis aAsis, Screen aInstructions, Screen aGameOverScreen, List<Screen> aVictoryScreens, TimeTravelManager aTimeTravelManager, SoundEffect backgroundMusic)
-            : base(texture, position, screen, aGame, aLevel, aSpritesList, aPlatformsList, aFont, aAsis, aInstructions, aGameOverScreen, aVictoryScreens, aTimeTravelManager, backgroundMusic)
+            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis aAsis, Screen aInstructions, Screen aGameOverScreen, List<Screen> aVictoryScreens, Screen aCutScene, TimeTravelManager aTimeTravelManager, SoundEffect backgroundMusic)
+            : base(texture, position, screen, aGame, aLevel, aSpritesList, aPlatformsList, aFont, aAsis, aInstructions, aGameOverScreen, aVictoryScreens, aCutScene, aTimeTravelManager, backgroundMusic)
         {
             EndOfLevelPos = xSL * 7 + xSL / 2 + xSL / 8;
-            setFinishingTimes(50, 70, 110);
-            LevelStoryText.Add("Whe... Where am I?", new Vector2(xSL / 12, ySL / 2 + ySL/8));
-            LevelStoryText.Add("...How did I get here?", new Vector2(xSL / 2, ySL / 2 + ySL / 8));
-            LevelStoryText.Add("What planet is this?", new Vector2(xSL + xSL / 2 + xSL / 24, ySL / 4));
-            LevelStoryText.Add("Why are these people so hostile? \n This can't be my planet...", new Vector2(xSL * 4 + xSL/2, ySL / 2 + ySL/8));
-             }
+            setFinishingTimes(50, 70, 110); 
+        }
 
         public override void AddItemsToLevel(Nebula.Sprite sprite, float xSL, float ySL)
         {

@@ -29,9 +29,9 @@ namespace Nebula.Subclasses
 
         public TutorialLevelManager(Texture2D texture, Vector2 position, Vector2 screen, NebulaGame aGame, Level aLevel,
             List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis aAsis,
-            Screen aInstructions, Screen aGameOverScreen, List<Screen> aVictoryScreenList, TimeTravelManager aTimeTravelManager, SoundEffect backgroundMusic)
+            Screen aInstructions, Screen aGameOverScreen, List<Screen> aVictoryScreenList, Screen aCutScene, TimeTravelManager aTimeTravelManager, SoundEffect backgroundMusic)
             : base(texture, position, screen, aGame, aLevel, aSpritesList, aPlatformsList, aFont, aAsis,
-            aInstructions, aGameOverScreen, aVictoryScreenList, aTimeTravelManager, backgroundMusic)
+            aInstructions, aGameOverScreen, aVictoryScreenList, aCutScene, aTimeTravelManager, backgroundMusic)
         {
             EndOfLevelPos = (xSL / 12) * 89; 
         }
