@@ -31,7 +31,7 @@ namespace Nebula
         //Vulkanis secondLevelContent; 
         Camera camera;
         int levelNumber;
-        int levelNum = 1; 
+        int levelNum = 0; 
 
         public NebulaGame()
         {
@@ -76,9 +76,11 @@ namespace Nebula
             Ceres firstLevelContent = new Ceres(this, graphics, myAsis, mySpriteBatch); 
             //level = new Tutorial(this, graphics, myAsis, mySpriteBatch); 
             Vulkanis secondLevelContent = new Vulkanis(this, graphics, myAsis, mySpriteBatch);
+            Sycia thirdLevelContent = new Sycia(this, graphics, myAsis, mySpriteBatch);
             myLevels.Add(TutorialContent);
             myLevels.Add(firstLevelContent);
-            myLevels.Add(secondLevelContent); 
+            myLevels.Add(secondLevelContent);
+            myLevels.Add(thirdLevelContent);
             //add another screen for the finishing times!!!
             FinishTimes = new Screen(Content.Load<Texture2D>("FinalTimes"), new Vector2(0, 0), new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight));
             timesFont = Content.Load<SpriteFont>("FinishTimesFont"); 
@@ -149,7 +151,7 @@ namespace Nebula
                 //Vulkanis Score 
                 mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[2]))+"s", new Vector2(550, 500), Color.White);
                 //Sycia Score
-                mySpriteBatch.DrawString(timesFont, "1234s" /*Convert.ToString(Convert.ToInt32(playerScore[3]))+"s"*/, new Vector2(550, 625), Color.White);
+                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[3]))+"s", new Vector2(550, 625), Color.White);
 
                 //restarting game 
                 if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Start))

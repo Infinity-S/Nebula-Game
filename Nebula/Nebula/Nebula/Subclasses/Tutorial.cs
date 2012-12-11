@@ -103,7 +103,7 @@ namespace Nebula.Subclasses
 
             myLevelManager = new TutorialLevelManager(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(-1000, -1000),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight),
-                myGame, this, movingSpritesList, platformsList, myFont, (Asis) myHero, myInstructionScreen, myGameOverScreen, myVictoryScreens, myTimeTravelManager, levelMusic);
+                myGame, this, movingSpritesList, platformsList, myFont, (Asis)myHero, myInstructionScreen, myGameOverScreen, myVictoryScreens, myCutScene, myTimeTravelManager, levelMusic);
 
             allSprites.Add(myInstructionScreen);
             allSprites.Add(myGameOverScreen);

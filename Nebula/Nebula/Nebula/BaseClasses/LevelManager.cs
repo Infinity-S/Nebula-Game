@@ -25,9 +25,6 @@ namespace Nebula.Subclasses
         protected internal Hero aHero;
         protected internal List<Sprite> platformsList = new List<Sprite>();
         protected internal List<Enemy> EnemiesList = new List<Enemy>();
-
-
-        protected internal List<String> CeresTextOne = new List<String>();
         int textIndex = 0;
 
 
@@ -66,13 +63,18 @@ namespace Nebula.Subclasses
         protected internal List<Screen> VictoryScreenList = new List<Screen>();
 
         // can change when victory screen displays if have a longer/shorter level 
-        protected internal float EndOfLevelPos;   
+        protected internal float EndOfLevelPos;
+
+        protected Screen myCutScene;
+        protected bool cutSceenDisplay = false;
+        protected bool finishCutSceen = false;
+  
 
         private Sprite[] BoostBar = new Sprite[5];
 
         public LevelManager(Texture2D texture, Vector2 position, Vector2 screen, NebulaGame aGame, Level aLevel,
-            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Hero anHero, 
-            Screen aInstructions, Screen aGameOverScreen, List<Screen> aVictoryScreenList, TimeTravelManager aTimeTravelManager, SoundEffect backgroundMusic)
+            List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Hero anHero,
+             Screen aInstructions, Screen aGameOverScreen, List<Screen> aVictoryScreenList, Screen aCutScene, TimeTravelManager aTimeTravelManager, SoundEffect backgroundMusic)
             : base(texture, position, screen, aGame, aPlatformsList, anHero)
         {
             myTexture = texture;
@@ -105,7 +107,8 @@ namespace Nebula.Subclasses
             }
 
             GameOverScreen = aGameOverScreen;
-            VictoryScreenList = aVictoryScreenList; 
+            VictoryScreenList = aVictoryScreenList;
+            myCutScene = aCutScene; 
             myTimeTravelManager = aTimeTravelManager;
 
             for (int i = 0; i < aPlatformsList.Count; i++)
@@ -335,7 +338,7 @@ namespace Nebula.Subclasses
                     //Fire a laser every 1.5 seconds, will be an instance varible, so can be changed 
                     if (enemy.time > enemyWeaponFireTime)
                     {
-                        eLaser.myPosition = new Vector2(enemy.myPosition.X - eLaser.myTexture.Width, enemy.myPosition.Y);
+                        eLaser.myPosition = new Vector2(enemy.myPosition.X - eLaser.myTexture.Width, enemy.myPosition.Y + (enemy.myTexture.Height) / 5);
                         eLaser.myVelocity.X = -16;
                         enemy.time = 0;
                     }
@@ -417,22 +420,25 @@ namespace Nebula.Subclasses
 
         public virtual void FinishLevelDisplay()
         {
-            //this is problem 
             if (finishingTime <= bestTime)
             {
                 VictoryScreenList[0].myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
+                cutSceenDisplay = true;
             }
-                //this is problem 
+ 
             else if (finishingTime <= middleTime)
             {
                 VictoryScreenList[1].myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
+                cutSceenDisplay = true;
             }
-                //this is problem 
+ 
             else if (finishingTime <= worstTime)
             {
                 VictoryScreenList[2].myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
+                cutSceenDisplay = true;
             }
             else VictoryScreenList[3].myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
+            cutSceenDisplay = true;
         }
         public bool DisplayVictoryScreen()
         {
@@ -449,10 +455,15 @@ namespace Nebula.Subclasses
                 LevelMusic.Stop();
 
                 // If they press N on the keyboard or start on the gamepad go to the next level
-                if ((Keyboard.GetState().IsKeyDown(Keys.N)) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Start))
+                if (cutSceenDisplay == true && ((Keyboard.GetState().IsKeyDown(Keys.N)) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Start)))
                 {
-                   aHero.myPosition = new Vector2(myScreenSize.X / 12, myScreenSize.Y - myScreenSize.Y / 4);
-                   isFinished = true; 
+                    myCutScene.myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
+                    finishCutSceen = true;
+                }
+                if (finishCutSceen == true && ((Keyboard.GetState().IsKeyDown(Keys.N)) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Start)))
+                {
+                    aHero.myPosition = new Vector2(myScreenSize.X / 12, myScreenSize.Y - myScreenSize.Y / 4);
+                    isFinished = true;
                 }
                 return true;
             } 

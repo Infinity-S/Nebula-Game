@@ -31,6 +31,7 @@ namespace Nebula.BaseClasses
         protected internal Screen myVictoryScreen2;
         protected internal Screen myVictoryScreen3;
         protected internal Screen myVictoryScreen4;
+        protected internal Screen myCutScene;
         protected internal List<Screen> myVictoryScreens = new List<Screen>();
         protected internal Screen myBackgroundScreen;
         protected internal Screen myGameOverScreen;
@@ -51,6 +52,7 @@ namespace Nebula.BaseClasses
 
         public virtual void LoadSprites()
         {
+
         }
 
         public void AddSprite(Sprite s)

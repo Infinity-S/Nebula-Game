@@ -26,12 +26,12 @@ namespace Nebula.Subclasses
             HeroLaser aLaser = new HeroLaser(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(0, 0),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
-            Enemy hEnemy = new Enemy(myGame.Content.Load<Texture2D>("enemy-red"),
+            Enemy hEnemy = new Enemy(myGame.Content.Load<Texture2D>("enemy-gold"),
                 new Vector2(myGraphics.PreferredBackBufferWidth + myGraphics.PreferredBackBufferWidth / 4 - myHero.myTexture.Width / 2,
                     myGraphics.PreferredBackBufferHeight / 2 + myGraphics.PreferredBackBufferHeight / 4 - myGraphics.PreferredBackBufferHeight / 8),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
-            EnemyLaser dLaser = new EnemyLaser(myGame.Content.Load<Texture2D>("redLaser"), new Vector2(myGraphics.PreferredBackBufferWidth * -1, myGraphics.PreferredBackBufferHeight * -1),
+            EnemyLaser dLaser = new EnemyLaser(myGame.Content.Load<Texture2D>("goldLaser"), new Vector2(myGraphics.PreferredBackBufferWidth * -1, myGraphics.PreferredBackBufferHeight * -1),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
             // Initial grass platform, others are cloned in the Manager class 
@@ -111,7 +111,7 @@ namespace Nebula.Subclasses
 
             myLevelManager = new VulkanisLevelManager(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(-1000, -1000),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight),
-                myGame, this, movingSpritesList, platformsList, myFont, (Asis) myHero, myInstructionScreen, myGameOverScreen, myVictoryScreens, myTimeTravelManager, levelMusic);
+                myGame, this, movingSpritesList, platformsList, myFont, (Asis)myHero, myInstructionScreen, myGameOverScreen, myVictoryScreens, myCutScene, myTimeTravelManager, levelMusic);
 
             allSprites.Add(myGameOverScreen);
             allSprites.Add(myVictoryScreen1);
