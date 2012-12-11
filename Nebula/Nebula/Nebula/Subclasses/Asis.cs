@@ -20,6 +20,7 @@ namespace Nebula
         public Asis(Texture2D image, Vector2 position, Vector2 screen, NebulaGame myGame)
             : base(image, position, screen, myGame)
         {
+            myPosition = position;
         }
         
     }

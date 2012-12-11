@@ -33,13 +33,13 @@ namespace Nebula.SuperClasses
             myScreenSize = screen;
             myState = new ExistState(this);
             hasJumped = true;
+            myPosition = position;
             // Change back to  for start of game 
-            myPosition.X = myScreenSize.X * 8 + myScreenSize.X/2;
-                //(myScreenSize.X / 12);
+            // myPosition.X = myScreenSize.X;
                 
                 // 
 
-            myPosition.Y = 0;
+            // myPosition.Y = 0;
             //  myScreenSize.Y - myTexture.Height * 2; ;
             // Start her facing to the right
             direction = "right";

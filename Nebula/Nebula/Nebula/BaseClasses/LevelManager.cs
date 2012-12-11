@@ -116,6 +116,13 @@ namespace Nebula.Subclasses
                 platformsList.Add(aPlatformsList[i]);
             }
 
+            // anHero.myPosition = new Vector2(xSL, ySL/2 + ySL/4);
+            
+
+
+            myPosition.Y = 0;
+            //  myScreenSize.Y - myTexture.Height * 2; ;
+
             myFont = aFont;
             InstructionScreen = aInstructions;
 
@@ -193,8 +200,6 @@ namespace Nebula.Subclasses
 
         public void DisplayInstructions()
         {
-            //if (myGame.getLevelNum() == 0)
-
                 InstructionScreen.myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
 
         }
@@ -501,7 +506,9 @@ namespace Nebula.Subclasses
                 float xSL = sprite.myScreenSize.X;
                 float ySL = sprite.myScreenSize.Y;
 
-                sm.AddItemsToLevel(sprite, xSL, ySL); 
+                sm.AddItemsToLevel(sprite, xSL, ySL);
+
+                sm.aHero.myPosition = new Vector2(xSL / 12, ySL / 2); 
 
             }
             public void Update(double elapsedTime, Sprite sprite)

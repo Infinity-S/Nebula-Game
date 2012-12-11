@@ -30,7 +30,7 @@ namespace Nebula
         //Level level;
         //Vulkanis secondLevelContent; 
         Camera camera;
-        int levelNum = 3; 
+        int levelNum = 0; 
 
         public NebulaGame()
         {
@@ -90,7 +90,7 @@ namespace Nebula
             // Create a new SpriteBatch, which can be used to draw textures.
             mySpriteBatch = new SpriteBatch(GraphicsDevice);
 
-            Asis myAsis = new Asis(Content.Load<Texture2D>("Asis"), new Vector2(0, 0),
+            Asis myAsis = new Asis(Content.Load<Texture2D>("Asis"), new Vector2(0,0),
                 new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), this);
 
             camera = new Camera(GraphicsDevice.Viewport, myAsis);
@@ -137,13 +137,51 @@ namespace Nebula
                 if (myLevels[levelNum].myLevelManager.getIsFinished())
                 {
                     playerScore.Add(myLevels[levelNum].myLevelManager.finishingTime);
-                    // This effectively resets to the first level but hitting X causes major problems - other things not getting re-initialized?
-                    /*
+
+
+
+
+
+                    // This effectively resets to the first level but game 
+                    // finished screen with all the times doesn't get displayed
+                    
                     if (levelNum == myLevels.Count() - 1)
                     {
                         levelNum = 1;
+                        // LoadContent();
+
+
+                        mySpriteBatch = new SpriteBatch(GraphicsDevice);
+
+                        Asis myAsis2 = new Asis(Content.Load<Texture2D>("Asis"), new Vector2(0, 0),
+                            new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), this);
+
+                        camera = new Camera(GraphicsDevice.Viewport, myAsis2);
+
+                        Tutorial TutorialContent = new Tutorial(this, graphics, myAsis2, mySpriteBatch);
+                        Ceres firstLevelContent = new Ceres(this, graphics, myAsis2, mySpriteBatch);
+                        //level = new Tutorial(this, graphics, myAsis, mySpriteBatch); 
+                        Vulkanis secondLevelContent = new Vulkanis(this, graphics, myAsis2, mySpriteBatch);
+                        Sycia thirdLevelContent = new Sycia(this, graphics, myAsis2, mySpriteBatch);
+                        myLevels.Clear();
+                        myLevels.Add(TutorialContent);
+                        myLevels.Add(firstLevelContent);
+                        myLevels.Add(secondLevelContent);
+                        myLevels.Add(thirdLevelContent);
+                        //add another screen for the finishing times!!!
+                        FinishTimes = new Screen(Content.Load<Texture2D>("FinalTimes"), new Vector2(0, 0), new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight));
+                        timesFont = Content.Load<SpriteFont>("FinishTimesFont"); 
+
+
+
                     }else
-                    */
+                    
+
+
+
+
+
+
                     levelNum++;
                 }
             }
@@ -185,17 +223,6 @@ namespace Nebula
                     // mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[2])) + "s", new Vector2(550, 500), Color.White);
                 //Sycia Score
                     //mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[3])) + "s", new Vector2(550, 625), Color.White);
-
-                
-                //restarting game 
-                /*
-                if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Start))
-                {
-                    levelNum = 1;
-                    playerScore.Clear();
-                        // = new List<double>();
-                }
-                */
                 
             }
 

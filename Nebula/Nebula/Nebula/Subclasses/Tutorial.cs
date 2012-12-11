@@ -23,6 +23,7 @@ namespace Nebula.Subclasses
 
         public override void LoadSprites()
         {
+
             HeroLaser aLaser = new HeroLaser(myGame.Content.Load<Texture2D>("blueLaser"), new Vector2(0, 0),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
