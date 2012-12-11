@@ -19,10 +19,6 @@ Content\boost-bar5.xnb
 Content\boost-bar1.xnb
 Content\boost-bar2.xnb
 Content\PlantPlatform.xnb
-Content\PB04.xnb
-Content\PB01.xnb
-Content\PB02.xnb
-Content\PB03.xnb
 Content\InstructionScreen (2).xnb
 Content\SpaceBackground.xnb
 Content\victory1.xnb
@@ -49,3 +45,11 @@ Content\boost-sound.xnb
 Content\stage1-soundclear.xnb
 Content\SpriteFont1.xnb
 Content\FinishTimesFont.xnb
+Content\PlantB1.xnb
+Content\PlantB2.xnb
+Content\PlantB3.xnb
+Content\PlantB4.xnb
+Content\Stage2Cleared.xnb
+Content\Stage2Cleared1st.xnb
+Content\Stage2Cleared2nd.xnb
+Content\Stage2Cleared3rd.xnb

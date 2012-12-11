@@ -85,16 +85,16 @@ namespace Nebula.Subclasses
             myGameOverScreen = new Screen(myGame.Content.Load<Texture2D>("death-screen"), new Vector2(0, 0),
                new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
-            myVictoryScreen1 = new Screen(myGame.Content.Load<Texture2D>("Stage1Cleared1st"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
+            myVictoryScreen1 = new Screen(myGame.Content.Load<Texture2D>("Stage2Cleared1st"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
                   new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
-            myVictoryScreen2 = new Screen(myGame.Content.Load<Texture2D>("Stage1Cleared2nd"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
+            myVictoryScreen2 = new Screen(myGame.Content.Load<Texture2D>("Stage2Cleared2nd"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
                   new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
-            myVictoryScreen3 = new Screen(myGame.Content.Load<Texture2D>("Stage1Cleared3rd"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
+            myVictoryScreen3 = new Screen(myGame.Content.Load<Texture2D>("Stage2Cleared3rd"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
                   new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
-            myVictoryScreen4 = new Screen(myGame.Content.Load<Texture2D>("Stage1Cleared4th"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
+            myVictoryScreen4 = new Screen(myGame.Content.Load<Texture2D>("Stage2Cleared"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
                   new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
             myVictoryScreens.Add(myVictoryScreen1);

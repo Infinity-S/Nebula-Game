@@ -62,13 +62,13 @@ namespace Nebula.Subclasses
 
             //adding the test background images/Sprites
             //their positions are tacked on to each other, so they form one long background image 
-            BackgroundSprite b1 = new BackgroundSprite(myGame.Content.Load<Texture2D>("PB01"),
+            BackgroundSprite b1 = new BackgroundSprite(myGame.Content.Load<Texture2D>("PlantB1"),
                 new Vector2(0 - myGraphics.PreferredBackBufferWidth / 12, 0), 1.0f);
-            BackgroundSprite b2 = new BackgroundSprite(myGame.Content.Load<Texture2D>("PB02"),
+            BackgroundSprite b2 = new BackgroundSprite(myGame.Content.Load<Texture2D>("PlantB2"),
                 new Vector2(b1.myPosition.X + b1.myTexture.Width, 0), 1.0f);
-            BackgroundSprite b3 = new BackgroundSprite(myGame.Content.Load<Texture2D>("PB03"),
+            BackgroundSprite b3 = new BackgroundSprite(myGame.Content.Load<Texture2D>("PlantB3"),
                 new Vector2(b2.myPosition.X + b2.size.Width, myGraphics.PreferredBackBufferHeight - b2.myTexture.Height), 1.0f);
-            BackgroundSprite b4 = new BackgroundSprite(myGame.Content.Load<Texture2D>("PB04"),
+            BackgroundSprite b4 = new BackgroundSprite(myGame.Content.Load<Texture2D>("PlantB4"),
                 new Vector2(b3.myPosition.X + b3.size.Width, myGraphics.PreferredBackBufferHeight - b3.myTexture.Height), 1.0f);
 
             myBackgroundSprites.Add(b1);

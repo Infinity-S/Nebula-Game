@@ -191,42 +191,6 @@
       <Time>2012-12-10T15:03:44-05:00</Time>
     </Item>
     <Item>
-      <Source>PB04.png</Source>
-      <Name>PB04</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\TEMP\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PB04.xnb</Output>
-      <Time>2012-12-10T15:03:44-05:00</Time>
-    </Item>
-    <Item>
-      <Source>PB01.png</Source>
-      <Name>PB01</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\TEMP\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PB01.xnb</Output>
-      <Time>2012-12-10T15:03:44-05:00</Time>
-    </Item>
-    <Item>
-      <Source>PB02.png</Source>
-      <Name>PB02</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\TEMP\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PB02.xnb</Output>
-      <Time>2012-12-10T15:03:44-05:00</Time>
-    </Item>
-    <Item>
-      <Source>PB03.png</Source>
-      <Name>PB03</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\TEMP\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PB03.xnb</Output>
-      <Time>2012-12-10T15:03:44-05:00</Time>
-    </Item>
-    <Item>
       <Source>InstructionScreen (2).png</Source>
       <Name>InstructionScreen (2)</Name>
       <Importer>TextureImporter</Importer>
@@ -459,6 +423,78 @@
       <Options>None</Options>
       <Output>C:\Users\TEMP\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\FinishTimesFont.xnb</Output>
       <Time>2012-12-10T15:03:44-05:00</Time>
+    </Item>
+    <Item>
+      <Source>PlantB1.png</Source>
+      <Name>PlantB1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\TEMP\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PlantB1.xnb</Output>
+      <Time>2012-12-10T18:59:34.2095903-05:00</Time>
+    </Item>
+    <Item>
+      <Source>PlantB2.png</Source>
+      <Name>PlantB2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\TEMP\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PlantB2.xnb</Output>
+      <Time>2012-12-10T18:59:34.2215903-05:00</Time>
+    </Item>
+    <Item>
+      <Source>PlantB3.png</Source>
+      <Name>PlantB3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\TEMP\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PlantB3.xnb</Output>
+      <Time>2012-12-10T18:59:34.2305903-05:00</Time>
+    </Item>
+    <Item>
+      <Source>PlantB4.png</Source>
+      <Name>PlantB4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\TEMP\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\PlantB4.xnb</Output>
+      <Time>2012-12-10T18:59:34.2395903-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Stage2Cleared.png</Source>
+      <Name>Stage2Cleared</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\TEMP\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Stage2Cleared.xnb</Output>
+      <Time>2012-12-10T19:04:37.8720361-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Stage2Cleared1st.png</Source>
+      <Name>Stage2Cleared1st</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\TEMP\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Stage2Cleared1st.xnb</Output>
+      <Time>2012-12-10T19:04:37.8790368-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Stage2Cleared2nd.png</Source>
+      <Name>Stage2Cleared2nd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\TEMP\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Stage2Cleared2nd.xnb</Output>
+      <Time>2012-12-10T19:04:37.8860375-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Stage2Cleared3rd.png</Source>
+      <Name>Stage2Cleared3rd</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\TEMP\Documents\GitHub\Nebula-Game\Nebula\Nebula\Nebula\bin\x86\Debug\Content\Stage2Cleared3rd.xnb</Output>
+      <Time>2012-12-10T19:04:37.8920381-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

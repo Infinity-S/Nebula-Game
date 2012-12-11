@@ -31,7 +31,7 @@ namespace Nebula
         //Vulkanis secondLevelContent; 
         Camera camera;
         int levelNumber;
-        int levelNum = 2; 
+        int levelNum = 0; 
 
         public NebulaGame()
         {
@@ -105,9 +105,17 @@ namespace Nebula
                 myLevels[levelNum].Update(gameTime);
                 if (myLevels[levelNum].myLevelManager.getIsFinished())
                 {
-                    playerScore.Add(myLevels[levelNum].myLevelManager.finishingTime); 
+                    playerScore.Add(myLevels[levelNum].myLevelManager.finishingTime);
                     levelNum++;
                 }
+            }
+            else
+            {
+                //if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Start))
+                //{
+                //    levelNum = 0;
+                //    playerScore = new List<double>();
+                //}
             }
             camera.Update(gameTime);
             base.Update(gameTime);
@@ -130,14 +138,20 @@ namespace Nebula
                 FinishTimes.myPosition = new Vector2(myLevels[myLevels.Count-1].myLevelManager.myHero.myPosition.X - myLevels[2].myLevelManager.xSL / 6, 0); 
                 FinishTimes.Draw(mySpriteBatch);
                 //tutorial Score
-                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[0])), new Vector2(500, 300), Color.White);
+                //mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[0]))+"s", new Vector2(500, 300), Color.White);
                 //Ceres Score
-                //mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[1])), new Vector2(800, 375), Color.White);
+                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[1])) +"s", new Vector2(550, 375), Color.White);
                 //Vulkanis Score 
-                //mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[2])), new Vector2(800, 500), Color.White);
+                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[2]))+"s", new Vector2(550, 500), Color.White);
                 //Sycia Score
-                //mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[3])), new Vector2(500, 300), Color.White);
-                //levelNum = 0; 
+                mySpriteBatch.DrawString(timesFont, "1234s" /*Convert.ToString(Convert.ToInt32(playerScore[3]))+"s"*/, new Vector2(550, 625), Color.White);
+
+                //restarting game 
+                if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Start))
+                {
+                    levelNum = 0;
+                    playerScore = new List<double>();
+                }
             }
 
             mySpriteBatch.End();
