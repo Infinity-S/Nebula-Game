@@ -33,12 +33,14 @@ namespace Nebula.SuperClasses
             myScreenSize = screen;
             myState = new ExistState(this);
             hasJumped = true;
-            // (myScreenSize.X * 2 + myScreenSize.X / 2);
             // Change back to  for start of game 
-            myPosition.X = (myScreenSize.X / 12);
-                //  //94
+            myPosition.X = myScreenSize.X * 8 + myScreenSize.X/2;
+                //(myScreenSize.X / 12);
+                
+                // 
 
-            myPosition.Y = myScreenSize.Y - myTexture.Height * 2;
+            myPosition.Y = 0;
+            //  myScreenSize.Y - myTexture.Height * 2; ;
             // Start her facing to the right
             direction = "right";
 
@@ -119,12 +121,10 @@ namespace Nebula.SuperClasses
                         sprite.hasJumped = true;
                     }
 
-                    // if (sprite.myPosition.Y >= 0)
-                    // {
                     float i = 1;
                     // change 0.18f to alter speed of falling
                     sprite.myVelocity.Y += 0.18f * i;
-                    // }
+
 
                     /*
                     // If he's in the air make hero fall
@@ -135,8 +135,6 @@ namespace Nebula.SuperClasses
                     }
                     */
 
-                    // Keeps player from falling through the bottom of the screen
-                    // sprite.myPosition.Y + sprite.myTexture.Height > sprite.myScreenSize.Y
                     if (sprite.myVelocity.Y == 0)
                     {
                         sprite.hasJumped = false;

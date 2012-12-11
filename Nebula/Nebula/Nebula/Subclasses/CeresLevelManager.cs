@@ -21,7 +21,7 @@ namespace Nebula.Subclasses
             List<Sprite> aSpritesList, List<Sprite> aPlatformsList, SpriteFont aFont, Asis aAsis, Screen aInstructions, Screen aGameOverScreen, List<Screen> aVictoryScreens, Screen aCutScene, TimeTravelManager aTimeTravelManager, SoundEffect backgroundMusic)
             : base(texture, position, screen, aGame, aLevel, aSpritesList, aPlatformsList, aFont, aAsis, aInstructions, aGameOverScreen, aVictoryScreens, aCutScene, aTimeTravelManager, backgroundMusic)
         {
-            EndOfLevelPos = xSL * 7 + xSL / 2 + xSL / 8;
+            EndOfLevelPos = xSL * 7 + xSL / 2 + xSL / 4;
             setFinishingTimes(50, 70, 110);
             LevelStoryText.Add("Whe... Where am I?", new Vector2(xSL / 12, ySL / 2 + ySL/8));
             LevelStoryText.Add("...How did I get here?", new Vector2(xSL / 2, ySL / 2 + ySL / 8));

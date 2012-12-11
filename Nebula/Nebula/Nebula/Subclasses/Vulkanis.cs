@@ -79,7 +79,7 @@ namespace Nebula.Subclasses
             }
 
 
-            myInstructionScreen = new Screen(myGame.Content.Load<Texture2D>("InstructionScreen (2)"), new Vector2(0 - myGraphics.PreferredBackBufferWidth / 12, 0),
+            myInstructionScreen = new Screen(myGame.Content.Load<Texture2D>("InstructionScreen (2)"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
             myGameOverScreen = new Screen(myGame.Content.Load<Texture2D>("death-screen"), new Vector2(0, 0),
@@ -102,6 +102,9 @@ namespace Nebula.Subclasses
             myVictoryScreens.Add(myVictoryScreen3);
             myVictoryScreens.Add(myVictoryScreen4);
 
+            myCutScene = new Screen(myGame.Content.Load<Texture2D>("CutScene"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
+                  new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
+
             SoundEffect levelMusic = myGame.Content.Load<SoundEffect>("rezzo-3"); 
 
             scrollingManager = new ScrollingManager(myHero, myBackgroundSprites, myGraphics.PreferredBackBufferWidth, myBackgroundScreen);
@@ -118,6 +121,7 @@ namespace Nebula.Subclasses
             allSprites.Add(myVictoryScreen2);
             allSprites.Add(myVictoryScreen3);
             allSprites.Add(myVictoryScreen4);
+            allSprites.Add(myCutScene);
             allSprites.Add(myTimeTravelManager);
             allSprites.Add(myLevelManager);
         }

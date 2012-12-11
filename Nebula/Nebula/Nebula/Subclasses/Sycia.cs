@@ -78,7 +78,7 @@ namespace Nebula.Subclasses
             }
 
 
-            myInstructionScreen = new Screen(myGame.Content.Load<Texture2D>("InstructionScreen (2)"), new Vector2(0 - myGraphics.PreferredBackBufferWidth / 12, 0),
+            myInstructionScreen = new Screen(myGame.Content.Load<Texture2D>("InstructionScreen (2)"), new Vector2(myGraphics.PreferredBackBufferWidth * -3, 0),
                 new Vector2(myGraphics.PreferredBackBufferWidth, myGraphics.PreferredBackBufferHeight));
 
             myGameOverScreen = new Screen(myGame.Content.Load<Texture2D>("death-screen"), new Vector2(0, 0),
@@ -116,6 +116,9 @@ namespace Nebula.Subclasses
                 myGame, this, movingSpritesList, platformsList, myFont, (Asis)myHero, myInstructionScreen, myGameOverScreen, myVictoryScreens, myCutScene, myTimeTravelManager, levelMusic);
 
             allSprites.Add(myGameOverScreen);
+            allSprites.Add(myVictoryScreen1);
+            allSprites.Add(myVictoryScreen2);
+            allSprites.Add(myVictoryScreen3);
             allSprites.Add(myVictoryScreen4);
             allSprites.Add(myCutScene);
             allSprites.Add(myTimeTravelManager);

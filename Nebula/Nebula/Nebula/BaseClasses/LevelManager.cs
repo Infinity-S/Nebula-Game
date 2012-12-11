@@ -25,8 +25,6 @@ namespace Nebula.Subclasses
         protected internal Hero aHero;
         protected internal List<Sprite> platformsList = new List<Sprite>();
         protected internal List<Enemy> EnemiesList = new List<Enemy>();
-        int textIndex = 0;
-
 
         protected internal Platform myPlatform;
         protected internal float xSL;
@@ -68,6 +66,8 @@ namespace Nebula.Subclasses
         protected Screen myCutScene;
         protected bool cutSceenDisplay = false;
         protected bool finishCutSceen = false;
+
+        private int startCounter = 0;
   
 
         private Sprite[] BoostBar = new Sprite[5];
@@ -193,10 +193,10 @@ namespace Nebula.Subclasses
 
         public void DisplayInstructions()
         {
-            if (myGame.getLevelNum() == 0)
-            {
+            //if (myGame.getLevelNum() == 0)
+
                 InstructionScreen.myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
-            }
+
         }
 
         public void SetUpInput2()
@@ -313,7 +313,6 @@ namespace Nebula.Subclasses
                     {
                         aHero.myVelocity.Y = -7f;
                     }
-                //}
                 }
             }
         }
@@ -410,11 +409,11 @@ namespace Nebula.Subclasses
             else GameOverSoundInstance.Stop();
         }
 
-        public void setFinishingTimes(double bestTime, double middleTime, double worstTime)
+        public void setFinishingTimes(double aBestTime, double aMiddleTime, double aWorstTime)
         {
-            this.bestTime = bestTime;
-            this.middleTime = middleTime;
-            this.worstTime = worstTime;
+            bestTime = aBestTime;
+            middleTime = aMiddleTime;
+            worstTime = aWorstTime;
         }
 
 
@@ -423,22 +422,20 @@ namespace Nebula.Subclasses
             if (finishingTime <= bestTime)
             {
                 VictoryScreenList[0].myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
-                cutSceenDisplay = true;
             }
  
             else if (finishingTime <= middleTime)
             {
                 VictoryScreenList[1].myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
-                cutSceenDisplay = true;
             }
  
             else if (finishingTime <= worstTime)
             {
                 VictoryScreenList[2].myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
-                cutSceenDisplay = true;
             }
-            else VictoryScreenList[3].myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
-            cutSceenDisplay = true;
+                
+            else
+                VictoryScreenList[3].myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
         }
         public bool DisplayVictoryScreen()
         {
@@ -446,29 +443,43 @@ namespace Nebula.Subclasses
             if (aHero.myPosition.X > EndOfLevelPos)
             {
                 FinishLevelDisplay();
-
                 if (playOnce == true)
                 {
                     StageClearInstance.Play();
+                    startCounter++;
+                    
                 }
                 playOnce = false;
                 LevelMusic.Stop();
 
                 // If they press N on the keyboard or start on the gamepad go to the next level
-                if (cutSceenDisplay == true && ((Keyboard.GetState().IsKeyDown(Keys.N)) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Start)))
+                if (startCounter == 1 && ((Keyboard.GetState().IsKeyDown(Keys.N)) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Start)))
                 {
-                    myCutScene.myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
-                    finishCutSceen = true;
+                    if (myGame.getLevelNum() > 0)
+                    {
+                        myCutScene.myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
+                    }
+                    GameOverScreen.time = 0;
+                    startCounter++;
                 }
-                if (finishCutSceen == true && ((Keyboard.GetState().IsKeyDown(Keys.N)) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Start)))
+                if ((startCounter == 2 || myGame.getLevelNum() == 0)
+                    && ((Keyboard.GetState().IsKeyDown(Keys.N)) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Start)) && GameOverScreen.time > .5)
                 {
                     aHero.myPosition = new Vector2(myScreenSize.X / 12, myScreenSize.Y - myScreenSize.Y / 4);
-                    isFinished = true;
+                        isFinished = true;
+                    
                 }
                 return true;
             } 
             return false;
         }
+
+        /*
+                    if (myGame.getLevelNum() == 3)
+                    {
+                        myGame.resetGame();
+                    }
+                    */
 
         public bool getIsFinished()
         {

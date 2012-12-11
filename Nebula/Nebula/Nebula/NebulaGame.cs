@@ -30,8 +30,7 @@ namespace Nebula
         //Level level;
         //Vulkanis secondLevelContent; 
         Camera camera;
-        int levelNumber;
-        int levelNum = 0; 
+        int levelNum = 3; 
 
         public NebulaGame()
         {
@@ -43,8 +42,32 @@ namespace Nebula
 
         public int getLevelNum()
         {
+
             return levelNum;
         }
+
+        
+        public void resetGame()
+        {
+            /*
+            Asis myAsis = new Asis(Content.Load<Texture2D>("Asis"), new Vector2(0, 0),
+            new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), this);
+
+            Ceres firstLevelContent = new Ceres(this, graphics, myAsis, mySpriteBatch);
+            Vulkanis secondLevelContent = new Vulkanis(this, graphics, myAsis, mySpriteBatch);
+            Sycia thirdLevelContent = new Sycia(this, graphics, myAsis, mySpriteBatch);
+            
+
+            myLevels.Clear();
+
+            LoadContent();
+
+            levelNum = 1;
+            playerScore.Clear();
+            playerScore = new List<double>();
+            */
+        }
+        
 
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
@@ -107,23 +130,32 @@ namespace Nebula
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
+
             if (levelNum < myLevels.Count)
             {
                 myLevels[levelNum].Update(gameTime);
                 if (myLevels[levelNum].myLevelManager.getIsFinished())
                 {
                     playerScore.Add(myLevels[levelNum].myLevelManager.finishingTime);
+                    // This effectively resets to the first level but hitting X causes major problems - other things not getting re-initialized?
+                    /*
+                    if (levelNum == myLevels.Count() - 1)
+                    {
+                        levelNum = 1;
+                    }else
+                    */
                     levelNum++;
                 }
             }
             else
             {
-                //if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Start))
-                //{
-                //    levelNum = 0;
-                //    playerScore = new List<double>();
-                //}
+                if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Start))
+                {
+                    levelNum = 0;
+                    playerScore = new List<double>();
+                }
             }
+            
             camera.Update(gameTime);
             base.Update(gameTime);
         }
@@ -144,21 +176,27 @@ namespace Nebula
             {
                 FinishTimes.myPosition = new Vector2(myLevels[myLevels.Count-1].myLevelManager.myHero.myPosition.X - myLevels[2].myLevelManager.xSL / 6, 0); 
                 FinishTimes.Draw(mySpriteBatch);
+                // Uncomment all to play through entire level
                 //tutorial Score
-                //mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[0]))+"s", new Vector2(500, 300), Color.White);
+                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[0]))+"s", new Vector2(500, 300), Color.White);
                 //Ceres Score
-                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[1])) +"s", new Vector2(550, 375), Color.White);
+                   //mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[1])) + "s", new Vector2(550, 375), Color.White);
                 //Vulkanis Score 
-                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[2]))+"s", new Vector2(550, 500), Color.White);
+                    // mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[2])) + "s", new Vector2(550, 500), Color.White);
                 //Sycia Score
-                mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[3]))+"s", new Vector2(550, 625), Color.White);
+                    //mySpriteBatch.DrawString(timesFont, Convert.ToString(Convert.ToInt32(playerScore[3])) + "s", new Vector2(550, 625), Color.White);
 
+                
                 //restarting game 
+                /*
                 if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Start))
                 {
-                    levelNum = 0;
-                    playerScore = new List<double>();
+                    levelNum = 1;
+                    playerScore.Clear();
+                        // = new List<double>();
                 }
+                */
+                
             }
 
             mySpriteBatch.End();
