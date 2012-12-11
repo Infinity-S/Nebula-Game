@@ -27,7 +27,7 @@ namespace Nebula.Subclasses
         protected internal List<Enemy> EnemiesList = new List<Enemy>();
 
 
-        protected internal List<String> CeresText = new List<String>();
+        protected internal List<String> CeresTextOne = new List<String>();
         int textIndex = 0;
 
 
@@ -38,7 +38,8 @@ namespace Nebula.Subclasses
         protected internal double enemyWeaponFireTime = 1.5;
         protected internal TimeTravelManager myTimeTravelManager;
 
-        protected internal Dictionary<String, Vector2> OnScreenText = new Dictionary<String, Vector2>(); 
+        protected internal Dictionary<String, Vector2> OnScreenText = new Dictionary<String, Vector2>();
+        protected internal Dictionary<String, Vector2> LevelStoryText = new Dictionary<String, Vector2>(); 
         protected internal SpriteFont myFont;
 
         protected internal  SoundEffect LaserSoundEffect;
@@ -80,15 +81,6 @@ namespace Nebula.Subclasses
             myGame = aGame;
             myLevel = aLevel;
             spritesList = aSpritesList;
-
-
-            CeresText.Add("This is the first line of text");
-            CeresText.Add("This is the second line of text");
-            CeresText.Add("Third");
-            CeresText.Add("Fourth");
-            CeresText.Add("Fifth");
-            
-
 
             //Music for the level 
             LaserSoundEffect = myGame.Content.Load<SoundEffect>("LaserSoundEffect");
@@ -158,91 +150,13 @@ namespace Nebula.Subclasses
             Platform newPlatform = myPlatform.Clone();
             newPlatform.myPosition = position;
             newPlatform.setCanStandOn(canLandOn);
-            newPlatform.setBadPlatformImage(); 
+            newPlatform.setBadPlatformImage();
             myLevel.AddSprite(newPlatform);
 
             // If we want Asis to be able to land on the platform and not fall through - add it to the platformsList
             if (canLandOn)
             {
                 platformsList.Add(newPlatform);
-            }
-        }
-
-        public void AddMovingPlatform(Vector2 position, bool canLandOn, bool movHorz, bool movVert, float posMoveTo, float speed)
-        {
-            Platform newPlatform = myPlatform.Clone();
-            newPlatform.myPosition = position;
-            newPlatform.setCanStandOn(canLandOn);
-            newPlatform.setBadPlatformImage(); 
-            newPlatform.setmovingHorz(movHorz);
-            newPlatform.setmovingVert(movVert);
-            newPlatform.setPositionMoveTo(posMoveTo);
-            newPlatform.setSpeed(speed);
-            myLevel.AddSprite(newPlatform);
-            myTimeTravelManager.addToPositionsList(newPlatform);
-
-            //if (newPlatform.getMovingHorz() || newPlatform.getMovingHorz())
-            //{
-            //    newPlatform.movePlatform(asis.myPosition, posMoveTo, speed); 
-            //}
-
-            // If we want Asis to be able to land on the platform and not fall through - add it to the platformsList
-            if (canLandOn)
-            {
-                platformsList.Add(newPlatform);
-            }
-        }
-
-        public void movePlatformVert(Platform p)
-        {
-            //Vector2 intialPos = p.myPosition;
-            //if (asis.myPosition.X >= p.myPosition.X + p.myTexture.Width / 6)
-            if (aHero.myPosition.X >= p.myPosition.X && aHero.myPosition.X <= p.myPosition.X + p.myTexture.Width)
-            {
-                p.myVelocity = new Vector2(0, p.getSpeed() * -1);
-
-                if (p.myPosition.Y <= p.getPositionMoveTo())
-                {
-                    //p.myVelocity = new Vector2(0, p.getSpeed());
-                    p.myVelocity = new Vector2(0, 0);
-                }
-            }
-            else
-            {
-                p.myVelocity = new Vector2(0, 0);
-            }
-            //if (p.myPosition.Y <= p.getPositionMoveTo())
-            //{
-            //    p.myVelocity = new Vector2(0, p.getSpeed());
-            //}
-            //if(p.myPosition.Y >= intialPos.Y) 
-            //{
-            //    p.myVelocity = new Vector2(0, p.getSpeed() * -1);
-            //}
-        }
-
-        public void movePlatformHorz(Platform p)
-        {
-
-            //if (asis.myPosition.X >= p.myPosition.X + p.myTexture.Width / 4)
-            if (aHero.myPosition.X >= p.myPosition.X && aHero.myPosition.X <= p.myPosition.X + p.myTexture.Width)
-            {
-                p.myVelocity = new Vector2(p.getSpeed(), 0);
-
-                //if (p.myPosition.X >= p.getPositionMoveTo())
-                //{
-                //    // p.myVelocity = new Vector2(p.getSpeed()*-1, 0);
-                //    p.myVelocity = new Vector2(0, 0);
-                //}
-            }
-            else
-            {
-                p.myVelocity = new Vector2(0, 0);
-            }
-            if (p.myPosition.X >= p.getPositionMoveTo())
-            {
-                // p.myVelocity = new Vector2(p.getSpeed()*-1, 0);
-                p.myVelocity = new Vector2(0, 0);
             }
         }
 
@@ -262,7 +176,6 @@ namespace Nebula.Subclasses
 
         public void AddEnemy(Enemy aEnemy, Vector2 position)
         {
-
                 Sprite newEnemy = aEnemy.Clone();
                 newEnemy.myPosition = position;
                 myTimeTravelManager.addToPositionsList(newEnemy);
@@ -277,7 +190,10 @@ namespace Nebula.Subclasses
 
         public void DisplayInstructions()
         {
-            InstructionScreen.myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
+            if (myGame.getLevelNum() == 0)
+            {
+                InstructionScreen.myPosition = new Vector2(aHero.myPosition.X - xSL / 6, 0);
+            }
         }
 
         public void SetUpInput2()
@@ -306,27 +222,7 @@ namespace Nebula.Subclasses
             InputManager.AddToKeyboardMap(Keys.I, timerReset);
             InputManager.AddToButtonsMap(Buttons.Start, timerReset);
 
-
-            GameAction nextLineOfText = new GameAction(
-                this, this.GetType().GetMethod("GetNextLine"),
-                new object[0]);
-
-            InputManager.AddToKeyboardMap(Keys.Enter, nextLineOfText);
-            InputManager.AddToButtonsMap(Buttons.DPadDown, nextLineOfText);
-
         }
-
-        public void GetNextLine()
-    {
-
-        if (InstructionScreen.time > .5)
-        {
-            textIndex++;
-            InstructionScreen.time = 0;
-        }
-    }
-
-
 
         public void ResetTimer()
         {
@@ -398,8 +294,6 @@ namespace Nebula.Subclasses
 
         public void PlatformLogic()
         {
-            //if ((!Keyboard.GetState().IsKeyDown(Keys.X)) && (!GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.X))) {
-
             // For each platform, if Asis jumps on it - set her y velocity to 0
             for (int i = 0; i < platformsList.Count; i++)
             {
@@ -408,15 +302,6 @@ namespace Nebula.Subclasses
                     && aHero.myPosition.X + aHero.myTexture.Width / 2 >= platformsList[i].myPosition.X
                     && aHero.myPosition.X + aHero.myTexture.Width / 2 <= platformsList[i].myPosition.X + platformsList[i].myTexture.Width)
                 {
-                    /*
-                    // If statement helps avoid a glitch when going back in time Asis would get stuck below a platform
-                    if (Keyboard.GetState().IsKeyDown(Keys.X)
-                        && sm.asis.myPosition.Y + sm.asis.myTexture.Height <= sm.platformsList[i].myPosition.Y + sm.platformsList[i].myTexture.Height
-                        && sm.asis.myPosition.Y + sm.asis.myTexture.Height >= sm.platformsList[i].myPosition.Y)
-                    {
-                        sm.asis.myPosition.Y -= 5;
-                    }
-                    */
                     aHero.myVelocity.Y = 0;
                     // Allows hero to jump off platforms
                     if (Keyboard.GetState().IsKeyDown(Keys.Space) 
@@ -615,23 +500,11 @@ namespace Nebula.Subclasses
 
                 sm.LaserTimeTravelSound(sprite);
 
-                // && (!GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.X))
-                if (!Keyboard.GetState().IsKeyDown(Keys.X))
+                if (!Keyboard.GetState().IsKeyDown(Keys.X) && (!GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.X)))
                 {
                     sm.PlatformLogic();
                 }
 
-                foreach (Platform p in sm.platformsList)
-                {
-                    if (p.getMovingVert())
-                    {
-                        sm.movePlatformVert(p);
-                    }
-                    else
-                    {
-                        sm.movePlatformHorz(p);
-                    }
-                }
                 if (sm.DisplayVictoryScreen())
                 {
                     if (sm.runOnce2)
@@ -652,11 +525,6 @@ namespace Nebula.Subclasses
 
                 if (!sm.DisplayVictoryScreen())
                 {
-                    // Convert.ToString(sm.CeresText[0])
-                    batch.DrawString(sm.myFont, sm.CeresText[sm.textIndex],
-                   new Vector2(500, 500),
-                   Color.White, 0, new Vector2(0, 0), 1.3f, SpriteEffects.None, 0.5f);
-
                     // Timer gets drawn here - unaffected by time travel ability
                     batch.DrawString(sm.myFont, "Time: " + Convert.ToString(Convert.ToInt32(sprite.time)), 
                         new Vector2(sm.aHero.myPosition.X - sm.xSL / 6, 0),
@@ -676,6 +544,11 @@ namespace Nebula.Subclasses
                 foreach (KeyValuePair<String, Vector2> entry in sm.OnScreenText)
                 {
                     batch.DrawString(sm.myFont, entry.Key,entry.Value, Color.Yellow);
+                }
+
+                foreach (KeyValuePair<String, Vector2> entry in sm.LevelStoryText)
+                {
+                    batch.DrawString(sm.myFont, entry.Key, entry.Value, Color.Yellow);
                 }
                     sm.InstructionScreen.Draw(batch);
             }

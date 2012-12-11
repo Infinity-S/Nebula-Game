@@ -35,10 +35,12 @@ namespace Nebula.SuperClasses
             hasJumped = true;
             // (myScreenSize.X * 2 + myScreenSize.X / 2);
             // Change back to  for start of game 
-            myPosition.X = (myScreenSize.X / 12);
+            myPosition.X = myScreenSize.X * 4;
+                // (myScreenSize.X / 12);
                 //  //94
 
-            myPosition.Y = myScreenSize.Y - myTexture.Height * 2;
+            myPosition.Y = 0;
+            // myScreenSize.Y - myTexture.Height * 2;
             // Start her facing to the right
             direction = "right";
 
@@ -107,7 +109,7 @@ namespace Nebula.SuperClasses
             }
             public void Update(double elapsedTime, Sprite sprite)
             {
-                if (!Keyboard.GetState().IsKeyDown(Keys.X))
+                if (!Keyboard.GetState().IsKeyDown(Keys.X) && (!GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.X)))
                 {
                     if ((Keyboard.GetState().IsKeyDown(Keys.Space)
                         || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.A)

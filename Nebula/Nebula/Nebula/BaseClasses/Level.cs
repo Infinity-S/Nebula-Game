@@ -51,7 +51,6 @@ namespace Nebula.BaseClasses
 
         public virtual void LoadSprites()
         {
-
         }
 
         public void AddSprite(Sprite s)

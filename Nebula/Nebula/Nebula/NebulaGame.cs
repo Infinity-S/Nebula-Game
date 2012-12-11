@@ -31,7 +31,7 @@ namespace Nebula
         //Vulkanis secondLevelContent; 
         Camera camera;
         int levelNumber;
-        int levelNum = 0; 
+        int levelNum = 1; 
 
         public NebulaGame()
         {
@@ -39,6 +39,11 @@ namespace Nebula
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferHeight = 720;
             graphics.PreferredBackBufferWidth = 1280;
+        }
+
+        public int getLevelNum()
+        {
+            return levelNum;
         }
 
         /// <summary>

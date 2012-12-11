@@ -102,7 +102,7 @@ namespace Nebula.Subclasses
             myVictoryScreens.Add(myVictoryScreen3);
             myVictoryScreens.Add(myVictoryScreen4);
 
-            SoundEffect levelMusic = myGame.Content.Load<SoundEffect>("CeresMusic"); 
+            SoundEffect levelMusic = myGame.Content.Load<SoundEffect>("rezzo-3"); 
 
             scrollingManager = new ScrollingManager(myHero, myBackgroundSprites, myGraphics.PreferredBackBufferWidth, myBackgroundScreen);
 
